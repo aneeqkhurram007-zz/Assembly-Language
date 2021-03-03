@@ -1,8 +1,8 @@
 EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
-lab2.bin_ -- emu8086 assembler version: 4.08  
+task2.bin_ -- emu8086 assembler version: 4.08  
  
-[ 3/1/2021  --  10:41:39 PM ] 
+[ 3/3/2021  --  2:30:32 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -13,14 +13,14 @@ lab2.bin_ -- emu8086 assembler version: 4.08
 [   3]    0006: B8 85 FF                              MOV AX, -123
 [   4]    0009: BB 7B 00                              MOV BX, 123
 [   5]    000C: B4 91                                 MOV AH, 010010001b
-[   6]    000E: 89 1E 34 12                           MOV 1234h, BX
-[   7]    0012: BA 33 00                              MOV DX, 33h
-[   8]    0015: B1 41                                 MOV CL, 'A'
-[   9]    0017: B5 42                                 MOV CH, 'B'
-[  10]    0019: 8A E8                                 MOV CH, AL
-[  11]    001B: 8A D3                                 MOV DL, BL
-[  12]    001D: 8A E3                                 MOV AH, BL
-[  13]    001F: 8B C1                                 MOV AX, CX
+[   6]    000E: BB 34 12                              MOV BX, 1234h
+[   7]    0011: BA 33 00                              MOV DX, 33h
+[   8]    0014: B1 41                                 MOV CL, 'A'
+[   9]    0016: B5 42                                 MOV CH, 'B'
+[  10]    0018: 8A E8                                 MOV CH, AL
+[  11]    001A: 8A D3                                 MOV DL, BL
+[  12]    001C: 8A E3                                 MOV AH, BL
+[  13]    001E: 8B C1                                 MOV AX, CX
 [  14]        :                                       
 [  15]        :                                       
  
