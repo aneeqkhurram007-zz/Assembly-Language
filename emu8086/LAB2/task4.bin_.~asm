@@ -1,0 +1,26 @@
+;MOV AX, 4D12h
+;MOV BX, 1C21h
+;ADD AX, BX
+;MOV AX, 4D12h
+;MOV BX, 1C21h
+;SUB AX, BX
+;MOV AL, 25
+;MOV BH, 1Ch
+;ADD AL, BH
+MOV CL, 10000011b
+MOV CH, 10010010b
+SUB CH, CL
+MOV AX, 80h
+ADD AX, 01
+MOV AL, 80h
+ADD AL, 01
+MOV AL, 0A5h
+MOV BL, 12h
+ADD AL, BL
+MOV DH, BL
+SUB DH, 10
+
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 2 & 3\Task 4\task4.asm

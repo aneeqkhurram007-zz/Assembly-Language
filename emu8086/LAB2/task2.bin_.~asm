@@ -1,0 +1,7 @@
+MOV DL, 9
+MOV DH, DL
+MOV AX, DX
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 2 & 3\Task 2\task2.asm
