@@ -1,0 +1,120 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+task3.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 3/4/2021  --  7:40:53 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ;part f Arrays
+[   2]        :                                       .model small
+[   3]        :                                       
+[   4]        :                                       .stack 100h
+[   5]        :                                       
+[   6]        :                                       .data
+[   7]        :                                       
+[   8]        :                                       
+[   9]        :                                       
+[  10]    0100: 06                                    a db 6
+[  11]    0101: 07                                    b db 7
+[  12]    0102: 08                                    c db 8
+[  13]        :                                       
+[  14]        :                                       .code
+[  15]        :                                       
+[  16]    0110:                                       main proc
+[  17]        :                                       
+[  18]    0110: B8 10 00                              mov ax, @data
+[  19]    0113: 8E D8                                 mov ds, ax
+[  20]        :                                       
+[  21]    0115: B4 02                                 mov ah, 2
+[  22]        :                                       
+[  23]        :                                       ;part a
+[  24]        :                                       ;mov dl, a
+[  25]        :                                       ;sub b, dl
+[  26]        :                                       ;mov dl, b
+[  27]        :                                       ;mov a, dl
+[  28]        :                                       
+[  29]        :                                       ;part b
+[  30]        :                                       ;mov dl, a
+[  31]        :                                       ;add dl, 1
+[  32]        :                                       ;neg dl
+[  33]        :                                       ;mov a, dl
+[  34]        :                                       
+[  35]        :                                       ;part c
+[  36]        :                                       ;mov dl, a
+[  37]        :                                       ;add dl, b
+[  38]        :                                       ;mov c, dl
+[  39]        :                                       
+[  40]        :                                       ;part d
+[  41]        :                                       ;mov dl, b
+[  42]        :                                       ;add dl, b
+[  43]        :                                       ;add dl, b
+[  44]        :                                       ;add dl, 7
+[  45]        :                                       ;mov b, dl
+[  46]        :                                       
+[  47]        :                                       ;part e
+[  48]        :                                       
+[  49]    0117: FE 0E 00 00                           dec a
+[  50]    011B: 8A 16 00 00                           mov dl, a
+[  51]    011F: 28 16 01 00                           sub b, dl
+[  52]    0123: 8A 16 01 00                           mov dl,b
+[  53]    0127: 88 16 00 00                           mov a, dl
+[  54]        :                                       
+[  55]        :                                       
+[  56]        :                                       
+[  57]    012B: CD 21                                 int 21h
+[  58]        :                                       
+[  59]        :                                       main endp
+[  60]        :                                       
+[  61]    012D: B4 4C                                 mov ah, 4ch
+[  62]    012F: CD 21                                 int 21h
+[  63]        :                                       
+[  64]        :                                       end main
+[  65]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 31      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 89      -   check sum (l.byte)
+0013: 0B      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 11      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
