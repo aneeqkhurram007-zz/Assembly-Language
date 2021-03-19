@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task3.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/9/2021  --  8:24:31 PM ] 
+[ 3/10/2021  --  8:28:39 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -50,7 +50,7 @@ task3.exe_ -- emu8086 assembler version: 4.08
 [  37]    0155: B2 31                                 mov dl, 49
 [  38]    0157: CD 21                                 int 21h
 [  39]        :                                       
-[  40]    0159: 80 EB 11                              sub bl, 17
+[  40]    0159: 80 EB 11                              sub bl, 011h
 [  41]    015C: 8A D3                                 mov dl, bl
 [  42]    015E: CD 21                                 int 21h
 [  43]        :                                       

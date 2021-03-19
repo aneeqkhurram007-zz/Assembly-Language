@@ -2,84 +2,54 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/9/2021  --  8:23:00 PM ] 
+[ 3/16/2021  --  10:18:06 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ;Question 2
+[   1]        :                                       ; lab 6 and  7 task 2
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
 [   4]        :                                       .data
-[   5]        :                                       
-[   6]    0100: 45 6E 74 65 72 20 74 68 72 65 65 20   str db "Enter three initials: $"
-                69 6E 69 74 69 61 6C 73 3A 20 24    
-[   7]        :                                       
-[   8]        :                                       .code
-[   9]    0120:                                       main proc
+[   5]        :                                       .code
+[   6]    0100: B8 10 00                              mov ax, @data
+[   7]    0103: 8E D8                                 mov ds, ax
+[   8]    0105:                                       main proc
+[   9]        :                                       
 [  10]        :                                       
-[  11]    0120: B8 10 00                              mov ax, @data
-[  12]    0123: 8E D8                                 mov ds, ax
-[  13]        :                                       
-[  14]    0125: B4 09                                 mov ah,9
-[  15]    0127: BA 00 00                              lea dx, str
-[  16]    012A: CD 21                                 int 21h
+[  11]        :                                       ;task 2.1
+[  12]        :                                       ; cmp ax, 0
+[  13]        :                                       ; jl IF
+[  14]        :                                       
+[  15]        :                                       ; mov ah, 4ch
+[  16]        :                                       ; int 21h
 [  17]        :                                       
-[  18]    012C: B4 01                                 mov ah,1
-[  19]        :                                       
-[  20]    012E: CD 21                                 int 21h
-[  21]        :                                       
-[  22]    0130: 8A D8                                 mov bl,al
-[  23]        :                                       
-[  24]    0132: CD 21                                 int 21h
+[  18]        :                                       ; IF:
+[  19]        :                                       ;     mov bx, -1
+[  20]        :                                       
+[  21]        :                                       ;task 2.2
+[  22]        :                                       
+[  23]    0105: 3C 00                                 cmp al, 0
+[  24]    0107: 7C 02                                 jl IF
 [  25]        :                                       
-[  26]    0134: 8A F8                                 mov bh,al
+[  26]    0109: B4 00                                 mov ah, 0
 [  27]        :                                       
-[  28]    0136: CD 21                                 int 21h
-[  29]        :                                       
-[  30]    0138: 8A C8                                 mov cl,al
-[  31]        :                                       
-[  32]    013A: B4 02                                 mov ah, 2
+[  28]        :                                       ;mov ah, 4ch
+[  29]        :                                       ;int 21h
+[  30]        :                                       
+[  31]    010B:                                       IF:
+[  32]    010B: B4 FF                                 mov ah, 0FFh
 [  33]        :                                       
-[  34]    013C: B2 0A                                 mov dl, 0Ah
-[  35]    013E: CD 21                                 int 21h
+[  34]        :                                       
+[  35]        :                                       
 [  36]        :                                       
-[  37]    0140: B2 0D                                 mov dl,0Dh
-[  38]    0142: CD 21                                 int 21h
-[  39]        :                                       
-[  40]    0144: 8A D3                                 mov dl, bl
-[  41]    0146: CD 21                                 int 21h
+[  37]        :                                       
+[  38]        :                                       main endp
+[  39]    010D: B4 4C                                 mov ah, 4ch
+[  40]    010F: CD 21                                 int 21h
+[  41]        :                                       end main
 [  42]        :                                       
-[  43]    0148: B2 0A                                 mov dl, 0Ah
-[  44]    014A: CD 21                                 int 21h
-[  45]        :                                       
-[  46]    014C: B2 0D                                 mov dl,0Dh
-[  47]    014E: CD 21                                 int 21h
-[  48]        :                                       
-[  49]    0150: 8A D7                                 mov dl, bh
-[  50]    0152: CD 21                                 int 21h
-[  51]        :                                       
-[  52]    0154: B2 0A                                 mov dl, 0Ah
-[  53]    0156: CD 21                                 int 21h
-[  54]        :                                       
-[  55]    0158: B2 0D                                 mov dl,0Dh
-[  56]    015A: CD 21                                 int 21h
-[  57]        :                                       
-[  58]    015C: 8A D1                                 mov dl, cl
-[  59]    015E: CD 21                                 int 21h
-[  60]        :                                       
-[  61]        :                                       
-[  62]        :                                       main endp
-[  63]        :                                       
-[  64]    0160: B4 4C                                 mov ah,4ch
-[  65]    0162: CD 21                                 int 21h
-[  66]        :                                       
-[  67]        :                                       
-[  68]        :                                       
-[  69]        :                                       
-[  70]        :                                       end main
-[  71]        :                                       
  
 ===================================================================================================
  
@@ -87,7 +57,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 64      -   bytes on last page (l.byte)
+0002: 11      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -103,11 +73,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 1A      -   check sum (l.byte)
-0013: 27      -   check sum (h.byte)
-0014: 00      -   IP - instruction pointer (l.byte)
+0012: 3C      -   check sum (l.byte)
+0013: 37      -   check sum (h.byte)
+0014: 05      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 12      -   CS - code segment (l.byte)
+0016: 10      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -117,7 +87,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001D: 00      -   signature (h.byte)
 001E: 01      -   relocation table - offset inside segment (l.byte)
 001F: 00      -   relocation table - offset inside segment (h.byte)
-0020: 12      -   relocation table - segment anchor (l.byte)
+0020: 10      -   relocation table - segment anchor (l.byte)
 0021: 00      -   relocation table - segment anchor (h.byte)
 0022 to 01FF  -   reserved relocation area  (00) 
 

@@ -2,14 +2,14 @@
 .model small
 .stack 100h
 .data
-.code
+.code  
 
 mov ax, @data
 mov ds, ax
 
-main proc
-
-
+main proc 
+    
+    
 MOV AX, 0020h
 MOV BX, 00AAH
 
@@ -26,7 +26,7 @@ MOV AX, 5510h
 SUB AL,2
 
 
-MOV AL,0FEh
+MOV AL,0FEh 
 
 
 SUB AL,2
@@ -38,7 +38,7 @@ MOV BL,8Ch
 MOV BH,2Dh
 
 
-ADD    BX, AX
+ADD	BX, AX
 
 
 MOV AX, 1234
@@ -62,14 +62,10 @@ DEC BX
 NEG CX
 
 
-
+    
 main endp
 
 mov ah, 4ch
 int 21h
 
 end main
-
-
-
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 6 & 7\task1.asm

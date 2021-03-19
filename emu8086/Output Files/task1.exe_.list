@@ -2,101 +2,84 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/9/2021  --  8:21:06 PM ] 
+[ 3/16/2021  --  9:46:19 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ;Question 1
+[   1]        :                                       ;lab 6 & 7 task 1
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
 [   4]        :                                       .data
-[   5]        :                                       
-[   6]    0100: 00                                    num1 db ?
-[   7]    0101: 00                                    num2 db ?
-[   8]    0102: 00                                    num3 db ?
-[   9]    0103: 54 48 45 20 53 55 4D 20 4F 46 20 24   str1 db "THE SUM OF $"
-                                                    
-[  10]    010F: 20 41 4E 44 20 24                     str2 db " AND $"
-[  11]    0115: 20 49 53 20 24                        str3 db " IS $"
+[   5]        :                                       .code
+[   6]        :                                       
+[   7]    0100: B8 10 00                              mov ax, @data
+[   8]    0103: 8E D8                                 mov ds, ax
+[   9]        :                                       
+[  10]    0105:                                       main proc
+[  11]        :                                       
 [  12]        :                                       
-[  13]        :                                       .code
-[  14]    0120:                                       main proc
+[  13]    0105: B8 20 00                              MOV AX, 0020h
+[  14]    0108: BB AA 00                              MOV BX, 00AAH
 [  15]        :                                       
-[  16]    0120: B8 10 00                              mov ax, @data
-[  17]    0123: 8E D8                                 mov ds, ax
+[  16]        :                                       
+[  17]    010B: 8A E3                                 MOV AH, BL
 [  18]        :                                       
-[  19]        :                                       ;part a display a "?"
-[  20]    0125: B4 02                                 mov ah,2
-[  21]    0127: B2 3F                                 mov dl, '?'
-[  22]    0129: CD 21                                 int 21h
-[  23]        :                                       
-[  24]        :                                       ;part b display digits whose sum is less than 10,
-[  25]    012B: B4 01                                 mov ah,1
-[  26]        :                                       
-[  27]    012D: CD 21                                 int 21h
+[  19]        :                                       
+[  20]    010D: B0 51                                 MOV AL,81
+[  21]    010F: 04 FE                                 ADD AL,0FEh
+[  22]        :                                       
+[  23]    0111: B8 10 55                              MOV AX, 5510h
+[  24]        :                                       
+[  25]        :                                       
+[  26]    0114: 2C 02                                 SUB AL,2
+[  27]        :                                       
 [  28]        :                                       
-[  29]    012F: A2 00 00                              mov num1,al
-[  30]        :                                       ;add num1,48
+[  29]    0116: B0 FE                                 MOV AL,0FEh
+[  30]        :                                       
 [  31]        :                                       
-[  32]    0132: CD 21                                 int 21h
-[  33]        :                                       ;add al,48
-[  34]    0134: A2 01 00                              mov num2,al
-[  35]        :                                       
-[  36]    0137: 02 06 00 00                           add al,num1
+[  32]    0118: 2C 02                                 SUB AL,2
+[  33]        :                                       
+[  34]        :                                       
+[  35]    011A: B3 8C                                 MOV BL,8Ch
+[  36]        :                                       
 [  37]        :                                       
-[  38]    013B: 8A D0                                 mov dl,al
-[  39]    013D: 80 EA 30                              sub dl,48
-[  40]    0140: 88 16 02 00                           mov num3, dl
-[  41]        :                                       
-[  42]    0144: B4 02                                 mov ah,2
-[  43]    0146: B2 0A                                 mov dl,0Ah
-[  44]    0148: CD 21                                 int 21h
+[  38]    011C: B7 2D                                 MOV BH,2Dh
+[  39]        :                                       
+[  40]        :                                       
+[  41]    011E: 03 D8                                 ADD	BX, AX
+[  42]        :                                       
+[  43]        :                                       
+[  44]    0120: B8 D2 04                              MOV AX, 1234
 [  45]        :                                       
-[  46]    014A: B2 0D                                 mov dl,0Dh
-[  47]    014C: CD 21                                 int 21h
+[  46]        :                                       
+[  47]    0123: 8B D8                                 MOV BX, AX
 [  48]        :                                       
-[  49]    014E: B4 09                                 mov ah,9
-[  50]        :                                       
-[  51]    0150: BA 03 00                              lea dx,str1
+[  49]        :                                       
+[  50]    0125: 8B C8                                 MOV CX, AX
+[  51]        :                                       
 [  52]        :                                       
-[  53]    0153: CD 21                                 int 21h
+[  53]    0127: 02 E8                                 ADD CH, AL
 [  54]        :                                       
-[  55]    0155: B4 02                                 mov ah, 2
-[  56]    0157: 8A 16 00 00                           mov dl, num1
-[  57]    015B: CD 21                                 int 21h
+[  55]        :                                       
+[  56]    0129: 05 FF FF                              ADD AX, 0FFFFh
+[  57]        :                                       
 [  58]        :                                       
-[  59]    015D: B4 09                                 mov ah,9
+[  59]    012C: 4B                                    DEC BX
 [  60]        :                                       
-[  61]    015F: BA 0F 00                              lea dx,str2
-[  62]        :                                       
-[  63]    0162: CD 21                                 int 21h
+[  61]        :                                       
+[  62]    012D: F7 D9                                 NEG CX
+[  63]        :                                       
 [  64]        :                                       
-[  65]    0164: B4 02                                 mov ah,2
-[  66]    0166: 8A 16 01 00                           mov dl, num2
-[  67]    016A: CD 21                                 int 21h
-[  68]        :                                       
-[  69]        :                                       
-[  70]    016C: B4 09                                 mov ah,9
-[  71]        :                                       
-[  72]    016E: BA 15 00                              lea dx,str3
-[  73]        :                                       
-[  74]    0171: CD 21                                 int 21h
-[  75]        :                                       
-[  76]    0173: B4 02                                 mov ah,2
-[  77]    0175: 8A 16 02 00                           mov dl, num3
-[  78]    0179: CD 21                                 int 21h
-[  79]        :                                       
-[  80]        :                                       
-[  81]        :                                       
-[  82]        :                                       
-[  83]        :                                       main endp
-[  84]        :                                       
-[  85]    017B: B4 4C                                 mov ah, 4ch
-[  86]    017D: CD 21                                 int 21h
-[  87]        :                                       end main
-[  88]        :                                       
+[  65]        :                                       
+[  66]        :                                       main endp
+[  67]        :                                       
+[  68]    012F: B4 4C                                 mov ah, 4ch
+[  69]    0131: CD 21                                 int 21h
+[  70]        :                                       
+[  71]        :                                       end main
+[  72]        :                                       
  
 ===================================================================================================
  
@@ -104,7 +87,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 7F      -   bytes on last page (l.byte)
+0002: 33      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -120,11 +103,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 07      -   check sum (l.byte)
-0013: B1      -   check sum (h.byte)
-0014: 00      -   IP - instruction pointer (l.byte)
+0012: 22      -   check sum (l.byte)
+0013: 28      -   check sum (h.byte)
+0014: 05      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 12      -   CS - code segment (l.byte)
+0016: 10      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -134,7 +117,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001D: 00      -   signature (h.byte)
 001E: 01      -   relocation table - offset inside segment (l.byte)
 001F: 00      -   relocation table - offset inside segment (h.byte)
-0020: 12      -   relocation table - segment anchor (l.byte)
+0020: 10      -   relocation table - segment anchor (l.byte)
 0021: 00      -   relocation table - segment anchor (h.byte)
 0022 to 01FF  -   reserved relocation area  (00) 
 

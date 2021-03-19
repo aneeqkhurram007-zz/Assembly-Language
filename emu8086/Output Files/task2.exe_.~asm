@@ -1,74 +1,45 @@
-;Question 2
+; lab 6 and  7 task 2
 .model small
 .stack 100h
 .data
-
-str db "Enter three initials: $"
-
 .code
-main proc
-
 mov ax, @data
 mov ds, ax
+main proc
 
-mov ah,9
-lea dx, str
-int 21h
 
-mov ah,1
+;task 2.1
+; cmp ax, 0
+; jl IF
 
-int 21h
+; mov ah, 4ch
+; int 21h
 
-mov bl,al
+; IF:
+;     mov bx, -1
 
-int 21h
+;task 2.2
 
-mov bh,al
+cmp al, 0
+jl IF
 
-int 21h
+mov ah, 0
 
-mov cl,al
+;mov ah, 4ch
+;int 21h
 
-mov ah, 2
+IF:
+mov ah, 0FFh
 
-mov dl, 0Ah
-int 21h
 
-mov dl,0Dh
-int 21h
 
-mov dl, bl
-int 21h
-
-mov dl, 0Ah
-int 21h
-
-mov dl,0Dh
-int 21h
-
-mov dl, bh
-int 21h
-
-mov dl, 0Ah
-int 21h
-
-mov dl,0Dh
-int 21h
-
-mov dl, cl
-int 21h
 
 
 main endp
-
-mov ah,4ch
+mov ah, 4ch
 int 21h
-
-
-
-
 end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\Assignment 1\task2.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 6 & 7\task2.asm

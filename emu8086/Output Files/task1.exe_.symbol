@@ -4,15 +4,9 @@ Name                     	Offset    	Size      	Type      	Segment
 ===================================================================================================
 STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
 DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
-NUM1                     	00000     	1         	VAR       	data      
-NUM2                     	00001     	1         	VAR       	data      
-NUM3                     	00002     	1         	VAR       	data      
-STR1                     	00003     	1         	VAR       	data      
-STR2                     	0000F     	1         	VAR       	data      
-STR3                     	00015     	1         	VAR       	data      
-CODE                     	00012     	-5        	SEGMENT   	(ITSELF)  
-MAIN                     	00000     	-1        	NEAR      	code      
+CODE                     	00010     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00005     	-1        	NEAR      	code      
 ===================================================================================================
-[ 3/9/2021  --  8:21:06 PM ] 
+[ 3/16/2021  --  9:46:19 AM ] 
 < END >
  
