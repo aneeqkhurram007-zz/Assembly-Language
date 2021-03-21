@@ -1,11 +1,8 @@
-;Question 3
+; task3
 .model small
 .stack 100h
 .data
-
-str db "Enter a hex digit A-F : $"
-str1 db "In decimal it is $"
-
+string db 'Please enter your password.$'
 .code
 main proc
 
@@ -13,33 +10,34 @@ mov ax, @data
 mov ds, ax
 
 mov ah, 9
-lea dx, str
+lea dx, string
 int 21h
-
-mov ah, 1
-int 21h
-
-mov bl, al
 
 mov ah, 2
-
 mov dl, 0Ah
 int 21h
 
 mov dl, 0Dh
 int 21h
 
-mov ah, 9
-lea dx, str1
+mov ah, 1
+mov cx, 5
+
+for:
 int 21h
+loop for
+
+mov cx, 5
 
 mov ah, 2
-mov dl, 49
+mov dl, 0Dh
 int 21h
 
-sub bl, 011h
-mov dl, bl
+mov dl, 'X'
+
+for1:
 int 21h
+loop for1
 
 main endp
 
@@ -50,4 +48,4 @@ end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\Assignment 1\task3.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 8\task3.asm

@@ -1,0 +1,9 @@
+msg1 db 'Aneeq Khurram$'
+
+mov ah, 9
+lea dx, msg1
+int 21h
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\emu8086\Practice\prac1.asm

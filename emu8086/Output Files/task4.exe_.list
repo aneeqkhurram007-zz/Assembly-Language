@@ -1,46 +1,52 @@
 EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
-task1.exe_ -- emu8086 assembler version: 4.08  
+task4.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/21/2021  --  7:43:08 PM ] 
+[ 3/21/2021  --  7:48:58 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ; task 1
+[   1]        :                                       ; task4
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
 [   4]        :                                       .data
-[   5]    0100: 54 68 65 20 73 75 6D 20 69 73 20 32   msg1 db 'The sum is 201$'
-                30 31 24                            
+[   5]    0100: 54 68 65 20 73 75 6D 20 69 73 20 33   string db 'The sum is 3725$'
+                37 32 35 24                         
 [   6]        :                                       .code
 [   7]        :                                       
 [   8]    0110:                                       main proc
-[   9]    0110: B8 10 00                              mov ax, @data
-[  10]    0113: 8E D8                                 mov ds, ax
-[  11]        :                                       
-[  12]    0115: B9 32 00                              mov cx, 50
-[  13]    0118: BA 01 00                              mov dx, 1
-[  14]    011B:                                       for:
+[   9]        :                                       
+[  10]    0110: B8 10 00                              mov ax, @data
+[  11]    0113: 8E D8                                 mov ds, ax
+[  12]        :                                       
+[  13]    0115: B8 00 00                              mov ax, 0
+[  14]    0118: B9 00 00                              mov cx, 0
 [  15]        :                                       
-[  16]    011B: 83 C2 04                              add dx, 4
+[  16]    011B:                                       while:
 [  17]        :                                       
-[  18]    011E: E2 FB                                 loop for
-[  19]    0120: 8B DA                                 mov bx, dx
-[  20]    0122: B4 09                                 mov ah, 9
-[  21]    0124: BA 00 00                              lea dx, msg1
-[  22]    0127: CD 21                                 int 21h
-[  23]        :                                       
-[  24]        :                                       main endp
-[  25]    0129: B4 4C                                 mov ah, 4ch
-[  26]    012B: CD 21                                 int 21h
-[  27]        :                                       end main
+[  18]    011B: 83 F9 00                              cmp cx, 0
+[  19]    011E: 7E 07                                 jle end_while
+[  20]        :                                       
+[  21]    0120: 03 C1                                 add ax, cx
+[  22]    0122: 83 E9 03                              sub cx, 3
+[  23]    0125: EB F4                                 jmp while
+[  24]        :                                       
+[  25]        :                                       main endp
+[  26]        :                                       
+[  27]    0127:                                       end_while:
 [  28]        :                                       
-[  29]        :                                       
-[  30]        :                                       
-[  31]        :                                       
+[  29]    0127: B4 09                                 mov ah, 9
+[  30]    0129: BA 00 00                              lea dx, string
+[  31]    012C: CD 21                                 int 21h
 [  32]        :                                       
+[  33]    012E: 8B D8                                 mov bx, ax
+[  34]        :                                       
+[  35]    0130: B4 4C                                 mov ah, 4ch
+[  36]    0132: CD 21                                 int 21h
+[  37]        :                                       end main
+[  38]        :                                       
  
 ===================================================================================================
  
@@ -48,7 +54,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 2D      -   bytes on last page (l.byte)
+0002: 34      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -64,8 +70,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 04      -   check sum (l.byte)
-0013: 72      -   check sum (h.byte)
+0012: 6D      -   check sum (l.byte)
+0013: 0C      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 11      -   CS - code segment (l.byte)

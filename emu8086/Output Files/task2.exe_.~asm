@@ -1,35 +1,39 @@
-; lab 6 and  7 task 2
+; task 2
 .model small
 .stack 100h
 .data
+msg1 db 'Please enter a character: $'
 .code
-mov ax, @data
-mov ds, ax
 main proc
 
+mov ax, @data
+mov ds, ax
 
-;task 2.1
-; cmp ax, 0
-; jl IF
+mov ah, 9
+lea dx, msg1
+int 21h
 
-; mov ah, 4ch
-; int 21h
+mov ah, 1
+int 21h
 
-; IF:
-;     mov bx, -1
+mov bl, al ;for backup
 
-;task 2.2
+mov cx, 10
 
-cmp al, 0
-jl IF
+mov ah, 2
+mov dl, 0Ah
+int 21h
 
-mov ah, 0
+mov dl, 0Dh
+int 21h
 
-;mov ah, 4ch
-;int 21h
+mov dl, bl
 
-IF:
-mov ah, 0FFh
+for:
+
+int 21h
+
+loop for
 
 
 
@@ -42,4 +46,6 @@ end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 6 & 7\task2.asm
+
+
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 8\task2.asm
