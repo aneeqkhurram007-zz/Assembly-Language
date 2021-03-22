@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/21/2021  --  7:43:08 PM ] 
+[ 3/22/2021  --  11:28:14 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -21,26 +21,28 @@ task1.exe_ -- emu8086 assembler version: 4.08
 [  10]    0113: 8E D8                                 mov ds, ax
 [  11]        :                                       
 [  12]    0115: B9 32 00                              mov cx, 50
-[  13]    0118: BA 01 00                              mov dx, 1
-[  14]    011B:                                       for:
-[  15]        :                                       
-[  16]    011B: 83 C2 04                              add dx, 4
-[  17]        :                                       
-[  18]    011E: E2 FB                                 loop for
-[  19]    0120: 8B DA                                 mov bx, dx
-[  20]    0122: B4 09                                 mov ah, 9
-[  21]    0124: BA 00 00                              lea dx, msg1
-[  22]    0127: CD 21                                 int 21h
-[  23]        :                                       
-[  24]        :                                       main endp
-[  25]    0129: B4 4C                                 mov ah, 4ch
-[  26]    012B: CD 21                                 int 21h
-[  27]        :                                       end main
-[  28]        :                                       
-[  29]        :                                       
+[  13]    0118: BA 00 00                              mov dx, 0
+[  14]    011B: B8 01 00                              mov ax, 1
+[  15]    011E:                                       for:
+[  16]    011E: 03 D0                                 add dx, ax
+[  17]    0120: 05 04 00                              add ax, 4
+[  18]        :                                       
+[  19]        :                                       
+[  20]    0123: E2 F9                                 loop for
+[  21]    0125: 8B DA                                 mov bx, dx   ;for backup
+[  22]    0127: B4 09                                 mov ah, 9
+[  23]    0129: BA 00 00                              lea dx, msg1
+[  24]    012C: CD 21                                 int 21h
+[  25]        :                                       
+[  26]        :                                       main endp
+[  27]    012E: B4 4C                                 mov ah, 4ch
+[  28]    0130: CD 21                                 int 21h
+[  29]        :                                       end main
 [  30]        :                                       
 [  31]        :                                       
 [  32]        :                                       
+[  33]        :                                       
+[  34]        :                                       
  
 ===================================================================================================
  
@@ -48,7 +50,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 2D      -   bytes on last page (l.byte)
+0002: 32      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -64,8 +66,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 04      -   check sum (l.byte)
-0013: 72      -   check sum (h.byte)
+0012: F7      -   check sum (l.byte)
+0013: 30      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 11      -   CS - code segment (l.byte)

@@ -2,7 +2,7 @@
 .model small
 .stack 100h
 .data 
-msg1 db 'The sum is 201$'
+msg1 db 'The sum is 4950$'
 .code
 
 main proc
@@ -10,10 +10,13 @@ main proc
     mov ds, ax
     
     mov cx, 50
-    mov dx, 1
+    mov dx, 0
+    mov ax, 1
 for:     
     
-    add dx, 4
+    add dx, ax
+    add ax, 4
+    
     
 loop for
      mov bx, dx   ;for backup

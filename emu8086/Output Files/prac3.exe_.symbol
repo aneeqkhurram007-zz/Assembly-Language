@@ -1,14 +1,14 @@
-< THE SYMBOL TABLE >  task1.exe_  --  emu8086 assembler version: 4.08 
+< THE SYMBOL TABLE >  prac3.exe_  --  emu8086 assembler version: 4.08 
 ===================================================================================================
 Name                     	Offset    	Size      	Type      	Segment   
 ===================================================================================================
 STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
 DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
-MSG1                     	00000     	1         	VAR       	data      
+VAR                      	00000     	2         	VAR       	data      
 CODE                     	00011     	-5        	SEGMENT   	(ITSELF)  
 MAIN                     	00000     	-1        	NEAR      	code      
-FOR                      	0000E     	-1        	LABEL     	code      
+TOP                      	0000C     	-1        	LABEL     	code      
 ===================================================================================================
-[ 3/22/2021  --  11:28:14 AM ] 
+[ 3/22/2021  --  11:35:12 AM ] 
 < END >
  

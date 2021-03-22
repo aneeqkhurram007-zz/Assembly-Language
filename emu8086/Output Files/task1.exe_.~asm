@@ -10,13 +10,15 @@ mov ax, @data
 mov ds, ax
 
 mov cx, 50
-mov dx, 1
+mov dx, 0
+mov ax, 1
 for:
+add dx, ax
+add ax, 4
 
-add dx, 4
 
 loop for
-mov bx, dx
+mov bx, dx   ;for backup
 mov ah, 9
 lea dx, msg1
 int 21h
