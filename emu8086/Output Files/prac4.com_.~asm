@@ -1,0 +1,34 @@
+
+; You may customize this and other start-up templates;
+; The location of this template is c:\emu8086\inc\0_com_template.txt
+
+org 100h
+
+MOV AX, 0
+MOV CX, 1
+
+REPEAT:
+
+CMP CX, 148
+JG END
+
+ADD AX, CX
+ADD CX, 3
+JMP REPEAT
+
+END:
+MOV BX, AX
+MOV AH, 4CH
+INT 21H
+
+
+ret
+
+
+
+
+
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\emu8086\Practice\prac4.asm
