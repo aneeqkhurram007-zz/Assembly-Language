@@ -1,0 +1,18 @@
+< THE SYMBOL TABLE >  prac5(loop).com_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+I                        	00102     	2         	VAR       	(NOSEG)   
+J                        	00104     	2         	VAR       	(NOSEG)   
+CODE                     	00106     	-1        	LABEL     	(NOSEG)   
+MAIN                     	00106     	-1        	NEAR      	(NOSEG)   
+FOR_OUTER                	0010F     	-1        	LABEL     	(NOSEG)   
+FOR_INNER_1              	0011B     	-1        	LABEL     	(NOSEG)   
+END_FOR_INNER_1          	00127     	-1        	LABEL     	(NOSEG)   
+FOR_INNER_2              	00136     	-1        	LABEL     	(NOSEG)   
+END_FOR_INNER_2          	00145     	-1        	LABEL     	(NOSEG)   
+END_FOR_OUTER            	00156     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 3/27/2021  --  11:44:54 AM ] 
+< END >
+ 

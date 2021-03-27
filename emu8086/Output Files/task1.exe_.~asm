@@ -1,37 +1,39 @@
-; task 1
+; task 1 star loop
 .model small
 .stack 100h
 .data
-msg1 db 'The sum is 201$'
 .code
-
 main proc
-mov ax, @data
-mov ds, ax
 
-mov cx, 50
-mov dx, 0
-mov ax, 1
-for:
-add dx, ax
-add ax, 4
+mov cx, 0 ;outer loop counter
+mov ah, 2
 
-
-loop for
-mov bx, dx   ;for backup
-mov ah, 9
-lea dx, msg1
+outer_while:
+cmp cx, 5
+jge end_outer_while
+mov bx, 0
+inner_while:
+cmp bx, cx
+jg end_inner_while
+mov dl, '*'
 int 21h
+inc bx
+jmp inner_while
+end_inner_while:
+mov dl, 0Ah
+int 21h
+mov dl, 0Dh
+int 21h
+inc cx
+jmp outer_while
+
 
 main endp
+end_outer_while:
 mov ah, 4ch
-int 21h
+int 21
 end main
 
 
 
-
-
-
-
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 8\task1.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 9\task1.asm

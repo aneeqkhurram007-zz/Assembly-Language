@@ -2,62 +2,71 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task3.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/21/2021  --  7:48:00 PM ] 
+[ 3/27/2021  --  11:07:17 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ; task3
+[   1]        :                                       ; task 3
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
 [   4]        :                                       .data
-[   5]    0100: 50 6C 65 61 73 65 20 65 6E 74 65 72   string db 'Please enter your password.$'
-                20 79 6F 75 72 20 70 61 73 73 77 6F 
-                72 64 2E 24                         
-[   6]        :                                       .code
-[   7]    0120:                                       main proc
-[   8]        :                                       
-[   9]    0120: B8 10 00                              mov ax, @data
-[  10]    0123: 8E D8                                 mov ds, ax
-[  11]        :                                       
-[  12]    0125: B4 09                                 mov ah, 9
-[  13]    0127: BA 00 00                              lea dx, string
-[  14]    012A: CD 21                                 int 21h
-[  15]        :                                       
-[  16]    012C: B4 02                                 mov ah, 2
-[  17]    012E: B2 0A                                 mov dl, 0Ah
-[  18]    0130: CD 21                                 int 21h
+[   5]    0100: 00 00                                 space dw ?
+[   6]        :                                       
+[   7]    0102: 00 00                                 total dw ?
+[   8]        :                                       .code
+[   9]    0110:                                       main proc
+[  10]    0110: B8 10 00                              mov ax, @data
+[  11]    0113: 8E D8                                 mov ds, ax
+[  12]    0115: B4 02                                 mov ah, 2
+[  13]    0117: B9 00 00                              mov cx, 0
+[  14]    011A:                                       outer_loop:
+[  15]    011A: 83 F9 05                              cmp cx, 5
+[  16]    011D: 7D 42                                 jge end_outer_loop
+[  17]    011F: C7 06 00 00 04 00                     mov space, 4
+[  18]    0125: 29 0E 00 00                           sub space, cx
 [  19]        :                                       
-[  20]    0132: B2 0D                                 mov dl, 0Dh
-[  21]    0134: CD 21                                 int 21h
-[  22]        :                                       
-[  23]    0136: B4 01                                 mov ah, 1
-[  24]    0138: B9 05 00                              mov cx, 5
-[  25]        :                                       
-[  26]    013B:                                       for:
-[  27]    013B: CD 21                                 int 21h
-[  28]    013D: E2 FC                                 loop for
-[  29]        :                                       
-[  30]    013F: B9 05 00                              mov cx, 5
-[  31]        :                                       
-[  32]    0142: B4 02                                 mov ah, 2
-[  33]    0144: B2 0D                                 mov dl, 0Dh
-[  34]    0146: CD 21                                 int 21h
-[  35]        :                                       
-[  36]    0148: B2 58                                 mov dl, 'X'
+[  20]    0129:                                       inner_1:
+[  21]    0129: 83 3E 00 00 00                        cmp space, 0
+[  22]    012E: 7C 0A                                 jl end_inner_1
+[  23]        :                                       
+[  24]    0130: B2 20                                 mov dl, 32
+[  25]    0132: CD 21                                 int 21h
+[  26]    0134: FF 0E 00 00                           dec space
+[  27]    0138: EB EF                                 jmp inner_1
+[  28]        :                                       
+[  29]    013A:                                       end_inner_1:
+[  30]    013A: 89 0E 02 00                           mov total, cx
+[  31]    013E: 01 0E 02 00                           add total, cx
+[  32]    0142: FF 06 02 00                           inc total
+[  33]    0146: BB 00 00                              mov bx, 0
+[  34]    0149:                                       inner_2:
+[  35]    0149: 3B 1E 02 00                           cmp bx, total
+[  36]    014D: 7D 07                                 jge end_inner_2
 [  37]        :                                       
-[  38]    014A:                                       for1:
-[  39]    014A: CD 21                                 int 21h
-[  40]    014C: E2 FC                                 loop for1
-[  41]        :                                       
-[  42]        :                                       main endp
-[  43]        :                                       
-[  44]    014E: B4 4C                                 mov ah, 4ch
-[  45]    0150: CD 21                                 int 21h
-[  46]        :                                       
-[  47]        :                                       end main
+[  38]    014F: B2 2A                                 mov dl, '*'
+[  39]    0151: CD 21                                 int 21h
+[  40]    0153: 43                                    inc bx
+[  41]    0154: EB F3                                 jmp inner_2
+[  42]        :                                       
+[  43]    0156:                                       end_inner_2:
+[  44]    0156: B2 0A                                 mov dl, 0Ah
+[  45]    0158: CD 21                                 int 21h
+[  46]    015A: B2 0D                                 mov dl, 0Dh
+[  47]    015C: CD 21                                 int 21h
 [  48]        :                                       
+[  49]    015E: 41                                    inc cx
+[  50]        :                                       
+[  51]        :                                       
+[  52]    015F: EB B9                                 jmp outer_loop
+[  53]        :                                       
+[  54]        :                                       main endp
+[  55]    0161:                                       end_outer_loop:
+[  56]    0161: B4 4C                                 mov ah, 4ch
+[  57]    0163: CD 21                                 int 21h
+[  58]        :                                       end main
+[  59]        :                                       
  
 ===================================================================================================
  
@@ -65,7 +74,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 52      -   bytes on last page (l.byte)
+0002: 65      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -81,11 +90,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 28      -   check sum (l.byte)
-0013: 07      -   check sum (h.byte)
+0012: 4C      -   check sum (l.byte)
+0013: D4      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 12      -   CS - code segment (l.byte)
+0016: 11      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -95,7 +104,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001D: 00      -   signature (h.byte)
 001E: 01      -   relocation table - offset inside segment (l.byte)
 001F: 00      -   relocation table - offset inside segment (h.byte)
-0020: 12      -   relocation table - segment anchor (l.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
 0021: 00      -   relocation table - segment anchor (h.byte)
 0022 to 01FF  -   reserved relocation area  (00) 
 

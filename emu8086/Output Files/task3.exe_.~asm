@@ -1,51 +1,62 @@
-; task3
+; task 3
 .model small
 .stack 100h
 .data
-string db 'Please enter your password.$'
+space dw ?
+
+total dw ?
 .code
 main proc
-
 mov ax, @data
 mov ds, ax
-
-mov ah, 9
-lea dx, string
-int 21h
-
 mov ah, 2
+mov cx, 0
+outer_loop:
+cmp cx, 5
+jge end_outer_loop
+mov space, 4
+sub space, cx
+
+inner_1:
+cmp space, 0
+jl end_inner_1
+
+mov dl, 32
+int 21h
+dec space
+jmp inner_1
+
+end_inner_1:
+mov total, cx
+add total, cx
+inc total
+mov bx, 0
+inner_2:
+cmp bx, total
+jge end_inner_2
+
+mov dl, '*'
+int 21h
+inc bx
+jmp inner_2
+
+end_inner_2:
 mov dl, 0Ah
 int 21h
-
 mov dl, 0Dh
 int 21h
 
-mov ah, 1
-mov cx, 5
+inc cx
 
-for:
-int 21h
-loop for
 
-mov cx, 5
-
-mov ah, 2
-mov dl, 0Dh
-int 21h
-
-mov dl, 'X'
-
-for1:
-int 21h
-loop for1
+jmp outer_loop
 
 main endp
-
+end_outer_loop:
 mov ah, 4ch
 int 21h
-
 end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 8\task3.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 9\task3.asm
