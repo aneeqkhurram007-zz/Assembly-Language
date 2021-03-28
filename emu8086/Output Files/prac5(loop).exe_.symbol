@@ -1,0 +1,20 @@
+< THE SYMBOL TABLE >  prac5(loop).exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+X                        	00000     	2         	VAR       	data      
+Y                        	00002     	2         	VAR       	data      
+CODE                     	00011     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+PARENT                   	0000A     	-1        	LABEL     	code      
+CHILD_1                  	00016     	-1        	LABEL     	code      
+END_CHILD_1              	00022     	-1        	LABEL     	code      
+CHILD_2                  	00031     	-1        	LABEL     	code      
+END_CHILD_2              	00040     	-1        	LABEL     	code      
+END_PARENT               	00051     	-1        	LABEL     	code      
+===================================================================================================
+[ 3/28/2021  --  5:38:15 PM ] 
+< END >
+ 

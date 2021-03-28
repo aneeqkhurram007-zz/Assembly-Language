@@ -1,0 +1,113 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+prac5(loop).exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 3/28/2021  --  5:38:15 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]    0100: 00 00                                 x dw 0
+[   5]    0102: 00 00                                 y dw 0
+[   6]        :                                       .code
+[   7]    0110:                                       main proc
+[   8]    0110: B8 10 00                              mov ax, @data
+[   9]    0113: 8E D8                                 mov ds, ax
+[  10]    0115: B4 02                                 mov ah, 2
+[  11]        :                                       
+[  12]    0117: B9 00 00                              mov cx, 0;
+[  13]    011A:                                       parent:
+[  14]    011A: 83 F9 05                              cmp cx, 5
+[  15]    011D: 7D 42                                 jge end_parent
+[  16]        :                                       
+[  17]    011F: 89 0E 00 00                           mov x, cx
+[  18]    0123: B9 05 00                              mov cx, 5
+[  19]        :                                       
+[  20]    0126:                                       child_1:
+[  21]    0126: 3B 0E 00 00                           cmp cx, x
+[  22]    012A: 7E 06                                 jle end_child_1
+[  23]        :                                       
+[  24]    012C: B2 20                                 mov dl, 32
+[  25]    012E: CD 21                                 int 21h
+[  26]    0130: E2 F4                                 loop child_1
+[  27]        :                                       
+[  28]    0132:                                       end_child_1:
+[  29]        :                                       
+[  30]    0132: 89 0E 02 00                           mov y, cx
+[  31]    0136: 01 0E 02 00                           add y, cx
+[  32]    013A: FF 06 02 00                           inc y
+[  33]    013E: B9 00 00                              mov cx, 0
+[  34]    0141:                                       child_2:
+[  35]    0141: 3B 0E 02 00                           cmp cx, y
+[  36]    0145: 7D 09                                 jge end_child_2
+[  37]    0147: B2 2A                                 mov dl, '*'
+[  38]    0149: CD 21                                 int 21h
+[  39]    014B: 83 C1 02                              add cx, 2
+[  40]    014E: E2 F1                                 loop child_2
+[  41]        :                                       
+[  42]    0150:                                       end_child_2:
+[  43]    0150: B2 0A                                 mov dl, 10
+[  44]    0152: CD 21                                 int 21h
+[  45]    0154: B2 0D                                 mov dl, 13
+[  46]    0156: CD 21                                 int 21h
+[  47]        :                                       
+[  48]    0158: 8B 0E 00 00                           mov cx, x
+[  49]    015C: 83 C1 02                              add cx, 2
+[  50]    015F: E2 B9                                 loop parent
+[  51]    0161:                                       end_parent:
+[  52]    0161: B4 4C                                 mov ah, 4ch
+[  53]    0163: CD 21                                 int 21h
+[  54]        :                                       
+[  55]        :                                       main endp
+[  56]        :                                       
+[  57]        :                                       end main
+[  58]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 65      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: DF      -   check sum (l.byte)
+0013: 01      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 11      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

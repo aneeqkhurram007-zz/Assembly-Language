@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/26/2021  --  9:56:41 PM ] 
+[ 3/28/2021  --  5:29:29 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -15,35 +15,45 @@ task1.exe_ -- emu8086 assembler version: 4.08
 [   5]        :                                       .code
 [   6]    0100:                                       main proc
 [   7]        :                                       
-[   8]    0100: B9 00 00                              mov cx, 0 ;outer loop counter
+[   8]    0100: B9 00 00                              mov cx, 0
 [   9]    0103: B4 02                                 mov ah, 2
 [  10]        :                                       
 [  11]    0105:                                       outer_while:
 [  12]    0105: 83 F9 05                              cmp cx, 5
-[  13]    0108: 7D 19                                 jge end_outer_while
-[  14]    010A: BB 00 00                              mov bx, 0
-[  15]    010D:                                       inner_while:
-[  16]    010D: 3B D9                                 cmp bx, cx
-[  17]    010F: 7F 07                                 jg end_inner_while
-[  18]    0111: B2 2A                                 mov dl, '*'
-[  19]    0113: CD 21                                 int 21h
-[  20]    0115: 43                                    inc bx
-[  21]    0116: EB F5                                 jmp inner_while
-[  22]    0118:                                       end_inner_while:
-[  23]    0118: B2 0A                                 mov dl, 0Ah
-[  24]    011A: CD 21                                 int 21h
-[  25]    011C: B2 0D                                 mov dl, 0Dh
-[  26]    011E: CD 21                                 int 21h
-[  27]    0120: 41                                    inc cx
-[  28]    0121: EB E2                                 jmp outer_while
+[  13]        :                                       
+[  14]    0108: 7D 19                                 jge end_outer_while
+[  15]        :                                       
+[  16]    010A: BB 00 00                              mov bx, 0
+[  17]        :                                       
+[  18]    010D:                                       inner_while:
+[  19]    010D: 3B D9                                 cmp bx, cx
+[  20]        :                                       
+[  21]    010F: 7F 07                                 jg end_inner_while
+[  22]        :                                       
+[  23]    0111: B2 2A                                 mov dl, '*'
+[  24]    0113: CD 21                                 int 21h
+[  25]    0115: 43                                    inc bx
+[  26]        :                                       
+[  27]    0116: EB F5                                 jmp inner_while
+[  28]    0118:                                       end_inner_while:
 [  29]        :                                       
-[  30]        :                                       
-[  31]        :                                       main endp
-[  32]    0123:                                       end_outer_while:
-[  33]    0123: B4 4C                                 mov ah, 4ch
-[  34]    0125: CD 15                                 int 21
-[  35]        :                                       end main
-[  36]        :                                       
+[  30]    0118: B2 0A                                 mov dl, 0Ah
+[  31]    011A: CD 21                                 int 21h
+[  32]    011C: B2 0D                                 mov dl, 0Dh
+[  33]    011E: CD 21                                 int 21h
+[  34]        :                                       
+[  35]    0120: 41                                    inc cx
+[  36]    0121: EB E2                                 jmp outer_while
+[  37]        :                                       
+[  38]        :                                       
+[  39]        :                                       main endp
+[  40]        :                                       
+[  41]    0123:                                       end_outer_while:
+[  42]    0123: B4 4C                                 mov ah, 4ch
+[  43]    0125: CD 15                                 int 21
+[  44]        :                                       
+[  45]        :                                       end main
+[  46]        :                                       
  
 ===================================================================================================
  
