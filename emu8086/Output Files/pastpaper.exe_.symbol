@@ -1,0 +1,26 @@
+< THE SYMBOL TABLE >  pastpaper.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+A                        	00000     	2         	VAR       	data      
+B                        	00002     	2         	VAR       	data      
+C                        	00004     	2         	VAR       	data      
+D                        	00006     	2         	VAR       	data      
+CTEMP                    	00008     	2         	VAR       	data      
+STRINGA                  	0000A     	1         	VAR       	data      
+STRINGB                  	0001B     	1         	VAR       	data      
+STRINGC                  	0002C     	1         	VAR       	data      
+CODE                     	00014     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+IF1                      	00010     	-1        	LABEL     	code      
+IF2                      	0001A     	-1        	LABEL     	code      
+IF3                      	00024     	-1        	LABEL     	code      
+LOOP1                    	0002B     	-1        	LABEL     	code      
+LOOP2                    	00034     	-1        	LABEL     	code      
+END                      	0005E     	-1        	LABEL     	code      
+===================================================================================================
+[ 4/4/2021  --  6:10:08 PM ] 
+< END >
+ 

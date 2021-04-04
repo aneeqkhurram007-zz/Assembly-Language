@@ -1,0 +1,22 @@
+< THE SYMBOL TABLE >  prac7.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+A                        	00000     	1         	VAR       	data      
+B                        	00001     	1         	VAR       	data      
+C                        	00002     	1         	VAR       	data      
+D                        	00003     	1         	VAR       	data      
+STRINGA                  	00004     	1         	VAR       	data      
+STRINGB                  	00015     	1         	VAR       	data      
+STRINGC                  	00026     	1         	VAR       	data      
+CODE                     	00014     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+FOR                      	0002D     	-1        	LABEL     	code      
+FOR1                     	0003B     	-1        	LABEL     	code      
+END                      	0005D     	-1        	LABEL     	code      
+===================================================================================================
+[ 4/5/2021  --  12:11:20 AM ] 
+< END >
+ 
