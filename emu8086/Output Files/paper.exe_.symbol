@@ -1,0 +1,25 @@
+< THE SYMBOL TABLE >  paper.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+A                        	00000     	1         	VAR       	data      
+B                        	00001     	1         	VAR       	data      
+C                        	00002     	1         	VAR       	data      
+D                        	00003     	1         	VAR       	data      
+STRING                   	00004     	1         	VAR       	data      
+STRING1                  	00026     	1         	VAR       	data      
+STRING2                  	00034     	1         	VAR       	data      
+STRING3                  	00042     	1         	VAR       	data      
+CODE                     	00015     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+COND2                    	00020     	-1        	LABEL     	code      
+FOR                      	00037     	-1        	LABEL     	code      
+COND2B                   	00074     	-1        	LABEL     	code      
+COND3                    	00083     	-1        	LABEL     	code      
+END                      	00088     	-1        	LABEL     	code      
+===================================================================================================
+[ 4/5/2021  --  4:19:27 PM ] 
+< END >
+ 

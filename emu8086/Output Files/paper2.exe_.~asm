@@ -1,0 +1,70 @@
+; part b
+
+.model small
+
+.stack 100h
+
+.data
+
+A db 2
+B db 5
+C db 4
+D db 4
+
+String1 db "A is Greater $"
+String2 db "B is Greater $"
+String3 db "C is Greater $"
+
+.code
+
+main proc
+
+mov ax, @data
+mov ds, ax
+
+mov al, A
+mov bl, B
+mov cl, C
+mov dl, D
+
+mov ah, 9
+
+cmp al, bl
+jle cond2
+cmp al, cl
+jle cond2
+
+lea dx, String1
+int 21h
+jmp end:
+
+cond2:
+cmp bl, al
+jle cond3
+cmp bl, cl
+jle cond3
+
+lea dx, String2
+int 21h
+jmp end:
+
+cond3:
+lea dx, String3
+int 21h
+
+
+end:
+mov ah, 4ch
+int 21h
+
+
+
+
+
+main endp
+
+end main
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\S1\paper2.asm

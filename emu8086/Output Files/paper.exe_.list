@@ -1,0 +1,173 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+paper.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 4/5/2021  --  4:19:27 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ; part a
+[   2]        :                                       .model small
+[   3]        :                                       
+[   4]        :                                       .stack 100h
+[   5]        :                                       
+[   6]        :                                       .data
+[   7]        :                                       
+[   8]        :                                       ;variable declaration and initialization
+[   9]    0100: 02                                    A db 2
+[  10]    0101: 05                                    B db 5
+[  11]    0102: 04                                    C db 4
+[  12]    0103: 04                                    D db 4
+[  13]    0104: 54 68 65 20 76 61 6C 75 65 20 66 6F   String db "The value for D = 34 and A = -2",10,13,'$'
+                72 20 44 20 3D 20 33 34 20 61 6E 64 
+                20 41 20 3D 20 2D 32 0A 0D 24       
+[  14]    0126: 41 20 69 73 20 47 72 65 61 74 65 72   String1 db "A is Greater $"
+                20 24                               
+[  15]    0134: 42 20 69 73 20 47 72 65 61 74 65 72   String2 db "B is Greater $"
+                20 24                               
+[  16]    0142: 43 20 69 73 20 47 72 65 61 74 65 72   String3 db "C is Greater $"
+                20 24                               
+[  17]        :                                       
+[  18]        :                                       .code
+[  19]        :                                       
+[  20]    0150:                                       main proc
+[  21]        :                                       
+[  22]    0150: B8 10 00                              mov ax, @data
+[  23]    0153: 8E D8                                 mov ds, ax
+[  24]        :                                       ; variable value into registers for backup and other operations
+[  25]    0155: A0 00 00                              mov al, A
+[  26]    0158: 8A 1E 01 00                           mov bl, B
+[  27]    015C: 8A 0E 02 00                           mov cl, C
+[  28]    0160: 8A 16 03 00                           mov dl, D
+[  29]        :                                       
+[  30]    0164: 3A C3                                 cmp al, bl
+[  31]    0166: 7D 70                                 jge end
+[  32]        :                                       
+[  33]    0168: 3A D9                                 cmp bl, cl
+[  34]    016A: 7F 04                                 jg cond2
+[  35]        :                                       
+[  36]    016C: 3A C2                                 cmp al, dl
+[  37]    016E: 7C 00                                 jl cond2
+[  38]        :                                       
+[  39]    0170:                                       cond2:
+[  40]    0170: 3A CA                                 cmp cl, dl
+[  41]    0172: 7F 64                                 jg end
+[  42]        :                                       
+[  43]    0174: A2 03 00                              mov D, al
+[  44]    0177: 00 06 03 00                           add D, al ;D = 2A
+[  45]        :                                       
+[  46]    017B: 02 C9                                 add cl, cl ;2C
+[  47]    017D: 02 D2                                 add dl, dl ;2D
+[  48]        :                                       
+[  49]    017F: 2A CA                                 sub cl, dl ;2C-2D
+[  50]        :                                       
+[  51]    0181: 00 0E 03 00                           add D, cl ; D = 2A + 2(C-D)
+[  52]        :                                       
+[  53]    0185: B1 06                                 mov cl, 6
+[  54]    0187:                                       for:
+[  55]    0187: 80 06 03 00 05                        add D, 5
+[  56]    018C: E2 F9                                 loop for
+[  57]        :                                       
+[  58]    018E: F6 1E 00 00                           neg A
+[  59]        :                                       
+[  60]    0192: B4 09                                 mov ah, 9
+[  61]    0194: BA 04 00                              lea dx, String
+[  62]    0197: CD 21                                 int 21h
+[  63]        :                                       
+[  64]        :                                       
+[  65]        :                                       
+[  66]        :                                       ; part b
+[  67]        :                                       ; re initializing of variables
+[  68]    0199: C6 06 00 00 06                        mov A, 6
+[  69]    019E: C6 06 01 00 05                        mov B, 5
+[  70]    01A3: C6 06 02 00 0A                        mov C, 10
+[  71]        :                                       ; variables into registers for backup
+[  72]    01A8: A0 00 00                              mov al, A
+[  73]    01AB: 8A 1E 01 00                           mov bl, B
+[  74]    01AF: 8A 0E 02 00                           mov cl, C
+[  75]        :                                       
+[  76]        :                                       
+[  77]    01B3: B4 09                                 mov ah, 9
+[  78]        :                                       ; condition check1
+[  79]    01B5: 3A C3                                 cmp al, bl
+[  80]    01B7: 7E B7                                 jle cond2
+[  81]    01B9: 3A C1                                 cmp al, cl
+[  82]    01BB: 7E 07                                 jle cond2b
+[  83]        :                                       
+[  84]    01BD: BA 26 00                              lea dx, String1
+[  85]    01C0: CD 21                                 int 21h
+[  86]    01C2: EB 14                                 jmp end:
+[  87]        :                                       ; condition check 2
+[  88]    01C4:                                       cond2b:
+[  89]    01C4: 3A D8                                 cmp bl, al
+[  90]    01C6: 7E 0B                                 jle cond3
+[  91]    01C8: 3A D9                                 cmp bl, cl
+[  92]    01CA: 7E 07                                 jle cond3
+[  93]        :                                       
+[  94]    01CC: BA 34 00                              lea dx, String2
+[  95]    01CF: CD 21                                 int 21h
+[  96]    01D1: EB 05                                 jmp end:
+[  97]        :                                       
+[  98]    01D3:                                       cond3:
+[  99]    01D3: BA 42 00                              lea dx, String3
+[ 100]    01D6: CD 21                                 int 21h
+[ 101]        :                                       
+[ 102]        :                                       
+[ 103]        :                                       
+[ 104]        :                                       
+[ 105]        :                                       
+[ 106]    01D8:                                       end:
+[ 107]    01D8: B4 4C                                 mov ah, 4ch
+[ 108]    01DA: CD 21                                 int 21h
+[ 109]        :                                       
+[ 110]        :                                       main endp
+[ 111]        :                                       
+[ 112]        :                                       end main
+[ 113]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: DC      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: F4      -   check sum (l.byte)
+0013: AC      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 15      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 15      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

@@ -1,0 +1,26 @@
+;arrays
+.model small
+.stack 100h
+.data
+string1 db "Aneeq Khurram",10,13,'$'
+string2 db "neeq$"
+flag db 0
+count db 0
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+    while:
+    cmp string2, '$'
+    je end
+    inc count
+    inc string2
+    jmp while
+    end:
+    
+    mov ah, 2 
+
+
+
+main endp
+end main
