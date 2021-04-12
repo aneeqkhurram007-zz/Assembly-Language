@@ -1,4 +1,4 @@
-< THE SYMBOL TABLE >  task3.exe_  --  emu8086 assembler version: 4.08 
+< THE SYMBOL TABLE >  task6.exe_  --  emu8086 assembler version: 4.08 
 ===================================================================================================
 Name                     	Offset    	Size      	Type      	Segment   
 ===================================================================================================
@@ -6,10 +6,7 @@ STACK                    	00000     	-5        	SEGMENT   	(ITSELF)
 DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
 CODE                     	00010     	-5        	SEGMENT   	(ITSELF)  
 MAIN                     	00000     	-1        	NEAR      	code      
-FOR                      	00006     	-1        	LABEL     	code      
-NEXT                     	0000B     	-1        	LABEL     	code      
-END                      	0000D     	-1        	LABEL     	code      
 ===================================================================================================
-[ 4/12/2021  --  5:25:17 PM ] 
+[ 4/12/2021  --  6:30:15 PM ] 
 < END >
  

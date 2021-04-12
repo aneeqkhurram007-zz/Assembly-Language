@@ -5,7 +5,7 @@
 main proc
 
 mov ax, 0000111100001111b
-and ah, 00000000b
+or ah, 11111111b
 
 mov ah, 4ch
 int 21h
@@ -15,4 +15,4 @@ end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 10\task5.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 10\task6.asm

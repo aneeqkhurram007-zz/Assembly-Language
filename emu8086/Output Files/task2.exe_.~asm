@@ -1,38 +1,27 @@
-; task 2 star nested loop
+; reverse a bit pattern
 .model small
 .stack 100h
-.data
 .code
+.data
 main proc
 
-mov cx, 5
-mov ah, 2
+mov al, 11011100b
+mov cx, 8
 
-outer_while:
-cmp cx, 0
-jle end_outer_while
-mov bx, 0
-inner_while:
-cmp bx, cx
-jge end_inner_while
-mov dl, '*'
-int 21h
-inc bx
-jmp inner_while
-end_inner_while:
-mov dl, 0Ah
-int 21h
-mov dl, 0Dh
-int 21h
-dec cx
-jmp outer_while
+top:
+shl al, 1
+rcr bl, 1
+;rol al, cl
+loop top
+
 
 main endp
-end_outer_while:
+end:
+mov al,bl
 mov ah, 4ch
 int 21h
 end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 9\task2.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 10\task2.asm

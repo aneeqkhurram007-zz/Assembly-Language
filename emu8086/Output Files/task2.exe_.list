@@ -2,47 +2,36 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 3/28/2021  --  5:30:45 PM ] 
+[ 4/12/2021  --  6:41:20 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ; task 2 star nested loop
+[   1]        :                                       ; reverse a bit pattern
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
-[   4]        :                                       .data
-[   5]        :                                       .code
+[   4]        :                                       .code
+[   5]        :                                       .data
 [   6]    0100:                                       main proc
 [   7]        :                                       
-[   8]    0100: B9 05 00                              mov cx, 5
-[   9]    0103: B4 02                                 mov ah, 2
+[   8]    0100: B0 DC                                 mov al, 11011100b
+[   9]    0102: B9 08 00                              mov cx, 8
 [  10]        :                                       
-[  11]    0105:                                       outer_while:
-[  12]    0105: 83 F9 00                              cmp cx, 0
-[  13]    0108: 7E 19                                 jle end_outer_while
-[  14]    010A: BB 00 00                              mov bx, 0
-[  15]    010D:                                       inner_while:
-[  16]    010D: 3B D9                                 cmp bx, cx
-[  17]    010F: 7D 07                                 jge end_inner_while
-[  18]    0111: B2 2A                                 mov dl, '*'
-[  19]    0113: CD 21                                 int 21h
-[  20]    0115: 43                                    inc bx
-[  21]    0116: EB F5                                 jmp inner_while
-[  22]    0118:                                       end_inner_while:
-[  23]    0118: B2 0A                                 mov dl, 0Ah
-[  24]    011A: CD 21                                 int 21h
-[  25]    011C: B2 0D                                 mov dl, 0Dh
-[  26]    011E: CD 21                                 int 21h
-[  27]    0120: 49                                    dec cx
-[  28]    0121: EB E2                                 jmp outer_while
-[  29]        :                                       
-[  30]        :                                       main endp
-[  31]    0123:                                       end_outer_while:
-[  32]    0123: B4 4C                                 mov ah, 4ch
-[  33]    0125: CD 21                                 int 21h
-[  34]        :                                       end main
-[  35]        :                                       
+[  11]    0105:                                       top:
+[  12]    0105: D0 E0                                 shl al, 1
+[  13]    0107: D0 DB                                 rcr bl, 1
+[  14]        :                                       ;rol al, cl
+[  15]    0109: E2 FA                                 loop top
+[  16]        :                                       
+[  17]        :                                       
+[  18]        :                                       main endp
+[  19]    010B:                                       end:
+[  20]    010B: 8A C3                                 mov al,bl
+[  21]    010D: B4 4C                                 mov ah, 4ch
+[  22]    010F: CD 21                                 int 21h
+[  23]        :                                       end main
+[  24]        :                                       
  
 ===================================================================================================
  
@@ -50,7 +39,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 27      -   bytes on last page (l.byte)
+0002: 11      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -66,8 +55,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: A2      -   check sum (l.byte)
-0013: E6      -   check sum (h.byte)
+0012: 03      -   check sum (l.byte)
+0013: 03      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 10      -   CS - code segment (l.byte)
