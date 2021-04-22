@@ -2,90 +2,59 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 4/13/2021  --  9:49:31 AM ] 
+[ 4/22/2021  --  4:05:18 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ;factorial of a number
+[   1]        :                                       ;task1
 [   2]        :                                       .model small
 [   3]        :                                       .stack 100h
 [   4]        :                                       .data
-[   5]        :                                       
-[   6]    0100: 45 6E 74 65 72 20 61 20 6E 75 6D 62   msg1 db "Enter a number to find factorial: $"
-                65 72 20 74 6F 20 66 69 6E 64 20 66 
-                61 63 74 6F 72 69 61 6C 3A 20 24    
-[   7]    0123: 00                                    num  db ?
-[   8]    0124: 00                                    sum  db 0
-[   9]    0125: 00                                    subSum db 0
-[  10]    0126: 00                                    i db 0
-[  11]    0127: 00                                    j db 0
-[  12]        :                                       .code
-[  13]    0130:                                       main proc
-[  14]        :                                       
-[  15]    0130: B8 10 00                              mov ax, @data
-[  16]    0133: 8E D8                                 mov ds, ax
-[  17]        :                                       
-[  18]    0135: B4 09                                 mov ah, 9
-[  19]    0137: BA 00 00                              lea dx, msg1
-[  20]    013A: CD 21                                 int 21h
+[   5]    0100: 10 20 30                              byte_array db 10h,20h,30h
+[   6]    0103: 00 10 00 20 00 30                     word_Array dw 1000h,2000h,3000h
+[   7]    0109: 00 00 00 00                           sums dw 0,0
+[   8]        :                                       .code
+[   9]    0110:                                       main proc
+[  10]    0110: B8 10 00                              mov ax, @data
+[  11]    0113: 8E D8                                 mov ds, ax
+[  12]        :                                       
+[  13]    0115: B9 03 00                              mov cx, 3
+[  14]    0118: BE 00 00                              lea si, byte_array
+[  15]    011B:                                       loopo:
+[  16]    011B: 02 14                                 add dl, [si]
+[  17]    011D: 46                                    inc si
+[  18]    011E: E2 FB                                 loop loopo
+[  19]        :                                       
+[  20]    0120: 89 16 09 00                           mov sums[0], dx
 [  21]        :                                       
-[  22]    013C: B4 01                                 mov ah, 1
-[  23]    013E: CD 21                                 int 21h
+[  22]        :                                       
+[  23]    0124: BB 04 00                              mov bx, 4
 [  24]        :                                       
-[  25]    0140: A2 23 00                              mov num, al
+[  25]    0127: BA 00 00                              mov dx, 0
 [  26]        :                                       
-[  27]    0143: 80 2E 23 00 30                        sub num, 48
+[  27]    012A:                                       while:
 [  28]        :                                       
-[  29]    0148: 80 3E 23 00 00                        cmp num, 0
-[  30]    014D: 74 45                                 je if
+[  29]    012A: 83 FB 00                              cmp bx, 0
+[  30]    012D: 7C 08                                 jl end
 [  31]        :                                       
-[  32]    014F:                                       else:
-[  33]    014F: 8A 0E 23 00                           mov cl, num
-[  34]    0153: 88 0E 24 00                           mov sum, cl
-[  35]    0157: FE C9                                 dec cl
-[  36]    0159: 88 0E 26 00                           mov i, cl
-[  37]    015D:                                       while:
-[  38]    015D: 80 3E 26 00 01                        cmp i, 1
-[  39]    0162: 7E 37                                 jle end
-[  40]        :                                       
-[  41]    0164: 8A 16 24 00                           mov dl, sum
-[  42]    0168: 88 16 25 00                           mov subSum, dl
-[  43]        :                                       
-[  44]    016C: C6 06 24 00 00                        mov sum, 0
-[  45]    0171: C6 06 27 00 00                        mov j, 0
-[  46]        :                                       
+[  32]    012F: 03 57 03                              add dx, word_Array[bx]
+[  33]    0132: 83 EB 02                              sub bx, 2
+[  34]        :                                       
+[  35]    0135: EB F3                                 jmp while
+[  36]        :                                       
+[  37]        :                                       
+[  38]        :                                       
+[  39]        :                                       
+[  40]        :                                       main endp
+[  41]    0137:                                       end:
+[  42]    0137: 89 16 0A 00                           mov sums[1], dx
+[  43]    013B: 8B 0E 09 00                           mov cx, sums[0]
+[  44]    013F: B4 4C                                 mov ah, 4ch
+[  45]    0141: CD 21                                 int 21h
+[  46]        :                                       end main
 [  47]        :                                       
-[  48]        :                                       
-[  49]    0176:                                       while1:
-[  50]    0176: 8A 16 25 00                           mov dl, subSum
-[  51]    017A: 8A 0E 26 00                           mov cl, i
-[  52]    017E: 38 0E 27 00                           cmp j, cl
-[  53]    0182: 7D 0A                                 jge exit
-[  54]        :                                       
-[  55]    0184: 00 16 24 00                           add sum, dl
-[  56]    0188: FE 06 27 00                           inc j
-[  57]    018C: EB E8                                 jmp while1
-[  58]        :                                       
-[  59]        :                                       
-[  60]        :                                       
-[  61]        :                                       
-[  62]    018E:                                       exit:
-[  63]    018E: FE 0E 26 00                           dec i
-[  64]    0192: EB C9                                 jmp while
-[  65]    0194:                                       if:
-[  66]    0194: C6 06 24 00 01                        mov sum, 1
-[  67]    0199: EB 00                                 jmp end
-[  68]        :                                       
-[  69]        :                                       
-[  70]        :                                       main endp
-[  71]    019B:                                       end:
-[  72]    019B: 8A 16 24 00                           mov dl, sum
-[  73]    019F: B4 4C                                 mov ah, 4ch
-[  74]    01A1: CD 21                                 int 21h
-[  75]        :                                       end main
-[  76]        :                                       
  
 ===================================================================================================
  
@@ -93,7 +62,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: A3      -   bytes on last page (l.byte)
+0002: 43      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -109,11 +78,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: CD      -   check sum (l.byte)
-0013: 46      -   check sum (h.byte)
+0012: EC      -   check sum (l.byte)
+0013: E7      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 13      -   CS - code segment (l.byte)
+0016: 11      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -123,7 +92,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001D: 00      -   signature (h.byte)
 001E: 01      -   relocation table - offset inside segment (l.byte)
 001F: 00      -   relocation table - offset inside segment (h.byte)
-0020: 13      -   relocation table - segment anchor (l.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
 0021: 00      -   relocation table - segment anchor (h.byte)
 0022 to 01FF  -   reserved relocation area  (00) 
 

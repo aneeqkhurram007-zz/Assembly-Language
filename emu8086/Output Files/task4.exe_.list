@@ -2,33 +2,117 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task4.exe_ -- emu8086 assembler version: 4.08  
  
-[ 4/12/2021  --  5:26:02 PM ] 
+[ 4/22/2021  --  10:48:12 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       .model small
-[   2]        :                                       .stack 100h
-[   3]        :                                       .data
-[   4]        :                                       .code
-[   5]    0100:                                       main proc
-[   6]    0100: BB 1F 00                              mov bx, 00011111b
-[   7]    0103: B9 10 00                              mov cx, 16
-[   8]        :                                       
-[   9]    0106:                                       for:
-[  10]    0106: D1 C3                                 rol bx, 1
-[  11]    0108: 72 01                                 jc next
-[  12]    010A: 40                                    inc ax
-[  13]    010B:                                       next:
-[  14]    010B: E2 F9                                 loop for
+[   1]        :                                       ;task 4
+[   2]        :                                       .model small
+[   3]        :                                       .stack 100h
+[   4]        :                                       .data
+[   5]        :                                       
+[   6]    0100: 45 6E 74 65 72 20 75 70 74 6F 20 31   str1 db 'Enter upto 10 numbers in array: $'
+                30 20 6E 75 6D 62 65 72 73 20 69 6E 
+                20 61 72 72 61 79 3A 20 24          
+[   7]    0121: 00 00 00 00 00 00 00 00 00 00         array db 10 dup(0)
+[   8]    012B: 00                                    smallest db ?
+[   9]    012C: 00                                    largest db ?
+[  10]    012D: 0A 0D 53 6D 61 6C 6C 65 73 74 3A 20   str2 db 0Ah,0Dh,'Smallest: $'
+                24                                  
+[  11]    013A: 0A 0D 4C 61 72 67 65 73 74 3A 20 24   str3 db 0Ah,0Dh,'Largest: $'
+                                                    
+[  12]        :                                       .code
+[  13]        :                                       
+[  14]    0150:                                       main proc
 [  15]        :                                       
-[  16]        :                                       main endp
-[  17]    010D:                                       end:
-[  18]    010D: B4 4C                                 mov ah,4ch
-[  19]    010F: CD 21                                 int 21h
-[  20]        :                                       end main
-[  21]        :                                       
+[  16]    0150: B8 10 00                              mov ax, @data
+[  17]    0153: 8E D8                                 mov ds, ax
+[  18]        :                                       
+[  19]    0155: B4 09                                 mov ah, 9
+[  20]    0157: BA 00 00                              lea dx, str1
+[  21]    015A: CD 21                                 int 21h
+[  22]        :                                       
+[  23]    015C: B4 01                                 mov ah, 1
+[  24]        :                                       
+[  25]    015E: BE 21 00                              lea si, array
+[  26]        :                                       
+[  27]    0161:                                       while:
+[  28]        :                                       
+[  29]    0161: CD 21                                 int 21h
+[  30]        :                                       
+[  31]    0163: 3C 0D                                 cmp al, 0Dh
+[  32]        :                                       
+[  33]    0165: 74 05                                 je exit
+[  34]        :                                       
+[  35]    0167: 88 04                                 mov [si], al
+[  36]        :                                       
+[  37]    0169: 46                                    inc si
+[  38]        :                                       
+[  39]    016A: EB F5                                 jmp while
+[  40]        :                                       
+[  41]        :                                       
+[  42]    016C:                                       exit:
+[  43]        :                                       
+[  44]    016C: 8A 16 21 00                           mov dl, array[0]
+[  45]        :                                       
+[  46]    0170: 88 16 2B 00                           mov smallest, dl
+[  47]        :                                       
+[  48]    0174: 88 16 2C 00                           mov largest, dl
+[  49]        :                                       
+[  50]        :                                       
+[  51]    0178:                                       for:
+[  52]        :                                       
+[  53]    0178: 8A 47 21                              mov al, array[bx]
+[  54]    017B: 8A D0                                 mov dl, al
+[  55]    017D: 80 FA 00                              cmp dl, 0
+[  56]    0180: 74 17                                 je end
+[  57]    0182:                                       if:
+[  58]    0182: 3A 06 2B 00                           cmp al, smallest
+[  59]    0186: 7D 04                                 jge end_if
+[  60]        :                                       
+[  61]        :                                       
+[  62]    0188: 88 16 2B 00                           mov smallest, dl
+[  63]        :                                       
+[  64]    018C:                                       end_if:
+[  65]        :                                       
+[  66]    018C: 3A 06 2C 00                           cmp al, largest
+[  67]    0190: 7E 04                                 jle end_if2
+[  68]        :                                       
+[  69]    0192: 88 16 2C 00                           mov largest, dl
+[  70]        :                                       
+[  71]    0196:                                       end_if2:
+[  72]        :                                       
+[  73]    0196: 43                                    inc bx
+[  74]        :                                       
+[  75]        :                                       
+[  76]    0197: EB DF                                 jmp for
+[  77]        :                                       
+[  78]    0199:                                       end:
+[  79]    0199: B4 09                                 mov ah, 9
+[  80]    019B: BA 2D 00                              lea dx, str2
+[  81]    019E: CD 21                                 int 21h
+[  82]        :                                       
+[  83]    01A0: B4 02                                 mov ah, 2
+[  84]    01A2: 8A 16 2B 00                           mov dl, smallest
+[  85]    01A6: CD 21                                 int 21h
+[  86]        :                                       
+[  87]    01A8: B4 09                                 mov ah, 9
+[  88]    01AA: BA 3A 00                              lea dx, str3
+[  89]    01AD: CD 21                                 int 21h
+[  90]        :                                       
+[  91]    01AF: B4 02                                 mov ah, 2
+[  92]    01B1: 8A 16 2C 00                           mov dl, largest
+[  93]    01B5: CD 21                                 int 21h
+[  94]        :                                       
+[  95]        :                                       
+[  96]    01B7: B4 4C                                 mov ah, 4ch
+[  97]    01B9: CD 21                                 int 21h
+[  98]        :                                       
+[  99]        :                                       main endp
+[ 100]        :                                       end main
+[ 101]        :                                       
  
 ===================================================================================================
  
@@ -36,11 +120,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 11      -   bytes on last page (l.byte)
+0002: BB      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
-0006: 00      -   relocations (l.byte)
+0006: 01      -   relocations (l.byte)
 0007: 00      -   relocations (h.byte)
 0008: 20      -   paragraphs in header (l.byte)
 0009: 00      -   paragraphs in header (h.byte)
@@ -52,11 +136,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 9D      -   check sum (l.byte)
-0013: 76      -   check sum (h.byte)
+0012: 68      -   check sum (l.byte)
+0013: 60      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 10      -   CS - code segment (l.byte)
+0016: 15      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -64,7 +148,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001B: 00      -   overlay number (h.byte)
 001C: 01      -   signature (l.byte)
 001D: 00      -   signature (h.byte)
-001E to 01FF  -   reserved relocation area  (00) 
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 15      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
 
 
 

@@ -2,36 +2,75 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 4/12/2021  --  6:41:20 PM ] 
+[ 4/22/2021  --  3:46:25 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       ; reverse a bit pattern
-[   2]        :                                       .model small
-[   3]        :                                       .stack 100h
-[   4]        :                                       .code
-[   5]        :                                       .data
-[   6]    0100:                                       main proc
-[   7]        :                                       
-[   8]    0100: B0 DC                                 mov al, 11011100b
-[   9]    0102: B9 08 00                              mov cx, 8
-[  10]        :                                       
-[  11]    0105:                                       top:
-[  12]    0105: D0 E0                                 shl al, 1
-[  13]    0107: D0 DB                                 rcr bl, 1
-[  14]        :                                       ;rol al, cl
-[  15]    0109: E2 FA                                 loop top
-[  16]        :                                       
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]    0100: 45 6E 74 65 72 20 73 74 72 69 6E 67   str1 db "Enter string of 10 characters: $"
+                20 6F 66 20 31 30 20 63 68 61 72 61 
+                63 74 65 72 73 3A 20 24             
+[   5]    0120: 0A 0D 4F 75 74 70 75 74 3A 20 0A 0D   str2 db 0Ah,0Dh,"Output: ",0Ah,0Dh,'$'
+                24                                  
+[   6]    012D: 00 00 00 00 00 00 00 00 00 00         array db 10 dup(0)
+[   7]        :                                       .code
+[   8]    0140:                                       main proc
+[   9]    0140: B8 10 00                              mov ax, @data
+[  10]    0143: 8E D8                                 mov ds, ax
+[  11]        :                                       
+[  12]    0145: BA 00 00                              lea dx, str1
+[  13]    0148: B4 09                                 mov ah, 9
+[  14]    014A: CD 21                                 int 21h
+[  15]        :                                       
+[  16]    014C: BE 2D 00                              lea si, array
 [  17]        :                                       
-[  18]        :                                       main endp
-[  19]    010B:                                       end:
-[  20]    010B: 8A C3                                 mov al,bl
-[  21]    010D: B4 4C                                 mov ah, 4ch
-[  22]    010F: CD 21                                 int 21h
-[  23]        :                                       end main
-[  24]        :                                       
+[  18]    014F: B4 01                                 mov ah, 1
+[  19]        :                                       
+[  20]    0151: B9 0A 00                              mov cx, 10
+[  21]        :                                       
+[  22]    0154:                                       loopo:
+[  23]        :                                       
+[  24]    0154: CD 21                                 int 21h
+[  25]        :                                       
+[  26]    0156: 88 04                                 mov [si], al
+[  27]        :                                       
+[  28]    0158: 46                                    inc si
+[  29]        :                                       
+[  30]    0159: E2 F9                                 loop loopo
+[  31]        :                                       
+[  32]        :                                       
+[  33]        :                                       
+[  34]        :                                       
+[  35]    015B: BB 09 00                              mov bx, 9
+[  36]        :                                       
+[  37]    015E: B4 09                                 mov ah, 9
+[  38]    0160: BA 20 00                              lea dx, str2
+[  39]    0163: CD 21                                 int 21h
+[  40]        :                                       
+[  41]    0165: B4 02                                 mov ah, 2
+[  42]        :                                       
+[  43]    0167:                                       while:
+[  44]    0167: 83 FB 00                              cmp bx, 0
+[  45]    016A: 7C 08                                 jl end
+[  46]        :                                       
+[  47]    016C: 8A 57 2D                              mov dl, array[bx]
+[  48]    016F: CD 21                                 int 21h
+[  49]    0171: 4B                                    dec bx
+[  50]        :                                       
+[  51]    0172: EB F3                                 jmp while
+[  52]        :                                       
+[  53]        :                                       
+[  54]        :                                       
+[  55]        :                                       main endp
+[  56]    0174:                                       end:
+[  57]    0174: B4 4C                                 mov ah, 4ch
+[  58]    0176: CD 21                                 int 21h
+[  59]        :                                       end main
+[  60]        :                                       
  
 ===================================================================================================
  
@@ -39,11 +78,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 11      -   bytes on last page (l.byte)
+0002: 78      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
-0006: 00      -   relocations (l.byte)
+0006: 01      -   relocations (l.byte)
 0007: 00      -   relocations (h.byte)
 0008: 20      -   paragraphs in header (l.byte)
 0009: 00      -   paragraphs in header (h.byte)
@@ -55,11 +94,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 03      -   check sum (l.byte)
-0013: 03      -   check sum (h.byte)
+0012: D9      -   check sum (l.byte)
+0013: 90      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 10      -   CS - code segment (l.byte)
+0016: 14      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -67,7 +106,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001B: 00      -   overlay number (h.byte)
 001C: 01      -   signature (l.byte)
 001D: 00      -   signature (h.byte)
-001E to 01FF  -   reserved relocation area  (00) 
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 14      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
 
 
 

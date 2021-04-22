@@ -1,0 +1,52 @@
+;task 3
+.model small
+.stack 100h
+.data  
+
+str1 db 'abc de','$'
+str2 db 'Total number of characters: $'
+.code
+main proc
+    
+    mov ax, @data
+    mov ds, ax
+    
+    lea dx, str1
+    
+    mov bx, 0
+    
+    while:
+    
+    cmp str1[bx], '$'
+    
+    je end
+        
+    inc bx
+    
+    jmp while    
+    
+    
+    
+main endp 
+
+        
+    end:
+        
+        add bl, 48
+        
+        mov ah, 9
+        lea dx, str2
+        int 21h
+        
+        mov ah, 2
+        mov dl, bl
+        int 21h
+        
+        mov ah, 4ch
+        int 21h
+        
+        
+    
+    
+
+end main

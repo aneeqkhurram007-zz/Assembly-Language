@@ -1,24 +1,56 @@
+;task 3
 .model small
 .stack 100h
 .data
+
+str1 db 'abc de','$'
+str2 db 'Total number of characters: $'
 .code
 main proc
-mov bx, 00011111b
-mov cx, 16
 
-for:
-rol bx, 1
-jnc next
-inc ax
-next:
-loop for
+mov ax, @data
+mov ds, ax
+
+lea dx, str1
+
+mov bx, 0
+
+while:
+
+cmp str1[bx], '$'
+
+je end
+
+inc bx
+
+jmp while
+
+
 
 main endp
+
+
 end:
-mov ah,4ch
+
+add bl, 48
+
+mov ah, 9
+lea dx, str2
 int 21h
+
+mov ah, 2
+mov dl, bl
+int 21h
+
+mov ah, 4ch
+int 21h
+
+
+
+
+
 end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 10\task3.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 12\task3.asm

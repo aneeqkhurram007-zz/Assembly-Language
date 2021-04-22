@@ -1,0 +1,100 @@
+;task 4
+.model small
+.stack 100h
+.data
+
+str1 db 'Enter upto 10 numbers in array: $'
+array db 10 dup(0) 
+smallest db ?
+largest db ?
+str2 db 0Ah,0Dh,'Smallest: $'
+str3 db 0Ah,0Dh,'Largest: $'
+.code
+
+main proc
+  
+  mov ax, @data
+  mov ds, ax
+  
+  mov ah, 9
+  lea dx, str1
+  int 21h
+  
+  mov ah, 1
+  
+  lea si, array
+  
+  while:
+  
+  int 21h
+  
+  cmp al, 0Dh
+  
+  je exit
+  
+  mov [si], al
+  
+  inc si
+  
+  jmp while
+  
+  
+  exit:
+    
+  mov dl, array[0]
+    
+  mov smallest, dl
+  
+  mov largest, dl
+ 
+  
+  for:
+    
+    mov al, array[bx]
+    mov dl, al
+    cmp dl, 0
+    je end
+    if:
+    cmp al, smallest
+    jge end_if
+    
+    
+    mov smallest, dl
+    
+    end_if:
+        
+        cmp al, largest
+        jle end_if2
+        
+        mov largest, dl
+        
+    end_if2:
+        
+        inc bx
+        
+        
+    jmp for 
+    
+    end:
+    mov ah, 9
+    lea dx, str2
+    int 21h
+    
+    mov ah, 2
+    mov dl, smallest
+    int 21h
+    
+    mov ah, 9
+    lea dx, str3
+    int 21h
+    
+    mov ah, 2
+    mov dl, largest
+    int 21h
+
+    
+    mov ah, 4ch
+    int 21h 
+    
+main endp
+end main
