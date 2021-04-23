@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 4/22/2021  --  4:05:18 AM ] 
+[ 4/22/2021  --  3:33:45 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -30,31 +30,36 @@ task1.exe_ -- emu8086 assembler version: 4.08
 [  20]    0120: 89 16 09 00                           mov sums[0], dx
 [  21]        :                                       
 [  22]        :                                       
-[  23]    0124: BB 04 00                              mov bx, 4
+[  23]        :                                       ;mov bx, 4
 [  24]        :                                       
-[  25]    0127: BA 00 00                              mov dx, 0
+[  25]    0124: BA 00 00                              mov dx, 0
 [  26]        :                                       
-[  27]    012A:                                       while:
+[  27]        :                                       ;while:
 [  28]        :                                       
-[  29]    012A: 83 FB 00                              cmp bx, 0
-[  30]    012D: 7C 08                                 jl end
+[  29]        :                                       ;cmp bx, 0
+[  30]        :                                       ;jl end
 [  31]        :                                       
-[  32]    012F: 03 57 03                              add dx, word_Array[bx]
-[  33]    0132: 83 EB 02                              sub bx, 2
+[  32]        :                                       ;add dx, word_Array[bx]
+[  33]        :                                       ;sub bx, 2
 [  34]        :                                       
-[  35]    0135: EB F3                                 jmp while
+[  35]        :                                       ;jmp while
 [  36]        :                                       
-[  37]        :                                       
-[  38]        :                                       
-[  39]        :                                       
-[  40]        :                                       main endp
-[  41]    0137:                                       end:
-[  42]    0137: 89 16 0A 00                           mov sums[1], dx
-[  43]    013B: 8B 0E 09 00                           mov cx, sums[0]
-[  44]    013F: B4 4C                                 mov ah, 4ch
-[  45]    0141: CD 21                                 int 21h
-[  46]        :                                       end main
-[  47]        :                                       
+[  37]    0127: B9 03 00                              mov cx, 3
+[  38]    012A: BE 03 00                              lea si, word_Array
+[  39]    012D:                                       loops:
+[  40]    012D: 03 14                                 add dx, [si]
+[  41]    012F: 83 C6 02                              add si, 2
+[  42]    0132: E2 F9                                 loop loops
+[  43]        :                                       
+[  44]        :                                       
+[  45]        :                                       
+[  46]        :                                       main endp
+[  47]    0134:                                       end:
+[  48]    0134: 89 16 0A 00                           mov sums[1], dx
+[  49]    0138: B4 4C                                 mov ah, 4ch
+[  50]    013A: CD 21                                 int 21h
+[  51]        :                                       end main
+[  52]        :                                       
  
 ===================================================================================================
  
@@ -62,7 +67,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 43      -   bytes on last page (l.byte)
+0002: 3C      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -78,8 +83,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: EC      -   check sum (l.byte)
-0013: E7      -   check sum (h.byte)
+0012: 4E      -   check sum (l.byte)
+0013: DF      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 11      -   CS - code segment (l.byte)

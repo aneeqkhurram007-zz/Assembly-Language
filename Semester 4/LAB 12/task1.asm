@@ -17,23 +17,16 @@ main proc
         inc si
     loop loopo
     
-    mov sums[0], dx
-   
-     
-    mov bx, 4              
+    mov sums[0], dx            
     
     mov dx, 0
     
-    while: 
-    
-    cmp bx, 0
-    jl end
-    
-    add dx, word_Array[bx]
-    sub bx, 2
-    
-    jmp while
-     
+    mov cx, 3
+    lea si, word_Array
+    loops:
+        add dx, [si]
+        add si, 2
+    loop loops 
    
         
     

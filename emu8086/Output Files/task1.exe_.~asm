@@ -20,27 +20,32 @@ loop loopo
 mov sums[0], dx
 
 
-mov bx, 4
+;mov bx, 4
 
 mov dx, 0
 
-while:
+;while:
 
-cmp bx, 0
-jl end
+;cmp bx, 0
+;jl end
 
-add dx, word_Array[bx]
-sub bx, 2
+;add dx, word_Array[bx]
+;sub bx, 2
 
-jmp while
+;jmp while
 
+mov cx, 3
+lea si, word_Array
+loops:
+add dx, [si]
+add si, 2
+loop loops
 
 
 
 main endp
 end:
 mov sums[1], dx
-mov cx, sums[0]
 mov ah, 4ch
 int 21h
 end main
