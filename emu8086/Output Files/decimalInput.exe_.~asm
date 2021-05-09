@@ -1,0 +1,76 @@
+.model small
+.stack 100h
+.data
+str1 db "Enter decimal number: $"
+str2 db 10,13,"Output: 240 $"
+total dw 0
+ten db 10
+.code
+main proc
+mov ax, @data
+mov ds, ax
+
+mov ah, 9
+lea dx, str1
+int 21h
+
+;input
+
+mov ah, 1
+int 21h
+while:
+cmp al, 13
+je endWhile
+sub al, 48
+mov bl, al
+mov ax, total
+mul ten
+add al, bl
+mov total, ax
+mov ax, 0
+mov ah, 1
+int 21h
+jmp while
+
+endWhile:
+;output
+mov ah, 9
+lea dx, str2
+int 21h
+
+mov ax, total
+cmp al, 0
+jl end
+mov cx, 0
+outWhile:
+cmp al, 0
+je next
+div ten
+push ax
+inc cx
+jmp outWhile
+next:
+mov ah, 2
+for:
+pop bx
+add bh, 48
+int 21h
+loop for
+
+end:
+mov ah, 2
+mov dl, '-'
+int 21h
+xor ax, 0ffffh
+add ax, 1
+mov ah, 4ch
+int 21h
+
+
+main endp
+end main
+
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\Assignment 2\decimalInput.asm
