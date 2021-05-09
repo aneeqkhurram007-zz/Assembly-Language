@@ -4,15 +4,15 @@ Name                     	Offset    	Size      	Type      	Segment
 ===================================================================================================
 STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
 DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
-BYTE_ARRAY               	00000     	1         	VAR       	data      
-WORD_ARRAY               	00003     	2         	VAR       	data      
-SUMS                     	00009     	2         	VAR       	data      
-CODE                     	00011     	-5        	SEGMENT   	(ITSELF)  
+MSG2                     	00000     	1         	VAR       	data      
+STR1                     	0000C     	1         	VAR       	data      
+STR2                     	0001A     	1         	VAR       	data      
+CODE                     	00013     	-5        	SEGMENT   	(ITSELF)  
 MAIN                     	00000     	-1        	NEAR      	code      
-LOOPO                    	0000B     	-1        	LABEL     	code      
-LOOPS                    	0001D     	-1        	LABEL     	code      
-END                      	00024     	-1        	LABEL     	code      
+WHILE                    	00007     	-1        	LABEL     	code      
+END_WHILE                	00010     	-1        	LABEL     	code      
+FOR                      	0001A     	-1        	LABEL     	code      
 ===================================================================================================
-[ 4/22/2021  --  3:33:45 PM ] 
+[ 4/29/2021  --  10:24:13 AM ] 
 < END >
  

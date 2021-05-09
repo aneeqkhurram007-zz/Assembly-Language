@@ -1,0 +1,4 @@
+mov si, 100h
+mov di, 200h
+mov ax, 4142h
+

@@ -1,55 +1,62 @@
-;task1
 .model small
 .stack 100h
 .data
-byte_array db 10h,20h,30h
-word_Array dw 1000h,2000h,3000h
-sums dw 0,0
+msg2 db 0Ah,0Dh,"Reverse: $"
+str1 db "Aneeq Khurram$"
+str2 db 16 dup('$')
 .code
 main proc
 mov ax, @data
 mov ds, ax
+mov es, ax
 
-mov cx, 3
-lea si, byte_array
-loopo:
-add dl, [si]
+
+
+while:
+cmp [si], '$'
+je end_while
 inc si
-loop loopo
+inc bx
+jmp while
 
-mov sums[0], dx
+end_while:
+
+std
+
+lea si, str1 + bx
+lea di, str2
+
+mov cx, bx
+inc cx
+for:
+
+movsb
+
+add di, 2
+
+loop for
+
+movsb
+
+mov ah, 9
+
+lea dx, msg2
+int 21h
+
+lea dx, str2
+int 21h
 
 
-;mov bx, 4
 
-mov dx, 0
+mov ah, 4ch
+int 21h
 
-;while:
-
-;cmp bx, 0
-;jl end
-
-;add dx, word_Array[bx]
-;sub bx, 2
-
-;jmp while
-
-mov cx, 3
-lea si, word_Array
-loops:
-add dx, [si]
-add si, 2
-loop loops
 
 
 
 main endp
-end:
-mov sums[1], dx
-mov ah, 4ch
-int 21h
 end main
 
 
 
-; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 12\task1.asm
+; [SOURCE]: D:\Projects\Assembly Language\Semester 4\LAB 13\task1.asm
