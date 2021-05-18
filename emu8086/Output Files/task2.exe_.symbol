@@ -3,16 +3,26 @@
 Name                     	Offset    	Size      	Type      	Segment   
 ===================================================================================================
 STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
-DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00007     	-5        	SEGMENT   	(ITSELF)  
 MSG1                     	00000     	1         	VAR       	data      
-STR1                     	0000F     	1         	VAR       	data      
-CODE                     	00012     	-5        	SEGMENT   	(ITSELF)  
+MSG2                     	00011     	1         	VAR       	data      
+ARR1                     	00024     	1         	VAR       	data      
+ARR2                     	0002E     	1         	VAR       	data      
+MSG3                     	00038     	1         	VAR       	data      
+MSG4                     	0004E     	1         	VAR       	data      
+MSG5                     	00068     	1         	VAR       	data      
+MSG6                     	0007F     	1         	VAR       	data      
+COUNTER1                 	00096     	1         	VAR       	data      
+COUNTER2                 	00097     	1         	VAR       	data      
+CODE                     	00011     	-5        	SEGMENT   	(ITSELF)  
 MAIN                     	00000     	-1        	NEAR      	code      
-WHILE                    	0000C     	-1        	LABEL     	code      
-IF                       	00010     	-1        	LABEL     	code      
-ELSE                     	00019     	-1        	LABEL     	code      
-END                      	00020     	-1        	LABEL     	code      
+WHILE                    	00013     	-1        	LABEL     	code      
+EXIT                     	00022     	-1        	LABEL     	code      
+WHILE2                   	00030     	-1        	LABEL     	code      
+EXIT2                    	0003F     	-1        	LABEL     	code      
+STR2                     	00049     	-1        	LABEL     	code      
+STR1                     	00054     	-1        	LABEL     	code      
 ===================================================================================================
-[ 4/30/2021  --  9:24:52 AM ] 
+[ 5/18/2021  --  10:26:57 PM ] 
 < END >
  

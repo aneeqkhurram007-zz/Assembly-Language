@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 task1.exe_ -- emu8086 assembler version: 4.08  
  
-[ 4/29/2021  --  10:24:13 AM ] 
+[ 5/18/2021  --  10:25:57 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -11,65 +11,109 @@ task1.exe_ -- emu8086 assembler version: 4.08
 [   1]        :                                       .model small
 [   2]        :                                       .stack 100h
 [   3]        :                                       .data
-[   4]    0100: 0A 0D 52 65 76 65 72 73 65 3A 20 24   msg2 db 0Ah,0Dh,"Reverse: $"
+[   4]    0100: 45 6E 74 65 72 20 61 20 73 74 72 69   msg1 db 'Enter a string: $'
+                6E 67 3A 20 24                      
+[   5]    0111: 0A 0D 46 6F 72 77 61 72 64 3A 20 24   msg2 db 0Ah,0Dh,'Forward: $'
                                                     
-[   5]    010C: 41 6E 65 65 71 20 4B 68 75 72 72 61   str1 db "Aneeq Khurram$"
-                6D 24                               
-[   6]    011A: 24 24 24 24 24 24 24 24 24 24 24 24   str2 db 16 dup('$')
-                24 24 24 24                         
-[   7]        :                                       .code
-[   8]    0130:                                       main proc
-[   9]    0130: B8 10 00                              mov ax, @data
-[  10]    0133: 8E D8                                 mov ds, ax
-[  11]    0135: 8E C0                                 mov es, ax
-[  12]        :                                       
-[  13]        :                                       
-[  14]        :                                       
-[  15]    0137:                                       while:
-[  16]    0137: 80 3C 24                              cmp [si], '$'
-[  17]    013A: 74 04                                 je end_while
-[  18]    013C: 46                                    inc si
-[  19]    013D: 43                                    inc bx
-[  20]    013E: EB F7                                 jmp while
-[  21]        :                                       
-[  22]    0140:                                       end_while:
+[   6]    011D: 0A 0D 42 61 63 6B 77 61 72 64 3A 20   msg3 db 0Ah,0Dh,'Backward: $'
+                24                                  
+[   7]    012A: 0A 0D 49 74 20 69 73 20 61 20 50 61   msg4 db 0Ah,0Dh,'It is a Palindrome. $'
+                6C 69 6E 64 72 6F 6D 65 2E 20 24    
+[   8]    0141: 0A 0D 49 74 20 69 73 20 6E 6F 74 20   msg5 db 0Ah,0Dh,'It is not a Palindrome. $'
+                61 20 50 61 6C 69 6E 64 72 6F 6D 65 
+                2E 20 24                            
+[   9]    015C: 24 24 24 24 24 24 24 24 24 24         arr  db 10 dup('$')
+[  10]    0166: 00                                    counter db 0
+[  11]        :                                       .code
+[  12]    0170:                                       main proc
+[  13]    0170: B8 10 00                              mov ax, @data
+[  14]    0173: 8E D8                                 mov ds, ax
+[  15]        :                                       
+[  16]    0175: B4 09                                 mov ah, 9
+[  17]    0177: BA 00 00                              lea dx, msg1
+[  18]    017A: CD 21                                 int 21h
+[  19]        :                                       
+[  20]    017C: B4 01                                 mov ah, 1
+[  21]    017E: BE 5C 00                              lea si, arr
+[  22]    0181: CD 21                                 int 21h
 [  23]        :                                       
-[  24]    0140: FD                                    std
-[  25]        :                                       
-[  26]    0141: 8D 77 0C                              lea si, str1 + bx
-[  27]    0144: BF 1A 00                              lea di, str2
+[  24]    0183:                                       while:
+[  25]    0183: 88 04                                 mov [si], al
+[  26]    0185: 3C 0D                                 cmp al, 0Dh
+[  27]    0187: 74 09                                 je exit
 [  28]        :                                       
-[  29]    0147: 8B CB                                 mov cx, bx
-[  30]    0149: 41                                    inc cx
-[  31]    014A:                                       for:
-[  32]        :                                       
-[  33]    014A: A4                                    movsb
-[  34]        :                                       
-[  35]    014B: 83 C7 02                              add di, 2
-[  36]        :                                       
-[  37]    014E: E2 FA                                 loop for
-[  38]        :                                       
-[  39]    0150: A4                                    movsb
-[  40]        :                                       
-[  41]    0151: B4 09                                 mov ah, 9
+[  29]    0189: 46                                    inc si
+[  30]    018A: FE 06 66 00                           inc counter
+[  31]    018E: CD 21                                 int 21h
+[  32]    0190: EB F1                                 jmp while
+[  33]        :                                       
+[  34]    0192:                                       exit:
+[  35]        :                                       
+[  36]    0192: B4 09                                 mov ah, 9
+[  37]    0194: BA 11 00                              lea dx, msg2
+[  38]    0197: CD 21                                 int 21h
+[  39]        :                                       
+[  40]    0199: BE 5C 00                              lea si, arr
+[  41]    019C: B4 02                                 mov ah, 2
 [  42]        :                                       
-[  43]    0153: BA 00 00                              lea dx, msg2
-[  44]    0156: CD 21                                 int 21h
+[  43]    019E: B2 0D                                 mov dl, 0Dh
+[  44]    01A0: CD 21                                 int 21h
 [  45]        :                                       
-[  46]    0158: BA 1A 00                              lea dx, str2
-[  47]    015B: CD 21                                 int 21h
+[  46]    01A2: B2 0A                                 mov dl, 0Ah
+[  47]    01A4: CD 21                                 int 21h
 [  48]        :                                       
-[  49]        :                                       
-[  50]        :                                       
-[  51]    015D: B4 4C                                 mov ah, 4ch
-[  52]    015F: CD 21                                 int 21h
-[  53]        :                                       
-[  54]        :                                       
-[  55]        :                                       
+[  49]    01A6: B9 00 00                              mov cx, 0
+[  50]    01A9: 8A 0E 66 00                           mov cl, counter
+[  51]        :                                       
+[  52]    01AD:                                       for:
+[  53]    01AD: 8A 14                                 mov dl, [si]
+[  54]    01AF: CD 21                                 int 21h
+[  55]    01B1: 46                                    inc si
 [  56]        :                                       
-[  57]        :                                       main endp
-[  58]        :                                       end main
+[  57]    01B2: E2 F9                                 loop for
+[  58]        :                                       
 [  59]        :                                       
+[  60]    01B4: B4 09                                 mov ah, 9
+[  61]    01B6: BA 1D 00                              lea dx, msg3
+[  62]    01B9: CD 21                                 int 21h
+[  63]        :                                       
+[  64]    01BB: BE 5C 00                              lea si, arr
+[  65]    01BE: B4 02                                 mov ah, 2
+[  66]        :                                       
+[  67]    01C0: B2 0D                                 mov dl, 0Dh
+[  68]    01C2: CD 21                                 int 21h
+[  69]        :                                       
+[  70]    01C4: B2 0A                                 mov dl, 0Ah
+[  71]    01C6: CD 21                                 int 21h
+[  72]        :                                       
+[  73]    01C8: B9 00 00                              mov cx, 0
+[  74]    01CB: 8A 0E 66 00                           mov cl, counter
+[  75]        :                                       
+[  76]    01CF: BB 00 00                              mov bx, 0
+[  77]    01D2: 8A 1E 66 00                           mov bl, counter
+[  78]        :                                       
+[  79]    01D6: 41                                    inc cx
+[  80]        :                                       
+[  81]    01D7:                                       for1:
+[  82]        :                                       
+[  83]    01D7: 8A 10                                 mov dl, [si + bx]
+[  84]    01D9: CD 21                                 int 21h
+[  85]    01DB: 4B                                    dec bx
+[  86]        :                                       
+[  87]        :                                       
+[  88]    01DC: E2 F9                                 loop for1
+[  89]        :                                       
+[  90]    01DE: B4 09                                 mov ah, 9
+[  91]    01E0: BA 2A 00                              lea dx, msg4
+[  92]    01E3: CD 21                                 int 21h
+[  93]        :                                       
+[  94]    01E5: B4 4C                                 mov ah, 4ch
+[  95]    01E7: CD 21                                 int 21h
+[  96]        :                                       
+[  97]        :                                       
+[  98]        :                                       main endp
+[  99]        :                                       end main
+[ 100]        :                                       
  
 ===================================================================================================
  
@@ -77,7 +121,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 61      -   bytes on last page (l.byte)
+0002: E9      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 02      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -93,11 +137,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 0C      -   check sum (l.byte)
-0013: 4A      -   check sum (h.byte)
+0012: 1C      -   check sum (l.byte)
+0013: 54      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 13      -   CS - code segment (l.byte)
+0016: 17      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -107,7 +151,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001D: 00      -   signature (h.byte)
 001E: 01      -   relocation table - offset inside segment (l.byte)
 001F: 00      -   relocation table - offset inside segment (h.byte)
-0020: 13      -   relocation table - segment anchor (l.byte)
+0020: 17      -   relocation table - segment anchor (l.byte)
 0021: 00      -   relocation table - segment anchor (h.byte)
 0022 to 01FF  -   reserved relocation area  (00) 
 
