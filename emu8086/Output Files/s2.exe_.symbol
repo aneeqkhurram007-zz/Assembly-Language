@@ -1,0 +1,27 @@
+< THE SYMBOL TABLE >  s2.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+MSG1                     	00000     	1         	VAR       	data      
+ARR                      	0000E     	2         	VAR       	data      
+MSG2                     	00022     	1         	VAR       	data      
+NUM                      	00033     	1         	VAR       	data      
+I                        	00034     	1         	VAR       	data      
+J                        	00035     	1         	VAR       	data      
+STRING                   	00036     	1         	VAR       	data      
+CODE                     	00018     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+FOR                      	00014     	-1        	LABEL     	code      
+SUMOFPAIRS               	00047     	-1        	NEAR      	code      
+WHILE1                   	00055     	-1        	LABEL     	code      
+WHILE2                   	00061     	-1        	LABEL     	code      
+IF                       	0006A     	-1        	LABEL     	code      
+ELSE                     	00099     	-1        	LABEL     	code      
+EXIT2                    	000A0     	-1        	LABEL     	code      
+EXIT1                    	000A7     	-1        	LABEL     	code      
+===================================================================================================
+[ 5/17/2021  --  3:42:51 PM ] 
+< END >
+ 

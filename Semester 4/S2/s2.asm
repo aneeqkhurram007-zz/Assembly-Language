@@ -1,0 +1,138 @@
+.model small
+.stack 100h
+.data
+msg1 db 'Input Array: $'    
+ARR dw 0,1,2,3,4,5,6,7,1,4
+msg2 db 0Ah,0Dh,'Input Number: $'
+num db 9
+i db 0
+j db 0  
+string db 0Ah,0Dh,'Pairs of elements whose sum is equally to Input Number: $'
+.code
+main proc
+    mov ax, @data
+    mov ds, ax  
+    
+    mov ah, 9
+    lea dx, msg1
+    int 21h
+    
+    lea si, ARR
+    mov ah, 2
+    
+    mov cx, 10
+    
+    for:
+        mov bx, [si]
+        add bx, 48
+        mov dl, bl
+        int 21h
+        mov dl, 44
+        int 21h
+        add si, 2
+        
+        loop for
+        
+    mov ah, 9
+    lea dx, msg2
+    int 21h
+    
+    mov ah, 2
+    mov dl, num
+    add dl, 48
+    int 21h
+    
+    mov dl, 0Ah
+    int 21h
+    
+    mov dl, 0Dh
+    int 21h
+         
+    call SumOfPairs
+    
+    
+    mov ah, 4ch
+    int 21h
+    
+    
+main endp
+
+
+SumOfPairs proc 
+    push bx
+    push cx
+    push dx
+    push di
+               
+    lea si, ARR
+    lea di, ARR 
+    
+    mov ch, i
+    
+    
+    while1:
+    
+    mov cl, j
+    
+    cmp ch, 10
+    lea di, ARR
+    jge exit1
+    
+          while2:
+            
+            mov bx, [si]
+            add bx, [di]
+            
+            cmp cl, 10
+            jge exit2
+            
+            if:
+            cmp bx, 9
+            jne else
+            
+            mov ah, 9
+            lea dx, string
+            int 21h
+            
+            mov ah, 2
+            
+            mov dl, 9
+            int 21h
+            
+            mov dl, [si]
+            add dl, 48
+            int 21h
+            
+            mov dl, 43
+            int 21h
+            
+            mov dl, [di]
+            add dl, 48
+            int 21h
+            
+            mov dl, 61
+            int 21h
+            
+            mov dl, bl
+            add dl, 48
+            int 21h
+            
+            else:
+            add di, 2
+            inc cl
+            jmp while2
+            
+            exit2:
+            
+            add si, 2
+            inc ch
+            jmp while1 
+    
+    exit1:        
+    
+    pop bx
+    pop cx
+    pop dx           
+    ret           
+SumOfPairs endp    
+end main

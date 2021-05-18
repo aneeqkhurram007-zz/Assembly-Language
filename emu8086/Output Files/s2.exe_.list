@@ -1,0 +1,201 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+s2.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 5/17/2021  --  3:42:51 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]    0100: 49 6E 70 75 74 20 41 72 72 61 79 3A   msg1 db 'Input Array: $'
+                20 24                               
+[   5]    010E: 00 00 01 00 02 00 03 00 04 00 05 00   ARR dw 0,1,2,3,4,5,6,7,1,4
+                06 00 07 00 01 00 04 00             
+[   6]    0122: 0A 0D 49 6E 70 75 74 20 4E 75 6D 62   msg2 db 0Ah,0Dh,'Input Number: $'
+                65 72 3A 20 24                      
+[   7]    0133: 09                                    num db 9
+[   8]    0134: 00                                    i db 0
+[   9]    0135: 00                                    j db 0
+[  10]    0136: 0A 0D 50 61 69 72 73 20 6F 66 20 65   string db 0Ah,0Dh,'Pairs of elements whose sum is equally to Input Number: $'
+                6C 65 6D 65 6E 74 73 20 77 68 6F 73 
+                65 20 73 75 6D 20 69 73 20 65 71 75 
+                61 6C 6C 79 20 74 6F 20 49 6E 70 75 
+                74 20 4E 75 6D 62 65 72 3A 20 24    
+[  11]        :                                       .code
+[  12]    0180:                                       main proc
+[  13]    0180: B8 10 00                              mov ax, @data
+[  14]    0183: 8E D8                                 mov ds, ax
+[  15]        :                                       
+[  16]    0185: B4 09                                 mov ah, 9
+[  17]    0187: BA 00 00                              lea dx, msg1
+[  18]    018A: CD 21                                 int 21h
+[  19]        :                                       
+[  20]    018C: BE 0E 00                              lea si, ARR
+[  21]    018F: B4 02                                 mov ah, 2
+[  22]        :                                       
+[  23]    0191: B9 0A 00                              mov cx, 10
+[  24]        :                                       
+[  25]    0194:                                       for:
+[  26]    0194: 8B 1C                                 mov bx, [si]
+[  27]    0196: 83 C3 30                              add bx, 48
+[  28]    0199: 8A D3                                 mov dl, bl
+[  29]    019B: CD 21                                 int 21h
+[  30]    019D: B2 2C                                 mov dl, 44
+[  31]    019F: CD 21                                 int 21h
+[  32]    01A1: 83 C6 02                              add si, 2
+[  33]        :                                       
+[  34]    01A4: E2 EE                                 loop for
+[  35]        :                                       
+[  36]    01A6: B4 09                                 mov ah, 9
+[  37]    01A8: BA 22 00                              lea dx, msg2
+[  38]    01AB: CD 21                                 int 21h
+[  39]        :                                       
+[  40]    01AD: B4 02                                 mov ah, 2
+[  41]    01AF: 8A 16 33 00                           mov dl, num
+[  42]    01B3: 80 C2 30                              add dl, 48
+[  43]    01B6: CD 21                                 int 21h
+[  44]        :                                       
+[  45]    01B8: B2 0A                                 mov dl, 0Ah
+[  46]    01BA: CD 21                                 int 21h
+[  47]        :                                       
+[  48]    01BC: B2 0D                                 mov dl, 0Dh
+[  49]    01BE: CD 21                                 int 21h
+[  50]        :                                       
+[  51]    01C0: E8 04 00                              call SumOfPairs
+[  52]        :                                       
+[  53]        :                                       
+[  54]    01C3: B4 4C                                 mov ah, 4ch
+[  55]    01C5: CD 21                                 int 21h
+[  56]        :                                       
+[  57]        :                                       
+[  58]        :                                       main endp
+[  59]        :                                       
+[  60]        :                                       
+[  61]    01C7:                                       SumOfPairs proc
+[  62]    01C7: 53                                    push bx
+[  63]    01C8: 51                                    push cx
+[  64]    01C9: 52                                    push dx
+[  65]    01CA: 57                                    push di
+[  66]        :                                       
+[  67]    01CB: BE 0E 00                              lea si, ARR
+[  68]    01CE: BF 0E 00                              lea di, ARR
+[  69]        :                                       
+[  70]    01D1: 8A 2E 34 00                           mov ch, i
+[  71]        :                                       
+[  72]        :                                       
+[  73]    01D5:                                       while1:
+[  74]        :                                       
+[  75]    01D5: 8A 0E 35 00                           mov cl, j
+[  76]        :                                       
+[  77]    01D9: 80 FD 0A                              cmp ch, 10
+[  78]    01DC: BF 0E 00                              lea di, ARR
+[  79]    01DF: 7D 46                                 jge exit1
+[  80]        :                                       
+[  81]    01E1:                                       while2:
+[  82]        :                                       
+[  83]    01E1: 8B 1C                                 mov bx, [si]
+[  84]    01E3: 03 1D                                 add bx, [di]
+[  85]        :                                       
+[  86]    01E5: 80 F9 0A                              cmp cl, 10
+[  87]    01E8: 7D 36                                 jge exit2
+[  88]        :                                       
+[  89]    01EA:                                       if:
+[  90]    01EA: 83 FB 09                              cmp bx, 9
+[  91]    01ED: 75 2A                                 jne else
+[  92]        :                                       
+[  93]    01EF: B4 09                                 mov ah, 9
+[  94]    01F1: BA 36 00                              lea dx, string
+[  95]    01F4: CD 21                                 int 21h
+[  96]        :                                       
+[  97]    01F6: B4 02                                 mov ah, 2
+[  98]        :                                       
+[  99]    01F8: B2 09                                 mov dl, 9
+[ 100]    01FA: CD 21                                 int 21h
+[ 101]        :                                       
+[ 102]    01FC: 8A 14                                 mov dl, [si]
+[ 103]    01FE: 80 C2 30                              add dl, 48
+[ 104]    0201: CD 21                                 int 21h
+[ 105]        :                                       
+[ 106]    0203: B2 2B                                 mov dl, 43
+[ 107]    0205: CD 21                                 int 21h
+[ 108]        :                                       
+[ 109]    0207: 8A 15                                 mov dl, [di]
+[ 110]    0209: 80 C2 30                              add dl, 48
+[ 111]    020C: CD 21                                 int 21h
+[ 112]        :                                       
+[ 113]    020E: B2 3D                                 mov dl, 61
+[ 114]    0210: CD 21                                 int 21h
+[ 115]        :                                       
+[ 116]    0212: 8A D3                                 mov dl, bl
+[ 117]    0214: 80 C2 30                              add dl, 48
+[ 118]    0217: CD 21                                 int 21h
+[ 119]        :                                       
+[ 120]    0219:                                       else:
+[ 121]    0219: 83 C7 02                              add di, 2
+[ 122]    021C: FE C1                                 inc cl
+[ 123]    021E: EB C1                                 jmp while2
+[ 124]        :                                       
+[ 125]    0220:                                       exit2:
+[ 126]        :                                       
+[ 127]    0220: 83 C6 02                              add si, 2
+[ 128]    0223: FE C5                                 inc ch
+[ 129]    0225: EB AE                                 jmp while1
+[ 130]        :                                       
+[ 131]    0227:                                       exit1:
+[ 132]        :                                       
+[ 133]    0227: 5B                                    pop bx
+[ 134]    0228: 59                                    pop cx
+[ 135]    0229: 5A                                    pop dx
+[ 136]    022A: C3                                    ret
+[ 137]        :                                       SumOfPairs endp
+[ 138]        :                                       end main
+[ 139]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 2B      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 03      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: FA      -   check sum (l.byte)
+0013: 98      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 18      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 18      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================
