@@ -1,0 +1,60 @@
+< THE SYMBOL TABLE >  restaurant.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+M0                       	00000     	2         	VAR       	data      
+M1                       	0002C     	2         	VAR       	data      
+M2                       	0005C     	2         	VAR       	data      
+M3                       	00090     	2         	VAR       	data      
+M8                       	000B0     	2         	VAR       	data      
+M9                       	000F6     	2         	VAR       	data      
+M10                      	00110     	2         	VAR       	data      
+M4                       	0012A     	2         	VAR       	data      
+M5                       	0015E     	2         	VAR       	data      
+M6                       	00176     	2         	VAR       	data      
+M7                       	0018C     	2         	VAR       	data      
+M11                      	001AE     	2         	VAR       	data      
+M12                      	001B2     	2         	VAR       	data      
+M13                      	001B6     	2         	VAR       	data      
+M14                      	001D4     	2         	VAR       	data      
+Q                        	001F2     	2         	VAR       	data      
+R                        	001F4     	2         	VAR       	data      
+V                        	001F6     	1         	VAR       	data      
+S                        	001F7     	2         	VAR       	data      
+RPRICE                   	001F9     	2         	VAR       	data      
+VPRICE                   	001FB     	2         	VAR       	data      
+SPRICE                   	001FD     	2         	VAR       	data      
+NPRICE                   	001FF     	2         	VAR       	data      
+VAR1                     	00201     	1         	VAR       	data      
+CODE                     	00037     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+START                    	0000C     	-1        	LABEL     	code      
+MENU                     	0001A     	-1        	LABEL     	code      
+MENUADD                  	00041     	-1        	LABEL     	code      
+L1                       	00065     	-1        	LABEL     	code      
+PRINT                    	00072     	-1        	LABEL     	code      
+START1                   	00075     	-1        	LABEL     	code      
+NEWMENU_                 	000B6     	-1        	LABEL     	code      
+VEG_                     	000CA     	-1        	LABEL     	code      
+RICE_                    	000DE     	-1        	LABEL     	code      
+SOUP_                    	000F2     	-1        	LABEL     	code      
+PRICE                    	00106     	-1        	LABEL     	code      
+INPUT                    	00119     	-1        	LABEL     	code      
+TOTALPRICE               	00134     	-1        	LABEL     	code      
+INDEC                    	00166     	-1        	NEAR      	code      
+@BEGIN                   	00169     	-1        	LABEL     	code      
+@MINUS                   	00181     	-1        	LABEL     	code      
+@PLUS                    	00184     	-1        	LABEL     	code      
+@REPEAT2                 	00186     	-1        	LABEL     	code      
+@EXIT                    	001AA     	-1        	LABEL     	code      
+@NOT_DIGIT               	001AE     	-1        	LABEL     	code      
+OUTDEC                   	001BB     	-1        	NEAR      	code      
+@END_IF1                 	001CD     	-1        	LABEL     	code      
+@REPEAT1                 	001D2     	-1        	LABEL     	code      
+@PRINT_LOOP              	001DE     	-1        	LABEL     	code      
+===================================================================================================
+[ 5/22/2021  --  6:02:04 AM ] 
+< END >
+ 
