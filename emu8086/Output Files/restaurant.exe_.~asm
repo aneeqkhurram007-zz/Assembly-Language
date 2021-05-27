@@ -2,29 +2,63 @@
 .stack 100h
 .data
 
-m0 dw "         !!!!!!Welcome in our project!!!!!!$"
-m1 dw 10,13,10,13, "Which menu do you want ??please select:$"
-m2 dw 10,13,10,13, "1.Rice 100/- 2.Vegetable 50/- 3.Soup 20/- $"
-m3 dw 10,13,10,13, "Select the menu number:$"
-m8 dw 10,13,10,13, "SORRY!!!There is no more than 3 item,if u want,u can add one$"
-m9 dw 10,13,10,13, "Enter Food name:$"
-m10 dw 10,13,10,13,"          Price:$"
-m4 dw 10,13,10,13, "To add press 1 or press 2 to get back menu :$"
-m5 dw 10,13,10,13, "Enter quantity:$"
+m0 dw 10,13,9,9,"Welcome To Comsats Restaurant$"
+m1 dw 10,13,10,13,9,"Food Menu",10,13,"$"
+v1 dw 10,13,10,13,9,"Appetizers$"
+m2 dw 10,13,10,13, "1.LASAGNE 60/-",10,13,"2.MARGARITA 50/-",10,13,"3.SPAGHETTI 40/- $"
+
+v2 dw 10,13,10,13,9,"Main Course$"
+v3 dw 10,13,10,13, "4.SHAHI BIRYANI 100/-",10,13,"5.BEEF QOURMA 150/-",10,13,"6.CHICKEN TIKKA 120/- $"
+v4 dw 10,13,10,13,9,"Fast Food$"
+v5 dw 10,13,10,13, "7.PIZZA 200/-",10,13,"8.BURGER 150/-$"
+
+m3 dw 10,13,10,13, "Select the menu number: $"
+
+m4 dw 10,13,10,13, "To add press 1 or press 2 to get back menu: $"
+m5 dw 10,13,10,13, "Enter quantity: $"
 m6 dw 10,13,10,13, "Total price: $"
 m7 dw 10,13,10,13, "      *****THANK YOU*****$"
-m11 dw "4.$"
+
+m8 dw 10,13,10,13, "There is no more than 3 items, but you can add one.$"
+m9 dw 10,13,10,13, "Enter Food name: $"
+m10 dw 10,13,10,13,9,"Price: $"
+m11 dw "9.$"
+
 m12 dw "/-$"
-m13 dw 10,13,10,13, " Re-odrer : Press <1>$",
-m14 dw 10,13,10,13, " Exit : Press Any key$"
-q dw 0
-r dw 0
-v db 0
-s dw 0
-rprice dw 100
-vprice dw 50
-sprice dw 20
+m13 dw 10,13,10,13, "ReOrder : Press 1.$",
+m14 dw 10,13,10,13, "Exit : Press Any key $"
+m15 dw 10,13,"----------------------------","$"
+
+m16 dw 10,13,10,13,"----------------------------","$"
+m17 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press 3. Exit $"
+m18 dw 10,13,10,13,"Your Choice: $"
+m19 dw 10,13,10,13,"Previous Total: $"
+
+m20 dw 10,13,"Do you want to change your Order ?",10,13,"Press 1. Change Order",10,13,"Press any key to continue. $"
+
+choice db 0
+;q dw 0
+;r dw 0
+v db 8
+;s dw 0
+
+lasprice dw 60
+margprice dw 50
+spagprice dw 40
+
+birprice dw 100
+beefprice dw 150
+tikkaprice dw 120
+
+pizzaprice dw 200
+burgerprice dw 150
+
+
+
 nprice dw 0
+
+totPrice dw 0
+prevPrice dw 0
 
 var1 db 100 dup('$')
 
@@ -39,7 +73,7 @@ Lea dx,m0
 int 21h
 
 start:
-cmp v,0
+cmp v,8
 jg start1
 
 mov ah,9
@@ -48,9 +82,50 @@ int 21h
 
 menu:
 
+mov ah, 9
+lea dx,m15  ;m15 1
+int 21h
+
 mov ah,9
+lea dx, v1
+int 21h
+
 Lea dx,m2
 int 21h
+
+lea dx,v2
+int 21h
+
+lea dx, v3
+int 21h
+
+lea dx, v4
+int 21h
+
+lea dx, v5
+int 21h
+
+mov ah, 9
+lea dx,m16  ;m15 2
+int 21h
+
+mov ah, 9
+lea dx, m17
+int 21h
+
+mov ah, 9
+lea dx, m18
+int 21h
+
+mov ah, 1
+int 21h
+
+intiMenu:
+
+mov choice, al
+
+cmp choice, 50
+jne menuadd
 
 mov ah,9
 Lea dx,m3
@@ -60,15 +135,33 @@ mov ah,1
 int 21h
 
 cmp al,31h
-je rice_
+je lasagn ;rice_
 cmp al,32h
-je veg_
+je marga  ;veg_
 cmp al,33h
-je soup_
+je sapaghetti ;soup_
+cmp al, 34h
+je biryani
 
+cmp al, 35h
+je beef
+
+
+cmp al, 36h
+je tikka
+
+cmp al, 37h
+je pizza
+
+cmp al, 38h
+je burger
 
 
 menuadd:
+
+cmp choice, 49
+jne FExit
+
 inc v
 
 mov ah,9
@@ -105,13 +198,53 @@ call price
 
 start1:
 
+mov ah, 9
+lea dx,m15  ;m15 1
+int 21h
+
+
 mov ah,9
+lea dx, v1
+int 21h
+
 Lea dx,m2
 int 21h
 
-mov ah,9
-Lea dx,m11
+lea dx,v2
 int 21h
+
+lea dx, v3
+int 21h
+
+lea dx, v4
+int 21h
+
+lea dx, v5
+int 21h
+
+
+
+mov ah,2
+
+mov dl, 10
+int 21h
+
+mov dl, 13
+int 21h
+
+mov ah,2
+mov dl,' '
+int 21h
+
+
+mov dl,v   ;line 113 breakpoint
+add dl, 48
+int 21h
+
+mov ah,2
+mov dl,'.'
+int 21h
+
 
 mov dx,offset var1
 mov ah,9
@@ -125,11 +258,32 @@ xor ax,ax
 mov ax,nprice
 call outdec
 
+
+
 mov ah,9
 Lea dx,m12
 int 21h
 
 
+mov ah, 9
+lea dx,m16  ;m15 1
+int 21h
+
+mov ah, 9
+lea dx, m17
+int 21h
+
+mov ah, 9
+lea dx, m18
+int 21h
+
+mov ah, 1
+int 21h
+
+mov choice, al
+
+cmp choice, 50
+jne menuadd
 
 mov ah,9
 Lea dx,m3
@@ -139,11 +293,27 @@ mov ah,1
 int 21h
 
 cmp al,31h
-je rice_
+je lasagn ;rice_
 cmp al,32h
-je veg_
+je marga  ;veg_
 cmp al,33h
-je soup_
+je sapaghetti ;soup_
+cmp al, 34h
+je biryani
+
+cmp al, 35h
+je beef
+
+
+cmp al, 36h
+je tikka
+
+cmp al, 37h
+je pizza
+
+cmp al, 38h
+je burger
+
 
 newmenu_:
 
@@ -155,6 +325,22 @@ xor ax,ax
 
 call indec
 
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je newmenu_
+
+mov ax, bx
+
+
 mul nprice
 
 mov bx,ax
@@ -162,7 +348,7 @@ mov bx,ax
 jmp totalprice
 
 
-veg_:
+marga:
 
 mov ah,9
 Lea dx,m5
@@ -172,13 +358,27 @@ xor ax,ax
 
 call indec
 
-mul vprice
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je marga
+
+mov ax, bx
+
+mul margprice
 
 mov bx,ax
 
 jmp totalprice
 
-rice_:
+lasagn:
 
 mov ah,9
 Lea dx,m5
@@ -188,13 +388,29 @@ xor ax,ax
 
 call indec
 
-mul rprice
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je lasagn
+
+mov ax, bx
+
+
+
+mul lasprice
 
 mov bx,ax
 
 jmp totalprice
 
-soup_:
+sapaghetti:
 mov ah,9
 Lea dx,m5
 int 21h
@@ -203,11 +419,181 @@ xor ax,ax
 
 call indec
 
-mul sprice
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je sapaghetti
+
+mov ax, bx
+
+
+mul spagprice
 
 mov bx,ax
 
 jmp totalprice
+
+;biryani
+
+biryani:
+mov ah,9
+Lea dx,m5
+int 21h
+
+xor ax,ax
+
+call indec
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je biryani
+
+mov ax, bx
+
+
+mul birprice
+
+mov bx,ax
+
+jmp totalprice
+
+;beef
+
+beef:
+mov ah,9
+Lea dx,m5
+int 21h
+
+xor ax,ax
+
+call indec
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je beef
+
+mov ax, bx
+
+
+mul beefprice
+
+mov bx,ax
+
+jmp totalprice
+;tikka
+tikka:
+mov ah,9
+Lea dx,m5
+int 21h
+
+xor ax,ax
+
+call indec
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je tikka
+
+mov ax, bx
+
+
+mul tikkaprice
+
+mov bx,ax
+
+jmp totalprice
+;pizza
+pizza:
+mov ah,9
+Lea dx,m5
+int 21h
+
+xor ax,ax
+
+call indec
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je pizza
+
+mov ax, bx
+
+
+mul pizzaprice
+
+mov bx,ax
+
+jmp totalprice
+;burger
+burger:
+mov ah,9
+Lea dx,m5
+int 21h
+
+xor ax,ax
+
+call indec
+
+mov bx, ax
+
+mov ah, 9
+lea dx, m20
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je burger
+
+mov ax, bx
+
+
+mul burgerprice
+
+mov bx,ax
+
+jmp totalprice
+
 
 price:
 
@@ -241,15 +627,28 @@ ret
 
 
 totalprice:
+mov ax, totPrice
+mov prevPrice, ax
+add totPrice, bx
 
 mov ah,9
+lea dx, m19
+int 21h
+
+xor ax,ax
+
+
+mov ax,prevPrice
+call outdec
+
+mov ah, 9
 Lea dx,m6
 int 21h
 
 xor ax,ax
 
 
-mov ax,bx
+mov ax, totPrice
 call outdec
 
 mov ah,9
@@ -270,137 +669,137 @@ mov ah,9
 Lea dx,m7
 int 21h
 
-
+FExit:
 mov ah,4ch
 int 21h
 
 main endp
 ;include indec.asm
 
-INDEC PROC
+indec proc
 
-PUSH BX
-PUSH CX
-PUSH DX
-@BEGIN:
+push bx
+push cx
+push dx
+@begin:
 
-MOV AH, 2
-MOV DL, ' '
-INT 21H
+mov ah, 2
+mov dl, ' '
+int 21h
 
-XOR BX, BX
-XOR CX, CX
+xor bx, bx
+xor cx, cx
 
-MOV AH, 1
-INT 21H
+mov ah, 1
+int 21h
 
-CMP AL, '-'
-JE @MINUS
+cmp al, '-'
+je @minus
 
-CMP AL, '+'
-JE @PLUS
-JMP @REPEAT2
+cmp al, '+'
+je @plus
+jmp @repeat2
 
-@MINUS:
-MOV CX, 1
-@PLUS:
-INT 21H
+@minus:
+mov cx, 1
+@plus:
+int 21h
 
-@REPEAT2:
+@repeat2:
 
-CMP AL, '0'
-JNGE @NOT_DIGIT
-CMP AL, '9'
-JNLE @NOT_DIGIT
+cmp al, '0'
+jnge @not_digit
+cmp al, '9'
+jnle @not_digit
 
-AND AX, 000FH
-PUSH AX
+and ax, 000fh
+push ax
 
-MOV AX,10
-MUL BX
-POP BX
-ADD BX, AX
+mov ax,10
+mul bx
+pop bx
+add bx, ax
 
-MOV AH, 1
-INT 21H
-CMP AL, 0DH
-JNE @REPEAT2
+mov ah, 1
+int 21h
+cmp al, 0dh
+jne @repeat2
 
-MOV AX, BX
-OR CX, CX
+mov ax, bx
+or cx, cx
 
-JE @EXIT
-NEG AX
+je @exit
+neg ax
 
-@EXIT:
+@exit:
 
-POP DX
-POP CX
-POP BX
-RET
+pop dx
+pop cx
+pop bx
+ret
 
-@NOT_DIGIT:
+@not_digit:
 
-MOV AH, 2
-MOV DL, 0DH
-INT 21H
-MOV DL, 0AH
-INT 21H
-JMP @BEGIN
-RET
-INDEC ENDP
+mov ah, 2
+mov dl, 0dh
+int 21h
+mov dl, 0ah
+int 21h
+jmp @begin
+ret
+indec endp
 
 ;include outdec.asm
 
-OUTDEC PROC
+outdec proc
 
-PUSH  AX
-PUSH  BX
-PUSH  CX
-PUSH  DX
+push  ax
+push  bx
+push  cx
+push  dx
 
-OR AX, AX
-JGE @END_IF1
+or ax, ax
+jge @end_if1
 
-PUSH AX
-MOV DL, ' '
-MOV AH, 2
-INT 21H
-POP AX
-NEG AX
+push ax
+mov dl, ' '
+mov ah, 2
+int 21h
+pop ax
+neg ax
 
-@END_IF1:
+@end_if1:
 
-XOR CX, CX
-MOV  BX, 10D
+xor cx, cx
+mov  bx, 10d
 
-@REPEAT1:
+@repeat1:
 
-XOR DX, DX
-DIV BX
-PUSH DX
-INC CX
+xor dx, dx
+div bx
+push dx
+inc cx
 
 
-OR  AX, AX
-JNE   @REPEAT1
+or  ax, ax
+jne   @repeat1
 
-MOV   AH, 2
+mov   ah, 2
 
-@PRINT_LOOP:
+@print_loop:
 
-POP  DX
-OR DL, 30H
-INT 21H
-LOOP  @PRINT_LOOP
+pop  dx
+or dl, 30h
+int 21h
+loop  @print_loop
 
-POP DX
-POP CX
-POP BX
-POP AX
+pop dx
+pop cx
+pop bx
+pop ax
 
-RET
-OUTDEC ENDP
+ret
+outdec endp
 
 end main
 
