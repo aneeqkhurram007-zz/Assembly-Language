@@ -1,4 +1,4 @@
-< THE SYMBOL TABLE >  restaurant2.exe_  --  emu8086 assembler version: 4.08 
+< THE SYMBOL TABLE >  db_100_d.exe_  --  emu8086 assembler version: 4.08 
 ===================================================================================================
 Name                     	Offset    	Size      	Type      	Segment   
 ===================================================================================================
@@ -43,48 +43,47 @@ NPRICE                   	003AE     	2         	VAR       	data
 TOTPRICE                 	003B0     	2         	VAR       	data      
 PREVPRICE                	003B2     	2         	VAR       	data      
 VAR1                     	003B4     	1         	VAR       	data      
-NAMEARR                  	00418     	1         	VAR       	data      
-CUSTOMERID               	0047C     	1         	VAR       	data      
-FOODORDERID              	0047D     	1         	VAR       	data      
-C1                       	0047E     	1         	VAR       	data      
-C2                       	00495     	1         	VAR       	data      
-C3                       	0049F     	1         	VAR       	data      
-C4                       	004B2     	1         	VAR       	data      
-CODE                     	0005D     	-5        	SEGMENT   	(ITSELF)  
+CUSTOMERID               	00418     	1         	VAR       	data      
+FOODORDERID              	00419     	1         	VAR       	data      
+C1                       	0041A     	1         	VAR       	data      
+C2                       	0042E     	1         	VAR       	data      
+C3                       	00437     	1         	VAR       	data      
+C4                       	00447     	1         	VAR       	data      
+CODE                     	00056     	-5        	SEGMENT   	(ITSELF)  
 MAIN                     	00000     	-1        	NEAR      	code      
-INPUTNAME                	0001A     	-1        	LABEL     	code      
-START                    	00025     	-1        	LABEL     	code      
-MENU                     	0003A     	-1        	LABEL     	code      
-INTIMENU                 	0007A     	-1        	LABEL     	code      
-MENUADD                  	000C7     	-1        	LABEL     	code      
-L1                       	000F8     	-1        	LABEL     	code      
-PRINT                    	00105     	-1        	LABEL     	code      
-START1                   	00108     	-1        	LABEL     	code      
-NEWMENU_                 	001CD     	-1        	LABEL     	code      
-MARGA                    	001F5     	-1        	LABEL     	code      
-LASAGN                   	0021D     	-1        	LABEL     	code      
-SAPAGHETTI               	00245     	-1        	LABEL     	code      
-BIRYANI                  	0026D     	-1        	LABEL     	code      
-BEEF                     	00295     	-1        	LABEL     	code      
-TIKKA                    	002BD     	-1        	LABEL     	code      
-PIZZA                    	002E4     	-1        	LABEL     	code      
-BURGER                   	0030B     	-1        	LABEL     	code      
-PRICE                    	00332     	-1        	LABEL     	code      
-INPUT                    	00345     	-1        	LABEL     	code      
-TOTALPRICE               	00360     	-1        	LABEL     	code      
-FEXIT                    	003FA     	-1        	LABEL     	code      
-DECIMALINPUT             	003FE     	-1        	NEAR      	code      
-INPUTSTART               	00401     	-1        	LABEL     	code      
-MINUS                    	00419     	-1        	LABEL     	code      
-PLUS                     	0041C     	-1        	LABEL     	code      
-REPEAT                   	0041E     	-1        	LABEL     	code      
-EXIT                     	00442     	-1        	LABEL     	code      
-NONDIGIT                 	00446     	-1        	LABEL     	code      
-DECIMALOUTPUT            	00453     	-1        	NEAR      	code      
-IF                       	00465     	-1        	LABEL     	code      
-LOOPREPEAT               	0046A     	-1        	LABEL     	code      
-PRINTLOOP                	00476     	-1        	LABEL     	code      
+INPUTNAME                	00013     	-1        	LABEL     	code      
+START                    	0001E     	-1        	LABEL     	code      
+MENU                     	00033     	-1        	LABEL     	code      
+INTIMENU                 	00073     	-1        	LABEL     	code      
+MENUADD                  	000C0     	-1        	LABEL     	code      
+L1                       	000F1     	-1        	LABEL     	code      
+PRINT                    	000FE     	-1        	LABEL     	code      
+START1                   	00101     	-1        	LABEL     	code      
+NEWMENU_                 	001C6     	-1        	LABEL     	code      
+MARGA                    	001EE     	-1        	LABEL     	code      
+LASAGN                   	00216     	-1        	LABEL     	code      
+SAPAGHETTI               	0023E     	-1        	LABEL     	code      
+BIRYANI                  	00266     	-1        	LABEL     	code      
+BEEF                     	0028E     	-1        	LABEL     	code      
+TIKKA                    	002B6     	-1        	LABEL     	code      
+PIZZA                    	002DD     	-1        	LABEL     	code      
+BURGER                   	00304     	-1        	LABEL     	code      
+PRICE                    	0032B     	-1        	LABEL     	code      
+INPUT                    	0033E     	-1        	LABEL     	code      
+TOTALPRICE               	00359     	-1        	LABEL     	code      
+FEXIT                    	003A1     	-1        	LABEL     	code      
+DECIMALINPUT             	003A5     	-1        	NEAR      	code      
+INPUTSTART               	003A8     	-1        	LABEL     	code      
+MINUS                    	003C0     	-1        	LABEL     	code      
+PLUS                     	003C3     	-1        	LABEL     	code      
+REPEAT                   	003C5     	-1        	LABEL     	code      
+EXIT                     	003E9     	-1        	LABEL     	code      
+NONDIGIT                 	003ED     	-1        	LABEL     	code      
+DECIMALOUTPUT            	003FA     	-1        	NEAR      	code      
+IF                       	0040C     	-1        	LABEL     	code      
+LOOPREPEAT               	00411     	-1        	LABEL     	code      
+PRINTLOOP                	0041D     	-1        	LABEL     	code      
 ===================================================================================================
-[ 5/27/2021  --  8:33:47 PM ] 
+[ 5/27/2021  --  8:10:05 PM ] 
 < END >
  

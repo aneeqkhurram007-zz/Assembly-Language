@@ -83,6 +83,26 @@
     
     var1 db 100 dup('$')
     
+    
+;customer strings and data
+
+    nameArr db 100 dup('$')
+    
+    customerID db 1
+    
+    foodOrderID db 0
+    
+    c1 db 10,13,10,13," Enter your name: $"
+    
+    c2 db 10,13,10,13," Name: $"
+    
+    c3 db 10,13,10,13," Customer ID: $"
+    
+    c4 db 10,13,10,13," Food Order ID: $"
+    
+    
+    
+    
 .code
 
 main proc
@@ -92,14 +112,41 @@ main proc
         
         mov ah,9
         Lea dx,str0
-        int 21h  
+        int 21h
+        
+        mov ah, 9
+        lea dx, c1
+        int 21h
+        
+        mov ah, 1
+        
+        lea si, nameArr
+        
+        int 21h
+        
+inputName:
+
+        cmp al, 13
+        je start
+        
+        mov [si], al
+        
+        inc si
+        
+        int 21h
+        
+        jmp inputName        
+        
+          
         
 start: 
         
         mov ah,9
         Lea dx,str1
         int 21h
-
+        
+        inc foodOrderID
+        
         cmp v,8
         jg start1
         
@@ -435,7 +482,8 @@ lasagn:
             
         jmp totalprice 
             
-sapaghetti:    
+sapaghetti: 
+   
         mov ah,9
         Lea dx,str18
         int 21h 
@@ -651,10 +699,57 @@ input:
                
             
             
-totalprice:
+totalprice: 
+
         mov ax, totPrice
         mov prevPrice, ax
         add totPrice, bx
+        
+        mov ah, 2
+        mov dl, 10
+        int 21h
+        
+        mov dl, 13
+        int 21h
+        
+        mov ah, 9
+        lea dx, str2
+        int 21h
+        
+        mov ah, 2
+        mov dl, ' '
+        int 21h
+        
+        mov ah, 9
+        
+        lea dx, c2
+        int 21h
+        
+        lea dx, nameArr
+        int 21h
+        
+        mov ah, 2
+        mov dl, ' '
+        int 21h
+        
+        mov ah, 9
+        
+        lea dx, c3
+        int 21h
+        
+        mov ah, 2
+        mov dl, customerID
+        add dl, 48
+        int 21h
+        
+        mov ah, 9
+        lea dx, c4
+        int 21h
+        
+        mov ah, 2
+        mov dl, foodOrderID
+        add dl, 48
+        int 21h
             
         mov ah,9
         lea dx, str20
@@ -669,7 +764,8 @@ totalprice:
         mov ah, 9
         Lea dx,str21
         int 21h 
-            
+                      
+               
         xor ax,ax
             
             
@@ -677,6 +773,9 @@ totalprice:
         call decimalOutput
             
         mov ah,9
+        lea dx, str9
+        int 21h
+        
         Lea dx,str22
         int 21h
             
