@@ -1,0 +1,82 @@
+< THE SYMBOL TABLE >  restaurant2.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+STR0                     	00000     	2         	VAR       	data      
+STR1                     	00026     	2         	VAR       	data      
+STR2                     	00040     	2         	VAR       	data      
+STR3                     	00062     	2         	VAR       	data      
+STR4                     	00078     	2         	VAR       	data      
+STR5                     	000B8     	2         	VAR       	data      
+STR6                     	000CE     	2         	VAR       	data      
+STR7                     	00120     	2         	VAR       	data      
+STR8                     	00134     	2         	VAR       	data      
+STR9                     	0015E     	2         	VAR       	data      
+STR10                    	00184     	2         	VAR       	data      
+STR11                    	001C0     	2         	VAR       	data      
+STR12                    	001D6     	2         	VAR       	data      
+STR13                    	00212     	2         	VAR       	data      
+STR14                    	0024A     	2         	VAR       	data      
+STR15                    	00264     	2         	VAR       	data      
+STR16                    	00276     	2         	VAR       	data      
+STR17                    	0027A     	2         	VAR       	data      
+STR18                    	0029C     	2         	VAR       	data      
+STR19                    	002B6     	2         	VAR       	data      
+STR20                    	00316     	2         	VAR       	data      
+STR21                    	00330     	2         	VAR       	data      
+STR22                    	00346     	2         	VAR       	data      
+STR23                    	00360     	2         	VAR       	data      
+STR24                    	0037E     	2         	VAR       	data      
+CHOICE                   	0039C     	1         	VAR       	data      
+V                        	0039D     	1         	VAR       	data      
+LASPRICE                 	0039E     	2         	VAR       	data      
+MARGPRICE                	003A0     	2         	VAR       	data      
+SPAGPRICE                	003A2     	2         	VAR       	data      
+BIRPRICE                 	003A4     	2         	VAR       	data      
+BEEFPRICE                	003A6     	2         	VAR       	data      
+TIKKAPRICE               	003A8     	2         	VAR       	data      
+PIZZAPRICE               	003AA     	2         	VAR       	data      
+BURGERPRICE              	003AC     	2         	VAR       	data      
+NPRICE                   	003AE     	2         	VAR       	data      
+TOTPRICE                 	003B0     	2         	VAR       	data      
+PREVPRICE                	003B2     	2         	VAR       	data      
+VAR1                     	003B4     	1         	VAR       	data      
+CODE                     	00052     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+START                    	0000C     	-1        	LABEL     	code      
+MENU                     	0001D     	-1        	LABEL     	code      
+INTIMENU                 	0005D     	-1        	LABEL     	code      
+MENUADD                  	000AA     	-1        	LABEL     	code      
+L1                       	000DB     	-1        	LABEL     	code      
+PRINT                    	000E8     	-1        	LABEL     	code      
+START1                   	000EB     	-1        	LABEL     	code      
+NEWMENU_                 	001B0     	-1        	LABEL     	code      
+MARGA                    	001D8     	-1        	LABEL     	code      
+LASAGN                   	00200     	-1        	LABEL     	code      
+SAPAGHETTI               	00228     	-1        	LABEL     	code      
+BIRYANI                  	00250     	-1        	LABEL     	code      
+BEEF                     	00278     	-1        	LABEL     	code      
+TIKKA                    	002A0     	-1        	LABEL     	code      
+PIZZA                    	002C7     	-1        	LABEL     	code      
+BURGER                   	002EE     	-1        	LABEL     	code      
+PRICE                    	00315     	-1        	LABEL     	code      
+INPUT                    	00328     	-1        	LABEL     	code      
+TOTALPRICE               	00343     	-1        	LABEL     	code      
+FEXIT                    	0038B     	-1        	LABEL     	code      
+DECIMALINPUT             	0038F     	-1        	NEAR      	code      
+INPUTSTART               	00392     	-1        	LABEL     	code      
+MINUS                    	003AA     	-1        	LABEL     	code      
+PLUS                     	003AD     	-1        	LABEL     	code      
+REPEAT                   	003AF     	-1        	LABEL     	code      
+EXIT                     	003D3     	-1        	LABEL     	code      
+NONDIGIT                 	003D7     	-1        	LABEL     	code      
+DECIMALOUTPUT            	003E4     	-1        	NEAR      	code      
+IF                       	003F6     	-1        	LABEL     	code      
+LOOPREPEAT               	003FB     	-1        	LABEL     	code      
+PRINTLOOP                	00407     	-1        	LABEL     	code      
+===================================================================================================
+[ 5/27/2021  --  4:05:17 PM ] 
+< END >
+ 
