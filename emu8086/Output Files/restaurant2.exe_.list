@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 restaurant2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 5/28/2021  --  12:09:41 AM ] 
+[ 5/28/2021  --  9:28:36 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -270,7 +270,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 157]    06EC: FE 06 69 05                           inc foodOrderID
 [ 158]        :                                       
 [ 159]    06F0: 80 3E 89 04 08                        cmp v,8
-[ 160]    06F5: 7E 03 E9 CE 00                        jg start1
+[ 160]    06F5: 7E 03 E9 D2 00                        jg start1
 [ 161]        :                                       
 [ 162]        :                                       
 [ 163]        :                                       
@@ -319,759 +319,772 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 206]    073A: A2 88 04                              mov choice, al
 [ 207]        :                                       
 [ 208]    073D: 80 3E 88 04 32                        cmp choice, 50
-[ 209]    0742: 75 43                                 jne menuadd
+[ 209]    0742: 75 47                                 jne menuadd
 [ 210]        :                                       
-[ 211]    0744: B4 09                                 mov ah,9
-[ 212]    0746: BA 7A 02                              Lea dx,str17
-[ 213]    0749: CD 21                                 int 21h
-[ 214]        :                                       
-[ 215]    074B: B4 01                                 mov ah,1
-[ 216]    074D: CD 21                                 int 21h
-[ 217]        :                                       
-[ 218]    074F: 3C 31                                 cmp al,31h
-[ 219]    0751: 75 03 E9 87 01                        je lasagn
-[ 220]    0756: 3C 32                                 cmp al,32h
-[ 221]    0758: 75 03 E9 58 01                        je marga
-[ 222]    075D: 3C 33                                 cmp al,33h
-[ 223]    075F: 75 03 E9 A1 01                        je sapaghetti
-[ 224]    0764: 3C 34                                 cmp al, 34h
-[ 225]    0766: 75 03 E9 C2 01                        je biryani
-[ 226]        :                                       
-[ 227]    076B: 3C 35                                 cmp al, 35h
-[ 228]    076D: 75 03 E9 E3 01                        je beef
-[ 229]        :                                       
-[ 230]        :                                       
-[ 231]    0772: 3C 36                                 cmp al, 36h
-[ 232]    0774: 75 03 E9 04 02                        je tikka
-[ 233]        :                                       
-[ 234]    0779: 3C 37                                 cmp al, 37h
-[ 235]    077B: 75 03 E9 24 02                        je pizza
-[ 236]        :                                       
-[ 237]    0780: 3C 38                                 cmp al, 38h
-[ 238]    0782: 75 03 E9 44 02                        je burger
-[ 239]        :                                       
-[ 240]        :                                       
-[ 241]    0787:                                       menuadd:
-[ 242]        :                                       
-[ 243]    0787: 80 3E 88 04 31                        cmp choice, 49
-[ 244]    078C: 74 03 E9 4C 03                        jne FExit
+[ 211]        :                                       
+[ 212]    0744:                                       check1:
+[ 213]    0744: B4 09                                 mov ah,9
+[ 214]    0746: BA 7A 02                              Lea dx,str17
+[ 215]    0749: CD 21                                 int 21h
+[ 216]        :                                       
+[ 217]    074B: B4 01                                 mov ah,1
+[ 218]    074D: CD 21                                 int 21h
+[ 219]        :                                       
+[ 220]    074F: 3C 31                                 cmp al,31h
+[ 221]    0751: 75 03 E9 96 01                        je lasagn
+[ 222]    0756: 3C 32                                 cmp al,32h
+[ 223]    0758: 75 03 E9 67 01                        je marga
+[ 224]    075D: 3C 33                                 cmp al,33h
+[ 225]    075F: 75 03 E9 B0 01                        je sapaghetti
+[ 226]    0764: 3C 34                                 cmp al, 34h
+[ 227]    0766: 75 03 E9 D1 01                        je biryani
+[ 228]        :                                       
+[ 229]    076B: 3C 35                                 cmp al, 35h
+[ 230]    076D: 75 03 E9 F2 01                        je beef
+[ 231]        :                                       
+[ 232]        :                                       
+[ 233]    0772: 3C 36                                 cmp al, 36h
+[ 234]    0774: 75 03 E9 13 02                        je tikka
+[ 235]        :                                       
+[ 236]    0779: 3C 37                                 cmp al, 37h
+[ 237]    077B: 75 03 E9 33 02                        je pizza
+[ 238]        :                                       
+[ 239]    0780: 3C 38                                 cmp al, 38h
+[ 240]    0782: 75 03 E9 53 02                        je burger
+[ 241]        :                                       
+[ 242]    0787: 3C 39                                 cmp al, 39h
+[ 243]    0789: 7D B9                                 jge check1
+[ 244]        :                                       
 [ 245]        :                                       
-[ 246]    0791: FE 06 89 04                           inc v
+[ 246]    078B:                                       menuadd:
 [ 247]        :                                       
-[ 248]    0795: B4 09                                 mov ah,9
-[ 249]    0797: BA D6 01                              Lea dx,str12
-[ 250]    079A: CD 21                                 int 21h
-[ 251]        :                                       
-[ 252]    079C: B4 09                                 mov ah,9
-[ 253]    079E: BA 12 02                              Lea dx,str13
-[ 254]    07A1: CD 21                                 int 21h
-[ 255]        :                                       
-[ 256]    07A3: B4 01                                 mov ah,1
-[ 257]    07A5: CD 21                                 int 21h
-[ 258]    07A7: 3C 32                                 cmp al,32h
-[ 259]    07A9: 75 03 E9 4C FF                        je menu
+[ 248]    078B: 80 3E 88 04 31                        cmp choice, 49
+[ 249]    0790: 74 03 E9 57 03                        jne FExit
+[ 250]        :                                       
+[ 251]    0795: FE 06 89 04                           inc v
+[ 252]        :                                       
+[ 253]    0799: B4 09                                 mov ah,9
+[ 254]    079B: BA D6 01                              Lea dx,str12
+[ 255]    079E: CD 21                                 int 21h
+[ 256]        :                                       
+[ 257]    07A0: B4 09                                 mov ah,9
+[ 258]    07A2: BA 12 02                              Lea dx,str13
+[ 259]    07A5: CD 21                                 int 21h
 [ 260]        :                                       
-[ 261]    07AE: B4 09                                 mov ah,9
-[ 262]    07B0: BA 4A 02                              Lea dx,str14
-[ 263]    07B3: CD 21                                 int 21h
-[ 264]        :                                       
-[ 265]    07B5: BE A0 04                              mov si,offset var1
-[ 266]        :                                       
-[ 267]    07B8:                                       l1:
-[ 268]    07B8: B4 01                                 mov ah,1
-[ 269]    07BA: CD 21                                 int 21h
-[ 270]    07BC: 3C 0D                                 cmp al,13
-[ 271]    07BE: 74 05                                 je print
-[ 272]    07C0: 88 04                                 mov [si],al
-[ 273]    07C2: 46                                    inc si
-[ 274]    07C3: EB F3                                 jmp l1
-[ 275]        :                                       
-[ 276]    07C5:                                       print:
-[ 277]        :                                       
-[ 278]    07C5: E8 2A 02                              call price
-[ 279]        :                                       
-[ 280]    07C8:                                       start1:
-[ 281]        :                                       
-[ 282]    07C8: B4 09                                 mov ah, 9
-[ 283]    07CA: BA 40 00                              lea dx,str2
-[ 284]    07CD: CD 21                                 int 21h
-[ 285]        :                                       
+[ 261]    07A7: B4 01                                 mov ah,1
+[ 262]    07A9: CD 21                                 int 21h
+[ 263]    07AB: 3C 32                                 cmp al,32h
+[ 264]    07AD: 75 03 E9 48 FF                        je menu
+[ 265]        :                                       
+[ 266]    07B2: B4 09                                 mov ah,9
+[ 267]    07B4: BA 4A 02                              Lea dx,str14
+[ 268]    07B7: CD 21                                 int 21h
+[ 269]        :                                       
+[ 270]    07B9: BE A0 04                              mov si,offset var1
+[ 271]        :                                       
+[ 272]    07BC:                                       l1:
+[ 273]    07BC: B4 01                                 mov ah,1
+[ 274]    07BE: CD 21                                 int 21h
+[ 275]    07C0: 3C 0D                                 cmp al,13
+[ 276]    07C2: 74 05                                 je print
+[ 277]    07C4: 88 04                                 mov [si],al
+[ 278]    07C6: 46                                    inc si
+[ 279]    07C7: EB F3                                 jmp l1
+[ 280]        :                                       
+[ 281]    07C9:                                       print:
+[ 282]        :                                       
+[ 283]    07C9: E8 35 02                              call price
+[ 284]        :                                       
+[ 285]    07CC:                                       start1:
 [ 286]        :                                       
-[ 287]    07CF: B4 09                                 mov ah,9
-[ 288]    07D1: BA 62 00                              lea dx, str3
-[ 289]    07D4: CD 21                                 int 21h
+[ 287]    07CC: B4 09                                 mov ah, 9
+[ 288]    07CE: BA 40 00                              lea dx,str2
+[ 289]    07D1: CD 21                                 int 21h
 [ 290]        :                                       
-[ 291]    07D6: BA 78 00                              Lea dx,str4
-[ 292]    07D9: CD 21                                 int 21h
-[ 293]        :                                       
-[ 294]    07DB: BA B8 00                              lea dx,str5
-[ 295]    07DE: CD 21                                 int 21h
-[ 296]        :                                       
-[ 297]    07E0: BA CE 00                              lea dx, str6
-[ 298]    07E3: CD 21                                 int 21h
-[ 299]        :                                       
-[ 300]    07E5: BA 20 01                              lea dx, str7
-[ 301]    07E8: CD 21                                 int 21h
-[ 302]        :                                       
-[ 303]    07EA: BA 34 01                              lea dx, str8
-[ 304]    07ED: CD 21                                 int 21h
-[ 305]        :                                       
-[ 306]        :                                       
+[ 291]        :                                       
+[ 292]    07D3: B4 09                                 mov ah,9
+[ 293]    07D5: BA 62 00                              lea dx, str3
+[ 294]    07D8: CD 21                                 int 21h
+[ 295]        :                                       
+[ 296]    07DA: BA 78 00                              Lea dx,str4
+[ 297]    07DD: CD 21                                 int 21h
+[ 298]        :                                       
+[ 299]    07DF: BA B8 00                              lea dx,str5
+[ 300]    07E2: CD 21                                 int 21h
+[ 301]        :                                       
+[ 302]    07E4: BA CE 00                              lea dx, str6
+[ 303]    07E7: CD 21                                 int 21h
+[ 304]        :                                       
+[ 305]    07E9: BA 20 01                              lea dx, str7
+[ 306]    07EC: CD 21                                 int 21h
 [ 307]        :                                       
-[ 308]    07EF: B4 02                                 mov ah,2
-[ 309]        :                                       
-[ 310]    07F1: B2 0A                                 mov dl, 10
-[ 311]    07F3: CD 21                                 int 21h
+[ 308]    07EE: BA 34 01                              lea dx, str8
+[ 309]    07F1: CD 21                                 int 21h
+[ 310]        :                                       
+[ 311]        :                                       
 [ 312]        :                                       
-[ 313]    07F5: B2 0D                                 mov dl, 13
-[ 314]    07F7: CD 21                                 int 21h
-[ 315]        :                                       
-[ 316]    07F9: B4 02                                 mov ah,2
-[ 317]    07FB: B2 20                                 mov dl,' '
-[ 318]    07FD: CD 21                                 int 21h
-[ 319]        :                                       
+[ 313]    07F3: B4 02                                 mov ah,2
+[ 314]        :                                       
+[ 315]    07F5: B2 0A                                 mov dl, 10
+[ 316]    07F7: CD 21                                 int 21h
+[ 317]        :                                       
+[ 318]    07F9: B2 0D                                 mov dl, 13
+[ 319]    07FB: CD 21                                 int 21h
 [ 320]        :                                       
-[ 321]    07FF: 8A 16 89 04                           mov dl,v
-[ 322]    0803: 80 C2 30                              add dl, 48
-[ 323]    0806: CD 21                                 int 21h
+[ 321]    07FD: B4 02                                 mov ah,2
+[ 322]    07FF: B2 20                                 mov dl,' '
+[ 323]    0801: CD 21                                 int 21h
 [ 324]        :                                       
-[ 325]    0808: B4 02                                 mov ah,2
-[ 326]    080A: B2 2E                                 mov dl,'.'
-[ 327]    080C: CD 21                                 int 21h
-[ 328]        :                                       
+[ 325]        :                                       
+[ 326]    0803: 8A 16 89 04                           mov dl,v
+[ 327]    0807: 80 C2 30                              add dl, 48
+[ 328]    080A: CD 21                                 int 21h
 [ 329]        :                                       
-[ 330]    080E: BA A0 04                              mov dx,offset var1
-[ 331]    0811: B4 09                                 mov ah,9
-[ 332]    0813: CD 21                                 int 21h
+[ 330]    080C: B4 02                                 mov ah,2
+[ 331]    080E: B2 2E                                 mov dl,'.'
+[ 332]    0810: CD 21                                 int 21h
 [ 333]        :                                       
-[ 334]    0815: B4 02                                 mov ah,2
-[ 335]    0817: B2 20                                 mov dl,' '
-[ 336]    0819: CD 21                                 int 21h
-[ 337]        :                                       
-[ 338]    081B: 33 C0                                 xor ax,ax
-[ 339]    081D: A1 9A 04                              mov ax,nprice
-[ 340]    0820: E8 13 03                              call decimalOutput
-[ 341]        :                                       
+[ 334]        :                                       
+[ 335]    0812: BA A0 04                              mov dx,offset var1
+[ 336]    0815: B4 09                                 mov ah,9
+[ 337]    0817: CD 21                                 int 21h
+[ 338]        :                                       
+[ 339]    0819: B4 02                                 mov ah,2
+[ 340]    081B: B2 20                                 mov dl,' '
+[ 341]    081D: CD 21                                 int 21h
 [ 342]        :                                       
-[ 343]        :                                       
-[ 344]    0823: B4 09                                 mov ah,9
-[ 345]    0825: BA 76 02                              Lea dx,str16
-[ 346]    0828: CD 21                                 int 21h
+[ 343]    081F: 33 C0                                 xor ax,ax
+[ 344]    0821: A1 9A 04                              mov ax,nprice
+[ 345]    0824: E8 1E 03                              call decimalOutput
+[ 346]        :                                       
 [ 347]        :                                       
 [ 348]        :                                       
-[ 349]    082A: B4 09                                 mov ah, 9
-[ 350]    082C: BA 5E 01                              lea dx,str9
-[ 351]    082F: CD 21                                 int 21h
+[ 349]    0827: B4 09                                 mov ah,9
+[ 350]    0829: BA 76 02                              Lea dx,str16
+[ 351]    082C: CD 21                                 int 21h
 [ 352]        :                                       
-[ 353]    0831: B4 09                                 mov ah, 9
-[ 354]    0833: BA 84 01                              lea dx, str10
-[ 355]    0836: CD 21                                 int 21h
-[ 356]        :                                       
-[ 357]    0838: B4 09                                 mov ah, 9
-[ 358]    083A: BA C0 01                              lea dx, str11
-[ 359]    083D: CD 21                                 int 21h
-[ 360]        :                                       
-[ 361]    083F: B4 01                                 mov ah, 1
-[ 362]    0841: CD 21                                 int 21h
-[ 363]        :                                       
-[ 364]    0843: A2 88 04                              mov choice, al
+[ 353]        :                                       
+[ 354]    082E: B4 09                                 mov ah, 9
+[ 355]    0830: BA 5E 01                              lea dx,str9
+[ 356]    0833: CD 21                                 int 21h
+[ 357]        :                                       
+[ 358]    0835: B4 09                                 mov ah, 9
+[ 359]    0837: BA 84 01                              lea dx, str10
+[ 360]    083A: CD 21                                 int 21h
+[ 361]        :                                       
+[ 362]    083C: B4 09                                 mov ah, 9
+[ 363]    083E: BA C0 01                              lea dx, str11
+[ 364]    0841: CD 21                                 int 21h
 [ 365]        :                                       
-[ 366]    0846: 80 3E 88 04 32                        cmp choice, 50
-[ 367]    084B: 74 03 E9 37 FF                        jne menuadd
+[ 366]    0843: B4 01                                 mov ah, 1
+[ 367]    0845: CD 21                                 int 21h
 [ 368]        :                                       
-[ 369]    0850: B4 09                                 mov ah,9
-[ 370]    0852: BA 7A 02                              Lea dx,str17
-[ 371]    0855: CD 21                                 int 21h
-[ 372]        :                                       
-[ 373]    0857: B4 01                                 mov ah,1
-[ 374]    0859: CD 21                                 int 21h
-[ 375]        :                                       
-[ 376]    085B: 3C 31                                 cmp al,31h
-[ 377]    085D: 74 7E                                 je lasagn
-[ 378]    085F: 3C 32                                 cmp al,32h
-[ 379]    0861: 74 52                                 je marga
-[ 380]    0863: 3C 33                                 cmp al,33h
-[ 381]    0865: 75 03 E9 9B 00                        je sapaghetti
-[ 382]    086A: 3C 34                                 cmp al, 34h
-[ 383]    086C: 75 03 E9 BC 00                        je biryani
-[ 384]        :                                       
-[ 385]    0871: 3C 35                                 cmp al, 35h
-[ 386]    0873: 75 03 E9 DD 00                        je beef
-[ 387]        :                                       
-[ 388]        :                                       
-[ 389]    0878: 3C 36                                 cmp al, 36h
-[ 390]    087A: 75 03 E9 FE 00                        je tikka
+[ 369]    0847: A2 88 04                              mov choice, al
+[ 370]        :                                       
+[ 371]    084A: 80 3E 88 04 32                        cmp choice, 50
+[ 372]    084F: 74 03 E9 37 FF                        jne menuadd
+[ 373]        :                                       
+[ 374]        :                                       
+[ 375]    0854:                                       check2:
+[ 376]    0854: B4 09                                 mov ah,9
+[ 377]    0856: BA 7A 02                              Lea dx,str17
+[ 378]    0859: CD 21                                 int 21h
+[ 379]        :                                       
+[ 380]    085B: B4 01                                 mov ah,1
+[ 381]    085D: CD 21                                 int 21h
+[ 382]        :                                       
+[ 383]    085F: 3C 31                                 cmp al,31h
+[ 384]    0861: 75 03 E9 86 00                        je lasagn
+[ 385]    0866: 3C 32                                 cmp al,32h
+[ 386]    0868: 74 5A                                 je marga
+[ 387]    086A: 3C 33                                 cmp al,33h
+[ 388]    086C: 75 03 E9 A3 00                        je sapaghetti
+[ 389]    0871: 3C 34                                 cmp al, 34h
+[ 390]    0873: 75 03 E9 C4 00                        je biryani
 [ 391]        :                                       
-[ 392]    087F: 3C 37                                 cmp al, 37h
-[ 393]    0881: 75 03 E9 1E 01                        je pizza
+[ 392]    0878: 3C 35                                 cmp al, 35h
+[ 393]    087A: 75 03 E9 E5 00                        je beef
 [ 394]        :                                       
-[ 395]    0886: 3C 38                                 cmp al, 38h
-[ 396]    0888: 75 03 E9 3E 01                        je burger
-[ 397]        :                                       
+[ 395]        :                                       
+[ 396]    087F: 3C 36                                 cmp al, 36h
+[ 397]    0881: 75 03 E9 06 01                        je tikka
 [ 398]        :                                       
-[ 399]    088D:                                       newmenu_:
-[ 400]        :                                       
-[ 401]    088D: B4 09                                 mov ah,9
-[ 402]    088F: BA 9C 02                              Lea dx,str18
-[ 403]    0892: CD 21                                 int 21h
+[ 399]    0886: 3C 37                                 cmp al, 37h
+[ 400]    0888: 75 03 E9 26 01                        je pizza
+[ 401]        :                                       
+[ 402]    088D: 3C 38                                 cmp al, 38h
+[ 403]    088F: 75 03 E9 46 01                        je burger
 [ 404]        :                                       
-[ 405]    0894: 33 C0                                 xor ax,ax
-[ 406]        :                                       
-[ 407]    0896: E8 48 02                              call decimalInput
-[ 408]        :                                       
-[ 409]        :                                       
-[ 410]    0899: 8B D8                                 mov bx, ax
+[ 405]    0894: 3C 39                                 cmp al, 39h
+[ 406]    0896: 74 04                                 je newmenu_
+[ 407]        :                                       
+[ 408]    0898: 3C 3A                                 cmp al, 3Ah
+[ 409]    089A: 7D B8                                 jge check2
+[ 410]        :                                       
 [ 411]        :                                       
-[ 412]    089B: B4 09                                 mov ah, 9
-[ 413]    089D: BA B6 02                              lea dx, str19
-[ 414]    08A0: CD 21                                 int 21h
-[ 415]        :                                       
-[ 416]    08A2: B4 01                                 mov ah, 1
-[ 417]    08A4: CD 21                                 int 21h
-[ 418]        :                                       
-[ 419]    08A6: 3C 31                                 cmp al, '1'
-[ 420]    08A8: 74 E3                                 je newmenu_
+[ 412]    089C:                                       newmenu_:
+[ 413]        :                                       
+[ 414]    089C: B4 09                                 mov ah,9
+[ 415]    089E: BA 9C 02                              Lea dx,str18
+[ 416]    08A1: CD 21                                 int 21h
+[ 417]        :                                       
+[ 418]    08A3: 33 C0                                 xor ax,ax
+[ 419]        :                                       
+[ 420]    08A5: E8 48 02                              call decimalInput
 [ 421]        :                                       
-[ 422]    08AA: 8B C3                                 mov ax, bx
-[ 423]        :                                       
+[ 422]        :                                       
+[ 423]    08A8: 8B D8                                 mov bx, ax
 [ 424]        :                                       
-[ 425]    08AC: F7 26 9A 04                           mul nprice
-[ 426]        :                                       
-[ 427]    08B0: 8B D8                                 mov bx,ax
+[ 425]    08AA: B4 09                                 mov ah, 9
+[ 426]    08AC: BA B6 02                              lea dx, str19
+[ 427]    08AF: CD 21                                 int 21h
 [ 428]        :                                       
-[ 429]    08B2: E9 6B 01                              jmp totalprice
-[ 430]        :                                       
+[ 429]    08B1: B4 01                                 mov ah, 1
+[ 430]    08B3: CD 21                                 int 21h
 [ 431]        :                                       
-[ 432]    08B5:                                       marga:
-[ 433]        :                                       
-[ 434]    08B5: B4 09                                 mov ah,9
-[ 435]    08B7: BA 9C 02                              Lea dx,str18
-[ 436]    08BA: CD 21                                 int 21h
+[ 432]    08B5: 3C 31                                 cmp al, '1'
+[ 433]    08B7: 74 E3                                 je newmenu_
+[ 434]        :                                       
+[ 435]    08B9: 8B C3                                 mov ax, bx
+[ 436]        :                                       
 [ 437]        :                                       
-[ 438]    08BC: 33 C0                                 xor ax,ax
+[ 438]    08BB: F7 26 9A 04                           mul nprice
 [ 439]        :                                       
-[ 440]    08BE: E8 20 02                              call decimalInput
+[ 440]    08BF: 8B D8                                 mov bx,ax
 [ 441]        :                                       
-[ 442]    08C1: 8B D8                                 mov bx, ax
+[ 442]    08C1: E9 6B 01                              jmp totalprice
 [ 443]        :                                       
-[ 444]    08C3: B4 09                                 mov ah, 9
-[ 445]    08C5: BA B6 02                              lea dx, str19
-[ 446]    08C8: CD 21                                 int 21h
-[ 447]        :                                       
-[ 448]    08CA: B4 01                                 mov ah, 1
-[ 449]    08CC: CD 21                                 int 21h
+[ 444]        :                                       
+[ 445]    08C4:                                       marga:
+[ 446]        :                                       
+[ 447]    08C4: B4 09                                 mov ah,9
+[ 448]    08C6: BA 9C 02                              Lea dx,str18
+[ 449]    08C9: CD 21                                 int 21h
 [ 450]        :                                       
-[ 451]    08CE: 3C 31                                 cmp al, '1'
-[ 452]    08D0: 74 E3                                 je marga
-[ 453]        :                                       
-[ 454]    08D2: 8B C3                                 mov ax, bx
-[ 455]        :                                       
-[ 456]    08D4: F7 26 8C 04                           mul margprice
-[ 457]        :                                       
-[ 458]    08D8: 8B D8                                 mov bx,ax
-[ 459]        :                                       
-[ 460]    08DA: E9 43 01                              jmp totalprice
-[ 461]        :                                       
-[ 462]    08DD:                                       lasagn:
+[ 451]    08CB: 33 C0                                 xor ax,ax
+[ 452]        :                                       
+[ 453]    08CD: E8 20 02                              call decimalInput
+[ 454]        :                                       
+[ 455]    08D0: 8B D8                                 mov bx, ax
+[ 456]        :                                       
+[ 457]    08D2: B4 09                                 mov ah, 9
+[ 458]    08D4: BA B6 02                              lea dx, str19
+[ 459]    08D7: CD 21                                 int 21h
+[ 460]        :                                       
+[ 461]    08D9: B4 01                                 mov ah, 1
+[ 462]    08DB: CD 21                                 int 21h
 [ 463]        :                                       
-[ 464]    08DD: B4 09                                 mov ah,9
-[ 465]    08DF: BA 9C 02                              Lea dx,str18
-[ 466]    08E2: CD 21                                 int 21h
-[ 467]        :                                       
-[ 468]    08E4: 33 C0                                 xor ax,ax
-[ 469]        :                                       
-[ 470]    08E6: E8 F8 01                              call decimalInput
-[ 471]        :                                       
-[ 472]    08E9: 8B D8                                 mov bx, ax
-[ 473]        :                                       
-[ 474]    08EB: B4 09                                 mov ah, 9
-[ 475]    08ED: BA B6 02                              lea dx, str19
-[ 476]    08F0: CD 21                                 int 21h
-[ 477]        :                                       
-[ 478]    08F2: B4 01                                 mov ah, 1
-[ 479]    08F4: CD 21                                 int 21h
+[ 464]    08DD: 3C 31                                 cmp al, '1'
+[ 465]    08DF: 74 E3                                 je marga
+[ 466]        :                                       
+[ 467]    08E1: 8B C3                                 mov ax, bx
+[ 468]        :                                       
+[ 469]    08E3: F7 26 8C 04                           mul margprice
+[ 470]        :                                       
+[ 471]    08E7: 8B D8                                 mov bx,ax
+[ 472]        :                                       
+[ 473]    08E9: E9 43 01                              jmp totalprice
+[ 474]        :                                       
+[ 475]    08EC:                                       lasagn:
+[ 476]        :                                       
+[ 477]    08EC: B4 09                                 mov ah,9
+[ 478]    08EE: BA 9C 02                              Lea dx,str18
+[ 479]    08F1: CD 21                                 int 21h
 [ 480]        :                                       
-[ 481]    08F6: 3C 31                                 cmp al, '1'
-[ 482]    08F8: 74 E3                                 je lasagn
-[ 483]        :                                       
-[ 484]    08FA: 8B C3                                 mov ax, bx
-[ 485]        :                                       
+[ 481]    08F3: 33 C0                                 xor ax,ax
+[ 482]        :                                       
+[ 483]    08F5: E8 F8 01                              call decimalInput
+[ 484]        :                                       
+[ 485]    08F8: 8B D8                                 mov bx, ax
 [ 486]        :                                       
-[ 487]        :                                       
-[ 488]    08FC: F7 26 8A 04                           mul lasprice
-[ 489]        :                                       
-[ 490]    0900: 8B D8                                 mov bx,ax
-[ 491]        :                                       
-[ 492]    0902: E9 1B 01                              jmp totalprice
+[ 487]    08FA: B4 09                                 mov ah, 9
+[ 488]    08FC: BA B6 02                              lea dx, str19
+[ 489]    08FF: CD 21                                 int 21h
+[ 490]        :                                       
+[ 491]    0901: B4 01                                 mov ah, 1
+[ 492]    0903: CD 21                                 int 21h
 [ 493]        :                                       
-[ 494]    0905:                                       sapaghetti:
-[ 495]        :                                       
-[ 496]    0905: B4 09                                 mov ah,9
-[ 497]    0907: BA 9C 02                              Lea dx,str18
-[ 498]    090A: CD 21                                 int 21h
+[ 494]    0905: 3C 31                                 cmp al, '1'
+[ 495]    0907: 74 E3                                 je lasagn
+[ 496]        :                                       
+[ 497]    0909: 8B C3                                 mov ax, bx
+[ 498]        :                                       
 [ 499]        :                                       
-[ 500]    090C: 33 C0                                 xor ax,ax
-[ 501]        :                                       
-[ 502]    090E: E8 D0 01                              call decimalInput
-[ 503]        :                                       
-[ 504]    0911: 8B D8                                 mov bx, ax
-[ 505]        :                                       
-[ 506]    0913: B4 09                                 mov ah, 9
-[ 507]    0915: BA B6 02                              lea dx, str19
-[ 508]    0918: CD 21                                 int 21h
-[ 509]        :                                       
-[ 510]    091A: B4 01                                 mov ah, 1
-[ 511]    091C: CD 21                                 int 21h
+[ 500]        :                                       
+[ 501]    090B: F7 26 8A 04                           mul lasprice
+[ 502]        :                                       
+[ 503]    090F: 8B D8                                 mov bx,ax
+[ 504]        :                                       
+[ 505]    0911: E9 1B 01                              jmp totalprice
+[ 506]        :                                       
+[ 507]    0914:                                       sapaghetti:
+[ 508]        :                                       
+[ 509]    0914: B4 09                                 mov ah,9
+[ 510]    0916: BA 9C 02                              Lea dx,str18
+[ 511]    0919: CD 21                                 int 21h
 [ 512]        :                                       
-[ 513]    091E: 3C 31                                 cmp al, '1'
-[ 514]    0920: 74 E3                                 je sapaghetti
-[ 515]        :                                       
-[ 516]    0922: 8B C3                                 mov ax, bx
-[ 517]        :                                       
+[ 513]    091B: 33 C0                                 xor ax,ax
+[ 514]        :                                       
+[ 515]    091D: E8 D0 01                              call decimalInput
+[ 516]        :                                       
+[ 517]    0920: 8B D8                                 mov bx, ax
 [ 518]        :                                       
-[ 519]    0924: F7 26 8E 04                           mul spagprice
-[ 520]        :                                       
-[ 521]    0928: 8B D8                                 mov bx,ax
+[ 519]    0922: B4 09                                 mov ah, 9
+[ 520]    0924: BA B6 02                              lea dx, str19
+[ 521]    0927: CD 21                                 int 21h
 [ 522]        :                                       
-[ 523]    092A: E9 F3 00                              jmp totalprice
-[ 524]        :                                       
+[ 523]    0929: B4 01                                 mov ah, 1
+[ 524]    092B: CD 21                                 int 21h
 [ 525]        :                                       
-[ 526]        :                                       
-[ 527]    092D:                                       biryani:
-[ 528]    092D: B4 09                                 mov ah,9
-[ 529]    092F: BA 9C 02                              Lea dx,str18
-[ 530]    0932: CD 21                                 int 21h
+[ 526]    092D: 3C 31                                 cmp al, '1'
+[ 527]    092F: 74 E3                                 je sapaghetti
+[ 528]        :                                       
+[ 529]    0931: 8B C3                                 mov ax, bx
+[ 530]        :                                       
 [ 531]        :                                       
-[ 532]    0934: 33 C0                                 xor ax,ax
+[ 532]    0933: F7 26 8E 04                           mul spagprice
 [ 533]        :                                       
-[ 534]    0936: E8 A8 01                              call decimalInput
+[ 534]    0937: 8B D8                                 mov bx,ax
 [ 535]        :                                       
-[ 536]    0939: 8B D8                                 mov bx, ax
+[ 536]    0939: E9 F3 00                              jmp totalprice
 [ 537]        :                                       
-[ 538]    093B: B4 09                                 mov ah, 9
-[ 539]    093D: BA B6 02                              lea dx, str19
-[ 540]    0940: CD 21                                 int 21h
-[ 541]        :                                       
-[ 542]    0942: B4 01                                 mov ah, 1
-[ 543]    0944: CD 21                                 int 21h
+[ 538]        :                                       
+[ 539]        :                                       
+[ 540]    093C:                                       biryani:
+[ 541]    093C: B4 09                                 mov ah,9
+[ 542]    093E: BA 9C 02                              Lea dx,str18
+[ 543]    0941: CD 21                                 int 21h
 [ 544]        :                                       
-[ 545]    0946: 3C 31                                 cmp al, '1'
-[ 546]    0948: 74 E3                                 je biryani
-[ 547]        :                                       
-[ 548]    094A: 8B C3                                 mov ax, bx
-[ 549]        :                                       
+[ 545]    0943: 33 C0                                 xor ax,ax
+[ 546]        :                                       
+[ 547]    0945: E8 A8 01                              call decimalInput
+[ 548]        :                                       
+[ 549]    0948: 8B D8                                 mov bx, ax
 [ 550]        :                                       
-[ 551]    094C: F7 26 90 04                           mul birprice
-[ 552]        :                                       
-[ 553]    0950: 8B D8                                 mov bx,ax
+[ 551]    094A: B4 09                                 mov ah, 9
+[ 552]    094C: BA B6 02                              lea dx, str19
+[ 553]    094F: CD 21                                 int 21h
 [ 554]        :                                       
-[ 555]    0952: E9 CB 00                              jmp totalprice
-[ 556]        :                                       
+[ 555]    0951: B4 01                                 mov ah, 1
+[ 556]    0953: CD 21                                 int 21h
 [ 557]        :                                       
-[ 558]        :                                       
-[ 559]    0955:                                       beef:
-[ 560]    0955: B4 09                                 mov ah,9
-[ 561]    0957: BA 9C 02                              Lea dx,str18
-[ 562]    095A: CD 21                                 int 21h
+[ 558]    0955: 3C 31                                 cmp al, '1'
+[ 559]    0957: 74 E3                                 je biryani
+[ 560]        :                                       
+[ 561]    0959: 8B C3                                 mov ax, bx
+[ 562]        :                                       
 [ 563]        :                                       
-[ 564]    095C: 33 C0                                 xor ax,ax
+[ 564]    095B: F7 26 90 04                           mul birprice
 [ 565]        :                                       
-[ 566]    095E: E8 80 01                              call decimalInput
+[ 566]    095F: 8B D8                                 mov bx,ax
 [ 567]        :                                       
-[ 568]    0961: 8B D8                                 mov bx, ax
+[ 568]    0961: E9 CB 00                              jmp totalprice
 [ 569]        :                                       
-[ 570]    0963: B4 09                                 mov ah, 9
-[ 571]    0965: BA B6 02                              lea dx, str19
-[ 572]    0968: CD 21                                 int 21h
-[ 573]        :                                       
-[ 574]    096A: B4 01                                 mov ah, 1
-[ 575]    096C: CD 21                                 int 21h
+[ 570]        :                                       
+[ 571]        :                                       
+[ 572]    0964:                                       beef:
+[ 573]    0964: B4 09                                 mov ah,9
+[ 574]    0966: BA 9C 02                              Lea dx,str18
+[ 575]    0969: CD 21                                 int 21h
 [ 576]        :                                       
-[ 577]    096E: 3C 31                                 cmp al, '1'
-[ 578]    0970: 74 E3                                 je beef
-[ 579]        :                                       
-[ 580]    0972: 8B C3                                 mov ax, bx
-[ 581]        :                                       
+[ 577]    096B: 33 C0                                 xor ax,ax
+[ 578]        :                                       
+[ 579]    096D: E8 80 01                              call decimalInput
+[ 580]        :                                       
+[ 581]    0970: 8B D8                                 mov bx, ax
 [ 582]        :                                       
-[ 583]    0974: F7 26 92 04                           mul beefprice
-[ 584]        :                                       
-[ 585]    0978: 8B D8                                 mov bx,ax
+[ 583]    0972: B4 09                                 mov ah, 9
+[ 584]    0974: BA B6 02                              lea dx, str19
+[ 585]    0977: CD 21                                 int 21h
 [ 586]        :                                       
-[ 587]    097A: E9 A3 00                              jmp totalprice
-[ 588]        :                                       
-[ 589]    097D:                                       tikka:
-[ 590]    097D: B4 09                                 mov ah,9
-[ 591]    097F: BA 9C 02                              Lea dx,str18
-[ 592]    0982: CD 21                                 int 21h
-[ 593]        :                                       
-[ 594]    0984: 33 C0                                 xor ax,ax
+[ 587]    0979: B4 01                                 mov ah, 1
+[ 588]    097B: CD 21                                 int 21h
+[ 589]        :                                       
+[ 590]    097D: 3C 31                                 cmp al, '1'
+[ 591]    097F: 74 E3                                 je beef
+[ 592]        :                                       
+[ 593]    0981: 8B C3                                 mov ax, bx
+[ 594]        :                                       
 [ 595]        :                                       
-[ 596]    0986: E8 58 01                              call decimalInput
+[ 596]    0983: F7 26 92 04                           mul beefprice
 [ 597]        :                                       
-[ 598]    0989: 8B D8                                 mov bx, ax
+[ 598]    0987: 8B D8                                 mov bx,ax
 [ 599]        :                                       
-[ 600]    098B: B4 09                                 mov ah, 9
-[ 601]    098D: BA B6 02                              lea dx, str19
-[ 602]    0990: CD 21                                 int 21h
-[ 603]        :                                       
-[ 604]    0992: B4 01                                 mov ah, 1
-[ 605]    0994: CD 21                                 int 21h
+[ 600]    0989: E9 A3 00                              jmp totalprice
+[ 601]        :                                       
+[ 602]    098C:                                       tikka:
+[ 603]    098C: B4 09                                 mov ah,9
+[ 604]    098E: BA 9C 02                              Lea dx,str18
+[ 605]    0991: CD 21                                 int 21h
 [ 606]        :                                       
-[ 607]    0996: 3C 31                                 cmp al, '1'
-[ 608]    0998: 74 E3                                 je tikka
-[ 609]        :                                       
-[ 610]    099A: 8B C3                                 mov ax, bx
-[ 611]        :                                       
+[ 607]    0993: 33 C0                                 xor ax,ax
+[ 608]        :                                       
+[ 609]    0995: E8 58 01                              call decimalInput
+[ 610]        :                                       
+[ 611]    0998: 8B D8                                 mov bx, ax
 [ 612]        :                                       
-[ 613]    099C: F7 26 94 04                           mul tikkaprice
-[ 614]        :                                       
-[ 615]    09A0: 8B D8                                 mov bx,ax
+[ 613]    099A: B4 09                                 mov ah, 9
+[ 614]    099C: BA B6 02                              lea dx, str19
+[ 615]    099F: CD 21                                 int 21h
 [ 616]        :                                       
-[ 617]    09A2: EB 7C                                 jmp totalprice
-[ 618]        :                                       
-[ 619]    09A4:                                       pizza:
-[ 620]    09A4: B4 09                                 mov ah,9
-[ 621]    09A6: BA 9C 02                              Lea dx,str18
-[ 622]    09A9: CD 21                                 int 21h
-[ 623]        :                                       
-[ 624]    09AB: 33 C0                                 xor ax,ax
+[ 617]    09A1: B4 01                                 mov ah, 1
+[ 618]    09A3: CD 21                                 int 21h
+[ 619]        :                                       
+[ 620]    09A5: 3C 31                                 cmp al, '1'
+[ 621]    09A7: 74 E3                                 je tikka
+[ 622]        :                                       
+[ 623]    09A9: 8B C3                                 mov ax, bx
+[ 624]        :                                       
 [ 625]        :                                       
-[ 626]    09AD: E8 31 01                              call decimalInput
+[ 626]    09AB: F7 26 94 04                           mul tikkaprice
 [ 627]        :                                       
-[ 628]    09B0: 8B D8                                 mov bx, ax
+[ 628]    09AF: 8B D8                                 mov bx,ax
 [ 629]        :                                       
-[ 630]    09B2: B4 09                                 mov ah, 9
-[ 631]    09B4: BA B6 02                              lea dx, str19
-[ 632]    09B7: CD 21                                 int 21h
-[ 633]        :                                       
-[ 634]    09B9: B4 01                                 mov ah, 1
-[ 635]    09BB: CD 21                                 int 21h
+[ 630]    09B1: EB 7C                                 jmp totalprice
+[ 631]        :                                       
+[ 632]    09B3:                                       pizza:
+[ 633]    09B3: B4 09                                 mov ah,9
+[ 634]    09B5: BA 9C 02                              Lea dx,str18
+[ 635]    09B8: CD 21                                 int 21h
 [ 636]        :                                       
-[ 637]    09BD: 3C 31                                 cmp al, '1'
-[ 638]    09BF: 74 E3                                 je pizza
-[ 639]        :                                       
-[ 640]    09C1: 8B C3                                 mov ax, bx
-[ 641]        :                                       
+[ 637]    09BA: 33 C0                                 xor ax,ax
+[ 638]        :                                       
+[ 639]    09BC: E8 31 01                              call decimalInput
+[ 640]        :                                       
+[ 641]    09BF: 8B D8                                 mov bx, ax
 [ 642]        :                                       
-[ 643]    09C3: F7 26 96 04                           mul pizzaprice
-[ 644]        :                                       
-[ 645]    09C7: 8B D8                                 mov bx,ax
+[ 643]    09C1: B4 09                                 mov ah, 9
+[ 644]    09C3: BA B6 02                              lea dx, str19
+[ 645]    09C6: CD 21                                 int 21h
 [ 646]        :                                       
-[ 647]    09C9: EB 55                                 jmp totalprice
-[ 648]        :                                       
-[ 649]    09CB:                                       burger:
-[ 650]    09CB: B4 09                                 mov ah,9
-[ 651]    09CD: BA 9C 02                              Lea dx,str18
-[ 652]    09D0: CD 21                                 int 21h
-[ 653]        :                                       
-[ 654]    09D2: 33 C0                                 xor ax,ax
+[ 647]    09C8: B4 01                                 mov ah, 1
+[ 648]    09CA: CD 21                                 int 21h
+[ 649]        :                                       
+[ 650]    09CC: 3C 31                                 cmp al, '1'
+[ 651]    09CE: 74 E3                                 je pizza
+[ 652]        :                                       
+[ 653]    09D0: 8B C3                                 mov ax, bx
+[ 654]        :                                       
 [ 655]        :                                       
-[ 656]    09D4: E8 0A 01                              call decimalInput
+[ 656]    09D2: F7 26 96 04                           mul pizzaprice
 [ 657]        :                                       
-[ 658]    09D7: 8B D8                                 mov bx, ax
+[ 658]    09D6: 8B D8                                 mov bx,ax
 [ 659]        :                                       
-[ 660]    09D9: B4 09                                 mov ah, 9
-[ 661]    09DB: BA B6 02                              lea dx, str19
-[ 662]    09DE: CD 21                                 int 21h
-[ 663]        :                                       
-[ 664]    09E0: B4 01                                 mov ah, 1
-[ 665]    09E2: CD 21                                 int 21h
+[ 660]    09D8: EB 55                                 jmp totalprice
+[ 661]        :                                       
+[ 662]    09DA:                                       burger:
+[ 663]    09DA: B4 09                                 mov ah,9
+[ 664]    09DC: BA 9C 02                              Lea dx,str18
+[ 665]    09DF: CD 21                                 int 21h
 [ 666]        :                                       
-[ 667]    09E4: 3C 31                                 cmp al, '1'
-[ 668]    09E6: 74 E3                                 je burger
-[ 669]        :                                       
-[ 670]    09E8: 8B C3                                 mov ax, bx
-[ 671]        :                                       
+[ 667]    09E1: 33 C0                                 xor ax,ax
+[ 668]        :                                       
+[ 669]    09E3: E8 0A 01                              call decimalInput
+[ 670]        :                                       
+[ 671]    09E6: 8B D8                                 mov bx, ax
 [ 672]        :                                       
-[ 673]    09EA: F7 26 98 04                           mul burgerprice
-[ 674]        :                                       
-[ 675]    09EE: 8B D8                                 mov bx,ax
+[ 673]    09E8: B4 09                                 mov ah, 9
+[ 674]    09EA: BA B6 02                              lea dx, str19
+[ 675]    09ED: CD 21                                 int 21h
 [ 676]        :                                       
-[ 677]    09F0: EB 2E                                 jmp totalprice
-[ 678]        :                                       
+[ 677]    09EF: B4 01                                 mov ah, 1
+[ 678]    09F1: CD 21                                 int 21h
 [ 679]        :                                       
-[ 680]    09F2:                                       price:
-[ 681]        :                                       
-[ 682]    09F2: B4 09                                 mov ah,9
-[ 683]    09F4: BA 64 02                              Lea dx,str15
-[ 684]    09F7: CD 21                                 int 21h
+[ 680]    09F3: 3C 31                                 cmp al, '1'
+[ 681]    09F5: 74 E3                                 je burger
+[ 682]        :                                       
+[ 683]    09F7: 8B C3                                 mov ax, bx
+[ 684]        :                                       
 [ 685]        :                                       
-[ 686]    09F9: B8 00 00                              mov ax,0
-[ 687]    09FC: BB 00 00                              mov bx,0
-[ 688]    09FF: B9 00 00                              mov cx,0
-[ 689]    0A02: BA 00 00                              mov dx,0
-[ 690]        :                                       
-[ 691]    0A05:                                       input:
-[ 692]    0A05: 25 0F 00                              and ax,000Fh
-[ 693]    0A08: 50                                    push ax
-[ 694]    0A09: B8 0A 00                              mov ax,10
-[ 695]    0A0C: F7 E3                                 mul bx
-[ 696]    0A0E: 8B D8                                 mov bx,ax
-[ 697]    0A10: 58                                    pop ax
-[ 698]    0A11: 03 D8                                 add bx,ax
-[ 699]        :                                       
-[ 700]    0A13: B4 01                                 mov ah,1
-[ 701]    0A15: CD 21                                 int 21h
-[ 702]        :                                       
-[ 703]    0A17: 3C 0D                                 cmp al,0Dh
-[ 704]    0A19: 75 EA                                 jne input
-[ 705]        :                                       
-[ 706]    0A1B: 01 1E 9A 04                           add nprice,bx
-[ 707]    0A1F: C3                                    ret
-[ 708]        :                                       
-[ 709]        :                                       
-[ 710]        :                                       
-[ 711]    0A20:                                       totalprice:
+[ 686]    09F9: F7 26 98 04                           mul burgerprice
+[ 687]        :                                       
+[ 688]    09FD: 8B D8                                 mov bx,ax
+[ 689]        :                                       
+[ 690]    09FF: EB 2E                                 jmp totalprice
+[ 691]        :                                       
+[ 692]        :                                       
+[ 693]    0A01:                                       price:
+[ 694]        :                                       
+[ 695]    0A01: B4 09                                 mov ah,9
+[ 696]    0A03: BA 64 02                              Lea dx,str15
+[ 697]    0A06: CD 21                                 int 21h
+[ 698]        :                                       
+[ 699]    0A08: B8 00 00                              mov ax,0
+[ 700]    0A0B: BB 00 00                              mov bx,0
+[ 701]    0A0E: B9 00 00                              mov cx,0
+[ 702]    0A11: BA 00 00                              mov dx,0
+[ 703]        :                                       
+[ 704]    0A14:                                       input:
+[ 705]    0A14: 25 0F 00                              and ax,000Fh
+[ 706]    0A17: 50                                    push ax
+[ 707]    0A18: B8 0A 00                              mov ax,10
+[ 708]    0A1B: F7 E3                                 mul bx
+[ 709]    0A1D: 8B D8                                 mov bx,ax
+[ 710]    0A1F: 58                                    pop ax
+[ 711]    0A20: 03 D8                                 add bx,ax
 [ 712]        :                                       
-[ 713]    0A20: A1 9C 04                              mov ax, totPrice
-[ 714]    0A23: A3 9E 04                              mov prevPrice, ax
-[ 715]    0A26: 01 1E 9C 04                           add totPrice, bx
-[ 716]        :                                       
-[ 717]    0A2A: B4 02                                 mov ah, 2
-[ 718]    0A2C: B2 0A                                 mov dl, 10
-[ 719]    0A2E: CD 21                                 int 21h
-[ 720]        :                                       
-[ 721]    0A30: B2 0D                                 mov dl, 13
-[ 722]    0A32: CD 21                                 int 21h
+[ 713]    0A22: B4 01                                 mov ah,1
+[ 714]    0A24: CD 21                                 int 21h
+[ 715]        :                                       
+[ 716]    0A26: 3C 0D                                 cmp al,0Dh
+[ 717]    0A28: 75 EA                                 jne input
+[ 718]        :                                       
+[ 719]    0A2A: 01 1E 9A 04                           add nprice,bx
+[ 720]    0A2E: C3                                    ret
+[ 721]        :                                       
+[ 722]        :                                       
 [ 723]        :                                       
-[ 724]    0A34: B4 09                                 mov ah, 9
-[ 725]    0A36: BA 40 00                              lea dx, str2
-[ 726]    0A39: CD 21                                 int 21h
-[ 727]        :                                       
-[ 728]    0A3B: B4 02                                 mov ah, 2
-[ 729]    0A3D: B2 20                                 mov dl, ' '
-[ 730]    0A3F: CD 21                                 int 21h
-[ 731]        :                                       
-[ 732]    0A41: B4 09                                 mov ah, 9
+[ 724]    0A2F:                                       totalprice:
+[ 725]        :                                       
+[ 726]    0A2F: A1 9C 04                              mov ax, totPrice
+[ 727]    0A32: A3 9E 04                              mov prevPrice, ax
+[ 728]    0A35: 01 1E 9C 04                           add totPrice, bx
+[ 729]        :                                       
+[ 730]    0A39: B4 02                                 mov ah, 2
+[ 731]    0A3B: B2 0A                                 mov dl, 10
+[ 732]    0A3D: CD 21                                 int 21h
 [ 733]        :                                       
-[ 734]    0A43: BA 81 05                              lea dx, c2
-[ 735]    0A46: CD 21                                 int 21h
+[ 734]    0A3F: B2 0D                                 mov dl, 13
+[ 735]    0A41: CD 21                                 int 21h
 [ 736]        :                                       
-[ 737]    0A48: BA 04 05                              lea dx, nameArr
-[ 738]    0A4B: CD 21                                 int 21h
-[ 739]        :                                       
-[ 740]    0A4D: B4 02                                 mov ah, 2
-[ 741]    0A4F: B2 20                                 mov dl, ' '
-[ 742]    0A51: CD 21                                 int 21h
-[ 743]        :                                       
-[ 744]    0A53: B4 09                                 mov ah, 9
-[ 745]        :                                       
-[ 746]    0A55: BA 8D 05                              lea dx, c3
-[ 747]    0A58: CD 21                                 int 21h
-[ 748]        :                                       
-[ 749]    0A5A: B4 02                                 mov ah, 2
-[ 750]    0A5C: 8A 16 68 05                           mov dl, customerID
-[ 751]    0A60: 80 C2 30                              add dl, 48
-[ 752]    0A63: CD 21                                 int 21h
-[ 753]        :                                       
-[ 754]    0A65: B4 09                                 mov ah, 9
-[ 755]    0A67: BA A0 05                              lea dx, c4
-[ 756]    0A6A: CD 21                                 int 21h
-[ 757]        :                                       
-[ 758]    0A6C: B4 02                                 mov ah, 2
-[ 759]    0A6E: 8A 16 69 05                           mov dl, foodOrderID
-[ 760]    0A72: 80 C2 30                              add dl, 48
-[ 761]    0A75: CD 21                                 int 21h
-[ 762]        :                                       
-[ 763]    0A77: B4 09                                 mov ah,9
-[ 764]    0A79: BA 16 03                              lea dx, str20
-[ 765]    0A7C: CD 21                                 int 21h
+[ 737]    0A43: B4 09                                 mov ah, 9
+[ 738]    0A45: BA 40 00                              lea dx, str2
+[ 739]    0A48: CD 21                                 int 21h
+[ 740]        :                                       
+[ 741]    0A4A: B4 02                                 mov ah, 2
+[ 742]    0A4C: B2 20                                 mov dl, ' '
+[ 743]    0A4E: CD 21                                 int 21h
+[ 744]        :                                       
+[ 745]    0A50: B4 09                                 mov ah, 9
+[ 746]        :                                       
+[ 747]    0A52: BA 81 05                              lea dx, c2
+[ 748]    0A55: CD 21                                 int 21h
+[ 749]        :                                       
+[ 750]    0A57: BA 04 05                              lea dx, nameArr
+[ 751]    0A5A: CD 21                                 int 21h
+[ 752]        :                                       
+[ 753]    0A5C: B4 02                                 mov ah, 2
+[ 754]    0A5E: B2 20                                 mov dl, ' '
+[ 755]    0A60: CD 21                                 int 21h
+[ 756]        :                                       
+[ 757]    0A62: B4 09                                 mov ah, 9
+[ 758]        :                                       
+[ 759]    0A64: BA 8D 05                              lea dx, c3
+[ 760]    0A67: CD 21                                 int 21h
+[ 761]        :                                       
+[ 762]    0A69: B4 02                                 mov ah, 2
+[ 763]    0A6B: 8A 16 68 05                           mov dl, customerID
+[ 764]    0A6F: 80 C2 30                              add dl, 48
+[ 765]    0A72: CD 21                                 int 21h
 [ 766]        :                                       
-[ 767]    0A7E: 33 C0                                 xor ax,ax
-[ 768]        :                                       
-[ 769]        :                                       
-[ 770]    0A80: A1 9E 04                              mov ax,prevPrice
-[ 771]    0A83: E8 B0 00                              call decimalOutput
-[ 772]        :                                       
-[ 773]    0A86: B4 09                                 mov ah, 9
-[ 774]    0A88: BA 30 03                              Lea dx,str21
-[ 775]    0A8B: CD 21                                 int 21h
-[ 776]        :                                       
-[ 777]        :                                       
-[ 778]    0A8D: 33 C0                                 xor ax,ax
+[ 767]    0A74: B4 09                                 mov ah, 9
+[ 768]    0A76: BA A0 05                              lea dx, c4
+[ 769]    0A79: CD 21                                 int 21h
+[ 770]        :                                       
+[ 771]    0A7B: B4 02                                 mov ah, 2
+[ 772]    0A7D: 8A 16 69 05                           mov dl, foodOrderID
+[ 773]    0A81: 80 C2 30                              add dl, 48
+[ 774]    0A84: CD 21                                 int 21h
+[ 775]        :                                       
+[ 776]    0A86: B4 09                                 mov ah,9
+[ 777]    0A88: BA 16 03                              lea dx, str20
+[ 778]    0A8B: CD 21                                 int 21h
 [ 779]        :                                       
-[ 780]        :                                       
-[ 781]    0A8F: A1 9C 04                              mov ax, totPrice
-[ 782]    0A92: E8 A1 00                              call decimalOutput
-[ 783]        :                                       
-[ 784]    0A95: B4 09                                 mov ah,9
-[ 785]    0A97: BA 5E 01                              lea dx, str9
-[ 786]    0A9A: CD 21                                 int 21h
-[ 787]        :                                       
-[ 788]    0A9C: BA 46 03                              Lea dx,str22
-[ 789]    0A9F: CD 21                                 int 21h
+[ 780]    0A8D: 33 C0                                 xor ax,ax
+[ 781]        :                                       
+[ 782]        :                                       
+[ 783]    0A8F: A1 9E 04                              mov ax,prevPrice
+[ 784]    0A92: E8 B0 00                              call decimalOutput
+[ 785]        :                                       
+[ 786]    0A95: B4 09                                 mov ah, 9
+[ 787]    0A97: BA 30 03                              Lea dx,str21
+[ 788]    0A9A: CD 21                                 int 21h
+[ 789]        :                                       
 [ 790]        :                                       
-[ 791]    0AA1: B4 09                                 mov ah,9
-[ 792]    0AA3: BA 60 03                              Lea dx,str23
-[ 793]    0AA6: CD 21                                 int 21h
-[ 794]        :                                       
-[ 795]    0AA8: B4 01                                 mov ah,1
-[ 796]    0AAA: CD 21                                 int 21h
-[ 797]        :                                       
-[ 798]    0AAC: 3C 31                                 cmp al,31h
-[ 799]    0AAE: 75 03 E9 32 FC                        je start
+[ 791]    0A9C: 33 C0                                 xor ax,ax
+[ 792]        :                                       
+[ 793]        :                                       
+[ 794]    0A9E: A1 9C 04                              mov ax, totPrice
+[ 795]    0AA1: E8 A1 00                              call decimalOutput
+[ 796]        :                                       
+[ 797]    0AA4: B4 09                                 mov ah,9
+[ 798]    0AA6: BA 5E 01                              lea dx, str9
+[ 799]    0AA9: CD 21                                 int 21h
 [ 800]        :                                       
-[ 801]    0AB3: B4 09                                 mov ah,9
-[ 802]    0AB5: BA 7E 03                              Lea dx,str24
-[ 803]    0AB8: CD 21                                 int 21h
-[ 804]        :                                       
-[ 805]    0ABA: BA 9C 03                              lea dx, prep
-[ 806]    0ABD: CD 21                                 int 21h
+[ 801]    0AAB: BA 46 03                              Lea dx,str22
+[ 802]    0AAE: CD 21                                 int 21h
+[ 803]        :                                       
+[ 804]    0AB0: B4 09                                 mov ah,9
+[ 805]    0AB2: BA 60 03                              Lea dx,str23
+[ 806]    0AB5: CD 21                                 int 21h
 [ 807]        :                                       
-[ 808]    0ABF: BA B0 03                              lea dx, info
-[ 809]    0AC2: CD 21                                 int 21h
+[ 808]    0AB7: B4 01                                 mov ah,1
+[ 809]    0AB9: CD 21                                 int 21h
 [ 810]        :                                       
-[ 811]    0AC4: BA 40 00                              lea dx, str2
-[ 812]    0AC7: CD 21                                 int 21h
+[ 811]    0ABB: 3C 31                                 cmp al,31h
+[ 812]    0ABD: 75 03 E9 23 FC                        je start
 [ 813]        :                                       
-[ 814]    0AC9: BA E0 03                              lea dx, ali
-[ 815]    0ACC: CD 21                                 int 21h
-[ 816]        :                                       
-[ 817]    0ACE: BA 0A 04                              lea dx, ayrish
-[ 818]    0AD1: CD 21                                 int 21h
-[ 819]        :                                       
-[ 820]    0AD3: BA 34 04                              lea dx, saif
-[ 821]    0AD6: CD 21                                 int 21h
-[ 822]        :                                       
-[ 823]    0AD8: BA 5E 04                              lea dx, aneeq
-[ 824]    0ADB: CD 21                                 int 21h
-[ 825]        :                                       
-[ 826]    0ADD:                                       FExit:
-[ 827]    0ADD: B4 4C                                 mov ah,4ch
-[ 828]    0ADF: CD 21                                 int 21h
+[ 814]    0AC2: B4 09                                 mov ah,9
+[ 815]    0AC4: BA 7E 03                              Lea dx,str24
+[ 816]    0AC7: CD 21                                 int 21h
+[ 817]        :                                       
+[ 818]    0AC9: BA 9C 03                              lea dx, prep
+[ 819]    0ACC: CD 21                                 int 21h
+[ 820]        :                                       
+[ 821]    0ACE: BA B0 03                              lea dx, info
+[ 822]    0AD1: CD 21                                 int 21h
+[ 823]        :                                       
+[ 824]    0AD3: BA 40 00                              lea dx, str2
+[ 825]    0AD6: CD 21                                 int 21h
+[ 826]        :                                       
+[ 827]    0AD8: BA E0 03                              lea dx, ali
+[ 828]    0ADB: CD 21                                 int 21h
 [ 829]        :                                       
-[ 830]        :                                       main endp
-[ 831]        :                                       
+[ 830]    0ADD: BA 0A 04                              lea dx, ayrish
+[ 831]    0AE0: CD 21                                 int 21h
 [ 832]        :                                       
-[ 833]    0AE1:                                       decimalInput proc
-[ 834]        :                                       
-[ 835]    0AE1: 53                                    push bx
-[ 836]    0AE2: 51                                    push cx
-[ 837]    0AE3: 52                                    push dx
-[ 838]    0AE4:                                       inputStart:
-[ 839]        :                                       
-[ 840]    0AE4: B4 02                                 mov ah, 2
-[ 841]    0AE6: B2 20                                 mov dl, ' '
-[ 842]    0AE8: CD 21                                 int 21h
-[ 843]        :                                       
-[ 844]    0AEA: 33 DB                                 xor bx, bx
-[ 845]    0AEC: 33 C9                                 xor cx, cx
-[ 846]        :                                       
-[ 847]    0AEE: B4 01                                 mov ah, 1
-[ 848]    0AF0: CD 21                                 int 21h
-[ 849]        :                                       
-[ 850]    0AF2: 3C 2D                                 cmp al, '-'
-[ 851]    0AF4: 74 06                                 je minus
+[ 833]    0AE2: BA 34 04                              lea dx, saif
+[ 834]    0AE5: CD 21                                 int 21h
+[ 835]        :                                       
+[ 836]    0AE7: BA 5E 04                              lea dx, aneeq
+[ 837]    0AEA: CD 21                                 int 21h
+[ 838]        :                                       
+[ 839]    0AEC:                                       FExit:
+[ 840]    0AEC: B4 4C                                 mov ah,4ch
+[ 841]    0AEE: CD 21                                 int 21h
+[ 842]        :                                       
+[ 843]        :                                       main endp
+[ 844]        :                                       
+[ 845]        :                                       
+[ 846]    0AF0:                                       decimalInput proc
+[ 847]        :                                       
+[ 848]    0AF0: 53                                    push bx
+[ 849]    0AF1: 51                                    push cx
+[ 850]    0AF2: 52                                    push dx
+[ 851]    0AF3:                                       inputStart:
 [ 852]        :                                       
-[ 853]    0AF6: 3C 2B                                 cmp al, '+'
-[ 854]    0AF8: 74 05                                 je plus
-[ 855]    0AFA: EB 05                                 jmp repeat
+[ 853]    0AF3: B4 02                                 mov ah, 2
+[ 854]    0AF5: B2 20                                 mov dl, ' '
+[ 855]    0AF7: CD 21                                 int 21h
 [ 856]        :                                       
-[ 857]    0AFC:                                       minus:
-[ 858]    0AFC: B9 01 00                              mov cx, 1
-[ 859]    0AFF:                                       plus:
-[ 860]    0AFF: CD 21                                 int 21h
-[ 861]        :                                       
-[ 862]    0B01:                                       repeat:
-[ 863]        :                                       
-[ 864]    0B01: 3C 30                                 cmp al, '0'
-[ 865]    0B03: 7C 24                                 jnge nonDigit
-[ 866]    0B05: 3C 39                                 cmp al, '9'
-[ 867]    0B07: 7F 20                                 jnle nonDigit
-[ 868]        :                                       
-[ 869]    0B09: 25 0F 00                              and ax, 000fh
-[ 870]    0B0C: 50                                    push ax
-[ 871]        :                                       
-[ 872]    0B0D: B8 0A 00                              mov ax,10
-[ 873]    0B10: F7 E3                                 mul bx
-[ 874]    0B12: 5B                                    pop bx
-[ 875]    0B13: 03 D8                                 add bx, ax
+[ 857]    0AF9: 33 DB                                 xor bx, bx
+[ 858]    0AFB: 33 C9                                 xor cx, cx
+[ 859]        :                                       
+[ 860]    0AFD: B4 01                                 mov ah, 1
+[ 861]    0AFF: CD 21                                 int 21h
+[ 862]        :                                       
+[ 863]    0B01: 3C 2D                                 cmp al, '-'
+[ 864]    0B03: 74 06                                 je minus
+[ 865]        :                                       
+[ 866]    0B05: 3C 2B                                 cmp al, '+'
+[ 867]    0B07: 74 05                                 je plus
+[ 868]    0B09: EB 05                                 jmp repeat
+[ 869]        :                                       
+[ 870]    0B0B:                                       minus:
+[ 871]    0B0B: B9 01 00                              mov cx, 1
+[ 872]    0B0E:                                       plus:
+[ 873]    0B0E: CD 21                                 int 21h
+[ 874]        :                                       
+[ 875]    0B10:                                       repeat:
 [ 876]        :                                       
-[ 877]    0B15: B4 01                                 mov ah, 1
-[ 878]    0B17: CD 21                                 int 21h
-[ 879]    0B19: 3C 0D                                 cmp al, 0dh
-[ 880]    0B1B: 75 E4                                 jne repeat
+[ 877]    0B10: 3C 30                                 cmp al, '0'
+[ 878]    0B12: 7C 24                                 jnge nonDigit
+[ 879]    0B14: 3C 39                                 cmp al, '9'
+[ 880]    0B16: 7F 20                                 jnle nonDigit
 [ 881]        :                                       
-[ 882]    0B1D: 8B C3                                 mov ax, bx
-[ 883]    0B1F: 0B C9                                 or cx, cx
+[ 882]    0B18: 25 0F 00                              and ax, 000fh
+[ 883]    0B1B: 50                                    push ax
 [ 884]        :                                       
-[ 885]    0B21: 74 02                                 je exit
-[ 886]    0B23: F7 D8                                 neg ax
-[ 887]        :                                       
-[ 888]    0B25:                                       exit:
+[ 885]    0B1C: B8 0A 00                              mov ax,10
+[ 886]    0B1F: F7 E3                                 mul bx
+[ 887]    0B21: 5B                                    pop bx
+[ 888]    0B22: 03 D8                                 add bx, ax
 [ 889]        :                                       
-[ 890]    0B25: 5A                                    pop dx
-[ 891]    0B26: 59                                    pop cx
-[ 892]    0B27: 5B                                    pop bx
-[ 893]    0B28: C3                                    ret
+[ 890]    0B24: B4 01                                 mov ah, 1
+[ 891]    0B26: CD 21                                 int 21h
+[ 892]    0B28: 3C 0D                                 cmp al, 0dh
+[ 893]    0B2A: 75 E4                                 jne repeat
 [ 894]        :                                       
-[ 895]    0B29:                                       nonDigit:
-[ 896]        :                                       
-[ 897]    0B29: B4 02                                 mov ah, 2
-[ 898]    0B2B: B2 0D                                 mov dl, 0dh
-[ 899]    0B2D: CD 21                                 int 21h
-[ 900]    0B2F: B2 0A                                 mov dl, 0ah
-[ 901]    0B31: CD 21                                 int 21h
-[ 902]    0B33: EB AF                                 jmp inputStart
-[ 903]    0B35: C3                                    ret
-[ 904]        :                                       decimalInput endp
-[ 905]        :                                       
-[ 906]        :                                       
+[ 895]    0B2C: 8B C3                                 mov ax, bx
+[ 896]    0B2E: 0B C9                                 or cx, cx
+[ 897]        :                                       
+[ 898]    0B30: 74 02                                 je exit
+[ 899]    0B32: F7 D8                                 neg ax
+[ 900]        :                                       
+[ 901]    0B34:                                       exit:
+[ 902]        :                                       
+[ 903]    0B34: 5A                                    pop dx
+[ 904]    0B35: 59                                    pop cx
+[ 905]    0B36: 5B                                    pop bx
+[ 906]    0B37: C3                                    ret
 [ 907]        :                                       
-[ 908]    0B36:                                       decimalOutput proc
+[ 908]    0B38:                                       nonDigit:
 [ 909]        :                                       
-[ 910]    0B36: 50                                    push  ax
-[ 911]    0B37: 53                                    push  bx
-[ 912]    0B38: 51                                    push  cx
-[ 913]    0B39: 52                                    push  dx
-[ 914]        :                                       
-[ 915]    0B3A: 0B C0                                 or ax, ax
-[ 916]    0B3C: 7D 0A                                 jge IF
-[ 917]        :                                       
-[ 918]    0B3E: 50                                    push ax
-[ 919]    0B3F: B2 20                                 mov dl, ' '
-[ 920]    0B41: B4 02                                 mov ah, 2
-[ 921]    0B43: CD 21                                 int 21h
-[ 922]    0B45: 58                                    pop ax
-[ 923]    0B46: F7 D8                                 neg ax
-[ 924]        :                                       
-[ 925]    0B48:                                       IF:
-[ 926]        :                                       
-[ 927]    0B48: 33 C9                                 xor cx, cx
-[ 928]    0B4A: BB 0A 00                              mov  bx, 10d
-[ 929]        :                                       
-[ 930]    0B4D:                                       loopRepeat:
-[ 931]        :                                       
-[ 932]    0B4D: 33 D2                                 xor dx, dx
-[ 933]    0B4F: F7 F3                                 div bx
-[ 934]    0B51: 52                                    push dx
-[ 935]    0B52: 41                                    inc cx
-[ 936]        :                                       
+[ 910]    0B38: B4 02                                 mov ah, 2
+[ 911]    0B3A: B2 0D                                 mov dl, 0dh
+[ 912]    0B3C: CD 21                                 int 21h
+[ 913]    0B3E: B2 0A                                 mov dl, 0ah
+[ 914]    0B40: CD 21                                 int 21h
+[ 915]    0B42: EB AF                                 jmp inputStart
+[ 916]    0B44: C3                                    ret
+[ 917]        :                                       decimalInput endp
+[ 918]        :                                       
+[ 919]        :                                       
+[ 920]        :                                       
+[ 921]    0B45:                                       decimalOutput proc
+[ 922]        :                                       
+[ 923]    0B45: 50                                    push  ax
+[ 924]    0B46: 53                                    push  bx
+[ 925]    0B47: 51                                    push  cx
+[ 926]    0B48: 52                                    push  dx
+[ 927]        :                                       
+[ 928]    0B49: 0B C0                                 or ax, ax
+[ 929]    0B4B: 7D 0A                                 jge IF
+[ 930]        :                                       
+[ 931]    0B4D: 50                                    push ax
+[ 932]    0B4E: B2 20                                 mov dl, ' '
+[ 933]    0B50: B4 02                                 mov ah, 2
+[ 934]    0B52: CD 21                                 int 21h
+[ 935]    0B54: 58                                    pop ax
+[ 936]    0B55: F7 D8                                 neg ax
 [ 937]        :                                       
-[ 938]    0B53: 0B C0                                 or  ax, ax
-[ 939]    0B55: 75 F6                                 jne   loopRepeat
-[ 940]        :                                       
-[ 941]    0B57: B4 02                                 mov   ah, 2
+[ 938]    0B57:                                       IF:
+[ 939]        :                                       
+[ 940]    0B57: 33 C9                                 xor cx, cx
+[ 941]    0B59: BB 0A 00                              mov  bx, 10d
 [ 942]        :                                       
-[ 943]    0B59:                                       printLoop:
+[ 943]    0B5C:                                       loopRepeat:
 [ 944]        :                                       
-[ 945]    0B59: 5A                                    pop  dx
-[ 946]    0B5A: 80 CA 30                              or dl, 30h
-[ 947]    0B5D: CD 21                                 int 21h
-[ 948]    0B5F: E2 F8                                 loop  printLoop
+[ 945]    0B5C: 33 D2                                 xor dx, dx
+[ 946]    0B5E: F7 F3                                 div bx
+[ 947]    0B60: 52                                    push dx
+[ 948]    0B61: 41                                    inc cx
 [ 949]        :                                       
-[ 950]    0B61: 5A                                    pop dx
-[ 951]    0B62: 59                                    pop cx
-[ 952]    0B63: 5B                                    pop bx
-[ 953]    0B64: 58                                    pop ax
-[ 954]        :                                       
-[ 955]    0B65: C3                                    ret
-[ 956]        :                                       decimalOutput endp
+[ 950]        :                                       
+[ 951]    0B62: 0B C0                                 or  ax, ax
+[ 952]    0B64: 75 F6                                 jne   loopRepeat
+[ 953]        :                                       
+[ 954]    0B66: B4 02                                 mov   ah, 2
+[ 955]        :                                       
+[ 956]    0B68:                                       printLoop:
 [ 957]        :                                       
-[ 958]        :                                       end main
-[ 959]        :                                       
-[ 960]        :                                       
-[ 961]        :                                       
+[ 958]    0B68: 5A                                    pop  dx
+[ 959]    0B69: 80 CA 30                              or dl, 30h
+[ 960]    0B6C: CD 21                                 int 21h
+[ 961]    0B6E: E2 F8                                 loop  printLoop
+[ 962]        :                                       
+[ 963]    0B70: 5A                                    pop dx
+[ 964]    0B71: 59                                    pop cx
+[ 965]    0B72: 5B                                    pop bx
+[ 966]    0B73: 58                                    pop ax
+[ 967]        :                                       
+[ 968]    0B74: C3                                    ret
+[ 969]        :                                       decimalOutput endp
+[ 970]        :                                       
+[ 971]        :                                       end main
+[ 972]        :                                       
+[ 973]        :                                       
+[ 974]        :                                       
  
 ===================================================================================================
  
@@ -1079,7 +1092,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 66      -   bytes on last page (l.byte)
+0002: 75      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 07      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -1095,8 +1108,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 79      -   check sum (l.byte)
-0013: 4E      -   check sum (h.byte)
+0012: 12      -   check sum (l.byte)
+0013: B3      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 6C      -   CS - code segment (l.byte)

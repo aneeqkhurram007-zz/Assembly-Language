@@ -24,7 +24,7 @@
 
     str9 dw 10,13,10,13,"----------------------------","$" 
 
-    str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press 3. Exit $" 
+    str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press any key to Exit $" 
 
     str11 dw 10,13,10,13,"Your Choice: $" 
 
@@ -208,6 +208,8 @@ intiMenu:
         cmp choice, 50
         jne menuadd
         
+
+check1:
         mov ah,9
         Lea dx,str17
         int 21h
@@ -236,6 +238,9 @@ intiMenu:
 
         cmp al, 38h
         je burger
+        
+        cmp al, 39h
+        jge check1
 
         
 menuadd:
@@ -366,6 +371,8 @@ start1:
         cmp choice, 50
         jne menuadd      
         
+
+check2:
         mov ah,9
         Lea dx,str17
         int 21h
@@ -395,6 +402,12 @@ start1:
         cmp al, 38h
         je burger
 
+        cmp al, 39h
+        je newmenu_
+        
+        cmp al, 3Ah
+        jge check2
+        
         
 newmenu_:
         

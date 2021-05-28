@@ -62,35 +62,37 @@ INPUTNAME                	0001A     	-1        	LABEL     	code
 START                    	00025     	-1        	LABEL     	code      
 MENU                     	0003A     	-1        	LABEL     	code      
 INTIMENU                 	0007A     	-1        	LABEL     	code      
-MENUADD                  	000C7     	-1        	LABEL     	code      
-L1                       	000F8     	-1        	LABEL     	code      
-PRINT                    	00105     	-1        	LABEL     	code      
-START1                   	00108     	-1        	LABEL     	code      
-NEWMENU_                 	001CD     	-1        	LABEL     	code      
-MARGA                    	001F5     	-1        	LABEL     	code      
-LASAGN                   	0021D     	-1        	LABEL     	code      
-SAPAGHETTI               	00245     	-1        	LABEL     	code      
-BIRYANI                  	0026D     	-1        	LABEL     	code      
-BEEF                     	00295     	-1        	LABEL     	code      
-TIKKA                    	002BD     	-1        	LABEL     	code      
-PIZZA                    	002E4     	-1        	LABEL     	code      
-BURGER                   	0030B     	-1        	LABEL     	code      
-PRICE                    	00332     	-1        	LABEL     	code      
-INPUT                    	00345     	-1        	LABEL     	code      
-TOTALPRICE               	00360     	-1        	LABEL     	code      
-FEXIT                    	0041D     	-1        	LABEL     	code      
-DECIMALINPUT             	00421     	-1        	NEAR      	code      
-INPUTSTART               	00424     	-1        	LABEL     	code      
-MINUS                    	0043C     	-1        	LABEL     	code      
-PLUS                     	0043F     	-1        	LABEL     	code      
-REPEAT                   	00441     	-1        	LABEL     	code      
-EXIT                     	00465     	-1        	LABEL     	code      
-NONDIGIT                 	00469     	-1        	LABEL     	code      
-DECIMALOUTPUT            	00476     	-1        	NEAR      	code      
-IF                       	00488     	-1        	LABEL     	code      
-LOOPREPEAT               	0048D     	-1        	LABEL     	code      
-PRINTLOOP                	00499     	-1        	LABEL     	code      
+CHECK1                   	00084     	-1        	LABEL     	code      
+MENUADD                  	000CB     	-1        	LABEL     	code      
+L1                       	000FC     	-1        	LABEL     	code      
+PRINT                    	00109     	-1        	LABEL     	code      
+START1                   	0010C     	-1        	LABEL     	code      
+CHECK2                   	00194     	-1        	LABEL     	code      
+NEWMENU_                 	001DC     	-1        	LABEL     	code      
+MARGA                    	00204     	-1        	LABEL     	code      
+LASAGN                   	0022C     	-1        	LABEL     	code      
+SAPAGHETTI               	00254     	-1        	LABEL     	code      
+BIRYANI                  	0027C     	-1        	LABEL     	code      
+BEEF                     	002A4     	-1        	LABEL     	code      
+TIKKA                    	002CC     	-1        	LABEL     	code      
+PIZZA                    	002F3     	-1        	LABEL     	code      
+BURGER                   	0031A     	-1        	LABEL     	code      
+PRICE                    	00341     	-1        	LABEL     	code      
+INPUT                    	00354     	-1        	LABEL     	code      
+TOTALPRICE               	0036F     	-1        	LABEL     	code      
+FEXIT                    	0042C     	-1        	LABEL     	code      
+DECIMALINPUT             	00430     	-1        	NEAR      	code      
+INPUTSTART               	00433     	-1        	LABEL     	code      
+MINUS                    	0044B     	-1        	LABEL     	code      
+PLUS                     	0044E     	-1        	LABEL     	code      
+REPEAT                   	00450     	-1        	LABEL     	code      
+EXIT                     	00474     	-1        	LABEL     	code      
+NONDIGIT                 	00478     	-1        	LABEL     	code      
+DECIMALOUTPUT            	00485     	-1        	NEAR      	code      
+IF                       	00497     	-1        	LABEL     	code      
+LOOPREPEAT               	0049C     	-1        	LABEL     	code      
+PRINTLOOP                	004A8     	-1        	LABEL     	code      
 ===================================================================================================
-[ 5/28/2021  --  12:09:41 AM ] 
+[ 5/28/2021  --  9:28:36 AM ] 
 < END >
  

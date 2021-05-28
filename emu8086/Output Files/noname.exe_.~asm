@@ -1,93 +1,967 @@
 .model small
-.stack 100
+.stack 100h
 .data
-msg1 db 'Enter string 1: $'
-msg2 db 0Ah,0Dh,'Enter string 2: $'
-arr1 db 10 dup('$')
-arr2 db 10 dup('$')
-msg3 db 0Ah,0Dh,'Both are identical.$'
-msg4 db 0Ah,0Dh,'Both are not identical.$'
-msg5 db 0Ah,0Dh,'String 1 is longer. $'
-msg6 db 0Ah,0Dh,'String 2 is longer. $'
-counter1 db 0
-counter2 db 0
+
+;strings
+
+str0 dw 10,13,9,9,"Welcome To Comsats Restaurant$"
+
+str1 dw 10,13,10,13,9,"Food Menu",10,13,"$"
+
+
+str2 dw 10,13,"----------------------------","$"
+
+
+
+str3 dw 10,13,10,13,9,"Appetizers$"
+str4 dw 10,13,10,13, "1.LASAGNE 60/-",10,13,"2.MARGARITA 50/-",10,13,"3.SPAGHETTI 40/- $"
+
+str5 dw 10,13,10,13,9,"Main Course$"
+str6 dw 10,13,10,13, "4.SHAHI BIRYANI 100/-",10,13,"5.BEEF QOURMA 150/-",10,13,"6.CHICKEN TIKKA 120/- $"
+
+str7 dw 10,13,10,13,9,"Fast Food$"
+str8 dw 10,13,10,13, "7.PIZZA 200/-",10,13,"8.BURGER 150/-$"
+
+str9 dw 10,13,10,13,"----------------------------","$"
+
+str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press 3. Exit $"
+
+str11 dw 10,13,10,13,"Your Choice: $"
+
+str12 dw 10,13,10,13, "There is no more than 8 items, but you can add one.$"
+
+str13 dw 10,13,10,13, "To add press 1 or press 2 to get back to menu: $"
+
+str14 dw 10,13,10,13, "Enter Food name: $"
+str15 dw 10,13,10,13,9,"Price: $"
+
+str16 dw "/-$"
+
+
+str17 dw 10,13,10,13, "Select the menu number: $"
+
+str18 dw 10,13,10,13, "Enter quantity: $"
+
+str19 dw 10,13,"Do you want to change your Order ?",10,13,"Press 1. Change Order",10,13,"Press any key to continue. $"
+
+
+str20 dw 10,13,10,13,"Previous Total: $"
+
+
+str21 dw 10,13,10,13, "Total price: $"
+
+str22 dw 10,13,10,13, "ReOrder : Press 1.$"
+str23 dw 10,13,10,13, "Exit : Press Any key $"
+
+
+str24 dw 10,13,10,13,9, "*****THANK YOU*****$"
+
+prep dw 10,13,10,13,"Prepared By$"
+
+info dw 10,13,10,13," Name            Reg ID         Section$"
+
+ali dw 10,13,10,13,"Ali Irfan      FA19-BCS-021    C.$"
+ayrish dw 10,13,10,13,"Ayrish Falak   FA19-BCS-078    C.$"
+saif dw 10,13,10,13,"Saifullah Daud FA19-BCS-112    C.$"
+aneeq dw 10,13,10,13,"Aneeq Khurram  FA19-BCS-145    C.$"
+
+
+
+
+;variables
+
+choice db 0
+
+v db 8
+
+lasprice dw 60
+margprice dw 50
+spagprice dw 40
+
+birprice dw 100
+beefprice dw 150
+tikkaprice dw 120
+
+pizzaprice dw 200
+burgerprice dw 150
+
+nprice dw 0
+
+totPrice dw 0
+prevPrice dw 0
+
+var1 db 100 dup('$')
+
+
+;customer strings and data
+
+nameArr db 100 dup('$')
+
+customerID db 1
+
+foodOrderID db 0
+
+c1 db 10,13,10,13," Enter your name: $"
+
+c2 db 10,13,10,13," Name: $"
+
+c3 db 10,13,10,13," Customer ID: $"
+
+c4 db 10,13,10,13," Food Order ID: $"
+
+
+
+
 .code
+
 main proc
 
-mov ax, @data
-mov ds, ax
+mov ax,@data
+mov ds,ax
 
-mov ah, 9
-lea dx, msg1
+mov ah,9
+Lea dx,str0
 int 21h
 
-lea si, arr1
+mov ah, 9
+lea dx, c1
+int 21h
+
+mov ah, 1
+
+lea si, nameArr
+
+int 21h
+
+inputName:
+
+cmp al, 13
+je start
+
+mov [si], al
+
+inc si
+
+int 21h
+
+jmp inputName
+
+
+
+start:
+
+mov ah,9
+Lea dx,str1
+int 21h
+
+inc foodOrderID
+
+cmp v,8
+jg start1
+
+
+
+menu:
+
+mov ah, 9
+lea dx,str2
+int 21h
+
+mov ah,9
+lea dx, str3
+int 21h
+
+Lea dx,str4
+int 21h
+
+lea dx,str5
+int 21h
+
+lea dx, str6
+int 21h
+
+lea dx, str7
+int 21h
+
+lea dx, str8
+int 21h
+
+mov ah, 9
+lea dx,str9
+int 21h
+
+mov ah, 9
+lea dx, str10
+int 21h
+
+check:
+
+mov ah, 9
+lea dx, str11
+int 21h
 
 mov ah, 1
 int 21h
 
-while:
+intiMenu:
 
-mov [si], al
-cmp al, 0Dh
-je exit
+mov choice, al
 
-inc si
-inc counter1
+cmp choice, 50
+jne menuadd
 
+mov ah,9
+Lea dx,str17
 int 21h
-jmp while
+
+mov ah,1
+int 21h
+
+cmp al,31h
+je lasagn
+cmp al,32h
+je marga
+cmp al,33h
+je sapaghetti
+cmp al, 34h
+je biryani
+
+cmp al, 35h
+je beef
 
 
-exit:
+cmp al, 36h
+je tikka
+
+cmp al, 37h
+je pizza
+
+cmp al, 38h
+je burger
+
+
+menuadd:
+
+cmp choice, 49
+jne FExit
+
+inc v
+
+mov ah,9
+Lea dx,str12
+int 21h
+
+mov ah,9
+Lea dx,str13
+int 21h
+
+mov ah,1
+int 21h
+cmp al,32h
+je menu
+
+mov ah,9
+Lea dx,str14
+int 21h
+
+mov si,offset var1
+
+l1:
+mov ah,1
+int 21h
+cmp al,13
+je print
+mov [si],al
+inc si
+jmp l1
+
+print:
+
+call price
+
+start1:
+
+mov ah, 9
+lea dx,str2
+int 21h
+
+
+mov ah,9
+lea dx, str3
+int 21h
+
+Lea dx,str4
+int 21h
+
+lea dx,str5
+int 21h
+
+lea dx, str6
+int 21h
+
+lea dx, str7
+int 21h
+
+lea dx, str8
+int 21h
+
+
+
+mov ah,2
+
+mov dl, 10
+int 21h
+
+mov dl, 13
+int 21h
+
+mov ah,2
+mov dl,' '
+int 21h
+
+
+mov dl,v
+add dl, 48
+int 21h
+
+mov ah,2
+mov dl,'.'
+int 21h
+
+
+mov dx,offset var1
+mov ah,9
+int 21h
+
+mov ah,2
+mov dl,' '
+int 21h
+
+xor ax,ax
+mov ax,nprice
+call decimalOutput
+
+
+
+mov ah,9
+Lea dx,str16
+int 21h
 
 
 mov ah, 9
-lea dx, msg2
+lea dx,str9
 int 21h
 
-lea si, arr2
+mov ah, 9
+lea dx, str10
+int 21h
+
+mov ah, 9
+lea dx, str11
+int 21h
 
 mov ah, 1
 int 21h
 
-while2:
+mov choice, al
 
-mov [si], al
-cmp al, 0Dh
-je exit2
+cmp choice, 50
+jne menuadd
 
-inc si
-inc counter2
-
+mov ah,9
+Lea dx,str17
 int 21h
-jmp while2
+
+mov ah,1
+int 21h
+
+cmp al,31h
+je lasagn
+cmp al,32h
+je marga
+cmp al,33h
+je sapaghetti
+cmp al, 34h
+je biryani
+
+cmp al, 35h
+je beef
 
 
-exit2:
+cmp al, 36h
+je tikka
 
-mov dl, counter1
+cmp al, 37h
+je pizza
 
-cmp dl, counter2
+cmp al, 38h
+je burger
 
-jg str1
 
-str2:
+newmenu_:
+
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+
+mov bx, ax
+
 mov ah, 9
-lea dx, msg6
+lea dx, str19
 int 21h
 
-mov ah, 4ch
+mov ah, 1
 int 21h
 
-str1:
+cmp al, '1'
+je newmenu_
+
+mov ax, bx
+
+
+mul nprice
+
+mov bx,ax
+
+jmp totalprice
+
+
+marga:
+
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
 mov ah, 9
-lea dx, msg5
+lea dx, str19
 int 21h
 
-mov ah, 4ch
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je marga
+
+mov ax, bx
+
+mul margprice
+
+mov bx,ax
+
+jmp totalprice
+
+lasagn:
+
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je lasagn
+
+mov ax, bx
+
+
+
+mul lasprice
+
+mov bx,ax
+
+jmp totalprice
+
+sapaghetti:
+
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je sapaghetti
+
+mov ax, bx
+
+
+mul spagprice
+
+mov bx,ax
+
+jmp totalprice
+
+
+
+biryani:
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je biryani
+
+mov ax, bx
+
+
+mul birprice
+
+mov bx,ax
+
+jmp totalprice
+
+
+
+beef:
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je beef
+
+mov ax, bx
+
+
+mul beefprice
+
+mov bx,ax
+
+jmp totalprice
+
+tikka:
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je tikka
+
+mov ax, bx
+
+
+mul tikkaprice
+
+mov bx,ax
+
+jmp totalprice
+
+pizza:
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je pizza
+
+mov ax, bx
+
+
+mul pizzaprice
+
+mov bx,ax
+
+jmp totalprice
+
+burger:
+mov ah,9
+Lea dx,str18
+int 21h
+
+xor ax,ax
+
+call decimalInput
+
+mov bx, ax
+
+mov ah, 9
+lea dx, str19
+int 21h
+
+mov ah, 1
+int 21h
+
+cmp al, '1'
+je burger
+
+mov ax, bx
+
+
+mul burgerprice
+
+mov bx,ax
+
+jmp totalprice
+
+
+price:
+
+mov ah,9
+Lea dx,str15
+int 21h
+
+mov ax,0
+mov bx,0
+mov cx,0
+mov dx,0
+
+input:
+and ax,000Fh
+push ax
+mov ax,10
+mul bx
+mov bx,ax
+pop ax
+add bx,ax
+
+mov ah,1
+int 21h
+
+cmp al,0Dh
+jne input
+
+add nprice,bx
+ret
+
+
+
+totalprice:
+
+mov ax, totPrice
+mov prevPrice, ax
+add totPrice, bx
+
+mov ah, 2
+mov dl, 10
+int 21h
+
+mov dl, 13
+int 21h
+
+mov ah, 9
+lea dx, str2
+int 21h
+
+mov ah, 2
+mov dl, ' '
+int 21h
+
+mov ah, 9
+
+lea dx, c2
+int 21h
+
+lea dx, nameArr
+int 21h
+
+mov ah, 2
+mov dl, ' '
+int 21h
+
+mov ah, 9
+
+lea dx, c3
+int 21h
+
+mov ah, 2
+mov dl, customerID
+add dl, 48
+int 21h
+
+mov ah, 9
+lea dx, c4
+int 21h
+
+mov ah, 2
+mov dl, foodOrderID
+add dl, 48
+int 21h
+
+mov ah,9
+lea dx, str20
+int 21h
+
+xor ax,ax
+
+
+mov ax,prevPrice
+call decimalOutput
+
+mov ah, 9
+Lea dx,str21
+int 21h
+
+
+xor ax,ax
+
+
+mov ax, totPrice
+call decimalOutput
+
+mov ah,9
+lea dx, str9
+int 21h
+
+Lea dx,str22
+int 21h
+
+mov ah,9
+Lea dx,str23
+int 21h
+
+mov ah,1
+int 21h
+
+cmp al,31h
+je start
+
+mov ah,9
+Lea dx,str24
+int 21h
+
+lea dx, prep
+int 21h
+
+lea dx, info
+int 21h
+
+lea dx, str2
+int 21h
+
+lea dx, ali
+int 21h
+
+lea dx, ayrish
+int 21h
+
+lea dx, saif
+int 21h
+
+lea dx, aneeq
+int 21h
+
+FExit:
+
+cmp choice, 48
+jne check
+
+mov ah,4ch
 int 21h
 
 main endp
+
+
+decimalInput proc
+
+push bx
+push cx
+push dx
+inputStart:
+
+mov ah, 2
+mov dl, ' '
+int 21h
+
+xor bx, bx
+xor cx, cx
+
+mov ah, 1
+int 21h
+
+cmp al, '-'
+je minus
+
+cmp al, '+'
+je plus
+jmp repeat
+
+minus:
+mov cx, 1
+plus:
+int 21h
+
+repeat:
+
+cmp al, '0'
+jnge nonDigit
+cmp al, '9'
+jnle nonDigit
+
+and ax, 000fh
+push ax
+
+mov ax,10
+mul bx
+pop bx
+add bx, ax
+
+mov ah, 1
+int 21h
+cmp al, 0dh
+jne repeat
+
+mov ax, bx
+or cx, cx
+
+je exit
+neg ax
+
+exit:
+
+pop dx
+pop cx
+pop bx
+ret
+
+nonDigit:
+
+mov ah, 2
+mov dl, 0dh
+int 21h
+mov dl, 0ah
+int 21h
+jmp inputStart
+ret
+decimalInput endp
+
+
+
+decimalOutput proc
+
+push  ax
+push  bx
+push  cx
+push  dx
+
+or ax, ax
+jge IF
+
+push ax
+mov dl, ' '
+mov ah, 2
+int 21h
+pop ax
+neg ax
+
+IF:
+
+xor cx, cx
+mov  bx, 10d
+
+loopRepeat:
+
+xor dx, dx
+div bx
+push dx
+inc cx
+
+
+or  ax, ax
+jne   loopRepeat
+
+mov   ah, 2
+
+printLoop:
+
+pop  dx
+or dl, 30h
+int 21h
+loop  printLoop
+
+pop dx
+pop cx
+pop bx
+pop ax
+
+ret
+decimalOutput endp
+
 end main
+
+
 
