@@ -1,0 +1,1048 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Assembly Lab Project refined 2.0 FINAL.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 5/27/2021  --  11:52:43 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .MODEL SMALL
+[   2]        :                                       .STACK 100H
+[   3]        :                                       
+[   4]        :                                       .DATA
+[   5]        :                                       
+[   6]    0100: 2A 2A 2A 2A 2A 2A 2A 2A 4F 4E 4C 49   HEADING DB '********ONLINE SHOPPING SYSTEM**********$',10,13
+                4E 45 20 53 48 4F 50 50 49 4E 47 20 
+                53 59 53 54 45 4D 2A 2A 2A 2A 2A 2A 
+                2A 2A 2A 2A 24 0A 0D                
+[   7]    012B: 2A 2A 2A 2A 2A 2A 20 20 20 20 20 20   HEADING2 DB '******        MAL FINAL PROJECT      ***** $',10,13
+                20 20 4D 41 4C 20 46 49 4E 41 4C 20 
+                50 52 4F 4A 45 43 54 20 20 20 20 20 
+                20 2A 2A 2A 2A 2A 20 24 0A 0D       
+[   8]    0159: 50 52 45 50 41 52 45 44 20 42 59 20   HEADING3 DB 'PREPARED BY $',10,13
+                24 0A 0D                            
+[   9]    0168: 4D 61 68 61 6D 20 42 61 69 67 20 46   HEADING4 DB 'Maham Baig FA19-BCS-003 $',10,13
+                41 31 39 2D 42 43 53 2D 30 30 33 20 
+                24 0A 0D                            
+[  10]    0183: 4B 61 73 68 61 66 20 53 68 61 6E 61   HEADING5 DB 'Kashaf Shanawar FA19-BCS-81 $',10,13
+                77 61 72 20 46 41 31 39 2D 42 43 53 
+                2D 38 31 20 24 0A 0D                
+[  11]    01A2: 4B 68 61 64 69 6A 61 20 42 61 73 68   HEADING6 DB 'Khadija Bashir FA19-BCS-91$',10,13
+                69 72 20 46 41 31 39 2D 42 43 53 2D 
+                39 31 24 0A 0D                      
+[  12]    01BF: 4E 75 73 68 77 61 20 4A 61 76 65 64   HEADING7 DB 'Nushwa Javed FA19-BCS-149 $',10,13
+                20 46 41 31 39 2D 42 43 53 2D 31 34 
+                39 20 24 0A 0D                      
+[  13]        :                                       
+[  14]        :                                       
+[  15]        :                                       
+[  16]    01DC: 0A 0D 43 48 4F 4F 53 45 20 46 52 4F   ENTER DB 10,13,'CHOOSE FROM MENU WHAT YOU WANT TO BUY: $'
+                4D 20 4D 45 4E 55 20 57 48 41 54 20 
+                59 4F 55 20 57 41 4E 54 20 54 4F 20 
+                42 55 59 3A 20 24                   
+[  17]    0206: 0A 0D 4B 45 59 53 20 20 20 20 20 20   INFO DB 10,13,'KEYS         ITEMS               PRICE$'
+                20 20 20 49 54 45 4D 53 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 20 50 
+                52 49 43 45 24                      
+[  18]        :                                       
+[  19]    022F: 0A 0D 20 31 20 20 20 20 4C 49 50 53   Lipsticks DB 10,13,' 1    LIPSTICKS                 1000 RS$'
+                54 49 43 4B 53 20 20 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 31 30 
+                30 30 20 52 53 24                   
+[  20]        :                                       
+[  21]    0259: 0A 0D 20 32 20 20 20 20 45 59 45 53   E_pallete DB 10,13,' 2    EYESHADOW PALLETE         4000 RS $'
+                48 41 44 4F 57 20 50 41 4C 4C 45 54 
+                45 20 20 20 20 20 20 20 20 20 34 30 
+                30 30 20 52 53 20 24                
+[  22]        :                                       
+[  23]    0284: 0A 0D 20 33 20 20 20 20 4D 41 53 43   Mascara DB 10,13,' 3    MASCARA                   1500 RS $'
+                41 52 41 20 20 20 20 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 31 35 
+                30 30 20 52 53 20 24                
+[  24]        :                                       
+[  25]    02AF: 0A 0D 20 34 20 20 20 20 4C 49 50 20   L_pencil DB 10,13,' 4    LIP PENCILS                400 RS $'
+                50 45 4E 43 49 4C 53 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 20 34 
+                30 30 20 52 53 20 24                
+[  26]        :                                       
+[  27]    02DA: 0A 0D 20 35 20 20 20 20 4E 41 49 4C   N_paint DB 10,13,' 5    NAIL PAINT                 500 RS $'
+                20 50 41 49 4E 54 20 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 20 35 
+                30 30 20 52 53 20 24                
+[  28]        :                                       
+[  29]    0305: 0A 0D 20 36 20 20 20 20 46 4F 55 4E   Foundation DB 10,13,' 6    FOUNDATION                3000 RS $'
+                44 41 54 49 4F 4E 20 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 33 30 
+                30 30 20 52 53 20 24                
+[  30]        :                                       
+[  31]    0330: 0A 0D 20 37 20 20 20 20 43 4F 4D 50   C_powder DB 10,13,' 7    COMPACT POWDER            1500 RS $'
+                41 43 54 20 50 4F 57 44 45 52 20 20 
+                20 20 20 20 20 20 20 20 20 20 31 35 
+                30 30 20 52 53 20 24                
+[  32]        :                                       
+[  33]    035B: 0A 0D 20 38 20 20 20 20 42 41 53 45   b_primer DB 10,13,' 8    BASE PRIMER               1200 RS $'
+                20 50 52 49 4D 45 52 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 31 32 
+                30 30 20 52 53 20 24                
+[  34]        :                                       
+[  35]    0386: 0A 0D 20 39 20 20 20 20 43 4F 4E 54   C_kit DB 10,13,' 9    CONTOUR KIT               3000 RS $'
+                4F 55 52 20 4B 49 54 20 20 20 20 20 
+                20 20 20 20 20 20 20 20 20 20 33 30 
+                30 30 20 52 53 20 24                
+[  36]        :                                       
+[  37]    03B1: 0A 0D 45 4E 54 45 52 20 51 55 41 4E   E_quantity DB 10,13,'ENTER QUANTITY: $'
+                54 49 54 59 3A 20 24                
+[  38]        :                                       
+[  39]    03C4: 0A 0D 50 52 45 53 53 20 31 20 49 46   AGAIN DB 10,13,'PRESS 1 IF YOU WANT TO BUY MORE AND PRESS 2 IF NO $'
+                20 59 4F 55 20 57 41 4E 54 20 54 4F 
+                20 42 55 59 20 4D 4F 52 45 20 41 4E 
+                44 20 50 52 45 53 53 20 32 20 49 46 
+                20 4E 4F 20 24                      
+[  40]        :                                       
+[  41]    03F9: 0A 0D 45 52 52 4F 52 21 21 21 24      ER_MSG DB 10,13,'ERROR!!!$'
+[  42]        :                                       
+[  43]    0404: 0A 0D 45 4E 54 45 52 20 59 4F 55 52   CHOICE DB 10,13,'ENTER YOUR CHOICE:$'
+                20 43 48 4F 49 43 45 3A 24          
+[  44]        :                                       
+[  45]    0419: 0A 0D 59 4F 55 52 20 54 4F 54 41 4C   FT DB 10,13,'YOUR TOTAL BILL IS :$'
+                20 42 49 4C 4C 20 49 53 3A 24       
+[  46]        :                                       
+[  47]    042F: 0D 0A 57 52 4F 4E 47 20 49 4E 50 55   ERR DB 0DH,0AH,'WRONG INPUT!$'
+                54 21 24                            
+[  48]        :                                       
+[  49]    043E: 0D 0A 57 52 4F 4E 47 20 49 4E 50 55   ERR2 DB 0DH,0AH,'WRONG INPUT.PRESS Y/Y OR N/N $'
+                54 2E 50 52 45 53 53 20 59 2F 59 20 
+                4F 52 20 4E 2F 4E 20 24             
+[  50]        :                                       
+[  51]    045E: 0D 0A 50 52 45 53 45 4E 54 20 41 4D   R DB 0DH,0AH,'PRESENT AMOUNT IS : $'
+                4F 55 4E 54 20 49 53 3A 20 24       
+[  52]        :                                       
+[  53]    0474: 0A 0D 45 4E 54 45 52 20 44 49 53 43   E_DISCOUNT DB 10,13,'ENTER DISCOUNT OR PRESS 0 IF DISCOUNT IS NOT AVAILABLE $'
+                4F 55 4E 54 20 4F 52 20 50 52 45 53 
+                53 20 30 20 49 46 20 44 49 53 43 4F 
+                55 4E 54 20 49 53 20 4E 4F 54 20 41 
+                56 41 49 4C 41 42 4C 45 20 24       
+[  54]        :                                       
+[  55]    04AE: 0A 0D 45 4E 54 45 52 20 41 47 41 49   ERASK DB 10,13,'ENTER AGAIN $'
+                4E 20 24                            
+[  56]        :                                       
+[  57]    04BD: 0A 0D 41 47 41 49 4E 20 45 4E 54 45   EN_DIS DB 10,13,'AGAIN ENTER DISCOUNT: $'
+                52 20 44 49 53 43 4F 55 4E 54 3A 20 
+                24                                  
+[  58]        :                                       
+[  59]    04D6: 0A 0D 57 4F 55 4C 44 20 59 4F 55 20   EDIT DB 10,13,'WOULD YOU LIKE TO EDIT YOUR ORDER? PRESS 1 FOR YES 2 FOR NO: $'
+                4C 49 4B 45 20 54 4F 20 45 44 49 54 
+                20 59 4F 55 52 20 4F 52 44 45 52 3F 
+                20 50 52 45 53 53 20 31 20 46 4F 52 
+                20 59 45 53 20 32 20 46 4F 52 20 4E 
+                4F 3A 20 24                         
+[  60]        :                                       
+[  61]    0516: 0A 0D 50 52 45 53 53 20 31 2D 55 50   EDIT1 DB 10,13,'PRESS 1-UPDATION PRESS-2 FOR DELETION PRESS-3 END: $'
+                44 41 54 49 4F 4E 20 50 52 45 53 53 
+                2D 32 20 46 4F 52 20 44 45 4C 45 54 
+                49 4F 4E 20 50 52 45 53 53 2D 33 20 
+                45 4E 44 3A 20 24                   
+[  62]        :                                       
+[  63]    054C: 0A 0D 41 44 44 20 4D 4F 52 45 20 49   UPDATE DB 10,13,'ADD MORE ITEMS TO YOUR CART: $'
+                54 45 4D 53 20 54 4F 20 59 4F 55 52 
+                20 43 41 52 54 3A 20 24             
+[  64]        :                                       
+[  65]    056C: 0A 0D 31 2D 44 45 4C 45 54 45 20 49   DELETE DB 10,13,'1-DELETE ITEM 2- DELETE ORDER 3-GO BACK: $'
+                54 45 4D 20 32 2D 20 44 45 4C 45 54 
+                45 20 4F 52 44 45 52 20 33 2D 47 4F 
+                20 42 41 43 4B 3A 20 24             
+[  66]        :                                       
+[  67]    0598: 0A 0D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D   LINE DB 10,13, '----------------------------------------------$'
+                2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 
+                2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 
+                2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 
+                24                                  
+[  68]        :                                       
+[  69]    05C9: 0A 0D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D   LINE2 DB 10,13, '--------------------TOTAL-----------------$'
+                2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 54 4F 
+                54 41 4C 2D 2D 2D 2D 2D 2D 2D 2D 2D 
+                2D 2D 2D 2D 2D 2D 2D 2D 24          
+[  70]        :                                       
+[  71]    05F6: 0A 0D 54 48 41 4E 4B 20 59 4F 55 20   THANKYOU DB 10,13, 'THANK YOU FOR SHOPPING WITH US :)$'
+                46 4F 52 20 53 48 4F 50 50 49 4E 47 
+                20 57 49 54 48 20 55 53 3A 29 24    
+[  72]        :                                       
+[  73]        :                                       
+[  74]    0619: 00 00                                 A DW ?                           ;DECALRED VARIABLES
+[  75]    061B: 00 00                                 B DW ?
+[  76]    061D: 00 00                                 C DW ?
+[  77]    061F: 00 00 24 00                           S DW 0,'$'
+[  78]        :                                       
+[  79]    0623: 0D 0A 24                              NL DB 0DH,0AH,'$'                ;NEW LINE
+[  80]        :                                       
+[  81]        :                                       
+[  82]        :                                       .CODE
+[  83]        :                                       
+[  84]    0630:                                       MAIN PROC
+[  85]        :                                       
+[  86]    0630: B8 10 00                              MOV AX, @DATA
+[  87]    0633: 8E D8                                 MOV DS, AX
+[  88]        :                                       
+[  89]    0635: BA 00 00                              LEA DX,HEADING                ;PRINT INTRO STRING
+[  90]    0638: B4 09                                 MOV AH,9
+[  91]    063A: CD 21                                 INT 21H
+[  92]        :                                       
+[  93]    063C: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[  94]    063F: B4 09                                 MOV AH,9
+[  95]    0641: CD 21                                 INT 21H
+[  96]        :                                       
+[  97]    0643: BA 2B 00                              LEA DX,HEADING2               ;PRINT INTRO2 STRING
+[  98]    0646: B4 09                                 MOV AH,9
+[  99]    0648: CD 21                                 INT 21H
+[ 100]        :                                       
+[ 101]    064A: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 102]    064D: B4 09                                 MOV AH,9
+[ 103]    064F: CD 21                                 INT 21H
+[ 104]        :                                       
+[ 105]        :                                       
+[ 106]        :                                       ;roll numbers
+[ 107]        :                                       
+[ 108]    0651: BA 59 00                              LEA DX,HEADING3
+[ 109]    0654: B4 09                                 MOV AH,9
+[ 110]    0656: CD 21                                 INT 21H
+[ 111]        :                                       
+[ 112]    0658: BA 23 05                              LEA DX,NL
+[ 113]    065B: B4 09                                 MOV AH,9
+[ 114]    065D: CD 21                                 INT 21H
+[ 115]        :                                       
+[ 116]    065F: BA 68 00                              LEA DX,HEADING4
+[ 117]    0662: B4 09                                 MOV AH,9
+[ 118]    0664: CD 21                                 INT 21H
+[ 119]        :                                       
+[ 120]    0666: BA 23 05                              LEA DX,NL
+[ 121]    0669: B4 09                                 MOV AH,9
+[ 122]    066B: CD 21                                 INT 21H
+[ 123]        :                                       
+[ 124]        :                                       
+[ 125]    066D: BA 83 00                              LEA DX,HEADING5
+[ 126]    0670: B4 09                                 MOV AH,9
+[ 127]    0672: CD 21                                 INT 21H
+[ 128]        :                                       
+[ 129]    0674: BA 23 05                              LEA DX,NL
+[ 130]    0677: B4 09                                 MOV AH,9
+[ 131]    0679: CD 21                                 INT 21H
+[ 132]        :                                       
+[ 133]    067B: BA A2 00                              LEA DX,HEADING6
+[ 134]    067E: B4 09                                 MOV AH,9
+[ 135]    0680: CD 21                                 INT 21H
+[ 136]        :                                       
+[ 137]    0682: BA 23 05                              LEA DX,NL
+[ 138]    0685: B4 09                                 MOV AH,9
+[ 139]    0687: CD 21                                 INT 21H
+[ 140]        :                                       
+[ 141]    0689: BA BF 00                              LEA DX,HEADING7
+[ 142]    068C: B4 09                                 MOV AH,9
+[ 143]    068E: CD 21                                 INT 21H
+[ 144]        :                                       
+[ 145]    0690: BA 23 05                              LEA DX,NL
+[ 146]    0693: B4 09                                 MOV AH,9
+[ 147]    0695: CD 21                                 INT 21H
+[ 148]        :                                       
+[ 149]        :                                       
+[ 150]        :                                       
+[ 151]    0697:                                       st:
+[ 152]    0697: E8 B7 00                              CALL MENU    ;PRINT MENU
+[ 153]    069A: E8 48 01                              CALL INPUT ;TAKE INPUT FROM USER
+[ 154]    069D: E8 C8 01                              CALL QUAN   ;THE PRICE WILL BE MILTIPLIED WITH THE Quantity
+[ 155]        :                                       
+[ 156]    06A0: E8 FE 01                              CALL MUL_
+[ 157]    06A3: E8 0D 02                              CALL DISCOUNT
+[ 158]    06A6: E8 4C 02                              CALL SUB_       ;subtract the total amount with discount
+[ 159]    06A9: E8 6E 02                              CALL OUTPUT    ;print present total amount
+[ 160]        :                                       
+[ 161]        :                                       ;-------ask portion-------
+[ 162]    06AC:                                       asklbl:
+[ 163]    06AC: E8 85 02                              CALL ASK        ;continue?
+[ 164]        :                                       
+[ 165]    06AF: 3C 31                                 CMP AL,31H
+[ 166]    06B1: 74 E4                                 JE st
+[ 167]        :                                       
+[ 168]    06B3: 3C 32                                 CMP AL, 32H
+[ 169]    06B5: 74 17                                 JE editorder
+[ 170]        :                                       
+[ 171]    06B7: BA 23 05                              LEA DX,NL
+[ 172]    06BA: B4 09                                 MOV AH,9
+[ 173]    06BC: CD 21                                 INT 21H
+[ 174]        :                                       
+[ 175]    06BE: BA F9 02                              LEA DX,ER_MSG
+[ 176]    06C1: B4 09                                 MOV AH,9                     ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE and ask again
+[ 177]    06C3: CD 21                                 INT 21H
+[ 178]        :                                       
+[ 179]    06C5: BA 23 05                              LEA DX,NL
+[ 180]    06C8: B4 09                                 MOV AH,9
+[ 181]    06CA: CD 21                                 INT 21H
+[ 182]        :                                       
+[ 183]    06CC: EB DE                                 JMP asklbl                        ;after error message ask proc will be called again
+[ 184]        :                                       
+[ 185]        :                                       
+[ 186]        :                                       ;-------Edit portion begins here-----
+[ 187]        :                                       
+[ 188]    06CE:                                       editorder:
+[ 189]        :                                       
+[ 190]    06CE: E8 7D 02                              CALL EDIT_ORDER                   ;edit order?
+[ 191]    06D1: 3C 31                                 CMP AL,31H
+[ 192]    06D3: 74 0D                                 JE y
+[ 193]        :                                       
+[ 194]    06D5: 3C 32                                 CMP AL, 32H
+[ 195]    06D7: 74 6A                                 JE no
+[ 196]        :                                       
+[ 197]    06D9: BA F9 02                              LEA DX,ER_MSG
+[ 198]    06DC: B4 09                                 MOV AH,9                             ;error message ask again
+[ 199]    06DE: CD 21                                 INT 21H
+[ 200]    06E0: EB EC                                 JMP editorder
+[ 201]        :                                       ;--------updation or deletion?------
+[ 202]    06E2:                                       y:
+[ 203]        :                                       
+[ 204]    06E2: BA 23 05                              LEA DX,NL
+[ 205]    06E5: B4 09                                 MOV AH,9
+[ 206]    06E7: CD 21                                 INT 21H
+[ 207]        :                                       
+[ 208]    06E9: BA 16 04                              LEA DX,EDIT1                    ;ASK USER TO PRESS 1 FOR UPDATION AND 2 FOR DELETION
+[ 209]    06EC: B4 09                                 MOV AH,9
+[ 210]    06EE: CD 21                                 INT 21H
+[ 211]        :                                       
+[ 212]    06F0: B4 01                                 MOV AH,1                        ;TAKE INPUT
+[ 213]    06F2: CD 21                                 INT 21H
+[ 214]        :                                       
+[ 215]    06F4: 3C 31                                 CMP AL,31H
+[ 216]    06F6: 74 18                                 JE y1
+[ 217]        :                                       
+[ 218]    06F8: 3C 32                                 CMP AL, 32H
+[ 219]    06FA: 74 19                                 JE y2
+[ 220]        :                                       
+[ 221]    06FC: 3C 33                                 CMP AL,33H
+[ 222]    06FE: 74 43                                 JE no             ;end program and display total
+[ 223]        :                                       
+[ 224]    0700: BA 23 05                              LEA DX,NL
+[ 225]    0703: B4 09                                 MOV AH,9
+[ 226]    0705: CD 21                                 INT 21H
+[ 227]        :                                       
+[ 228]    0707: BA F9 02                              LEA DX,ER_MSG
+[ 229]    070A: B4 09                                 MOV AH,9                         ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE AND REPEAT
+[ 230]    070C: CD 21                                 INT 21H
+[ 231]    070E: EB D2                                 JMP y
+[ 232]        :                                       
+[ 233]        :                                       
+[ 234]    0710:                                       y1:
+[ 235]    0710: E8 55 02                              CALL UPDATE_ORDER         ;update order and start again to recieve more items from user
+[ 236]    0713: EB 82                                 JMP st
+[ 237]        :                                       ;----------delete or go back---------------
+[ 238]    0715:                                       y2:
+[ 239]    0715: E8 5F 02                              CALL DELETE_ORDER        ;ask user if he wants to delete or start over
+[ 240]        :                                       
+[ 241]    0718: 3C 31                                 CMP AL,31H
+[ 242]    071A: 74 18                                 JE yy1      ;DELETE ITEM
+[ 243]        :                                       
+[ 244]    071C: 3C 32                                 CMP AL, 32H
+[ 245]    071E: 74 1D                                 JE yy2    ;DELETE ORDER
+[ 246]        :                                       
+[ 247]    0720: 3C 33                                 CMP AL, 33H
+[ 248]    0722: 74 BE                                 JE y ;GO BACK TO THE EDIT QUESTION
+[ 249]        :                                       
+[ 250]    0724: BA 23 05                              LEA DX,NL
+[ 251]    0727: B4 09                                 MOV AH,9
+[ 252]    0729: CD 21                                 INT 21H
+[ 253]        :                                       
+[ 254]    072B: BA F9 02                              LEA DX,ER_MSG
+[ 255]    072E: B4 09                                 MOV AH,9                     ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE AND AGAIN ASK TO BUY AGAIN
+[ 256]    0730: CD 21                                 INT 21H
+[ 257]    0732: EB E1                                 JMP y2              ;incase of wrong input user is asked again if he wants to delete or not
+[ 258]        :                                       
+[ 259]        :                                       
+[ 260]        :                                       ;-DELETE ITEM-
+[ 261]    0734:                                       yy1:
+[ 262]        :                                       
+[ 263]    0734: A1 19 05                              MOV AX, A  ;PRESENT AMOUNT TO AX
+[ 264]    0737: 29 06 1F 05                           SUB S, AX  ;SUBTRACT PRESENT ITEM AMOUNT WITH TOTAL AMOUNT
+[ 265]    073B: EB 91                                 jmp editorder   ; EDIT ORDER?
+[ 266]        :                                       
+[ 267]        :                                       
+[ 268]        :                                       ;-DELTE ORDER-
+[ 269]    073D:                                       yy2:
+[ 270]    073D: B8 00 00                              MOV AX,0
+[ 271]    0740: A3 1F 05                              MOV S,AX
+[ 272]        :                                       ;when user chooses to delete order total becomes zero,
+[ 273]        :                                       ;it is displayed and the program starts over.
+[ 274]        :                                       
+[ 275]        :                                       
+[ 276]    0743:                                       no:
+[ 277]    0743: E8 52 02                              CALL TOTAL
+[ 278]        :                                       
+[ 279]        :                                       
+[ 280]        :                                       
+[ 281]        :                                       
+[ 282]    0746:                                       end:
+[ 283]        :                                       
+[ 284]    0746: BA F6 04                              LEA DX,THANKYOU
+[ 285]    0749: B4 09                                 MOV AH,9
+[ 286]    074B: CD 21                                 INT 21H
+[ 287]        :                                       
+[ 288]        :                                       
+[ 289]    074D: B4 4C                                 MOV AH, 4CH
+[ 290]    074F: CD 21                                 INT 21H
+[ 291]        :                                       
+[ 292]        :                                       MAIN ENDP
+[ 293]        :                                       
+[ 294]        :                                       ;----------------------------------------------------------------------------------------
+[ 295]        :                                       ;MENU PROCEDURE
+[ 296]        :                                       
+[ 297]    0751:                                       MENU PROC
+[ 298]        :                                       
+[ 299]    0751: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 300]    0754: B4 09                                 MOV AH,9
+[ 301]    0756: CD 21                                 INT 21H
+[ 302]        :                                       
+[ 303]        :                                       
+[ 304]    0758: BA 06 01                              LEA DX,INFO                 ;PRINT INFO STRING
+[ 305]    075B: B4 09                                 MOV AH,9
+[ 306]    075D: CD 21                                 INT 21H
+[ 307]        :                                       
+[ 308]        :                                       
+[ 309]    075F: BA 2F 01                              LEA DX,Lipsticks              ;PRINT LIPSTICK STRING
+[ 310]    0762: B4 09                                 MOV AH,9
+[ 311]    0764: CD 21                                 INT 21H
+[ 312]        :                                       
+[ 313]    0766: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 314]    0769: B4 09                                 MOV AH,9
+[ 315]    076B: CD 21                                 INT 21H
+[ 316]        :                                       
+[ 317]        :                                       
+[ 318]    076D: BA 59 01                              LEA DX,E_pallete              ;PRINT EYESHADOW PALLETE STRING
+[ 319]    0770: B4 09                                 MOV AH,9
+[ 320]    0772: CD 21                                 INT 21H
+[ 321]        :                                       
+[ 322]    0774: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 323]    0777: B4 09                                 MOV AH,9
+[ 324]    0779: CD 21                                 INT 21H
+[ 325]        :                                       
+[ 326]        :                                       
+[ 327]    077B: BA 84 01                              LEA DX,Mascara            ;PRINT MASCARA STRING
+[ 328]    077E: B4 09                                 MOV AH,9
+[ 329]    0780: CD 21                                 INT 21H
+[ 330]        :                                       
+[ 331]    0782: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 332]    0785: B4 09                                 MOV AH,9
+[ 333]    0787: CD 21                                 INT 21H
+[ 334]        :                                       
+[ 335]        :                                       
+[ 336]    0789: BA AF 01                              LEA DX,L_pencil              ;PRINT LIP PANCIL STRING
+[ 337]    078C: B4 09                                 MOV AH,9
+[ 338]    078E: CD 21                                 INT 21H
+[ 339]        :                                       
+[ 340]    0790: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 341]    0793: B4 09                                 MOV AH,9
+[ 342]    0795: CD 21                                 INT 21H
+[ 343]        :                                       
+[ 344]        :                                       
+[ 345]    0797: BA DA 01                              LEA DX,N_paint            ;PRINT NAIL PAINT FEMALE STRING
+[ 346]    079A: B4 09                                 MOV AH,9
+[ 347]    079C: CD 21                                 INT 21H
+[ 348]        :                                       
+[ 349]    079E: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 350]    07A1: B4 09                                 MOV AH,9
+[ 351]    07A3: CD 21                                 INT 21H
+[ 352]        :                                       
+[ 353]        :                                       
+[ 354]    07A5: BA 05 02                              LEA DX,Foundation         ;PRINT FOUNDATION STRING
+[ 355]    07A8: B4 09                                 MOV AH,9
+[ 356]    07AA: CD 21                                 INT 21H
+[ 357]        :                                       
+[ 358]    07AC: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 359]    07AF: B4 09                                 MOV AH,9
+[ 360]    07B1: CD 21                                 INT 21H
+[ 361]        :                                       
+[ 362]    07B3: BA 30 02                              LEA DX,C_powder              ;PRINT COMPACT POWDER STRING
+[ 363]    07B6: B4 09                                 MOV AH,9
+[ 364]    07B8: CD 21                                 INT 21H
+[ 365]        :                                       
+[ 366]    07BA: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 367]    07BD: B4 09                                 MOV AH,9
+[ 368]    07BF: CD 21                                 INT 21H
+[ 369]        :                                       
+[ 370]        :                                       
+[ 371]    07C1: BA 5B 02                              LEA DX,b_primer              ;PRINT BASE PRIMER STRING
+[ 372]    07C4: B4 09                                 MOV AH,9
+[ 373]    07C6: CD 21                                 INT 21H
+[ 374]        :                                       
+[ 375]    07C8: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 376]    07CB: B4 09                                 MOV AH,9
+[ 377]    07CD: CD 21                                 INT 21H
+[ 378]        :                                       
+[ 379]        :                                       
+[ 380]    07CF: BA 86 02                              LEA DX,C_kit                ;PRINT CONTOUR KIT STRING
+[ 381]    07D2: B4 09                                 MOV AH,9
+[ 382]    07D4: CD 21                                 INT 21H
+[ 383]        :                                       
+[ 384]    07D6: BA 23 05                              LEA DX,NL                   ;PRINT A NEW LINE
+[ 385]    07D9: B4 09                                 MOV AH,9
+[ 386]    07DB: CD 21                                 INT 21H
+[ 387]        :                                       
+[ 388]    07DD: BA DC 00                              LEA DX,ENTER                ;PRINT ENTER STRING
+[ 389]    07E0: B4 09                                 MOV AH,9
+[ 390]    07E2: CD 21                                 INT 21H
+[ 391]        :                                       
+[ 392]    07E4: C3                                    RET
+[ 393]        :                                       
+[ 394]        :                                       MENU ENDP
+[ 395]        :                                       
+[ 396]        :                                       
+[ 397]        :                                       ;-------------------------------------------------------------------------------
+[ 398]        :                                       ;INPUT PROCEDURE TO TAKE USER INPUT
+[ 399]        :                                       
+[ 400]    07E5:                                       INPUT PROC
+[ 401]    07E5:                                       TOP:  ;USER WILL ENTER INPUT
+[ 402]        :                                       
+[ 403]    07E5: B4 01                                 MOV AH,1                    ;TAKE AN INPUT & SAVED TO AL
+[ 404]    07E7: CD 21                                 INT 21H
+[ 405]        :                                       
+[ 406]        :                                       
+[ 407]    07E9: 3C 31                                 CMP AL,49                   ;IF AL=1 GO TO Lipsticks LEBEL
+[ 408]    07EB: 74 32                                 JE LipsticksB
+[ 409]        :                                       
+[ 410]    07ED: 3C 32                                 CMP AL,50                   ;IF AL=2 GO TO EYESHADOW PALLETE LEBEL
+[ 411]    07EF: 74 36                                 JE E_palleteB
+[ 412]        :                                       
+[ 413]    07F1: 3C 33                                 CMP AL,51                   ;IF AL=3 GO TO MASCARA LEBEL
+[ 414]    07F3: 74 3A                                 JE MascaraB
+[ 415]        :                                       
+[ 416]    07F5: 3C 34                                 CMP AL,52                   ;IF AL=4 GO TO LIP PANCIL LEBEL
+[ 417]    07F7: 74 3E                                 JE L_pencilB
+[ 418]        :                                       
+[ 419]    07F9: 3C 35                                 CMP AL,53                   ;IF AL=5 GO TO NAIL PAINT LEBEL
+[ 420]    07FB: 74 42                                 JE N_paintB
+[ 421]        :                                       
+[ 422]    07FD: 3C 36                                 CMP AL,54                   ;IF AL=6 GO TO FOUNDATION LEBEL
+[ 423]    07FF: 74 46                                 JE FoundationB
+[ 424]        :                                       
+[ 425]    0801: 3C 37                                 CMP AL,55                   ;IF AL=7 GO TO COMPACT POWDER LEBEL
+[ 426]    0803: 74 4A                                 JE C_powderB
+[ 427]        :                                       
+[ 428]    0805: 3C 38                                 CMP AL,56                   ;IF AL=8 GO TO BASE PRIMER LEBEL
+[ 429]    0807: 74 4E                                 JE b_primerB
+[ 430]        :                                       
+[ 431]    0809: 3C 39                                 CMP AL,57                   ;IF AL=9 GO TO CONTOUR KIT LEBEL
+[ 432]    080B: 74 52                                 JE C_kitB
+[ 433]        :                                       
+[ 434]        :                                       
+[ 435]    080D: EB 00                                 JMP ERROR1                ;IF WRONG KEYWORD IS PRESSED THEN THE SHOPLIST WILL SHOW AGAIN
+[ 436]        :                                       
+[ 437]        :                                       
+[ 438]    080F:                                       ERROR1:
+[ 439]        :                                       
+[ 440]    080F: BA F9 02                              LEA DX,ER_MSG               ;PRINT ERROR MESSAGE
+[ 441]    0812: B4 09                                 MOV AH,9
+[ 442]    0814: CD 21                                 INT 21H
+[ 443]        :                                       ;IF USER GIVES AN ERROR THEN USER WILL BE ASKED TO INPUT AGAIN
+[ 444]    0816: BA AE 03                              LEA DX,ERASK
+[ 445]    0819: B4 09                                 MOV AH,9
+[ 446]    081B: CD 21                                 INT 21H
+[ 447]        :                                       
+[ 448]    081D: EB C6                                 JMP TOP
+[ 449]        :                                       
+[ 450]        :                                       
+[ 451]        :                                       
+[ 452]    081F:                                       LipsticksB:
+[ 453]        :                                       
+[ 454]    081F: C7 06 19 05 E8 03                     MOV A,1000                        ;PRICE OF LIPSTICK IS MOVED TO A WHERE PRICE IS 1000
+[ 455]        :                                       
+[ 456]    0825: EB 40                                 JMP EXIT
+[ 457]        :                                       
+[ 458]    0827:                                       E_palleteB:
+[ 459]        :                                       
+[ 460]    0827: C7 06 19 05 A0 0F                     MOV A,4000                        ;PRICE OF EYESHADOW PALLATE IS MOVED TO A WHERE PRICE IS 4000
+[ 461]        :                                       
+[ 462]    082D: EB 38                                 JMP EXIT
+[ 463]        :                                       
+[ 464]    082F:                                       MascaraB:
+[ 465]        :                                       
+[ 466]    082F: C7 06 19 05 DC 05                     MOV A,1500                        ;PRICE OF MASCARA IS MOVED TO A WHERE PRICE IS 1500
+[ 467]        :                                       
+[ 468]    0835: EB 30                                 JMP EXIT
+[ 469]        :                                       
+[ 470]    0837:                                       L_pencilB:
+[ 471]        :                                       
+[ 472]    0837: C7 06 19 05 90 01                     MOV A,400                        ;PRICE OF LIP PENCIL IS MOVED TO A WHERE PRICE IS 400
+[ 473]        :                                       
+[ 474]    083D: EB 28                                 JMP EXIT
+[ 475]        :                                       
+[ 476]    083F:                                       N_paintB:
+[ 477]        :                                       
+[ 478]    083F: C7 06 19 05 F4 01                     MOV A,500                        ;PRICE OF NAIL PAINT IS MOVED TO A WHERE PRICE IS 500
+[ 479]        :                                       
+[ 480]    0845: EB 20                                 JMP EXIT
+[ 481]        :                                       
+[ 482]    0847:                                       FoundationB:
+[ 483]        :                                       
+[ 484]    0847: C7 06 19 05 B8 0B                     MOV A,3000                        ;PRICE OF FOUNDATION IS MOVED TO A WHERE PRICE IS 3000
+[ 485]        :                                       
+[ 486]    084D: EB 18                                 JMP EXIT
+[ 487]        :                                       
+[ 488]    084F:                                       C_powderB:
+[ 489]        :                                       
+[ 490]    084F: C7 06 19 05 DC 05                     MOV A,1500                        ;PRICE OF COMPACT POWDER IS MOVED TO A WHERE PRICE IS 1500
+[ 491]        :                                       
+[ 492]    0855: EB 10                                 JMP EXIT
+[ 493]        :                                       
+[ 494]    0857:                                       b_primerB:
+[ 495]        :                                       
+[ 496]    0857: C7 06 19 05 B0 04                     MOV A,1200                        ;PRICE OF BASE PRIMER IS MOVED TO A WHERE PRICE IS 1200
+[ 497]        :                                       
+[ 498]    085D: EB 08                                 JMP EXIT
+[ 499]        :                                       
+[ 500]    085F:                                       C_kitB:
+[ 501]        :                                       
+[ 502]    085F: C7 06 19 05 B8 0B                     MOV A,3000                        ;PRICE OF CONTOUR KIT IS MOVED TO A WHERE PRICE IS 3000
+[ 503]    0865: EB 00                                 JMP EXIT
+[ 504]        :                                       
+[ 505]        :                                       
+[ 506]    0867:                                       EXIT:               ; go back to the main function
+[ 507]    0867: C3                                    RET
+[ 508]        :                                       INPUT ENDP
+[ 509]        :                                       
+[ 510]        :                                       ;-------------------------------------------------------------------------------------------------
+[ 511]        :                                       
+[ 512]        :                                       
+[ 513]    0868:                                       QUAN PROC     ;FOR TAKING INPUT FOR MULTIPLY WITH THE GIVEN AMOUNT
+[ 514]        :                                       
+[ 515]        :                                       
+[ 516]    0868: 33 DB                                 XOR BX,BX                       ;HOLDS TOTAL
+[ 517]        :                                       
+[ 518]    086A: 33 C9                                 XOR CX,CX                       ;SIGN
+[ 519]        :                                       
+[ 520]        :                                       
+[ 521]        :                                       ;ASK USER TO ENTER QUANTITY
+[ 522]    086C:                                       QUANTITY:
+[ 523]        :                                       
+[ 524]        :                                       
+[ 525]    086C: BA B1 02                              LEA DX,E_QUANTITY            ;PRINT ENTER QUANTITY STRING
+[ 526]    086F: B4 09                                 MOV AH,9
+[ 527]    0871: CD 21                                 INT 21H
+[ 528]        :                                       
+[ 529]        :                                       
+[ 530]        :                                       
+[ 531]        :                                       
+[ 532]    0873: B4 01                                 MOV AH,1                        ;TAKE CHARACTER IN AL
+[ 533]    0875: CD 21                                 INT 21H
+[ 534]        :                                       
+[ 535]        :                                       
+[ 536]        :                                       
+[ 537]    0877:                                       REPEAT4:
+[ 538]        :                                       
+[ 539]    0877: 3C 30                                 CMP AL,48                       ;IF AL<0, PRINT ERROR MESSAGE
+[ 540]    0879: 7C 1C                                 JL ERROR
+[ 541]        :                                       
+[ 542]    087B: 3C 39                                 CMP AL,57                       ;IF AL>9, PRINT ERRIR MESSAGE
+[ 543]    087D: 7F 18                                 JG ERROR
+[ 544]        :                                       
+[ 545]        :                                       
+[ 546]    087F: 25 0F 00                              AND AX,00FH                     ;CONVERT TO DIGIT
+[ 547]    0882: 50                                    PUSH AX                         ;SAVE ON STACK
+[ 548]        :                                       
+[ 549]    0883: B8 0A 00                              MOV AX,10                       ;GET 10
+[ 550]    0886: F7 E3                                 MUL BX                          ;AX=TOTAL * 10
+[ 551]    0888: 5B                                    POP BX                          ;GET DIGIT BACK
+[ 552]    0889: 03 D8                                 ADD BX,AX                       ;TOTAL = TOTAL X 10 +DIGIT
+[ 553]        :                                       
+[ 554]        :                                       
+[ 555]    088B: B4 01                                 MOV AH,1
+[ 556]    088D: CD 21                                 INT 21H
+[ 557]        :                                       
+[ 558]    088F: 3C 0D                                 CMP AL,0DH                      ;CARRIAGE RETURN
+[ 559]    0891: 75 E4                                 JNE REPEAT4                     ;IF NO CARRIEGE RETURN THEN MOVE ON
+[ 560]        :                                       
+[ 561]    0893: 8B C3                                 MOV AX,BX                       ;STORE IN AX
+[ 562]        :                                       
+[ 563]    0895: EB 09                                 JMP QTYEND
+[ 564]        :                                       
+[ 565]    0897:                                       ERROR:
+[ 566]        :                                       
+[ 567]    0897: BA F9 02                              LEA DX,ER_MSG                ;PRINT ERROR MESSAGE
+[ 568]    089A: B4 09                                 MOV AH,9
+[ 569]    089C: CD 21                                 INT 21H
+[ 570]        :                                       
+[ 571]    089E: EB CC                                 JMP QUANTITY
+[ 572]        :                                       
+[ 573]    08A0:                                       QTYEND:
+[ 574]        :                                       
+[ 575]    08A0: C3                                    RET                             ;AND RETURN
+[ 576]        :                                       
+[ 577]        :                                       QUAN ENDP                         ;END OF INDEC3
+[ 578]        :                                       
+[ 579]        :                                       
+[ 580]        :                                       ;--------------------------------------------------------------------------------------------------------
+[ 581]    08A1:                                       MUL_ PROC   ;after quantity and multiply quantity with price
+[ 582]        :                                       
+[ 583]        :                                       
+[ 584]        :                                       ;SECOND VALUE STORED IN B
+[ 585]    08A1: A3 1B 05                              MOV B,AX
+[ 586]        :                                       
+[ 587]    08A4: 33 C0                                 XOR AX,AX                        ;CLEAR AX
+[ 588]        :                                       
+[ 589]    08A6: A1 1B 05                              MOV AX,B
+[ 590]        :                                       
+[ 591]    08A9: F7 26 19 05                           MUL A                            ;MULTIPLY A WITH AX
+[ 592]        :                                       
+[ 593]        :                                       
+[ 594]    08AD: 50                                    PUSH AX                          ;TAKE AX INTO STACK
+[ 595]        :                                       
+[ 596]    08AE: A3 19 05                              MOV A,AX
+[ 597]        :                                       
+[ 598]    08B1: 58                                    POP AX ;BECAUSE OF PROCEDURE
+[ 599]        :                                       
+[ 600]    08B2: C3                                    RET
+[ 601]        :                                       MUL_ ENDP
+[ 602]        :                                       
+[ 603]        :                                       
+[ 604]        :                                       
+[ 605]        :                                       ;--------------------------------------------------------------------------------------------------
+[ 606]        :                                       
+[ 607]        :                                       
+[ 608]    08B3:                                       DISCOUNT PROC
+[ 609]        :                                       
+[ 610]        :                                       
+[ 611]        :                                       
+[ 612]    08B3: BA 74 03                              LEA DX,E_DISCOUNT                ;PRINT ENTER DISCOUNT STRING
+[ 613]    08B6: B4 09                                 MOV AH,9
+[ 614]    08B8: CD 21                                 INT 21H
+[ 615]        :                                       
+[ 616]        :                                       
+[ 617]        :                                       ; PUSH AX
+[ 618]        :                                       
+[ 619]    08BA: 33 DB                                 XOR BX,BX                        ;HOLDS TOTAL
+[ 620]        :                                       
+[ 621]    08BC: 33 C9                                 XOR CX,CX                        ;SIGN
+[ 622]        :                                       
+[ 623]    08BE:                                       DISTOP:
+[ 624]    08BE: B4 01                                 MOV AH,1                         ;CHAR IN AL
+[ 625]    08C0: CD 21                                 INT 21H
+[ 626]        :                                       
+[ 627]        :                                       
+[ 628]    08C2:                                       REPEAT3:
+[ 629]        :                                       
+[ 630]    08C2: 3C 30                                 CMP AL,48                        ;IF AL<0, PRINT ERROR MESSAGE
+[ 631]    08C4: 7C 1E                                 JL ER_DISCOUNT
+[ 632]        :                                       
+[ 633]    08C6: 3C 39                                 CMP AL,57                        ;IF AL>9, PRINT ERROR MESSAGE
+[ 634]    08C8: 7F 1A                                 JG ER_DISCOUNT
+[ 635]        :                                       
+[ 636]        :                                       
+[ 637]    08CA: 25 0F 00                              AND AX,00FH                      ;CONVERT TO DIGIT
+[ 638]    08CD: 50                                    PUSH AX                          ;SAVE ON STACK
+[ 639]        :                                       
+[ 640]    08CE: B8 0A 00                              MOV AX,10                        ;GET 10
+[ 641]    08D1: F7 E3                                 MUL BX                           ;AX=TOTAL * 10
+[ 642]    08D3: 5B                                    POP BX                           ;GET DIGIT BACK
+[ 643]    08D4: 03 D8                                 ADD BX,AX                        ;TOTAL = TOTAL X 10 +DIGIT
+[ 644]        :                                       
+[ 645]        :                                       
+[ 646]    08D6: B4 01                                 MOV AH,1
+[ 647]    08D8: CD 21                                 INT 21H
+[ 648]        :                                       
+[ 649]    08DA: 3C 0D                                 CMP AL,0DH                       ;CARRIAGE RETURN
+[ 650]    08DC: 75 E4                                 JNE REPEAT3                      ;NO KEEP GOING
+[ 651]        :                                       
+[ 652]    08DE: 8B C3                                 MOV AX,BX                        ;STORE IN AX
+[ 653]        :                                       
+[ 654]    08E0: 0B C9                                 OR CX,CX                         ;NEG NUM
+[ 655]        :                                       
+[ 656]    08E2: EB 10                                 JMP ENDDISCOUNT
+[ 657]        :                                       
+[ 658]    08E4:                                       ER_DISCOUNT:
+[ 659]        :                                       
+[ 660]    08E4: BA F9 02                              LEA DX,ER_MSG                ;DURING DISCOUNT INPUT IF WRONG INPUT IS PRESSES ERROR MESSSAGE WILL SHOW
+[ 661]    08E7: B4 09                                 MOV AH,9
+[ 662]    08E9: CD 21                                 INT 21H
+[ 663]        :                                       
+[ 664]    08EB: BA BD 03                              LEA DX,EN_DIS                ;PRINT AGAIN INPUT DISCOUNT VALUE
+[ 665]    08EE: B4 09                                 MOV AH,9
+[ 666]    08F0: CD 21                                 INT 21H
+[ 667]        :                                       
+[ 668]    08F2: EB CA                                 JMP DISTOP
+[ 669]        :                                       
+[ 670]    08F4:                                       ENDDISCOUNT:
+[ 671]        :                                       
+[ 672]        :                                       
+[ 673]    08F4: C3                                    RET                              ;AND RETURN
+[ 674]        :                                       DISCOUNT ENDP
+[ 675]        :                                       
+[ 676]        :                                       ;------------------------------------------------------------------------------------------------------
+[ 677]        :                                       
+[ 678]    08F5:                                       SUB_ PROC
+[ 679]        :                                       
+[ 680]        :                                       
+[ 681]        :                                       ;SECOND VALUE STORED IN B
+[ 682]    08F5: 50                                    PUSH AX
+[ 683]    08F6: A1 1B 05                              MOV AX, B
+[ 684]    08F9: A3 1D 05                              MOV C, AX          ;NOW C has the quantity
+[ 685]        :                                       
+[ 686]    08FC: 58                                    POP AX
+[ 687]        :                                       
+[ 688]    08FD: A3 1B 05                              MOV B,AX
+[ 689]        :                                       
+[ 690]    0900: BA 5E 03                              LEA DX,R                         ;PRINT PRESENT AMOUNT STRING
+[ 691]    0903: B4 09                                 MOV AH,9
+[ 692]    0905: CD 21                                 INT 21H
+[ 693]        :                                       
+[ 694]        :                                       
+[ 695]    0907: 33 C0                                 XOR AX,AX                        ;CLEAR AX
+[ 696]        :                                       
+[ 697]    0909: A1 1B 05                              MOV AX,B                         ;MOV B TO AX
+[ 698]    090C: 29 06 19 05                           SUB A,AX                         ;SUBSTRACT AX FROM A
+[ 699]        :                                       
+[ 700]        :                                       
+[ 701]    0910: A1 19 05                              MOV AX,A                         ;MOV A TO AX
+[ 702]        :                                       
+[ 703]    0913: 50                                    PUSH AX
+[ 704]        :                                       
+[ 705]    0914: 01 06 1F 05                           ADD S,AX
+[ 706]        :                                       
+[ 707]    0918: 58                                    POP AX
+[ 708]        :                                       
+[ 709]        :                                       ;JMP OUTPUT
+[ 710]    0919: C3                                    RET
+[ 711]        :                                       SUB_ ENDP
+[ 712]        :                                       
+[ 713]        :                                       
+[ 714]        :                                       
+[ 715]        :                                       
+[ 716]        :                                       ;-------------------------------------------------------------------------------------------------
+[ 717]        :                                       
+[ 718]        :                                       ;OUTDEC PROC IS FOR GIVING THE OUTPUT OF THE PRESENT AMOUNT
+[ 719]        :                                       
+[ 720]    091A:                                       OUTPUT PROC
+[ 721]        :                                       
+[ 722]    091A: 33 C9                                 XOR CX,CX                        ;CX COUNTS DIGITS
+[ 723]    091C: BB 0A 00                              MOV BX,10D                       ;BX HAS DIVISOR
+[ 724]        :                                       
+[ 725]    091F:                                       REPEAT1:
+[ 726]        :                                       
+[ 727]    091F: 33 D2                                 XOR DX,DX                        ;PREP HIGH WORD
+[ 728]    0921: F7 F3                                 DIV BX                           ;AX = QUOTIENT, DX=REMAINDER
+[ 729]        :                                       
+[ 730]    0923: 52                                    PUSH DX                          ;SAVE REMAINDER ON STACK
+[ 731]    0924: 41                                    INC CX                           ;COUNT = COUNT +1
+[ 732]        :                                       
+[ 733]    0925: 0B C0                                 OR AX,AX                         ;QUOTIENT = 0?
+[ 734]    0927: 75 F6                                 JNE REPEAT1                      ;NO, KEEP GOING
+[ 735]        :                                       
+[ 736]    0929: B4 02                                 MOV AH,2                         ;PRINT CHAR FUNCTION
+[ 737]        :                                       
+[ 738]    092B:                                       PRINT_LOOP:
+[ 739]        :                                       
+[ 740]    092B: 5A                                    POP DX                           ;DIGIT IN DL
+[ 741]    092C: 80 CA 30                              OR DL,30H                        ;CONVERT TO CHAR
+[ 742]    092F: CD 21                                 INT 21H                          ;PRINT DIGIT
+[ 743]    0931: E2 F8                                 LOOP PRINT_LOOP                  ;LOOP UNTILL DONE
+[ 744]        :                                       
+[ 745]        :                                       ;JMP ASK
+[ 746]        :                                       
+[ 747]    0933: C3                                    RET
+[ 748]        :                                       OUTPUT ENDP
+[ 749]        :                                       
+[ 750]        :                                       ;--------------------------------------------------------------------------------------------------
+[ 751]        :                                       
+[ 752]        :                                       ;if user want to continue or not
+[ 753]    0934:                                       ASK PROC
+[ 754]        :                                       
+[ 755]    0934: BA 23 05                              LEA DX,NL
+[ 756]    0937: B4 09                                 MOV AH,9
+[ 757]    0939: CD 21                                 INT 21H
+[ 758]        :                                       
+[ 759]    093B: BA 98 04                              LEA DX,LINE
+[ 760]    093E: B4 09                                 MOV AH,9
+[ 761]    0940: CD 21                                 INT 21H
+[ 762]        :                                       
+[ 763]    0942: BA C4 02                              LEA DX,AGAIN                 ;PRINT AGAIN IF USER WANTS TO BUY MORE
+[ 764]    0945: B4 09                                 MOV AH,9
+[ 765]    0947: CD 21                                 INT 21H
+[ 766]        :                                       
+[ 767]    0949: B4 01                                 MOV AH,1                     ;TAKES THE INPUT OF YES OR NO
+[ 768]    094B: CD 21                                 INT 21H
+[ 769]        :                                       
+[ 770]        :                                       ;CMP AL,49
+[ 771]        :                                       ;JE BACK                   ;IF YES, THEN AGAIN GO TO SHOPLIST MENU AND BUY AGAIN
+[ 772]        :                                       ;JE BEGINTOP
+[ 773]        :                                       
+[ 774]        :                                       ;CMP AL,50
+[ 775]        :                                       ;JE BACK
+[ 776]        :                                       ;JE CALL TOTAL                   ;IF NO, PROGRAM WILL GIVE THE TOTAL OUTPUT
+[ 777]        :                                       
+[ 778]        :                                       
+[ 779]        :                                       
+[ 780]        :                                       
+[ 781]    094D:                                       BACK:
+[ 782]    094D: C3                                    RET
+[ 783]        :                                       ASK ENDP
+[ 784]        :                                       
+[ 785]        :                                       
+[ 786]        :                                       ;----------------------------------------------------------------------------------------------
+[ 787]        :                                       
+[ 788]    094E:                                       EDIT_ORDER PROC
+[ 789]        :                                       
+[ 790]        :                                       
+[ 791]    094E: BA 23 05                              LEA DX,NL
+[ 792]    0951: B4 09                                 MOV AH,9
+[ 793]    0953: CD 21                                 INT 21H
+[ 794]        :                                       
+[ 795]    0955: BA 98 04                              LEA DX,LINE
+[ 796]    0958: B4 09                                 MOV AH,9
+[ 797]    095A: CD 21                                 INT 21H
+[ 798]        :                                       
+[ 799]    095C: BA D6 03                              LEA DX,EDIT
+[ 800]    095F: B4 09                                 MOV AH,9    ;ASK USER IF THEY WANT TO EDIT ORDER
+[ 801]    0961: CD 21                                 INT 21H
+[ 802]        :                                       
+[ 803]    0963: B4 01                                 MOV AH,1
+[ 804]    0965: CD 21                                 INT 21H
+[ 805]        :                                       
+[ 806]        :                                       
+[ 807]    0967: C3                                    RET
+[ 808]        :                                       EDIT_ORDER ENDP
+[ 809]        :                                       ;--------------------------------------------------------
+[ 810]    0968:                                       UPDATE_ORDER PROC
+[ 811]        :                                       
+[ 812]    0968: BA 23 05                              LEA DX,NL
+[ 813]    096B: B4 09                                 MOV AH,9
+[ 814]    096D: CD 21                                 INT 21H
+[ 815]        :                                       
+[ 816]    096F: BA 4C 04                              LEA DX,UPDATE
+[ 817]    0972: B4 09                                 MOV AH,9
+[ 818]    0974: CD 21                                 INT 21H
+[ 819]        :                                       
+[ 820]    0976: C3                                    RET ;MOV TO THE MENU IN MAIN
+[ 821]        :                                       UPDATE_ORDER ENDP
+[ 822]        :                                       ;-------------------------------------------------------------
+[ 823]    0977:                                       DELETE_ORDER PROC
+[ 824]        :                                       
+[ 825]    0977: BA 23 05                              LEA DX,NL
+[ 826]    097A: B4 09                                 MOV AH,9
+[ 827]    097C: CD 21                                 INT 21H
+[ 828]        :                                       
+[ 829]    097E: BA 98 04                              LEA DX,LINE
+[ 830]    0981: B4 09                                 MOV AH,9
+[ 831]    0983: CD 21                                 INT 21H
+[ 832]        :                                       
+[ 833]    0985: BA 23 05                              LEA DX,NL
+[ 834]    0988: B4 09                                 MOV AH,9
+[ 835]    098A: CD 21                                 INT 21H
+[ 836]        :                                       
+[ 837]    098C: BA 6C 04                              LEA DX,DELETE
+[ 838]    098F: B4 09                                 MOV AH,9
+[ 839]    0991: CD 21                                 INT 21H
+[ 840]        :                                       
+[ 841]    0993: B4 01                                 MOV AH,1
+[ 842]    0995: CD 21                                 INT 21H
+[ 843]        :                                       
+[ 844]    0997: C3                                    RET
+[ 845]        :                                       DELETE_ORDER ENDP
+[ 846]        :                                       
+[ 847]        :                                       
+[ 848]        :                                       ;-----------------------------------------------------------------
+[ 849]        :                                       
+[ 850]        :                                       ;TOTAL IS FOR GIVING THE TOTAL OUTPUT OF THE AMOUNT
+[ 851]        :                                       
+[ 852]    0998:                                       TOTAL PROC
+[ 853]        :                                       
+[ 854]    0998: BA 23 05                              LEA DX,NL
+[ 855]    099B: B4 09                                 MOV AH,9
+[ 856]    099D: CD 21                                 INT 21H
+[ 857]        :                                       
+[ 858]    099F: BA C9 04                              LEA DX,LINE2
+[ 859]    09A2: B4 09                                 MOV AH,9
+[ 860]    09A4: CD 21                                 INT 21H
+[ 861]        :                                       
+[ 862]    09A6: BA 19 03                              LEA DX,FT                        ;PRINT FINAL TOTAL
+[ 863]    09A9: B4 09                                 MOV AH,9
+[ 864]    09AB: CD 21                                 INT 21H
+[ 865]        :                                       
+[ 866]    09AD: 33 C0                                 XOR AX,AX                        ;CLEAR AX
+[ 867]        :                                       
+[ 868]    09AF: A1 1F 05                              MOV AX,S                         ;SET AX INTO 0
+[ 869]        :                                       
+[ 870]        :                                       
+[ 871]    09B2: 33 C9                                 XOR CX,CX                        ;CX COUNTS DIGITS
+[ 872]    09B4: BB 0A 00                              MOV BX,10D                       ;BX HAS DIVISOR
+[ 873]        :                                       
+[ 874]    09B7:                                       REPEAT12:
+[ 875]        :                                       
+[ 876]    09B7: 33 D2                                 XOR DX,DX                        ;PREP HIGH WORD
+[ 877]    09B9: F7 F3                                 DIV BX                           ;AX = QUOTIENT, DX=REMAINDER
+[ 878]        :                                       
+[ 879]    09BB: 52                                    PUSH DX                          ;SAVE REMAINDER ON STACK
+[ 880]    09BC: 41                                    INC CX                           ;COUNT = COUNT +1
+[ 881]        :                                       
+[ 882]    09BD: 0B C0                                 OR AX,AX                         ;QUOTIENT = 0?
+[ 883]    09BF: 75 F6                                 JNE REPEAT12                     ;NO, KEEP GOING
+[ 884]        :                                       
+[ 885]    09C1: B4 02                                 MOV AH,2                         ;PRINT CHAR FUNCTION
+[ 886]        :                                       
+[ 887]    09C3:                                       PRINT_LOOP2:
+[ 888]        :                                       
+[ 889]    09C3: 5A                                    POP DX                           ;DIGIT IN DL
+[ 890]    09C4: 80 CA 30                              OR DL,30H                        ;CONVERT TO CHAR
+[ 891]    09C7: CD 21                                 INT 21H                          ;PRINT DIGIT
+[ 892]    09C9: E2 F8                                 LOOP PRINT_LOOP2                 ;LOOP UNTILL DONE
+[ 893]        :                                       
+[ 894]        :                                       
+[ 895]        :                                       
+[ 896]    09CB: C3                                    RET
+[ 897]        :                                       TOTAL ENDP
+[ 898]        :                                       
+[ 899]        :                                       ;-----------------------------------------------------------------------------------------------------
+[ 900]        :                                       
+[ 901]        :                                       
+[ 902]        :                                       
+[ 903]        :                                       
+[ 904]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: CC      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 06      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 1B      -   check sum (l.byte)
+0013: 8F      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 63      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 63      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

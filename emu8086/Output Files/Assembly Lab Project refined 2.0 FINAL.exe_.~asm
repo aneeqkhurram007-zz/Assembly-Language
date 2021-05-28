@@ -1,0 +1,907 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+
+HEADING DB '********ONLINE SHOPPING SYSTEM**********$',10,13
+HEADING2 DB '******        MAL FINAL PROJECT      ***** $',10,13
+HEADING3 DB 'PREPARED BY $',10,13
+HEADING4 DB 'Maham Baig FA19-BCS-003 $',10,13
+HEADING5 DB 'Kashaf Shanawar FA19-BCS-81 $',10,13
+HEADING6 DB 'Khadija Bashir FA19-BCS-91$',10,13
+HEADING7 DB 'Nushwa Javed FA19-BCS-149 $',10,13
+
+
+
+ENTER DB 10,13,'CHOOSE FROM MENU WHAT YOU WANT TO BUY: $'
+INFO DB 10,13,'KEYS         ITEMS               PRICE$'
+
+Lipsticks DB 10,13,' 1    LIPSTICKS                 1000 RS$'
+
+E_pallete DB 10,13,' 2    EYESHADOW PALLETE         4000 RS $'
+
+Mascara DB 10,13,' 3    MASCARA                   1500 RS $'
+
+L_pencil DB 10,13,' 4    LIP PENCILS                400 RS $'
+
+N_paint DB 10,13,' 5    NAIL PAINT                 500 RS $'
+
+Foundation DB 10,13,' 6    FOUNDATION                3000 RS $'
+
+C_powder DB 10,13,' 7    COMPACT POWDER            1500 RS $'
+
+b_primer DB 10,13,' 8    BASE PRIMER               1200 RS $'
+
+C_kit DB 10,13,' 9    CONTOUR KIT               3000 RS $'
+
+E_quantity DB 10,13,'ENTER QUANTITY: $'
+
+AGAIN DB 10,13,'PRESS 1 IF YOU WANT TO BUY MORE AND PRESS 2 IF NO $'
+
+ER_MSG DB 10,13,'ERROR!!!$'
+
+CHOICE DB 10,13,'ENTER YOUR CHOICE:$'
+
+FT DB 10,13,'YOUR TOTAL BILL IS :$'
+
+ERR DB 0DH,0AH,'WRONG INPUT!$'
+
+ERR2 DB 0DH,0AH,'WRONG INPUT.PRESS Y/Y OR N/N $'
+
+R DB 0DH,0AH,'PRESENT AMOUNT IS : $'
+
+E_DISCOUNT DB 10,13,'ENTER DISCOUNT OR PRESS 0 IF DISCOUNT IS NOT AVAILABLE $'
+
+ERASK DB 10,13,'ENTER AGAIN $'
+
+EN_DIS DB 10,13,'AGAIN ENTER DISCOUNT: $'
+
+EDIT DB 10,13,'WOULD YOU LIKE TO EDIT YOUR ORDER? PRESS 1 FOR YES 2 FOR NO: $'
+
+EDIT1 DB 10,13,'PRESS 1-UPDATION PRESS-2 FOR DELETION PRESS-3 END: $'
+
+UPDATE DB 10,13,'ADD MORE ITEMS TO YOUR CART: $'
+
+DELETE DB 10,13,'1-DELETE ITEM 2- DELETE ORDER 3-GO BACK: $'
+
+LINE DB 10,13, '----------------------------------------------$'
+
+LINE2 DB 10,13, '--------------------TOTAL-----------------$'
+
+THANKYOU DB 10,13, 'THANK YOU FOR SHOPPING WITH US :)$'
+
+
+A DW ?                           ;DECALRED VARIABLES
+B DW ?
+C DW ?
+S DW 0,'$'
+
+NL DB 0DH,0AH,'$'                ;NEW LINE
+
+
+.CODE
+
+MAIN PROC
+
+MOV AX, @DATA
+MOV DS, AX
+
+LEA DX,HEADING                ;PRINT INTRO STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+LEA DX,HEADING2               ;PRINT INTRO2 STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+;roll numbers
+
+LEA DX,HEADING3
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,HEADING4
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+
+LEA DX,HEADING5
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,HEADING6
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,HEADING7
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+
+
+st:
+CALL MENU    ;PRINT MENU
+CALL INPUT ;TAKE INPUT FROM USER
+CALL QUAN   ;THE PRICE WILL BE MILTIPLIED WITH THE Quantity
+
+CALL MUL_
+CALL DISCOUNT
+CALL SUB_       ;subtract the total amount with discount
+CALL OUTPUT    ;print present total amount
+
+;-------ask portion-------
+asklbl:
+CALL ASK        ;continue?
+
+CMP AL,31H
+JE st
+
+CMP AL, 32H
+JE editorder
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,ER_MSG
+MOV AH,9                     ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE and ask again
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+JMP asklbl                        ;after error message ask proc will be called again
+
+
+;-------Edit portion begins here-----
+
+editorder:
+
+CALL EDIT_ORDER                   ;edit order?
+CMP AL,31H
+JE y
+
+CMP AL, 32H
+JE no
+
+LEA DX,ER_MSG
+MOV AH,9                             ;error message ask again
+INT 21H
+JMP editorder
+;--------updation or deletion?------
+y:
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,EDIT1                    ;ASK USER TO PRESS 1 FOR UPDATION AND 2 FOR DELETION
+MOV AH,9
+INT 21H
+
+MOV AH,1                        ;TAKE INPUT
+INT 21H
+
+CMP AL,31H
+JE y1
+
+CMP AL, 32H
+JE y2
+
+CMP AL,33H
+JE no             ;end program and display total
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,ER_MSG
+MOV AH,9                         ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE AND REPEAT
+INT 21H
+JMP y
+
+
+y1:
+CALL UPDATE_ORDER         ;update order and start again to recieve more items from user
+JMP st
+;----------delete or go back---------------
+y2:
+CALL DELETE_ORDER        ;ask user if he wants to delete or start over
+
+CMP AL,31H
+JE yy1      ;DELETE ITEM
+
+CMP AL, 32H
+JE yy2    ;DELETE ORDER
+
+CMP AL, 33H
+JE y ;GO BACK TO THE EDIT QUESTION
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,ER_MSG
+MOV AH,9                     ;IF ANY WRONG INPUT, PRINT ERROR MESSAGE AND AGAIN ASK TO BUY AGAIN
+INT 21H
+JMP y2              ;incase of wrong input user is asked again if he wants to delete or not
+
+
+;-DELETE ITEM-
+yy1:
+
+MOV AX, A  ;PRESENT AMOUNT TO AX
+SUB S, AX  ;SUBTRACT PRESENT ITEM AMOUNT WITH TOTAL AMOUNT
+jmp editorder   ; EDIT ORDER?
+
+
+;-DELTE ORDER-
+yy2:
+MOV AX,0
+MOV S,AX
+;when user chooses to delete order total becomes zero,
+;it is displayed and the program starts over.
+
+
+no:
+CALL TOTAL
+
+
+
+
+end:
+
+LEA DX,THANKYOU
+MOV AH,9
+INT 21H
+
+
+MOV AH, 4CH
+INT 21H
+
+MAIN ENDP
+
+;----------------------------------------------------------------------------------------
+;MENU PROCEDURE
+
+MENU PROC
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,INFO                 ;PRINT INFO STRING
+MOV AH,9
+INT 21H
+
+
+LEA DX,Lipsticks              ;PRINT LIPSTICK STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,E_pallete              ;PRINT EYESHADOW PALLETE STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,Mascara            ;PRINT MASCARA STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,L_pencil              ;PRINT LIP PANCIL STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,N_paint            ;PRINT NAIL PAINT FEMALE STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,Foundation         ;PRINT FOUNDATION STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+LEA DX,C_powder              ;PRINT COMPACT POWDER STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,b_primer              ;PRINT BASE PRIMER STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+
+LEA DX,C_kit                ;PRINT CONTOUR KIT STRING
+MOV AH,9
+INT 21H
+
+LEA DX,NL                   ;PRINT A NEW LINE
+MOV AH,9
+INT 21H
+
+LEA DX,ENTER                ;PRINT ENTER STRING
+MOV AH,9
+INT 21H
+
+RET
+
+MENU ENDP
+
+
+;-------------------------------------------------------------------------------
+;INPUT PROCEDURE TO TAKE USER INPUT
+
+INPUT PROC
+TOP:  ;USER WILL ENTER INPUT
+
+MOV AH,1                    ;TAKE AN INPUT & SAVED TO AL
+INT 21H
+
+
+CMP AL,49                   ;IF AL=1 GO TO Lipsticks LEBEL
+JE LipsticksB
+
+CMP AL,50                   ;IF AL=2 GO TO EYESHADOW PALLETE LEBEL
+JE E_palleteB
+
+CMP AL,51                   ;IF AL=3 GO TO MASCARA LEBEL
+JE MascaraB
+
+CMP AL,52                   ;IF AL=4 GO TO LIP PANCIL LEBEL
+JE L_pencilB
+
+CMP AL,53                   ;IF AL=5 GO TO NAIL PAINT LEBEL
+JE N_paintB
+
+CMP AL,54                   ;IF AL=6 GO TO FOUNDATION LEBEL
+JE FoundationB
+
+CMP AL,55                   ;IF AL=7 GO TO COMPACT POWDER LEBEL
+JE C_powderB
+
+CMP AL,56                   ;IF AL=8 GO TO BASE PRIMER LEBEL
+JE b_primerB
+
+CMP AL,57                   ;IF AL=9 GO TO CONTOUR KIT LEBEL
+JE C_kitB
+
+
+JMP ERROR1                ;IF WRONG KEYWORD IS PRESSED THEN THE SHOPLIST WILL SHOW AGAIN
+
+
+ERROR1:
+
+LEA DX,ER_MSG               ;PRINT ERROR MESSAGE
+MOV AH,9
+INT 21H
+;IF USER GIVES AN ERROR THEN USER WILL BE ASKED TO INPUT AGAIN
+LEA DX,ERASK
+MOV AH,9
+INT 21H
+
+JMP TOP
+
+
+
+LipsticksB:
+
+MOV A,1000                        ;PRICE OF LIPSTICK IS MOVED TO A WHERE PRICE IS 1000
+
+JMP EXIT
+
+E_palleteB:
+
+MOV A,4000                        ;PRICE OF EYESHADOW PALLATE IS MOVED TO A WHERE PRICE IS 4000
+
+JMP EXIT
+
+MascaraB:
+
+MOV A,1500                        ;PRICE OF MASCARA IS MOVED TO A WHERE PRICE IS 1500
+
+JMP EXIT
+
+L_pencilB:
+
+MOV A,400                        ;PRICE OF LIP PENCIL IS MOVED TO A WHERE PRICE IS 400
+
+JMP EXIT
+
+N_paintB:
+
+MOV A,500                        ;PRICE OF NAIL PAINT IS MOVED TO A WHERE PRICE IS 500
+
+JMP EXIT
+
+FoundationB:
+
+MOV A,3000                        ;PRICE OF FOUNDATION IS MOVED TO A WHERE PRICE IS 3000
+
+JMP EXIT
+
+C_powderB:
+
+MOV A,1500                        ;PRICE OF COMPACT POWDER IS MOVED TO A WHERE PRICE IS 1500
+
+JMP EXIT
+
+b_primerB:
+
+MOV A,1200                        ;PRICE OF BASE PRIMER IS MOVED TO A WHERE PRICE IS 1200
+
+JMP EXIT
+
+C_kitB:
+
+MOV A,3000                        ;PRICE OF CONTOUR KIT IS MOVED TO A WHERE PRICE IS 3000
+JMP EXIT
+
+
+EXIT:               ; go back to the main function
+RET
+INPUT ENDP
+
+;-------------------------------------------------------------------------------------------------
+
+
+QUAN PROC     ;FOR TAKING INPUT FOR MULTIPLY WITH THE GIVEN AMOUNT
+
+
+XOR BX,BX                       ;HOLDS TOTAL
+
+XOR CX,CX                       ;SIGN
+
+
+;ASK USER TO ENTER QUANTITY
+QUANTITY:
+
+
+LEA DX,E_QUANTITY            ;PRINT ENTER QUANTITY STRING
+MOV AH,9
+INT 21H
+
+
+
+
+MOV AH,1                        ;TAKE CHARACTER IN AL
+INT 21H
+
+
+
+REPEAT4:
+
+CMP AL,48                       ;IF AL<0, PRINT ERROR MESSAGE
+JL ERROR
+
+CMP AL,57                       ;IF AL>9, PRINT ERRIR MESSAGE
+JG ERROR
+
+
+AND AX,00FH                     ;CONVERT TO DIGIT
+PUSH AX                         ;SAVE ON STACK
+
+MOV AX,10                       ;GET 10
+MUL BX                          ;AX=TOTAL * 10
+POP BX                          ;GET DIGIT BACK
+ADD BX,AX                       ;TOTAL = TOTAL X 10 +DIGIT
+
+
+MOV AH,1
+INT 21H
+
+CMP AL,0DH                      ;CARRIAGE RETURN
+JNE REPEAT4                     ;IF NO CARRIEGE RETURN THEN MOVE ON
+
+MOV AX,BX                       ;STORE IN AX
+
+JMP QTYEND
+
+ERROR:
+
+LEA DX,ER_MSG                ;PRINT ERROR MESSAGE
+MOV AH,9
+INT 21H
+
+JMP QUANTITY
+
+QTYEND:
+
+RET                             ;AND RETURN
+
+QUAN ENDP                         ;END OF INDEC3
+
+
+;--------------------------------------------------------------------------------------------------------
+MUL_ PROC   ;after quantity and multiply quantity with price
+
+
+;SECOND VALUE STORED IN B
+MOV B,AX
+
+XOR AX,AX                        ;CLEAR AX
+
+MOV AX,B
+
+MUL A                            ;MULTIPLY A WITH AX
+
+
+PUSH AX                          ;TAKE AX INTO STACK
+
+MOV A,AX
+
+POP AX ;BECAUSE OF PROCEDURE
+
+RET
+MUL_ ENDP
+
+
+
+;--------------------------------------------------------------------------------------------------
+
+
+DISCOUNT PROC
+
+
+
+LEA DX,E_DISCOUNT                ;PRINT ENTER DISCOUNT STRING
+MOV AH,9
+INT 21H
+
+
+; PUSH AX
+
+XOR BX,BX                        ;HOLDS TOTAL
+
+XOR CX,CX                        ;SIGN
+
+DISTOP:
+MOV AH,1                         ;CHAR IN AL
+INT 21H
+
+
+REPEAT3:
+
+CMP AL,48                        ;IF AL<0, PRINT ERROR MESSAGE
+JL ER_DISCOUNT
+
+CMP AL,57                        ;IF AL>9, PRINT ERROR MESSAGE
+JG ER_DISCOUNT
+
+
+AND AX,00FH                      ;CONVERT TO DIGIT
+PUSH AX                          ;SAVE ON STACK
+
+MOV AX,10                        ;GET 10
+MUL BX                           ;AX=TOTAL * 10
+POP BX                           ;GET DIGIT BACK
+ADD BX,AX                        ;TOTAL = TOTAL X 10 +DIGIT
+
+
+MOV AH,1
+INT 21H
+
+CMP AL,0DH                       ;CARRIAGE RETURN
+JNE REPEAT3                      ;NO KEEP GOING
+
+MOV AX,BX                        ;STORE IN AX
+
+OR CX,CX                         ;NEG NUM
+
+JMP ENDDISCOUNT
+
+ER_DISCOUNT:
+
+LEA DX,ER_MSG                ;DURING DISCOUNT INPUT IF WRONG INPUT IS PRESSES ERROR MESSSAGE WILL SHOW
+MOV AH,9
+INT 21H
+
+LEA DX,EN_DIS                ;PRINT AGAIN INPUT DISCOUNT VALUE
+MOV AH,9
+INT 21H
+
+JMP DISTOP
+
+ENDDISCOUNT:
+
+
+RET                              ;AND RETURN
+DISCOUNT ENDP
+
+;------------------------------------------------------------------------------------------------------
+
+SUB_ PROC
+
+
+;SECOND VALUE STORED IN B
+PUSH AX
+MOV AX, B
+MOV C, AX          ;NOW C has the quantity
+
+POP AX
+
+MOV B,AX
+
+LEA DX,R                         ;PRINT PRESENT AMOUNT STRING
+MOV AH,9
+INT 21H
+
+
+XOR AX,AX                        ;CLEAR AX
+
+MOV AX,B                         ;MOV B TO AX
+SUB A,AX                         ;SUBSTRACT AX FROM A
+
+
+MOV AX,A                         ;MOV A TO AX
+
+PUSH AX
+
+ADD S,AX
+
+POP AX
+
+;JMP OUTPUT
+RET
+SUB_ ENDP
+
+
+
+
+;-------------------------------------------------------------------------------------------------
+
+;OUTDEC PROC IS FOR GIVING THE OUTPUT OF THE PRESENT AMOUNT
+
+OUTPUT PROC
+
+XOR CX,CX                        ;CX COUNTS DIGITS
+MOV BX,10D                       ;BX HAS DIVISOR
+
+REPEAT1:
+
+XOR DX,DX                        ;PREP HIGH WORD
+DIV BX                           ;AX = QUOTIENT, DX=REMAINDER
+
+PUSH DX                          ;SAVE REMAINDER ON STACK
+INC CX                           ;COUNT = COUNT +1
+
+OR AX,AX                         ;QUOTIENT = 0?
+JNE REPEAT1                      ;NO, KEEP GOING
+
+MOV AH,2                         ;PRINT CHAR FUNCTION
+
+PRINT_LOOP:
+
+POP DX                           ;DIGIT IN DL
+OR DL,30H                        ;CONVERT TO CHAR
+INT 21H                          ;PRINT DIGIT
+LOOP PRINT_LOOP                  ;LOOP UNTILL DONE
+
+;JMP ASK
+
+RET
+OUTPUT ENDP
+
+;--------------------------------------------------------------------------------------------------
+
+;if user want to continue or not
+ASK PROC
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,LINE
+MOV AH,9
+INT 21H
+
+LEA DX,AGAIN                 ;PRINT AGAIN IF USER WANTS TO BUY MORE
+MOV AH,9
+INT 21H
+
+MOV AH,1                     ;TAKES THE INPUT OF YES OR NO
+INT 21H
+
+;CMP AL,49
+;JE BACK                   ;IF YES, THEN AGAIN GO TO SHOPLIST MENU AND BUY AGAIN
+;JE BEGINTOP
+
+;CMP AL,50
+;JE BACK
+;JE CALL TOTAL                   ;IF NO, PROGRAM WILL GIVE THE TOTAL OUTPUT
+
+
+
+
+BACK:
+RET
+ASK ENDP
+
+
+;----------------------------------------------------------------------------------------------
+
+EDIT_ORDER PROC
+
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,LINE
+MOV AH,9
+INT 21H
+
+LEA DX,EDIT
+MOV AH,9    ;ASK USER IF THEY WANT TO EDIT ORDER
+INT 21H
+
+MOV AH,1
+INT 21H
+
+
+RET
+EDIT_ORDER ENDP
+;--------------------------------------------------------
+UPDATE_ORDER PROC
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,UPDATE
+MOV AH,9
+INT 21H
+
+RET ;MOV TO THE MENU IN MAIN
+UPDATE_ORDER ENDP
+;-------------------------------------------------------------
+DELETE_ORDER PROC
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,LINE
+MOV AH,9
+INT 21H
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,DELETE
+MOV AH,9
+INT 21H
+
+MOV AH,1
+INT 21H
+
+RET
+DELETE_ORDER ENDP
+
+
+;-----------------------------------------------------------------
+
+;TOTAL IS FOR GIVING THE TOTAL OUTPUT OF THE AMOUNT
+
+TOTAL PROC
+
+LEA DX,NL
+MOV AH,9
+INT 21H
+
+LEA DX,LINE2
+MOV AH,9
+INT 21H
+
+LEA DX,FT                        ;PRINT FINAL TOTAL
+MOV AH,9
+INT 21H
+
+XOR AX,AX                        ;CLEAR AX
+
+MOV AX,S                         ;SET AX INTO 0
+
+
+XOR CX,CX                        ;CX COUNTS DIGITS
+MOV BX,10D                       ;BX HAS DIVISOR
+
+REPEAT12:
+
+XOR DX,DX                        ;PREP HIGH WORD
+DIV BX                           ;AX = QUOTIENT, DX=REMAINDER
+
+PUSH DX                          ;SAVE REMAINDER ON STACK
+INC CX                           ;COUNT = COUNT +1
+
+OR AX,AX                         ;QUOTIENT = 0?
+JNE REPEAT12                     ;NO, KEEP GOING
+
+MOV AH,2                         ;PRINT CHAR FUNCTION
+
+PRINT_LOOP2:
+
+POP DX                           ;DIGIT IN DL
+OR DL,30H                        ;CONVERT TO CHAR
+INT 21H                          ;PRINT DIGIT
+LOOP PRINT_LOOP2                 ;LOOP UNTILL DONE
+
+
+
+RET
+TOTAL ENDP
+
+;-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\VSCode\Assembly Lab Project refined 2.0 FINAL.asm

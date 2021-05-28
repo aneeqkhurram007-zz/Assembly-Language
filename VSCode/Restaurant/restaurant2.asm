@@ -55,6 +55,15 @@
 
 
     str24 dw 10,13,10,13,9, "*****THANK YOU*****$" 
+    
+    prep dw 10,13,10,13,"Prepared By$"
+    
+    info dw 10,13,10,13," Name            Reg ID         Section$"
+    
+    ali dw 10,13,10,13,"Ali Irfan      FA19-BCS-021    C.$"
+    ayrish dw 10,13,10,13,"Ayrish Falak   FA19-BCS-078    C.$"
+    saif dw 10,13,10,13,"Saifullah Daud FA19-BCS-112    C.$"
+    aneeq dw 10,13,10,13,"Aneeq Khurram  FA19-BCS-145    C.$"
 
     
     
@@ -791,6 +800,27 @@ totalprice:
             
         mov ah,9
         Lea dx,str24
+        int 21h
+        
+        lea dx, prep
+        int 21h
+        
+        lea dx, info
+        int 21h
+        
+        lea dx, str2
+        int 21h
+        
+        lea dx, ali
+        int 21h
+        
+        lea dx, ayrish
+        int 21h
+        
+        lea dx, saif
+        int 21h
+        
+        lea dx, aneeq
         int 21h
         
 FExit:
