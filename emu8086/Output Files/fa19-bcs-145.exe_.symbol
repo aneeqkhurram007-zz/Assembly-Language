@@ -1,0 +1,25 @@
+< THE SYMBOL TABLE >  fa19-bcs-145.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+STRING                   	00000     	1         	VAR       	data      
+STRINGCOUNT              	00006     	1         	VAR       	data      
+MSG                      	00007     	1         	VAR       	data      
+N                        	0002F     	1         	VAR       	data      
+MSG1                     	00030     	1         	VAR       	data      
+S                        	0004C     	1         	VAR       	data      
+CODE                     	00015     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+AGAIN                    	00007     	-1        	LABEL     	code      
+DELETE                   	00030     	-1        	NEAR      	code      
+WHILE                    	00051     	-1        	LABEL     	code      
+JUMP                     	0005D     	-1        	LABEL     	code      
+EXIT                     	00061     	-1        	LABEL     	code      
+PRINT                    	0006E     	-1        	LABEL     	code      
+END                      	0007B     	-1        	LABEL     	code      
+===================================================================================================
+[ 6/7/2021  --  2:41:08 AM ] 
+< END >
+ 
