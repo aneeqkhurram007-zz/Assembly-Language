@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 restaurant2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 5/28/2021  --  9:28:36 AM ] 
+[ 6/9/2021  --  9:36:18 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -61,47 +61,47 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
                 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 2D 
                 24 00                               
 [  26]        :                                       
-[  27]    0284: 0A 00 0D 00 50 72 65 73 73 20 31 2E   str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press 3. Exit $"
+[  27]    0284: 0A 00 0D 00 50 72 65 73 73 20 31 2E   str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press any key to Exit $"
                 20 41 64 64 20 4D 65 6E 75 00 0A 00 
                 0D 00 50 72 65 73 73 20 32 2E 20 4F 
                 72 64 65 72 0A 00 0D 00 50 72 65 73 
-                73 20 33 2E 20 45 78 69 74 20 24 00 
-                                                    
+                73 20 61 6E 79 20 6B 65 79 20 74 6F 
+                20 45 78 69 74 20 24 00             
 [  28]        :                                       
-[  29]    02C0: 0A 00 0D 00 0A 00 0D 00 59 6F 75 72   str11 dw 10,13,10,13,"Your Choice: $"
+[  29]    02C8: 0A 00 0D 00 0A 00 0D 00 59 6F 75 72   str11 dw 10,13,10,13,"Your Choice: $"
                 20 43 68 6F 69 63 65 3A 20 24       
 [  30]        :                                       
-[  31]    02D6: 0A 00 0D 00 0A 00 0D 00 54 68 65 72   str12 dw 10,13,10,13, "There is no more than 8 items, but you can add one.$"
+[  31]    02DE: 0A 00 0D 00 0A 00 0D 00 54 68 65 72   str12 dw 10,13,10,13, "There is no more than 8 items, but you can add one.$"
                 65 20 69 73 20 6E 6F 20 6D 6F 72 65 
                 20 74 68 61 6E 20 38 20 69 74 65 6D 
                 73 2C 20 62 75 74 20 79 6F 75 20 63 
                 61 6E 20 61 64 64 20 6F 6E 65 2E 24 
                                                     
 [  32]        :                                       
-[  33]    0312: 0A 00 0D 00 0A 00 0D 00 54 6F 20 61   str13 dw 10,13,10,13, "To add press 1 or press 2 to get back to menu: $"
+[  33]    031A: 0A 00 0D 00 0A 00 0D 00 54 6F 20 61   str13 dw 10,13,10,13, "To add press 1 or press 2 to get back to menu: $"
                 64 64 20 70 72 65 73 73 20 31 20 6F 
                 72 20 70 72 65 73 73 20 32 20 74 6F 
                 20 67 65 74 20 62 61 63 6B 20 74 6F 
                 20 6D 65 6E 75 3A 20 24             
 [  34]        :                                       
-[  35]    034A: 0A 00 0D 00 0A 00 0D 00 45 6E 74 65   str14 dw 10,13,10,13, "Enter Food name: $"
+[  35]    0352: 0A 00 0D 00 0A 00 0D 00 45 6E 74 65   str14 dw 10,13,10,13, "Enter Food name: $"
                 72 20 46 6F 6F 64 20 6E 61 6D 65 3A 
                 20 24                               
-[  36]    0364: 0A 00 0D 00 0A 00 0D 00 09 00 50 72   str15 dw 10,13,10,13,9,"Price: $"
+[  36]    036C: 0A 00 0D 00 0A 00 0D 00 09 00 50 72   str15 dw 10,13,10,13,9,"Price: $"
                 69 63 65 3A 20 24                   
 [  37]        :                                       
-[  38]    0376: 2F 2D 24 00                           str16 dw "/-$"
+[  38]    037E: 2F 2D 24 00                           str16 dw "/-$"
 [  39]        :                                       
 [  40]        :                                       
-[  41]    037A: 0A 00 0D 00 0A 00 0D 00 53 65 6C 65   str17 dw 10,13,10,13, "Select the menu number: $"
+[  41]    0382: 0A 00 0D 00 0A 00 0D 00 53 65 6C 65   str17 dw 10,13,10,13, "Select the menu number: $"
                 63 74 20 74 68 65 20 6D 65 6E 75 20 
                 6E 75 6D 62 65 72 3A 20 24 00       
 [  42]        :                                       
-[  43]    039C: 0A 00 0D 00 0A 00 0D 00 45 6E 74 65   str18 dw 10,13,10,13, "Enter quantity: $"
+[  43]    03A4: 0A 00 0D 00 0A 00 0D 00 45 6E 74 65   str18 dw 10,13,10,13, "Enter quantity: $"
                 72 20 71 75 61 6E 74 69 74 79 3A 20 
                 24 00                               
 [  44]        :                                       
-[  45]    03B6: 0A 00 0D 00 44 6F 20 79 6F 75 20 77   str19 dw 10,13,"Do you want to change your Order ?",10,13,"Press 1. Change Order",10,13,"Press any key to continue. $"
+[  45]    03BE: 0A 00 0D 00 44 6F 20 79 6F 75 20 77   str19 dw 10,13,"Do you want to change your Order ?",10,13,"Press 1. Change Order",10,13,"Press any key to continue. $"
                 61 6E 74 20 74 6F 20 63 68 61 6E 67 
                 65 20 79 6F 75 72 20 4F 72 64 65 72 
                 20 3F 0A 00 0D 00 50 72 65 73 73 20 
@@ -112,48 +112,48 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
                                                     
 [  46]        :                                       
 [  47]        :                                       
-[  48]    0416: 0A 00 0D 00 0A 00 0D 00 50 72 65 76   str20 dw 10,13,10,13,"Previous Total: $"
+[  48]    041E: 0A 00 0D 00 0A 00 0D 00 50 72 65 76   str20 dw 10,13,10,13,"Previous Total: $"
                 69 6F 75 73 20 54 6F 74 61 6C 3A 20 
                 24 00                               
 [  49]        :                                       
 [  50]        :                                       
-[  51]    0430: 0A 00 0D 00 0A 00 0D 00 54 6F 74 61   str21 dw 10,13,10,13, "Total price: $"
+[  51]    0438: 0A 00 0D 00 0A 00 0D 00 54 6F 74 61   str21 dw 10,13,10,13, "Total price: $"
                 6C 20 70 72 69 63 65 3A 20 24       
 [  52]        :                                       
-[  53]    0446: 0A 00 0D 00 0A 00 0D 00 52 65 4F 72   str22 dw 10,13,10,13, "ReOrder : Press 1.$"
+[  53]    044E: 0A 00 0D 00 0A 00 0D 00 52 65 4F 72   str22 dw 10,13,10,13, "ReOrder : Press 1.$"
                 64 65 72 3A 20 50 72 65 73 73 20 31 
                 2E 24                               
-[  54]    0460: 0A 00 0D 00 0A 00 0D 00 45 78 69 74   str23 dw 10,13,10,13, "Exit : Press Any key $"
+[  54]    0468: 0A 00 0D 00 0A 00 0D 00 45 78 69 74   str23 dw 10,13,10,13, "Exit : Press Any key $"
                 3A 20 50 72 65 73 73 20 41 6E 79 20 
                 6B 65 79 20 24 00                   
 [  55]        :                                       
 [  56]        :                                       
-[  57]    047E: 0A 00 0D 00 0A 00 0D 00 09 00 2A 2A   str24 dw 10,13,10,13,9, "*****THANK YOU*****$"
+[  57]    0486: 0A 00 0D 00 0A 00 0D 00 09 00 2A 2A   str24 dw 10,13,10,13,9, "*****THANK YOU*****$"
                 2A 2A 2A 54 48 41 4E 4B 20 59 4F 55 
                 2A 2A 2A 2A 2A 24                   
 [  58]        :                                       
-[  59]    049C: 0A 00 0D 00 0A 00 0D 00 50 72 65 70   prep dw 10,13,10,13,"Prepared By$"
+[  59]    04A4: 0A 00 0D 00 0A 00 0D 00 50 72 65 70   prep dw 10,13,10,13,"Prepared By$"
                 61 72 65 64 20 42 79 24             
 [  60]        :                                       
-[  61]    04B0: 0A 00 0D 00 0A 00 0D 00 20 4E 61 6D   info dw 10,13,10,13," Name            Reg ID         Section$"
+[  61]    04B8: 0A 00 0D 00 0A 00 0D 00 20 4E 61 6D   info dw 10,13,10,13," Name            Reg ID         Section$"
                 65 20 20 20 20 20 20 20 20 20 20 20 
                 20 52 65 67 20 49 44 20 20 20 20 20 
                 20 20 20 20 53 65 63 74 69 6F 6E 24 
                                                     
 [  62]        :                                       
-[  63]    04E0: 0A 00 0D 00 0A 00 0D 00 41 6C 69 20   ali dw 10,13,10,13,"Ali Irfan      FA19-BCS-021    C.$"
+[  63]    04E8: 0A 00 0D 00 0A 00 0D 00 41 6C 69 20   ali dw 10,13,10,13,"Ali Irfan      FA19-BCS-021    C.$"
                 49 72 66 61 6E 20 20 20 20 20 20 46 
                 41 31 39 2D 42 43 53 2D 30 32 31 20 
                 20 20 20 43 2E 24                   
-[  64]    050A: 0A 00 0D 00 0A 00 0D 00 41 79 72 69   ayrish dw 10,13,10,13,"Ayrish Falak   FA19-BCS-078    C.$"
+[  64]    0512: 0A 00 0D 00 0A 00 0D 00 41 79 72 69   ayrish dw 10,13,10,13,"Ayrish Falak   FA19-BCS-078    C.$"
                 73 68 20 46 61 6C 61 6B 20 20 20 46 
                 41 31 39 2D 42 43 53 2D 30 37 38 20 
                 20 20 20 43 2E 24                   
-[  65]    0534: 0A 00 0D 00 0A 00 0D 00 53 61 69 66   saif dw 10,13,10,13,"Saifullah Daud FA19-BCS-112    C.$"
+[  65]    053C: 0A 00 0D 00 0A 00 0D 00 53 61 69 66   saif dw 10,13,10,13,"Saifullah Daud FA19-BCS-112    C.$"
                 75 6C 6C 61 68 20 44 61 75 64 20 46 
                 41 31 39 2D 42 43 53 2D 31 31 32 20 
                 20 20 20 43 2E 24                   
-[  66]    055E: 0A 00 0D 00 0A 00 0D 00 41 6E 65 65   aneeq dw 10,13,10,13,"Aneeq Khurram  FA19-BCS-145    C.$"
+[  66]    0566: 0A 00 0D 00 0A 00 0D 00 41 6E 65 65   aneeq dw 10,13,10,13,"Aneeq Khurram  FA19-BCS-145    C.$"
                 71 20 4B 68 75 72 72 61 6D 20 20 46 
                 41 31 39 2D 42 43 53 2D 31 34 35 20 
                 20 20 20 43 2E 24                   
@@ -163,27 +163,27 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [  70]        :                                       
 [  71]        :                                       ;variables
 [  72]        :                                       
-[  73]    0588: 00                                    choice db 0
+[  73]    0590: 00                                    choice db 0
 [  74]        :                                       
-[  75]    0589: 08                                    v db 8
+[  75]    0591: 08                                    v db 8
 [  76]        :                                       
-[  77]    058A: 3C 00                                 lasprice dw 60
-[  78]    058C: 32 00                                 margprice dw 50
-[  79]    058E: 28 00                                 spagprice dw 40
+[  77]    0592: 3C 00                                 lasprice dw 60
+[  78]    0594: 32 00                                 margprice dw 50
+[  79]    0596: 28 00                                 spagprice dw 40
 [  80]        :                                       
-[  81]    0590: 64 00                                 birprice dw 100
-[  82]    0592: 96 00                                 beefprice dw 150
-[  83]    0594: 78 00                                 tikkaprice dw 120
+[  81]    0598: 64 00                                 birprice dw 100
+[  82]    059A: 96 00                                 beefprice dw 150
+[  83]    059C: 78 00                                 tikkaprice dw 120
 [  84]        :                                       
-[  85]    0596: C8 00                                 pizzaprice dw 200
-[  86]    0598: 96 00                                 burgerprice dw 150
+[  85]    059E: C8 00                                 pizzaprice dw 200
+[  86]    05A0: 96 00                                 burgerprice dw 150
 [  87]        :                                       
-[  88]    059A: 00 00                                 nprice dw 0
+[  88]    05A2: 00 00                                 nprice dw 0
 [  89]        :                                       
-[  90]    059C: 00 00                                 totPrice dw 0
-[  91]    059E: 00 00                                 prevPrice dw 0
+[  90]    05A4: 00 00                                 totPrice dw 0
+[  91]    05A6: 00 00                                 prevPrice dw 0
 [  92]        :                                       
-[  93]    05A0: 24 24 24 24 24 24 24 24 24 24 24 24   var1 db 100 dup('$')
+[  93]    05A8: 24 24 24 24 24 24 24 24 24 24 24 24   var1 db 100 dup('$')
                 24 24 24 24 24 24 24 24 24 24 24 24 
                 24 24 24 24 24 24 24 24 24 24 24 24 
                 24 24 24 24 24 24 24 24 24 24 24 24 
@@ -196,7 +196,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [  95]        :                                       
 [  96]        :                                       ;customer strings and data
 [  97]        :                                       
-[  98]    0604: 24 24 24 24 24 24 24 24 24 24 24 24   nameArr db 100 dup('$')
+[  98]    060C: 24 24 24 24 24 24 24 24 24 24 24 24   nameArr db 100 dup('$')
                 24 24 24 24 24 24 24 24 24 24 24 24 
                 24 24 24 24 24 24 24 24 24 24 24 24 
                 24 24 24 24 24 24 24 24 24 24 24 24 
@@ -206,20 +206,20 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
                 24 24 24 24 24 24 24 24 24 24 24 24 
                 24 24 24 24                         
 [  99]        :                                       
-[ 100]    0668: 01                                    customerID db 1
+[ 100]    0670: 01                                    customerID db 1
 [ 101]        :                                       
-[ 102]    0669: 00                                    foodOrderID db 0
+[ 102]    0671: 00                                    foodOrderID db 0
 [ 103]        :                                       
-[ 104]    066A: 0A 0D 0A 0D 20 45 6E 74 65 72 20 79   c1 db 10,13,10,13," Enter your name: $"
+[ 104]    0672: 0A 0D 0A 0D 20 45 6E 74 65 72 20 79   c1 db 10,13,10,13," Enter your name: $"
                 6F 75 72 20 6E 61 6D 65 3A 20 24    
 [ 105]        :                                       
-[ 106]    0681: 0A 0D 0A 0D 20 4E 61 6D 65 3A 20 24   c2 db 10,13,10,13," Name: $"
+[ 106]    0689: 0A 0D 0A 0D 20 4E 61 6D 65 3A 20 24   c2 db 10,13,10,13," Name: $"
                                                     
 [ 107]        :                                       
-[ 108]    068D: 0A 0D 0A 0D 20 43 75 73 74 6F 6D 65   c3 db 10,13,10,13," Customer ID: $"
+[ 108]    0695: 0A 0D 0A 0D 20 43 75 73 74 6F 6D 65   c3 db 10,13,10,13," Customer ID: $"
                 72 20 49 44 3A 20 24                
 [ 109]        :                                       
-[ 110]    06A0: 0A 0D 0A 0D 20 46 6F 6F 64 20 4F 72   c4 db 10,13,10,13," Food Order ID: $"
+[ 110]    06A8: 0A 0D 0A 0D 20 46 6F 6F 64 20 4F 72   c4 db 10,13,10,13," Food Order ID: $"
                 64 65 72 20 49 44 3A 20 24          
 [ 111]        :                                       
 [ 112]        :                                       
@@ -237,12 +237,12 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 124]    06CA: CD 21                                 int 21h
 [ 125]        :                                       
 [ 126]    06CC: B4 09                                 mov ah, 9
-[ 127]    06CE: BA 6A 05                              lea dx, c1
+[ 127]    06CE: BA 72 05                              lea dx, c1
 [ 128]    06D1: CD 21                                 int 21h
 [ 129]        :                                       
 [ 130]    06D3: B4 01                                 mov ah, 1
 [ 131]        :                                       
-[ 132]    06D5: BE 04 05                              lea si, nameArr
+[ 132]    06D5: BE 0C 05                              lea si, nameArr
 [ 133]        :                                       
 [ 134]    06D8: CD 21                                 int 21h
 [ 135]        :                                       
@@ -267,9 +267,9 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 154]    06E7: BA 26 00                              Lea dx,str1
 [ 155]    06EA: CD 21                                 int 21h
 [ 156]        :                                       
-[ 157]    06EC: FE 06 69 05                           inc foodOrderID
+[ 157]    06EC: FE 06 71 05                           inc foodOrderID
 [ 158]        :                                       
-[ 159]    06F0: 80 3E 89 04 08                        cmp v,8
+[ 159]    06F0: 80 3E 91 04 08                        cmp v,8
 [ 160]    06F5: 7E 03 E9 D2 00                        jg start1
 [ 161]        :                                       
 [ 162]        :                                       
@@ -308,7 +308,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 195]    072D: CD 21                                 int 21h
 [ 196]        :                                       
 [ 197]    072F: B4 09                                 mov ah, 9
-[ 198]    0731: BA C0 01                              lea dx, str11
+[ 198]    0731: BA C8 01                              lea dx, str11
 [ 199]    0734: CD 21                                 int 21h
 [ 200]        :                                       
 [ 201]    0736: B4 01                                 mov ah, 1
@@ -316,15 +316,15 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 203]        :                                       
 [ 204]    073A:                                       intiMenu:
 [ 205]        :                                       
-[ 206]    073A: A2 88 04                              mov choice, al
+[ 206]    073A: A2 90 04                              mov choice, al
 [ 207]        :                                       
-[ 208]    073D: 80 3E 88 04 32                        cmp choice, 50
+[ 208]    073D: 80 3E 90 04 32                        cmp choice, 50
 [ 209]    0742: 75 47                                 jne menuadd
 [ 210]        :                                       
 [ 211]        :                                       
 [ 212]    0744:                                       check1:
 [ 213]    0744: B4 09                                 mov ah,9
-[ 214]    0746: BA 7A 02                              Lea dx,str17
+[ 214]    0746: BA 82 02                              Lea dx,str17
 [ 215]    0749: CD 21                                 int 21h
 [ 216]        :                                       
 [ 217]    074B: B4 01                                 mov ah,1
@@ -358,17 +358,17 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 245]        :                                       
 [ 246]    078B:                                       menuadd:
 [ 247]        :                                       
-[ 248]    078B: 80 3E 88 04 31                        cmp choice, 49
+[ 248]    078B: 80 3E 90 04 31                        cmp choice, 49
 [ 249]    0790: 74 03 E9 57 03                        jne FExit
 [ 250]        :                                       
-[ 251]    0795: FE 06 89 04                           inc v
+[ 251]    0795: FE 06 91 04                           inc v
 [ 252]        :                                       
 [ 253]    0799: B4 09                                 mov ah,9
-[ 254]    079B: BA D6 01                              Lea dx,str12
+[ 254]    079B: BA DE 01                              Lea dx,str12
 [ 255]    079E: CD 21                                 int 21h
 [ 256]        :                                       
 [ 257]    07A0: B4 09                                 mov ah,9
-[ 258]    07A2: BA 12 02                              Lea dx,str13
+[ 258]    07A2: BA 1A 02                              Lea dx,str13
 [ 259]    07A5: CD 21                                 int 21h
 [ 260]        :                                       
 [ 261]    07A7: B4 01                                 mov ah,1
@@ -377,10 +377,10 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 264]    07AD: 75 03 E9 48 FF                        je menu
 [ 265]        :                                       
 [ 266]    07B2: B4 09                                 mov ah,9
-[ 267]    07B4: BA 4A 02                              Lea dx,str14
+[ 267]    07B4: BA 52 02                              Lea dx,str14
 [ 268]    07B7: CD 21                                 int 21h
 [ 269]        :                                       
-[ 270]    07B9: BE A0 04                              mov si,offset var1
+[ 270]    07B9: BE A8 04                              mov si,offset var1
 [ 271]        :                                       
 [ 272]    07BC:                                       l1:
 [ 273]    07BC: B4 01                                 mov ah,1
@@ -436,7 +436,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 323]    0801: CD 21                                 int 21h
 [ 324]        :                                       
 [ 325]        :                                       
-[ 326]    0803: 8A 16 89 04                           mov dl,v
+[ 326]    0803: 8A 16 91 04                           mov dl,v
 [ 327]    0807: 80 C2 30                              add dl, 48
 [ 328]    080A: CD 21                                 int 21h
 [ 329]        :                                       
@@ -445,7 +445,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 332]    0810: CD 21                                 int 21h
 [ 333]        :                                       
 [ 334]        :                                       
-[ 335]    0812: BA A0 04                              mov dx,offset var1
+[ 335]    0812: BA A8 04                              mov dx,offset var1
 [ 336]    0815: B4 09                                 mov ah,9
 [ 337]    0817: CD 21                                 int 21h
 [ 338]        :                                       
@@ -454,13 +454,13 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 341]    081D: CD 21                                 int 21h
 [ 342]        :                                       
 [ 343]    081F: 33 C0                                 xor ax,ax
-[ 344]    0821: A1 9A 04                              mov ax,nprice
+[ 344]    0821: A1 A2 04                              mov ax,nprice
 [ 345]    0824: E8 1E 03                              call decimalOutput
 [ 346]        :                                       
 [ 347]        :                                       
 [ 348]        :                                       
 [ 349]    0827: B4 09                                 mov ah,9
-[ 350]    0829: BA 76 02                              Lea dx,str16
+[ 350]    0829: BA 7E 02                              Lea dx,str16
 [ 351]    082C: CD 21                                 int 21h
 [ 352]        :                                       
 [ 353]        :                                       
@@ -473,21 +473,21 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 360]    083A: CD 21                                 int 21h
 [ 361]        :                                       
 [ 362]    083C: B4 09                                 mov ah, 9
-[ 363]    083E: BA C0 01                              lea dx, str11
+[ 363]    083E: BA C8 01                              lea dx, str11
 [ 364]    0841: CD 21                                 int 21h
 [ 365]        :                                       
 [ 366]    0843: B4 01                                 mov ah, 1
 [ 367]    0845: CD 21                                 int 21h
 [ 368]        :                                       
-[ 369]    0847: A2 88 04                              mov choice, al
+[ 369]    0847: A2 90 04                              mov choice, al
 [ 370]        :                                       
-[ 371]    084A: 80 3E 88 04 32                        cmp choice, 50
+[ 371]    084A: 80 3E 90 04 32                        cmp choice, 50
 [ 372]    084F: 74 03 E9 37 FF                        jne menuadd
 [ 373]        :                                       
 [ 374]        :                                       
 [ 375]    0854:                                       check2:
 [ 376]    0854: B4 09                                 mov ah,9
-[ 377]    0856: BA 7A 02                              Lea dx,str17
+[ 377]    0856: BA 82 02                              Lea dx,str17
 [ 378]    0859: CD 21                                 int 21h
 [ 379]        :                                       
 [ 380]    085B: B4 01                                 mov ah,1
@@ -525,7 +525,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 412]    089C:                                       newmenu_:
 [ 413]        :                                       
 [ 414]    089C: B4 09                                 mov ah,9
-[ 415]    089E: BA 9C 02                              Lea dx,str18
+[ 415]    089E: BA A4 02                              Lea dx,str18
 [ 416]    08A1: CD 21                                 int 21h
 [ 417]        :                                       
 [ 418]    08A3: 33 C0                                 xor ax,ax
@@ -536,7 +536,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 423]    08A8: 8B D8                                 mov bx, ax
 [ 424]        :                                       
 [ 425]    08AA: B4 09                                 mov ah, 9
-[ 426]    08AC: BA B6 02                              lea dx, str19
+[ 426]    08AC: BA BE 02                              lea dx, str19
 [ 427]    08AF: CD 21                                 int 21h
 [ 428]        :                                       
 [ 429]    08B1: B4 01                                 mov ah, 1
@@ -548,7 +548,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 435]    08B9: 8B C3                                 mov ax, bx
 [ 436]        :                                       
 [ 437]        :                                       
-[ 438]    08BB: F7 26 9A 04                           mul nprice
+[ 438]    08BB: F7 26 A2 04                           mul nprice
 [ 439]        :                                       
 [ 440]    08BF: 8B D8                                 mov bx,ax
 [ 441]        :                                       
@@ -558,7 +558,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 445]    08C4:                                       marga:
 [ 446]        :                                       
 [ 447]    08C4: B4 09                                 mov ah,9
-[ 448]    08C6: BA 9C 02                              Lea dx,str18
+[ 448]    08C6: BA A4 02                              Lea dx,str18
 [ 449]    08C9: CD 21                                 int 21h
 [ 450]        :                                       
 [ 451]    08CB: 33 C0                                 xor ax,ax
@@ -568,7 +568,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 455]    08D0: 8B D8                                 mov bx, ax
 [ 456]        :                                       
 [ 457]    08D2: B4 09                                 mov ah, 9
-[ 458]    08D4: BA B6 02                              lea dx, str19
+[ 458]    08D4: BA BE 02                              lea dx, str19
 [ 459]    08D7: CD 21                                 int 21h
 [ 460]        :                                       
 [ 461]    08D9: B4 01                                 mov ah, 1
@@ -579,7 +579,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 466]        :                                       
 [ 467]    08E1: 8B C3                                 mov ax, bx
 [ 468]        :                                       
-[ 469]    08E3: F7 26 8C 04                           mul margprice
+[ 469]    08E3: F7 26 94 04                           mul margprice
 [ 470]        :                                       
 [ 471]    08E7: 8B D8                                 mov bx,ax
 [ 472]        :                                       
@@ -588,7 +588,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 475]    08EC:                                       lasagn:
 [ 476]        :                                       
 [ 477]    08EC: B4 09                                 mov ah,9
-[ 478]    08EE: BA 9C 02                              Lea dx,str18
+[ 478]    08EE: BA A4 02                              Lea dx,str18
 [ 479]    08F1: CD 21                                 int 21h
 [ 480]        :                                       
 [ 481]    08F3: 33 C0                                 xor ax,ax
@@ -598,7 +598,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 485]    08F8: 8B D8                                 mov bx, ax
 [ 486]        :                                       
 [ 487]    08FA: B4 09                                 mov ah, 9
-[ 488]    08FC: BA B6 02                              lea dx, str19
+[ 488]    08FC: BA BE 02                              lea dx, str19
 [ 489]    08FF: CD 21                                 int 21h
 [ 490]        :                                       
 [ 491]    0901: B4 01                                 mov ah, 1
@@ -611,7 +611,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 498]        :                                       
 [ 499]        :                                       
 [ 500]        :                                       
-[ 501]    090B: F7 26 8A 04                           mul lasprice
+[ 501]    090B: F7 26 92 04                           mul lasprice
 [ 502]        :                                       
 [ 503]    090F: 8B D8                                 mov bx,ax
 [ 504]        :                                       
@@ -620,7 +620,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 507]    0914:                                       sapaghetti:
 [ 508]        :                                       
 [ 509]    0914: B4 09                                 mov ah,9
-[ 510]    0916: BA 9C 02                              Lea dx,str18
+[ 510]    0916: BA A4 02                              Lea dx,str18
 [ 511]    0919: CD 21                                 int 21h
 [ 512]        :                                       
 [ 513]    091B: 33 C0                                 xor ax,ax
@@ -630,7 +630,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 517]    0920: 8B D8                                 mov bx, ax
 [ 518]        :                                       
 [ 519]    0922: B4 09                                 mov ah, 9
-[ 520]    0924: BA B6 02                              lea dx, str19
+[ 520]    0924: BA BE 02                              lea dx, str19
 [ 521]    0927: CD 21                                 int 21h
 [ 522]        :                                       
 [ 523]    0929: B4 01                                 mov ah, 1
@@ -642,7 +642,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 529]    0931: 8B C3                                 mov ax, bx
 [ 530]        :                                       
 [ 531]        :                                       
-[ 532]    0933: F7 26 8E 04                           mul spagprice
+[ 532]    0933: F7 26 96 04                           mul spagprice
 [ 533]        :                                       
 [ 534]    0937: 8B D8                                 mov bx,ax
 [ 535]        :                                       
@@ -652,7 +652,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 539]        :                                       
 [ 540]    093C:                                       biryani:
 [ 541]    093C: B4 09                                 mov ah,9
-[ 542]    093E: BA 9C 02                              Lea dx,str18
+[ 542]    093E: BA A4 02                              Lea dx,str18
 [ 543]    0941: CD 21                                 int 21h
 [ 544]        :                                       
 [ 545]    0943: 33 C0                                 xor ax,ax
@@ -662,7 +662,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 549]    0948: 8B D8                                 mov bx, ax
 [ 550]        :                                       
 [ 551]    094A: B4 09                                 mov ah, 9
-[ 552]    094C: BA B6 02                              lea dx, str19
+[ 552]    094C: BA BE 02                              lea dx, str19
 [ 553]    094F: CD 21                                 int 21h
 [ 554]        :                                       
 [ 555]    0951: B4 01                                 mov ah, 1
@@ -674,7 +674,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 561]    0959: 8B C3                                 mov ax, bx
 [ 562]        :                                       
 [ 563]        :                                       
-[ 564]    095B: F7 26 90 04                           mul birprice
+[ 564]    095B: F7 26 98 04                           mul birprice
 [ 565]        :                                       
 [ 566]    095F: 8B D8                                 mov bx,ax
 [ 567]        :                                       
@@ -684,7 +684,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 571]        :                                       
 [ 572]    0964:                                       beef:
 [ 573]    0964: B4 09                                 mov ah,9
-[ 574]    0966: BA 9C 02                              Lea dx,str18
+[ 574]    0966: BA A4 02                              Lea dx,str18
 [ 575]    0969: CD 21                                 int 21h
 [ 576]        :                                       
 [ 577]    096B: 33 C0                                 xor ax,ax
@@ -694,7 +694,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 581]    0970: 8B D8                                 mov bx, ax
 [ 582]        :                                       
 [ 583]    0972: B4 09                                 mov ah, 9
-[ 584]    0974: BA B6 02                              lea dx, str19
+[ 584]    0974: BA BE 02                              lea dx, str19
 [ 585]    0977: CD 21                                 int 21h
 [ 586]        :                                       
 [ 587]    0979: B4 01                                 mov ah, 1
@@ -706,7 +706,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 593]    0981: 8B C3                                 mov ax, bx
 [ 594]        :                                       
 [ 595]        :                                       
-[ 596]    0983: F7 26 92 04                           mul beefprice
+[ 596]    0983: F7 26 9A 04                           mul beefprice
 [ 597]        :                                       
 [ 598]    0987: 8B D8                                 mov bx,ax
 [ 599]        :                                       
@@ -714,7 +714,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 601]        :                                       
 [ 602]    098C:                                       tikka:
 [ 603]    098C: B4 09                                 mov ah,9
-[ 604]    098E: BA 9C 02                              Lea dx,str18
+[ 604]    098E: BA A4 02                              Lea dx,str18
 [ 605]    0991: CD 21                                 int 21h
 [ 606]        :                                       
 [ 607]    0993: 33 C0                                 xor ax,ax
@@ -724,7 +724,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 611]    0998: 8B D8                                 mov bx, ax
 [ 612]        :                                       
 [ 613]    099A: B4 09                                 mov ah, 9
-[ 614]    099C: BA B6 02                              lea dx, str19
+[ 614]    099C: BA BE 02                              lea dx, str19
 [ 615]    099F: CD 21                                 int 21h
 [ 616]        :                                       
 [ 617]    09A1: B4 01                                 mov ah, 1
@@ -736,7 +736,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 623]    09A9: 8B C3                                 mov ax, bx
 [ 624]        :                                       
 [ 625]        :                                       
-[ 626]    09AB: F7 26 94 04                           mul tikkaprice
+[ 626]    09AB: F7 26 9C 04                           mul tikkaprice
 [ 627]        :                                       
 [ 628]    09AF: 8B D8                                 mov bx,ax
 [ 629]        :                                       
@@ -744,7 +744,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 631]        :                                       
 [ 632]    09B3:                                       pizza:
 [ 633]    09B3: B4 09                                 mov ah,9
-[ 634]    09B5: BA 9C 02                              Lea dx,str18
+[ 634]    09B5: BA A4 02                              Lea dx,str18
 [ 635]    09B8: CD 21                                 int 21h
 [ 636]        :                                       
 [ 637]    09BA: 33 C0                                 xor ax,ax
@@ -754,7 +754,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 641]    09BF: 8B D8                                 mov bx, ax
 [ 642]        :                                       
 [ 643]    09C1: B4 09                                 mov ah, 9
-[ 644]    09C3: BA B6 02                              lea dx, str19
+[ 644]    09C3: BA BE 02                              lea dx, str19
 [ 645]    09C6: CD 21                                 int 21h
 [ 646]        :                                       
 [ 647]    09C8: B4 01                                 mov ah, 1
@@ -766,7 +766,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 653]    09D0: 8B C3                                 mov ax, bx
 [ 654]        :                                       
 [ 655]        :                                       
-[ 656]    09D2: F7 26 96 04                           mul pizzaprice
+[ 656]    09D2: F7 26 9E 04                           mul pizzaprice
 [ 657]        :                                       
 [ 658]    09D6: 8B D8                                 mov bx,ax
 [ 659]        :                                       
@@ -774,7 +774,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 661]        :                                       
 [ 662]    09DA:                                       burger:
 [ 663]    09DA: B4 09                                 mov ah,9
-[ 664]    09DC: BA 9C 02                              Lea dx,str18
+[ 664]    09DC: BA A4 02                              Lea dx,str18
 [ 665]    09DF: CD 21                                 int 21h
 [ 666]        :                                       
 [ 667]    09E1: 33 C0                                 xor ax,ax
@@ -784,7 +784,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 671]    09E6: 8B D8                                 mov bx, ax
 [ 672]        :                                       
 [ 673]    09E8: B4 09                                 mov ah, 9
-[ 674]    09EA: BA B6 02                              lea dx, str19
+[ 674]    09EA: BA BE 02                              lea dx, str19
 [ 675]    09ED: CD 21                                 int 21h
 [ 676]        :                                       
 [ 677]    09EF: B4 01                                 mov ah, 1
@@ -796,7 +796,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 683]    09F7: 8B C3                                 mov ax, bx
 [ 684]        :                                       
 [ 685]        :                                       
-[ 686]    09F9: F7 26 98 04                           mul burgerprice
+[ 686]    09F9: F7 26 A0 04                           mul burgerprice
 [ 687]        :                                       
 [ 688]    09FD: 8B D8                                 mov bx,ax
 [ 689]        :                                       
@@ -806,7 +806,7 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 693]    0A01:                                       price:
 [ 694]        :                                       
 [ 695]    0A01: B4 09                                 mov ah,9
-[ 696]    0A03: BA 64 02                              Lea dx,str15
+[ 696]    0A03: BA 6C 02                              Lea dx,str15
 [ 697]    0A06: CD 21                                 int 21h
 [ 698]        :                                       
 [ 699]    0A08: B8 00 00                              mov ax,0
@@ -829,16 +829,16 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 716]    0A26: 3C 0D                                 cmp al,0Dh
 [ 717]    0A28: 75 EA                                 jne input
 [ 718]        :                                       
-[ 719]    0A2A: 01 1E 9A 04                           add nprice,bx
+[ 719]    0A2A: 01 1E A2 04                           add nprice,bx
 [ 720]    0A2E: C3                                    ret
 [ 721]        :                                       
 [ 722]        :                                       
 [ 723]        :                                       
 [ 724]    0A2F:                                       totalprice:
 [ 725]        :                                       
-[ 726]    0A2F: A1 9C 04                              mov ax, totPrice
-[ 727]    0A32: A3 9E 04                              mov prevPrice, ax
-[ 728]    0A35: 01 1E 9C 04                           add totPrice, bx
+[ 726]    0A2F: A1 A4 04                              mov ax, totPrice
+[ 727]    0A32: A3 A6 04                              mov prevPrice, ax
+[ 728]    0A35: 01 1E A4 04                           add totPrice, bx
 [ 729]        :                                       
 [ 730]    0A39: B4 02                                 mov ah, 2
 [ 731]    0A3B: B2 0A                                 mov dl, 10
@@ -857,10 +857,10 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 744]        :                                       
 [ 745]    0A50: B4 09                                 mov ah, 9
 [ 746]        :                                       
-[ 747]    0A52: BA 81 05                              lea dx, c2
+[ 747]    0A52: BA 89 05                              lea dx, c2
 [ 748]    0A55: CD 21                                 int 21h
 [ 749]        :                                       
-[ 750]    0A57: BA 04 05                              lea dx, nameArr
+[ 750]    0A57: BA 0C 05                              lea dx, nameArr
 [ 751]    0A5A: CD 21                                 int 21h
 [ 752]        :                                       
 [ 753]    0A5C: B4 02                                 mov ah, 2
@@ -869,53 +869,53 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 756]        :                                       
 [ 757]    0A62: B4 09                                 mov ah, 9
 [ 758]        :                                       
-[ 759]    0A64: BA 8D 05                              lea dx, c3
+[ 759]    0A64: BA 95 05                              lea dx, c3
 [ 760]    0A67: CD 21                                 int 21h
 [ 761]        :                                       
 [ 762]    0A69: B4 02                                 mov ah, 2
-[ 763]    0A6B: 8A 16 68 05                           mov dl, customerID
+[ 763]    0A6B: 8A 16 70 05                           mov dl, customerID
 [ 764]    0A6F: 80 C2 30                              add dl, 48
 [ 765]    0A72: CD 21                                 int 21h
 [ 766]        :                                       
 [ 767]    0A74: B4 09                                 mov ah, 9
-[ 768]    0A76: BA A0 05                              lea dx, c4
+[ 768]    0A76: BA A8 05                              lea dx, c4
 [ 769]    0A79: CD 21                                 int 21h
 [ 770]        :                                       
 [ 771]    0A7B: B4 02                                 mov ah, 2
-[ 772]    0A7D: 8A 16 69 05                           mov dl, foodOrderID
+[ 772]    0A7D: 8A 16 71 05                           mov dl, foodOrderID
 [ 773]    0A81: 80 C2 30                              add dl, 48
 [ 774]    0A84: CD 21                                 int 21h
 [ 775]        :                                       
 [ 776]    0A86: B4 09                                 mov ah,9
-[ 777]    0A88: BA 16 03                              lea dx, str20
+[ 777]    0A88: BA 1E 03                              lea dx, str20
 [ 778]    0A8B: CD 21                                 int 21h
 [ 779]        :                                       
 [ 780]    0A8D: 33 C0                                 xor ax,ax
 [ 781]        :                                       
 [ 782]        :                                       
-[ 783]    0A8F: A1 9E 04                              mov ax,prevPrice
+[ 783]    0A8F: A1 A6 04                              mov ax,prevPrice
 [ 784]    0A92: E8 B0 00                              call decimalOutput
 [ 785]        :                                       
 [ 786]    0A95: B4 09                                 mov ah, 9
-[ 787]    0A97: BA 30 03                              Lea dx,str21
+[ 787]    0A97: BA 38 03                              Lea dx,str21
 [ 788]    0A9A: CD 21                                 int 21h
 [ 789]        :                                       
 [ 790]        :                                       
 [ 791]    0A9C: 33 C0                                 xor ax,ax
 [ 792]        :                                       
 [ 793]        :                                       
-[ 794]    0A9E: A1 9C 04                              mov ax, totPrice
+[ 794]    0A9E: A1 A4 04                              mov ax, totPrice
 [ 795]    0AA1: E8 A1 00                              call decimalOutput
 [ 796]        :                                       
 [ 797]    0AA4: B4 09                                 mov ah,9
 [ 798]    0AA6: BA 5E 01                              lea dx, str9
 [ 799]    0AA9: CD 21                                 int 21h
 [ 800]        :                                       
-[ 801]    0AAB: BA 46 03                              Lea dx,str22
+[ 801]    0AAB: BA 4E 03                              Lea dx,str22
 [ 802]    0AAE: CD 21                                 int 21h
 [ 803]        :                                       
 [ 804]    0AB0: B4 09                                 mov ah,9
-[ 805]    0AB2: BA 60 03                              Lea dx,str23
+[ 805]    0AB2: BA 68 03                              Lea dx,str23
 [ 806]    0AB5: CD 21                                 int 21h
 [ 807]        :                                       
 [ 808]    0AB7: B4 01                                 mov ah,1
@@ -925,28 +925,28 @@ restaurant2.exe_ -- emu8086 assembler version: 4.08
 [ 812]    0ABD: 75 03 E9 23 FC                        je start
 [ 813]        :                                       
 [ 814]    0AC2: B4 09                                 mov ah,9
-[ 815]    0AC4: BA 7E 03                              Lea dx,str24
+[ 815]    0AC4: BA 86 03                              Lea dx,str24
 [ 816]    0AC7: CD 21                                 int 21h
 [ 817]        :                                       
-[ 818]    0AC9: BA 9C 03                              lea dx, prep
+[ 818]    0AC9: BA A4 03                              lea dx, prep
 [ 819]    0ACC: CD 21                                 int 21h
 [ 820]        :                                       
-[ 821]    0ACE: BA B0 03                              lea dx, info
+[ 821]    0ACE: BA B8 03                              lea dx, info
 [ 822]    0AD1: CD 21                                 int 21h
 [ 823]        :                                       
 [ 824]    0AD3: BA 40 00                              lea dx, str2
 [ 825]    0AD6: CD 21                                 int 21h
 [ 826]        :                                       
-[ 827]    0AD8: BA E0 03                              lea dx, ali
+[ 827]    0AD8: BA E8 03                              lea dx, ali
 [ 828]    0ADB: CD 21                                 int 21h
 [ 829]        :                                       
-[ 830]    0ADD: BA 0A 04                              lea dx, ayrish
+[ 830]    0ADD: BA 12 04                              lea dx, ayrish
 [ 831]    0AE0: CD 21                                 int 21h
 [ 832]        :                                       
-[ 833]    0AE2: BA 34 04                              lea dx, saif
+[ 833]    0AE2: BA 3C 04                              lea dx, saif
 [ 834]    0AE5: CD 21                                 int 21h
 [ 835]        :                                       
-[ 836]    0AE7: BA 5E 04                              lea dx, aneeq
+[ 836]    0AE7: BA 66 04                              lea dx, aneeq
 [ 837]    0AEA: CD 21                                 int 21h
 [ 838]        :                                       
 [ 839]    0AEC:                                       FExit:
@@ -1108,8 +1108,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 12      -   check sum (l.byte)
-0013: B3      -   check sum (h.byte)
+0012: 5B      -   check sum (l.byte)
+0013: CC      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 6C      -   CS - code segment (l.byte)

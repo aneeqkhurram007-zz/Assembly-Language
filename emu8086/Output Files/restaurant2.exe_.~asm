@@ -24,7 +24,7 @@ str8 dw 10,13,10,13, "7.PIZZA 200/-",10,13,"8.BURGER 150/-$"
 
 str9 dw 10,13,10,13,"----------------------------","$"
 
-str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press 3. Exit $"
+str10 dw 10,13,"Press 1. Add Menu",10,13,"Press 2. Order",10,13,"Press any key to Exit $"
 
 str11 dw 10,13,10,13,"Your Choice: $"
 
