@@ -1,0 +1,754 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+project.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 6/14/2021  --  5:47:56 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]        :                                       
+[   5]        :                                       ;Passswoed Property
+[   6]    0100: 0A 0D 45 6E 74 65 72 20 59 6F 75 72   a db 10,13,"Enter Your Password:$"
+                20 50 61 73 73 77 6F 72 64 3A 24    
+[   7]    0117: 0A 0D 49 6E 76 61 6C 69 64 20 50 61   b db 10,13,"Invalid Password$"
+                73 73 77 6F 72 64 24                
+[   8]    012A: 6D 6F 61 7A 7A 61 6D                  pass db "moazzam"
+[   9]    0131: 07 00                                 pass1 dw 7
+[  10]        :                                       
+[  11]        :                                       ;Option Property
+[  12]    0133: 0A 0D 20 20 20 20 20 20 20 20 20 20   wel db 10,13,"                   Welcome to Your Account $"
+                20 20 20 20 20 20 20 20 20 57 65 6C 
+                63 6F 6D 65 20 74 6F 20 59 6F 75 72 
+                20 41 63 63 6F 75 6E 74 20 24       
+[  13]    0161: 0A 0D 0A 0D 31 2E 20 42 61 6C 61 6E   bal db 10,13,10,13,"1. Balance Inquiry $"
+                63 65 20 49 6E 71 75 69 72 79 20 24 
+                                                    
+[  14]    0179: 0A 0D 32 2E 20 4D 6F 6E 65 79 20 57   with db 10,13,"2. Money Withdraw $"
+                69 74 68 64 72 61 77 20 24          
+[  15]    018E: 0A 0D 33 2E 20 54 72 61 6E 73 66 65   trans db 10,13,"3. Transfer Money $"
+                72 20 4D 6F 6E 65 79 20 24          
+[  16]    01A3: 0A 0D 34 2E 20 45 78 69 74 20 24      ex db 10,13,"4. Exit $"
+[  17]    01AE: 0A 0D 31 2E 20 42 61 63 6B 24         bac db 10,13,"1. Back$"
+[  18]    01B8: 0A 0D 32 2E 20 45 78 69 74 24         ext db 10,13,"2. Exit$"
+[  19]        :                                       
+[  20]        :                                       ;Message Property
+[  21]    01C2: 0A 0D 0A 0D 20 20 20 20 20 20 20 20   thank db 10,13,10,13,"                   Thank You For Banking With Us. $"
+                20 20 20 20 20 20 20 20 20 20 20 54 
+                68 61 6E 6B 20 59 6F 75 20 46 6F 72 
+                20 42 61 6E 6B 69 6E 67 20 57 69 74 
+                68 20 55 73 2E 20 24                
+[  22]    01F9: 0A 0D 49 6E 76 61 6C 69 64 20 49 6E   inval db 10,13,"Invalid Input$"
+                70 75 74 24                         
+[  23]    0209: 0A 0D 24                              new db 10,13,"$"
+[  24]        :                                       
+[  25]    020C: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   totalbal db 10,13,"Your Total Balance is: 25,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 32 35 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  26]    0231: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   availablebal db 10,13,"Your Available Balance is: 24,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 32 34 2C 39 30 30 20 
+                55 53 44 20 24                      
+[  27]        :                                       
+[  28]        :                                       ;Money Withdrow Option
+[  29]    025A: 0A 0D 31 2E 20 35 30 30 20 55 53 44   fivehun db 10,13,"1. 500 USD$"
+                24                                  
+[  30]    0267: 0A 0D 32 2E 20 31 2C 30 30 30 20 55   one db 10,13,"2. 1,000 USD$"
+                53 44 24                            
+[  31]    0276: 0A 0D 33 2E 20 33 2C 30 30 30 20 55   three db 10,13,"3. 3,000 USD$"
+                53 44 24                            
+[  32]    0285: 0A 0D 34 2E 20 35 2C 30 30 30 20 55   five db 10,13,"4. 5,000 USD$"
+                53 44 24                            
+[  33]    0294: 0A 0D 35 2E 20 31 30 2C 30 30 30 20   ten db 10,13,"5. 10,000 USD$"
+                55 53 44 24                         
+[  34]    02A4: 0A 0D 36 2E 20 31 35 2C 30 30 30 20   fiften db 10,13,"6. 15,000 USD$"
+                55 53 44 24                         
+[  35]    02B4: 0A 0D 37 2E 20 32 30 2C 30 30 30 20   tweenty db 10,13,"7. 20,000 USD$"
+                55 53 44 24                         
+[  36]        :                                       
+[  37]        :                                       ;Balance info
+[  38]    02C4: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t1 db 10,13,"Your Total Balance is: 24,500 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 32 34 2C 35 30 30 20 55 53 44 20 
+                24                                  
+[  39]    02E9: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av1 db 10,13,"Your Available Balance is: 24,400 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 32 34 2C 34 30 30 20 
+                55 53 44 20 24                      
+[  40]        :                                       
+[  41]    0312: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t2 db 10,13,"Your Total Balance is: 24,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 32 34 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  42]    0337: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av2 db 10,13,"Your Available Balance is: 23,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 32 33 2C 39 30 30 20 
+                55 53 44 20 24                      
+[  43]        :                                       
+[  44]    0360: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t3 db 10,13,"Your Total Balance is: 22,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 32 32 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  45]    0385: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av3 db 10,13,"Your Available Balance is: 21,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 32 31 2C 39 30 30 20 
+                55 53 44 20 24                      
+[  46]        :                                       
+[  47]    03AE: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t4 db 10,13,"Your Total Balance is: 20,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 32 30 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  48]    03D3: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av4 db 10,13,"Your Available Balance is: 19,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 31 39 2C 39 30 30 20 
+                55 53 44 20 24                      
+[  49]        :                                       
+[  50]    03FC: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t5 db 10,13,"Your Total Balance is: 15,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 31 35 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  51]    0421: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av5 db 10,13,"Your Available Balance is: 14,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 31 34 2C 39 30 30 20 
+                55 53 44 20 24                      
+[  52]        :                                       
+[  53]    044A: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t6 db 10,13,"Your Total Balance is: 10,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 31 30 2C 30 30 30 20 55 53 44 20 
+                24                                  
+[  54]    046F: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av6 db 10,13,"Your Available Balance is: 9,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 39 2C 39 30 30 20 55 
+                53 44 20 24                         
+[  55]        :                                       
+[  56]    0497: 0A 0D 59 6F 75 72 20 54 6F 74 61 6C   t7 db 10,13,"Your Total Balance is: 5,000 USD $"
+                20 42 61 6C 61 6E 63 65 20 69 73 3A 
+                20 35 2C 30 30 30 20 55 53 44 20 24 
+                                                    
+[  57]    04BB: 0A 0D 59 6F 75 72 20 41 76 61 69 6C   av7 db 10,13,"Your Available Balance is: 4,900 USD $"
+                61 62 6C 65 20 42 61 6C 61 6E 63 65 
+                20 69 73 3A 20 34 2C 39 30 30 20 55 
+                53 44 20 24                         
+[  58]        :                                       
+[  59]        :                                       
+[  60]        :                                       ;Amount Property
+[  61]    04E3: 0A 0D 45 6E 74 65 72 20 59 6F 75 72   wdamount db 10,13,"Enter Your Withdrow Amount$"
+                20 57 69 74 68 64 72 6F 77 20 41 6D 
+                6F 75 6E 74 24                      
+[  62]    0500: 0A 0D 45 6E 74 65 72 20 59 6F 75 72   tranamount db 10,13,"Enter Your Transaction Amount$"
+                20 54 72 61 6E 73 61 63 74 69 6F 6E 
+                20 41 6D 6F 75 6E 74 24             
+[  63]    0520: 0A 0D 59 6F 75 72 20 54 72 61 6E 73   success db 10,13,"Your Transaction is Successfull...$"
+                61 63 74 69 6F 6E 20 69 73 20 53 75 
+                63 63 65 73 73 66 75 6C 6C 2E 2E 2E 
+                24                                  
+[  64]    0545: 0A 0D 45 6E 74 65 72 20 41 63 63 6F   accountnum db 10,13,"Enter Account Number: $"
+                75 6E 74 20 4E 75 6D 62 65 72 3A 20 
+                24                                  
+[  65]        :                                       
+[  66]        :                                       
+[  67]        :                                       
+[  68]        :                                       
+[  69]        :                                       
+[  70]        :                                       
+[  71]        :                                       .code
+[  72]    0560:                                       main proc
+[  73]    0560: B8 10 00                              mov ax,@data
+[  74]    0563: 8E D8                                 mov ds,ax
+[  75]        :                                       
+[  76]        :                                       
+[  77]        :                                       ;Password Cheek Level
+[  78]        :                                       
+[  79]    0565: 8B 0E 31 00                           mov cx,pass1               ;because it will use as a counter loop
+[  80]    0569: BB 2A 00                              lea bx,pass
+[  81]        :                                       
+[  82]    056C: B4 09                                 mov ah,9
+[  83]    056E: BA 00 00                              lea dx,a
+[  84]    0571: CD 21                                 int 21h
+[  85]        :                                       
+[  86]    0573:                                       cheekpass:
+[  87]    0573: B4 08                                 mov ah,8
+[  88]    0575: CD 21                                 int 21h
+[  89]        :                                       
+[  90]    0577: 3A 07                                 cmp al,[bx]       ;comparing values
+[  91]    0579: 75 11                                 jne worng
+[  92]    057B: B4 02                                 mov ah,2
+[  93]    057D: B2 2A                                 mov dl,42
+[  94]    057F: CD 21                                 int 21h
+[  95]    0581: 43                                    inc bx
+[  96]    0582: E2 EF                                 loop cheekpass
+[  97]        :                                       
+[  98]    0584: B4 00                                 mov ah,0x00
+[  99]    0586: B0 03                                 mov al,0x03
+[ 100]    0588: CD 10                                 int 0x10
+[ 101]    058A: EB 11                                 jmp mainpross
+[ 102]        :                                       
+[ 103]        :                                       
+[ 104]        :                                       ;Worng Password Level
+[ 105]    058C:                                       worng:
+[ 106]    058C: B4 00                                 mov ah,0x00
+[ 107]    058E: B0 03                                 mov al,0x03
+[ 108]    0590: CD 10                                 int 0x10
+[ 109]    0592: B4 09                                 mov ah,9
+[ 110]    0594: BA 17 00                              lea dx,b
+[ 111]    0597: CD 21                                 int 21h
+[ 112]    0599: B4 4C                                 mov ah,4ch
+[ 113]    059B: CD 21                                 int 21h
+[ 114]        :                                       
+[ 115]        :                                       
+[ 116]        :                                       
+[ 117]        :                                       ;MOAZZAM
+[ 118]        :                                       
+[ 119]        :                                       ;Account Option
+[ 120]    059D:                                       mainpross:
+[ 121]    059D: B4 09                                 mov ah,9
+[ 122]    059F: BA 33 00                              lea dx,wel
+[ 123]    05A2: CD 21                                 int 21h
+[ 124]    05A4: B4 09                                 mov ah,9
+[ 125]    05A6: BA 61 00                              lea dx,bal
+[ 126]    05A9: CD 21                                 int 21h
+[ 127]    05AB: B4 09                                 mov ah,9
+[ 128]    05AD: BA 79 00                              lea dx,with
+[ 129]    05B0: CD 21                                 int 21h
+[ 130]    05B2: B4 09                                 mov ah,9
+[ 131]    05B4: BA 8E 00                              lea dx,trans
+[ 132]    05B7: CD 21                                 int 21h
+[ 133]    05B9: B4 09                                 mov ah,9
+[ 134]    05BB: BA A3 00                              lea dx,ex
+[ 135]    05BE: CD 21                                 int 21h
+[ 136]    05C0: B4 09                                 mov ah,9
+[ 137]    05C2: BA 09 01                              lea dx,new
+[ 138]    05C5: CD 21                                 int 21h
+[ 139]    05C7: B4 01                                 mov ah,1
+[ 140]    05C9: CD 21                                 int 21h
+[ 141]    05CB: 8A D8                                 mov bl,al
+[ 142]        :                                       
+[ 143]        :                                       
+[ 144]        :                                       ;Input Cheek
+[ 145]    05CD:                                       cheek:
+[ 146]    05CD: 80 FB 31                              cmp bl,49
+[ 147]    05D0: 74 18                                 je blance
+[ 148]    05D2: 80 FB 32                              cmp bl,50
+[ 149]    05D5: 74 2A                                 je withdraw
+[ 150]    05D7: 80 FB 33                              cmp bl,51
+[ 151]    05DA: 75 03 E9 0E 02                        je Transfer
+[ 152]    05DF: 80 FB 34                              cmp bl,52
+[ 153]    05E2: 75 03 E9 15 03                        je exit
+[ 154]    05E7: E9 FB 02                              jmp err
+[ 155]        :                                       
+[ 156]        :                                       
+[ 157]        :                                       ;Account Balance Cheek Level
+[ 158]    05EA:                                       blance:
+[ 159]    05EA: B4 00                                 mov ah,0x00
+[ 160]    05EC: B0 03                                 mov al,0x03
+[ 161]    05EE: CD 10                                 int 0x10
+[ 162]    05F0: B4 09                                 mov ah,9
+[ 163]    05F2: BA 0C 01                              lea dx,totalbal
+[ 164]    05F5: CD 21                                 int 21h
+[ 165]    05F7: B4 09                                 mov ah,9
+[ 166]    05F9: BA 31 01                              lea dx,availablebal
+[ 167]    05FC: CD 21                                 int 21h
+[ 168]    05FE: E9 B1 02                              jmp option
+[ 169]        :                                       
+[ 170]        :                                       
+[ 171]        :                                       
+[ 172]        :                                       
+[ 173]        :                                       
+[ 174]        :                                       
+[ 175]        :                                       ;Money Withdrow Level
+[ 176]    0601:                                       withdraw:
+[ 177]    0601: B4 00                                 mov ah,0x00
+[ 178]    0603: B0 03                                 mov al,0x03
+[ 179]    0605: CD 10                                 int 0x10
+[ 180]    0607: B4 09                                 mov ah,9
+[ 181]    0609: BA 09 01                              lea dx,new
+[ 182]    060C: CD 21                                 int 21h
+[ 183]    060E: B4 09                                 mov ah,9
+[ 184]    0610: BA E3 03                              lea dx,wdamount
+[ 185]    0613: CD 21                                 int 21h
+[ 186]        :                                       
+[ 187]        :                                       ;Money Withdrow Option Display
+[ 188]    0615: B4 09                                 mov ah,9
+[ 189]    0617: BA 5A 01                              lea dx,fivehun
+[ 190]    061A: CD 21                                 int 21h
+[ 191]        :                                       
+[ 192]    061C: B4 09                                 mov ah,9
+[ 193]    061E: BA 67 01                              lea dx,one
+[ 194]    0621: CD 21                                 int 21h
+[ 195]        :                                       
+[ 196]    0623: B4 09                                 mov ah,9
+[ 197]    0625: BA 76 01                              lea dx,three
+[ 198]    0628: CD 21                                 int 21h
+[ 199]        :                                       
+[ 200]    062A: B4 09                                 mov ah,9
+[ 201]    062C: BA 85 01                              lea dx,five
+[ 202]    062F: CD 21                                 int 21h
+[ 203]        :                                       
+[ 204]    0631: B4 09                                 mov ah,9
+[ 205]    0633: BA 94 01                              lea dx,ten
+[ 206]    0636: CD 21                                 int 21h
+[ 207]        :                                       
+[ 208]    0638: B4 09                                 mov ah,9
+[ 209]    063A: BA A4 01                              lea dx,fiften
+[ 210]    063D: CD 21                                 int 21h
+[ 211]        :                                       
+[ 212]    063F: B4 09                                 mov ah,9
+[ 213]    0641: BA B4 01                              lea dx,tweenty
+[ 214]    0644: CD 21                                 int 21h
+[ 215]        :                                       
+[ 216]    0646: B4 09                                 mov ah,9
+[ 217]    0648: BA 09 01                              lea dx,new
+[ 218]    064B: CD 21                                 int 21h
+[ 219]    064D: B4 01                                 mov ah,1
+[ 220]    064F: CD 21                                 int 21h
+[ 221]    0651: 8A D8                                 mov bl,al
+[ 222]        :                                       
+[ 223]        :                                       
+[ 224]        :                                       
+[ 225]        :                                       
+[ 226]        :                                       
+[ 227]        :                                       ;Input Condition Cheek
+[ 228]    0653: 80 FB 31                              cmp bl,49
+[ 229]    0656: 74 30                                 je pross1
+[ 230]        :                                       
+[ 231]    0658: 80 FB 32                              cmp bl,50
+[ 232]    065B: 74 5E                                 je pross2
+[ 233]        :                                       
+[ 234]    065D: 80 FB 33                              cmp bl,51
+[ 235]    0660: 75 03 E9 89 00                        je pross3
+[ 236]        :                                       
+[ 237]    0665: 80 FB 34                              cmp bl,52
+[ 238]    0668: 75 03 E9 B4 00                        je pross4
+[ 239]        :                                       
+[ 240]    066D: 80 FB 35                              cmp bl,53
+[ 241]    0670: 75 03 E9 DF 00                        je pross5
+[ 242]        :                                       
+[ 243]    0675: 80 FB 36                              cmp bl,54
+[ 244]    0678: 75 03 E9 0A 01                        je pross6
+[ 245]        :                                       
+[ 246]    067D: 80 FB 37                              cmp bl,55
+[ 247]    0680: 75 03 E9 35 01                        je pross7
+[ 248]    0685: E9 5D 02                              jmp err
+[ 249]        :                                       
+[ 250]        :                                       
+[ 251]        :                                       
+[ 252]        :                                       
+[ 253]        :                                       ;SAHIL
+[ 254]        :                                       
+[ 255]        :                                       ;Option 1
+[ 256]    0688:                                       pross1:
+[ 257]    0688: B4 00                                 mov ah,0x00
+[ 258]    068A: B0 03                                 mov al,0x03
+[ 259]    068C: CD 10                                 int 0x10
+[ 260]    068E: B4 09                                 mov ah,9
+[ 261]    0690: BA 20 04                              lea dx,success
+[ 262]    0693: CD 21                                 int 21h
+[ 263]    0695: B4 09                                 mov ah,9
+[ 264]    0697: BA 09 01                              lea dx,new
+[ 265]    069A: CD 21                                 int 21h
+[ 266]    069C: B4 09                                 mov ah,9
+[ 267]    069E: BA 09 01                              lea dx,new
+[ 268]    06A1: CD 21                                 int 21h
+[ 269]        :                                       
+[ 270]    06A3: B4 09                                 mov ah,9
+[ 271]    06A5: BA C4 01                              lea dx,t1
+[ 272]    06A8: CD 21                                 int 21h
+[ 273]    06AA: B4 09                                 mov ah,9
+[ 274]    06AC: BA E9 01                              lea dx,av1
+[ 275]    06AF: CD 21                                 int 21h
+[ 276]    06B1: B4 09                                 mov ah,9
+[ 277]    06B3: BA 09 01                              lea dx,new
+[ 278]    06B6: CD 21                                 int 21h
+[ 279]    06B8: E9 F7 01                              jmp option
+[ 280]        :                                       
+[ 281]        :                                       ;Option 2
+[ 282]    06BB:                                       pross2:
+[ 283]    06BB: B4 00                                 mov ah,0x00
+[ 284]    06BD: B0 03                                 mov al,0x03
+[ 285]    06BF: CD 10                                 int 0x10
+[ 286]    06C1: B4 09                                 mov ah,9
+[ 287]    06C3: BA 20 04                              lea dx,success
+[ 288]    06C6: CD 21                                 int 21h
+[ 289]    06C8: B4 09                                 mov ah,9
+[ 290]    06CA: BA 09 01                              lea dx,new
+[ 291]    06CD: CD 21                                 int 21h
+[ 292]    06CF: B4 09                                 mov ah,9
+[ 293]    06D1: BA 09 01                              lea dx,new
+[ 294]    06D4: CD 21                                 int 21h
+[ 295]        :                                       
+[ 296]    06D6: B4 09                                 mov ah,9
+[ 297]    06D8: BA 12 02                              lea dx,t2
+[ 298]    06DB: CD 21                                 int 21h
+[ 299]    06DD: B4 09                                 mov ah,9
+[ 300]    06DF: BA 37 02                              lea dx,av2
+[ 301]    06E2: CD 21                                 int 21h
+[ 302]    06E4: B4 09                                 mov ah,9
+[ 303]    06E6: BA 09 01                              lea dx,new
+[ 304]    06E9: CD 21                                 int 21h
+[ 305]    06EB: E9 C4 01                              jmp option
+[ 306]        :                                       
+[ 307]        :                                       ;Option 3
+[ 308]    06EE:                                       pross3:
+[ 309]    06EE: B4 00                                 mov ah,0x00
+[ 310]    06F0: B0 03                                 mov al,0x03
+[ 311]    06F2: CD 10                                 int 0x10
+[ 312]    06F4: B4 09                                 mov ah,9
+[ 313]    06F6: BA 20 04                              lea dx,success
+[ 314]    06F9: CD 21                                 int 21h
+[ 315]    06FB: B4 09                                 mov ah,9
+[ 316]    06FD: BA 09 01                              lea dx,new
+[ 317]    0700: CD 21                                 int 21h
+[ 318]    0702: B4 09                                 mov ah,9
+[ 319]    0704: BA 09 01                              lea dx,new
+[ 320]    0707: CD 21                                 int 21h
+[ 321]        :                                       
+[ 322]    0709: B4 09                                 mov ah,9
+[ 323]    070B: BA 60 02                              lea dx,t3
+[ 324]    070E: CD 21                                 int 21h
+[ 325]    0710: B4 09                                 mov ah,9
+[ 326]    0712: BA 85 02                              lea dx,av3
+[ 327]    0715: CD 21                                 int 21h
+[ 328]    0717: B4 09                                 mov ah,9
+[ 329]    0719: BA 09 01                              lea dx,new
+[ 330]    071C: CD 21                                 int 21h
+[ 331]    071E: E9 91 01                              jmp option
+[ 332]        :                                       
+[ 333]        :                                       ;Option 4
+[ 334]    0721:                                       pross4:
+[ 335]    0721: B4 00                                 mov ah,0x00
+[ 336]    0723: B0 03                                 mov al,0x03
+[ 337]    0725: CD 10                                 int 0x10
+[ 338]    0727: B4 09                                 mov ah,9
+[ 339]    0729: BA 20 04                              lea dx,success
+[ 340]    072C: CD 21                                 int 21h
+[ 341]    072E: B4 09                                 mov ah,9
+[ 342]    0730: BA 09 01                              lea dx,new
+[ 343]    0733: CD 21                                 int 21h
+[ 344]    0735: B4 09                                 mov ah,9
+[ 345]    0737: BA 09 01                              lea dx,new
+[ 346]    073A: CD 21                                 int 21h
+[ 347]        :                                       
+[ 348]    073C: B4 09                                 mov ah,9
+[ 349]    073E: BA AE 02                              lea dx,t4
+[ 350]    0741: CD 21                                 int 21h
+[ 351]    0743: B4 09                                 mov ah,9
+[ 352]    0745: BA D3 02                              lea dx,av4
+[ 353]    0748: CD 21                                 int 21h
+[ 354]    074A: B4 09                                 mov ah,9
+[ 355]    074C: BA 09 01                              lea dx,new
+[ 356]    074F: CD 21                                 int 21h
+[ 357]    0751: E9 5E 01                              jmp option
+[ 358]        :                                       
+[ 359]        :                                       ;Option 5
+[ 360]    0754:                                       pross5:
+[ 361]    0754: B4 00                                 mov ah,0x00
+[ 362]    0756: B0 03                                 mov al,0x03
+[ 363]    0758: CD 10                                 int 0x10
+[ 364]    075A: B4 09                                 mov ah,9
+[ 365]    075C: BA 20 04                              lea dx,success
+[ 366]    075F: CD 21                                 int 21h
+[ 367]    0761: B4 09                                 mov ah,9
+[ 368]    0763: BA 09 01                              lea dx,new
+[ 369]    0766: CD 21                                 int 21h
+[ 370]    0768: B4 09                                 mov ah,9
+[ 371]    076A: BA 09 01                              lea dx,new
+[ 372]    076D: CD 21                                 int 21h
+[ 373]        :                                       
+[ 374]    076F: B4 09                                 mov ah,9
+[ 375]    0771: BA FC 02                              lea dx,t5
+[ 376]    0774: CD 21                                 int 21h
+[ 377]    0776: B4 09                                 mov ah,9
+[ 378]    0778: BA 21 03                              lea dx,av5
+[ 379]    077B: CD 21                                 int 21h
+[ 380]    077D: B4 09                                 mov ah,9
+[ 381]    077F: BA 09 01                              lea dx,new
+[ 382]    0782: CD 21                                 int 21h
+[ 383]    0784: E9 2B 01                              jmp option
+[ 384]        :                                       
+[ 385]        :                                       ;Option 6
+[ 386]    0787:                                       pross6:
+[ 387]    0787: B4 00                                 mov ah,0x00
+[ 388]    0789: B0 03                                 mov al,0x03
+[ 389]    078B: CD 10                                 int 0x10
+[ 390]    078D: B4 09                                 mov ah,9
+[ 391]    078F: BA 20 04                              lea dx,success
+[ 392]    0792: CD 21                                 int 21h
+[ 393]    0794: B4 09                                 mov ah,9
+[ 394]    0796: BA 09 01                              lea dx,new
+[ 395]    0799: CD 21                                 int 21h
+[ 396]    079B: B4 09                                 mov ah,9
+[ 397]    079D: BA 09 01                              lea dx,new
+[ 398]    07A0: CD 21                                 int 21h
+[ 399]        :                                       
+[ 400]    07A2: B4 09                                 mov ah,9
+[ 401]    07A4: BA 4A 03                              lea dx,t6
+[ 402]    07A7: CD 21                                 int 21h
+[ 403]    07A9: B4 09                                 mov ah,9
+[ 404]    07AB: BA 6F 03                              lea dx,av6
+[ 405]    07AE: CD 21                                 int 21h
+[ 406]    07B0: B4 09                                 mov ah,9
+[ 407]    07B2: BA 09 01                              lea dx,new
+[ 408]    07B5: CD 21                                 int 21h
+[ 409]    07B7: E9 F8 00                              jmp option
+[ 410]        :                                       
+[ 411]        :                                       ;Option 7
+[ 412]    07BA:                                       pross7:
+[ 413]    07BA: B4 00                                 mov ah,0x00
+[ 414]    07BC: B0 03                                 mov al,0x03
+[ 415]    07BE: CD 10                                 int 0x10
+[ 416]    07C0: B4 09                                 mov ah,9
+[ 417]    07C2: BA 20 04                              lea dx,success
+[ 418]    07C5: CD 21                                 int 21h
+[ 419]    07C7: B4 09                                 mov ah,9
+[ 420]    07C9: BA 09 01                              lea dx,new
+[ 421]    07CC: CD 21                                 int 21h
+[ 422]    07CE: B4 09                                 mov ah,9
+[ 423]    07D0: BA 09 01                              lea dx,new
+[ 424]    07D3: CD 21                                 int 21h
+[ 425]        :                                       
+[ 426]    07D5: B4 09                                 mov ah,9
+[ 427]    07D7: BA 97 03                              lea dx,t7
+[ 428]    07DA: CD 21                                 int 21h
+[ 429]    07DC: B4 09                                 mov ah,9
+[ 430]    07DE: BA BB 03                              lea dx,av7
+[ 431]    07E1: CD 21                                 int 21h
+[ 432]    07E3: B4 09                                 mov ah,9
+[ 433]    07E5: BA 09 01                              lea dx,new
+[ 434]    07E8: CD 21                                 int 21h
+[ 435]    07EA: E9 C5 00                              jmp option
+[ 436]        :                                       
+[ 437]        :                                       
+[ 438]        :                                       
+[ 439]        :                                       
+[ 440]        :                                       
+[ 441]        :                                       
+[ 442]        :                                       
+[ 443]        :                                       ;OSAMA
+[ 444]        :                                       
+[ 445]        :                                       ;Balance Transfer Level
+[ 446]    07ED:                                       Transfer:
+[ 447]    07ED: B4 00                                 mov ah,0x00
+[ 448]    07EF: B0 03                                 mov al,0x03
+[ 449]    07F1: CD 10                                 int 0x10
+[ 450]    07F3: B4 09                                 mov ah,9
+[ 451]    07F5: BA 45 04                              lea dx,accountnum
+[ 452]    07F8: CD 21                                 int 21h
+[ 453]        :                                       
+[ 454]    07FA: B4 01                                 mov ah,1
+[ 455]    07FC:                                       acco:
+[ 456]    07FC: CD 21                                 int 21h
+[ 457]    07FE: 3C 0D                                 cmp al,13
+[ 458]    0800: 75 FA                                 jne acco
+[ 459]        :                                       
+[ 460]    0802: B4 09                                 mov ah,9
+[ 461]    0804: BA 09 01                              lea dx,new
+[ 462]    0807: CD 21                                 int 21h
+[ 463]        :                                       
+[ 464]        :                                       
+[ 465]        :                                       ;Again Password Cheek
+[ 466]    0809: B4 09                                 mov ah,9
+[ 467]    080B: BA 00 00                              lea dx,a
+[ 468]    080E: CD 21                                 int 21h
+[ 469]        :                                       
+[ 470]    0810: 8B 0E 31 00                           mov cx,pass1
+[ 471]    0814: BB 2A 00                              mov bx,offset pass
+[ 472]        :                                       
+[ 473]    0817:                                       again:
+[ 474]    0817: B4 08                                 mov ah,8
+[ 475]    0819: CD 21                                 int 21h
+[ 476]        :                                       
+[ 477]    081B: 3A 07                                 cmp al,[bx]
+[ 478]    081D: 74 03 E9 6A FD                        jne worng
+[ 479]    0822: B4 02                                 mov ah,2
+[ 480]    0824: B2 2A                                 mov dl,42
+[ 481]    0826: CD 21                                 int 21h
+[ 482]    0828: 43                                    inc bx
+[ 483]    0829: E2 EC                                 loop again
+[ 484]    082B: B4 00                                 mov ah,0x00
+[ 485]    082D: B0 03                                 mov al,0x03
+[ 486]    082F: CD 10                                 int 0x10
+[ 487]    0831: EB 00                                 jmp transferpross
+[ 488]        :                                       
+[ 489]        :                                       
+[ 490]        :                                       ;Money Transfer Proccess
+[ 491]    0833:                                       transferpross:
+[ 492]    0833: B4 09                                 mov ah,9
+[ 493]    0835: BA 00 04                              lea dx,tranamount
+[ 494]    0838: CD 21                                 int 21h
+[ 495]        :                                       ;Transfer Amount Display
+[ 496]    083A: B4 09                                 mov ah,9
+[ 497]    083C: BA 5A 01                              lea dx,fivehun
+[ 498]    083F: CD 21                                 int 21h
+[ 499]        :                                       
+[ 500]    0841: B4 09                                 mov ah,9
+[ 501]    0843: BA 67 01                              lea dx,one
+[ 502]    0846: CD 21                                 int 21h
+[ 503]        :                                       
+[ 504]    0848: B4 09                                 mov ah,9
+[ 505]    084A: BA 76 01                              lea dx,three
+[ 506]    084D: CD 21                                 int 21h
+[ 507]        :                                       
+[ 508]    084F: B4 09                                 mov ah,9
+[ 509]    0851: BA 85 01                              lea dx,five
+[ 510]    0854: CD 21                                 int 21h
+[ 511]        :                                       
+[ 512]    0856: B4 09                                 mov ah,9
+[ 513]    0858: BA 94 01                              lea dx,ten
+[ 514]    085B: CD 21                                 int 21h
+[ 515]        :                                       
+[ 516]    085D: B4 09                                 mov ah,9
+[ 517]    085F: BA A4 01                              lea dx,fiften
+[ 518]    0862: CD 21                                 int 21h
+[ 519]        :                                       
+[ 520]    0864: B4 09                                 mov ah,9
+[ 521]    0866: BA B4 01                              lea dx,tweenty
+[ 522]    0869: CD 21                                 int 21h
+[ 523]        :                                       
+[ 524]    086B: B4 09                                 mov ah,9
+[ 525]    086D: BA 09 01                              lea dx,new
+[ 526]    0870: CD 21                                 int 21h
+[ 527]    0872: B4 01                                 mov ah,1
+[ 528]    0874: CD 21                                 int 21h
+[ 529]    0876: 8A D8                                 mov bl,al
+[ 530]        :                                       
+[ 531]        :                                       ;Input Condition Cheek
+[ 532]    0878: 80 FB 31                              cmp bl,49
+[ 533]    087B: 75 03 E9 08 FE                        je pross1
+[ 534]        :                                       
+[ 535]    0880: 80 FB 32                              cmp bl,50
+[ 536]    0883: 75 03 E9 33 FE                        je pross2
+[ 537]        :                                       
+[ 538]    0888: 80 FB 33                              cmp bl,51
+[ 539]    088B: 75 03 E9 5E FE                        je pross3
+[ 540]        :                                       
+[ 541]    0890: 80 FB 34                              cmp bl,52
+[ 542]    0893: 75 03 E9 89 FE                        je pross4
+[ 543]        :                                       
+[ 544]    0898: 80 FB 35                              cmp bl,53
+[ 545]    089B: 75 03 E9 B4 FE                        je pross5
+[ 546]        :                                       
+[ 547]    08A0: 80 FB 36                              cmp bl,54
+[ 548]    08A3: 75 03 E9 DF FE                        je pross6
+[ 549]        :                                       
+[ 550]    08A8: 80 FB 37                              cmp bl,55
+[ 551]    08AB: 75 03 E9 0A FF                        je pross7
+[ 552]    08B0: EB 33                                 jmp err
+[ 553]        :                                       
+[ 554]        :                                       
+[ 555]        :                                       
+[ 556]        :                                       
+[ 557]        :                                       ;AFEEF
+[ 558]        :                                       
+[ 559]        :                                       
+[ 560]        :                                       
+[ 561]        :                                       
+[ 562]        :                                       
+[ 563]        :                                       ;Back And Exit Option Level
+[ 564]    08B2:                                       option:
+[ 565]    08B2: B4 09                                 mov ah,9
+[ 566]    08B4: BA 09 01                              lea dx,new
+[ 567]    08B7: CD 21                                 int 21h
+[ 568]    08B9: B4 09                                 mov ah,9
+[ 569]    08BB: BA AE 00                              lea dx,bac
+[ 570]    08BE: CD 21                                 int 21h
+[ 571]    08C0: B4 09                                 mov ah,9
+[ 572]    08C2: BA B8 00                              lea dx,ext
+[ 573]    08C5: CD 21                                 int 21h
+[ 574]    08C7: B4 09                                 mov ah,9
+[ 575]    08C9: BA 09 01                              lea dx,new
+[ 576]    08CC: CD 21                                 int 21h
+[ 577]    08CE: B4 01                                 mov ah,1
+[ 578]    08D0: CD 21                                 int 21h
+[ 579]    08D2: 3C 31                                 cmp al,49
+[ 580]    08D4: 74 06                                 je back
+[ 581]    08D6: 3C 32                                 cmp al,50
+[ 582]    08D8: 74 22                                 je exit
+[ 583]    08DA: EB 09                                 jmp err
+[ 584]        :                                       
+[ 585]        :                                       
+[ 586]        :                                       
+[ 587]        :                                       ;back Option Level
+[ 588]    08DC:                                       back:
+[ 589]    08DC: B4 00                                 mov ah,0x00
+[ 590]    08DE: B0 03                                 mov al,0x03
+[ 591]    08E0: CD 10                                 int 0x10
+[ 592]    08E2: E8 B8 FC                              call mainpross
+[ 593]        :                                       
+[ 594]        :                                       
+[ 595]        :                                       ;Input Error Level
+[ 596]    08E5:                                       err:
+[ 597]    08E5: B4 00                                 mov ah,0x00
+[ 598]    08E7: B0 03                                 mov al,0x03
+[ 599]    08E9: CD 10                                 int 0x10
+[ 600]    08EB: B4 09                                 mov ah,9
+[ 601]    08ED: BA F9 00                              lea dx,inval
+[ 602]    08F0: CD 21                                 int 21h
+[ 603]    08F2: B4 09                                 mov ah,9
+[ 604]    08F4: BA 09 01                              lea dx,new
+[ 605]    08F7: CD 21                                 int 21h
+[ 606]    08F9: E8 A1 FC                              call mainpross
+[ 607]        :                                       
+[ 608]        :                                       
+[ 609]        :                                       ;DOS Exit Level
+[ 610]    08FC:                                       exit:
+[ 611]    08FC: B4 00                                 mov ah,0x00
+[ 612]    08FE: B0 03                                 mov al,0x03
+[ 613]    0900: CD 10                                 int 0x10
+[ 614]    0902: B4 09                                 mov ah,9
+[ 615]    0904: BA C2 00                              lea dx,thank
+[ 616]    0907: CD 21                                 int 21h
+[ 617]    0909: B4 4C                                 mov ah,4ch
+[ 618]    090B: CD 21                                 int 21h
+[ 619]        :                                       main endp
+[ 620]        :                                       end main
+[ 621]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 0D      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 06      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 79      -   check sum (l.byte)
+0013: 87      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 56      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 56      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

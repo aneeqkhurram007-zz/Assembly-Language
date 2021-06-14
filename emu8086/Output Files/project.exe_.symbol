@@ -1,0 +1,74 @@
+< THE SYMBOL TABLE >  project.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+A                        	00000     	1         	VAR       	data      
+B                        	00017     	1         	VAR       	data      
+PASS                     	0002A     	1         	VAR       	data      
+PASS1                    	00031     	2         	VAR       	data      
+WEL                      	00033     	1         	VAR       	data      
+BAL                      	00061     	1         	VAR       	data      
+WITH                     	00079     	1         	VAR       	data      
+TRANS                    	0008E     	1         	VAR       	data      
+EX                       	000A3     	1         	VAR       	data      
+BAC                      	000AE     	1         	VAR       	data      
+EXT                      	000B8     	1         	VAR       	data      
+THANK                    	000C2     	1         	VAR       	data      
+INVAL                    	000F9     	1         	VAR       	data      
+NEW                      	00109     	1         	VAR       	data      
+TOTALBAL                 	0010C     	1         	VAR       	data      
+AVAILABLEBAL             	00131     	1         	VAR       	data      
+FIVEHUN                  	0015A     	1         	VAR       	data      
+ONE                      	00167     	1         	VAR       	data      
+THREE                    	00176     	1         	VAR       	data      
+FIVE                     	00185     	1         	VAR       	data      
+TEN                      	00194     	1         	VAR       	data      
+FIFTEN                   	001A4     	1         	VAR       	data      
+TWEENTY                  	001B4     	1         	VAR       	data      
+T1                       	001C4     	1         	VAR       	data      
+AV1                      	001E9     	1         	VAR       	data      
+T2                       	00212     	1         	VAR       	data      
+AV2                      	00237     	1         	VAR       	data      
+T3                       	00260     	1         	VAR       	data      
+AV3                      	00285     	1         	VAR       	data      
+T4                       	002AE     	1         	VAR       	data      
+AV4                      	002D3     	1         	VAR       	data      
+T5                       	002FC     	1         	VAR       	data      
+AV5                      	00321     	1         	VAR       	data      
+T6                       	0034A     	1         	VAR       	data      
+AV6                      	0036F     	1         	VAR       	data      
+T7                       	00397     	1         	VAR       	data      
+AV7                      	003BB     	1         	VAR       	data      
+WDAMOUNT                 	003E3     	1         	VAR       	data      
+TRANAMOUNT               	00400     	1         	VAR       	data      
+SUCCESS                  	00420     	1         	VAR       	data      
+ACCOUNTNUM               	00445     	1         	VAR       	data      
+CODE                     	00056     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+CHEEKPASS                	00013     	-1        	LABEL     	code      
+WORNG                    	0002C     	-1        	LABEL     	code      
+MAINPROSS                	0003D     	-1        	LABEL     	code      
+CHEEK                    	0006D     	-1        	LABEL     	code      
+BLANCE                   	0008A     	-1        	LABEL     	code      
+WITHDRAW                 	000A1     	-1        	LABEL     	code      
+PROSS1                   	00128     	-1        	LABEL     	code      
+PROSS2                   	0015B     	-1        	LABEL     	code      
+PROSS3                   	0018E     	-1        	LABEL     	code      
+PROSS4                   	001C1     	-1        	LABEL     	code      
+PROSS5                   	001F4     	-1        	LABEL     	code      
+PROSS6                   	00227     	-1        	LABEL     	code      
+PROSS7                   	0025A     	-1        	LABEL     	code      
+TRANSFER                 	0028D     	-1        	LABEL     	code      
+ACCO                     	0029C     	-1        	LABEL     	code      
+AGAIN                    	002B7     	-1        	LABEL     	code      
+TRANSFERPROSS            	002D3     	-1        	LABEL     	code      
+OPTION                   	00352     	-1        	LABEL     	code      
+BACK                     	0037C     	-1        	LABEL     	code      
+ERR                      	00385     	-1        	LABEL     	code      
+EXIT                     	0039C     	-1        	LABEL     	code      
+===================================================================================================
+[ 6/14/2021  --  5:47:56 PM ] 
+< END >
+ 
