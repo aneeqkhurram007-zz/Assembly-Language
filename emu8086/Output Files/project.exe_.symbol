@@ -68,7 +68,18 @@ OPTION                   	00352     	-1        	LABEL     	code
 BACK                     	0037C     	-1        	LABEL     	code      
 ERR                      	00385     	-1        	LABEL     	code      
 EXIT                     	0039C     	-1        	LABEL     	code      
+DECIMALINPUT             	003AD     	-1        	NEAR      	code      
+INPUTSTART               	003B0     	-1        	LABEL     	code      
+MINUS                    	003C8     	-1        	LABEL     	code      
+PLUS                     	003CB     	-1        	LABEL     	code      
+REPEAT                   	003CD     	-1        	LABEL     	code      
+EXITT                    	003F1     	-1        	LABEL     	code      
+NONDIGIT                 	003F5     	-1        	LABEL     	code      
+DECIMALOUTPUT            	00402     	-1        	NEAR      	code      
+IF                       	00414     	-1        	LABEL     	code      
+LOOPREPEAT               	00419     	-1        	LABEL     	code      
+PRINTLOOP                	00425     	-1        	LABEL     	code      
 ===================================================================================================
-[ 6/14/2021  --  5:47:56 PM ] 
+[ 6/14/2021  --  7:49:27 PM ] 
 < END >
  

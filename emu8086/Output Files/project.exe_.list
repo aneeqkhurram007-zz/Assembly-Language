@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 project.exe_ -- emu8086 assembler version: 4.08  
  
-[ 6/14/2021  --  5:47:56 PM ] 
+[ 6/14/2021  --  7:49:27 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -705,8 +705,132 @@ project.exe_ -- emu8086 assembler version: 4.08
 [ 617]    0909: B4 4C                                 mov ah,4ch
 [ 618]    090B: CD 21                                 int 21h
 [ 619]        :                                       main endp
-[ 620]        :                                       end main
+[ 620]    090D:                                       decimalInput proc
 [ 621]        :                                       
+[ 622]    090D: 53                                    push bx
+[ 623]    090E: 51                                    push cx
+[ 624]    090F: 52                                    push dx
+[ 625]    0910:                                       inputStart:
+[ 626]        :                                       
+[ 627]    0910: B4 02                                 mov ah, 2
+[ 628]    0912: B2 20                                 mov dl, ' '
+[ 629]    0914: CD 21                                 int 21h
+[ 630]        :                                       
+[ 631]    0916: 33 DB                                 xor bx, bx
+[ 632]    0918: 33 C9                                 xor cx, cx
+[ 633]        :                                       
+[ 634]    091A: B4 01                                 mov ah, 1
+[ 635]    091C: CD 21                                 int 21h
+[ 636]        :                                       
+[ 637]    091E: 3C 2D                                 cmp al, '-'
+[ 638]    0920: 74 06                                 je minus
+[ 639]        :                                       
+[ 640]    0922: 3C 2B                                 cmp al, '+'
+[ 641]    0924: 74 05                                 je plus
+[ 642]    0926: EB 05                                 jmp repeat
+[ 643]        :                                       
+[ 644]    0928:                                       minus:
+[ 645]    0928: B9 01 00                              mov cx, 1
+[ 646]    092B:                                       plus:
+[ 647]    092B: CD 21                                 int 21h
+[ 648]        :                                       
+[ 649]    092D:                                       repeat:
+[ 650]        :                                       
+[ 651]    092D: 3C 30                                 cmp al, '0'
+[ 652]    092F: 7C 24                                 jnge nonDigit
+[ 653]    0931: 3C 39                                 cmp al, '9'
+[ 654]    0933: 7F 20                                 jnle nonDigit
+[ 655]        :                                       
+[ 656]    0935: 25 0F 00                              and ax, 000fh
+[ 657]    0938: 50                                    push ax
+[ 658]        :                                       
+[ 659]    0939: B8 0A 00                              mov ax,10
+[ 660]    093C: F7 E3                                 mul bx
+[ 661]    093E: 5B                                    pop bx
+[ 662]    093F: 03 D8                                 add bx, ax
+[ 663]        :                                       
+[ 664]    0941: B4 01                                 mov ah, 1
+[ 665]    0943: CD 21                                 int 21h
+[ 666]    0945: 3C 0D                                 cmp al, 0dh
+[ 667]    0947: 75 E4                                 jne repeat
+[ 668]        :                                       
+[ 669]    0949: 8B C3                                 mov ax, bx
+[ 670]    094B: 0B C9                                 or cx, cx
+[ 671]        :                                       
+[ 672]    094D: 74 02                                 je exitT
+[ 673]    094F: F7 D8                                 neg ax
+[ 674]        :                                       
+[ 675]    0951:                                       exitT:
+[ 676]        :                                       
+[ 677]    0951: 5A                                    pop dx
+[ 678]    0952: 59                                    pop cx
+[ 679]    0953: 5B                                    pop bx
+[ 680]    0954: C3                                    ret
+[ 681]        :                                       
+[ 682]    0955:                                       nonDigit:
+[ 683]        :                                       
+[ 684]    0955: B4 02                                 mov ah, 2
+[ 685]    0957: B2 0D                                 mov dl, 0dh
+[ 686]    0959: CD 21                                 int 21h
+[ 687]    095B: B2 0A                                 mov dl, 0ah
+[ 688]    095D: CD 21                                 int 21h
+[ 689]    095F: EB AF                                 jmp inputStart
+[ 690]    0961: C3                                    ret
+[ 691]        :                                       decimalInput endp
+[ 692]        :                                       
+[ 693]        :                                       
+[ 694]        :                                       
+[ 695]    0962:                                       decimalOutput proc
+[ 696]        :                                       
+[ 697]    0962: 50                                    push  ax
+[ 698]    0963: 53                                    push  bx
+[ 699]    0964: 51                                    push  cx
+[ 700]    0965: 52                                    push  dx
+[ 701]        :                                       
+[ 702]    0966: 0B C0                                 or ax, ax
+[ 703]    0968: 7D 0A                                 jge IF
+[ 704]        :                                       
+[ 705]    096A: 50                                    push ax
+[ 706]    096B: B2 20                                 mov dl, ' '
+[ 707]    096D: B4 02                                 mov ah, 2
+[ 708]    096F: CD 21                                 int 21h
+[ 709]    0971: 58                                    pop ax
+[ 710]    0972: F7 D8                                 neg ax
+[ 711]        :                                       
+[ 712]    0974:                                       IF:
+[ 713]        :                                       
+[ 714]    0974: 33 C9                                 xor cx, cx
+[ 715]    0976: BB 0A 00                              mov  bx, 10d
+[ 716]        :                                       
+[ 717]    0979:                                       loopRepeat:
+[ 718]        :                                       
+[ 719]    0979: 33 D2                                 xor dx, dx
+[ 720]    097B: F7 F3                                 div bx
+[ 721]    097D: 52                                    push dx
+[ 722]    097E: 41                                    inc cx
+[ 723]        :                                       
+[ 724]        :                                       
+[ 725]    097F: 0B C0                                 or  ax, ax
+[ 726]    0981: 75 F6                                 jne   loopRepeat
+[ 727]        :                                       
+[ 728]    0983: B4 02                                 mov   ah, 2
+[ 729]        :                                       
+[ 730]    0985:                                       printLoop:
+[ 731]        :                                       
+[ 732]    0985: 5A                                    pop  dx
+[ 733]    0986: 80 CA 30                              or dl, 30h
+[ 734]    0989: CD 21                                 int 21h
+[ 735]    098B: E2 F8                                 loop  printLoop
+[ 736]        :                                       
+[ 737]    098D: 5A                                    pop dx
+[ 738]    098E: 59                                    pop cx
+[ 739]    098F: 5B                                    pop bx
+[ 740]    0990: 58                                    pop ax
+[ 741]        :                                       
+[ 742]    0991: C3                                    ret
+[ 743]        :                                       decimalOutput endp
+[ 744]        :                                       end main
+[ 745]        :                                       
  
 ===================================================================================================
  
@@ -714,7 +838,7 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 0D      -   bytes on last page (l.byte)
+0002: 92      -   bytes on last page (l.byte)
 0003: 01      -   bytes on last page (h.byte)
 0004: 06      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
@@ -730,8 +854,8 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 79      -   check sum (l.byte)
-0013: 87      -   check sum (h.byte)
+0012: AC      -   check sum (l.byte)
+0013: 6A      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
 0016: 56      -   CS - code segment (l.byte)

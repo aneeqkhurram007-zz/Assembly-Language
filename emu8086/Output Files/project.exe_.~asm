@@ -617,6 +617,130 @@ int 21h
 mov ah,4ch
 int 21h
 main endp
+decimalInput proc
+
+push bx
+push cx
+push dx
+inputStart:
+
+mov ah, 2
+mov dl, ' '
+int 21h
+
+xor bx, bx
+xor cx, cx
+
+mov ah, 1
+int 21h
+
+cmp al, '-'
+je minus
+
+cmp al, '+'
+je plus
+jmp repeat
+
+minus:
+mov cx, 1
+plus:
+int 21h
+
+repeat:
+
+cmp al, '0'
+jnge nonDigit
+cmp al, '9'
+jnle nonDigit
+
+and ax, 000fh
+push ax
+
+mov ax,10
+mul bx
+pop bx
+add bx, ax
+
+mov ah, 1
+int 21h
+cmp al, 0dh
+jne repeat
+
+mov ax, bx
+or cx, cx
+
+je exitT
+neg ax
+
+exitT:
+
+pop dx
+pop cx
+pop bx
+ret
+
+nonDigit:
+
+mov ah, 2
+mov dl, 0dh
+int 21h
+mov dl, 0ah
+int 21h
+jmp inputStart
+ret
+decimalInput endp
+
+
+
+decimalOutput proc
+
+push  ax
+push  bx
+push  cx
+push  dx
+
+or ax, ax
+jge IF
+
+push ax
+mov dl, ' '
+mov ah, 2
+int 21h
+pop ax
+neg ax
+
+IF:
+
+xor cx, cx
+mov  bx, 10d
+
+loopRepeat:
+
+xor dx, dx
+div bx
+push dx
+inc cx
+
+
+or  ax, ax
+jne   loopRepeat
+
+mov   ah, 2
+
+printLoop:
+
+pop  dx
+or dl, 30h
+int 21h
+loop  printLoop
+
+pop dx
+pop cx
+pop bx
+pop ax
+
+ret
+decimalOutput endp
 end main
 
 
