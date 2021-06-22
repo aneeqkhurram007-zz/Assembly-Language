@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 s2BE.exe_ -- emu8086 assembler version: 4.08  
  
-[ 5/17/2021  --  4:14:06 PM ] 
+[ 6/21/2021  --  8:33:26 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -152,7 +152,7 @@ s2BE.exe_ -- emu8086 assembler version: 4.08
 [ 135]        :                                       
 [ 136]        :                                       
 [ 137]    0210: C3                                    ret
-[ 138]        :                                       SumOfPair endp
+[ 138]        :                                       sumofpair endp
 [ 139]        :                                       end main
 [ 140]        :                                       
  

@@ -135,5 +135,5 @@ sumofpair proc
     
             
     ret           
-SumOfPair endp    
+sumofpair endp    
 end main

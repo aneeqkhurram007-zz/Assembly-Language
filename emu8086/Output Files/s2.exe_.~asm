@@ -64,26 +64,26 @@ push cx
 push dx
 push di
 
-lea si, ARR
-lea di, ARR
+lea si, ARR ;initialization for outer loop
+lea di, ARR ;initialization for inner loop
 
-mov ch, i
+mov ch, i  ;int i=0
 
 
-while1:
+while1:   ; outer loop
 
-mov cl, j
+mov cl, j  ;int j=0
 
-cmp ch, 10
+cmp ch, 10  ;if i<10
 lea di, ARR
 jge exit1
 
 while2:
 
-mov bx, [si]
-add bx, [di]
+mov bx, [si] ;bx=sum ;bx=[si]
+add bx, [di] ;bx=[si]+[di]; sum=arr[i]+arr[j]
 
-cmp cl, 10
+cmp cl, 10 ;if j<10
 jge exit2
 
 if:

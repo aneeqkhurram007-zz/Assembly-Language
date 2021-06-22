@@ -1,0 +1,55 @@
+.model small
+.stack 100h
+.data
+.code
+main proc
+
+mov ax, 5
+push ax
+call factorial
+
+main endp
+mov ah, 4ch
+int 21h
+
+FACTORIAL PROC
+
+PUSH BP
+
+MOV BP, SP
+
+CMP [BP+4], 1
+
+JG END_IF
+
+MOV AX, 1
+
+JMP RETURN
+
+END_IF:
+
+MOV BX, [BP+4]
+
+DEC BX
+
+PUSH BX
+
+CALL FACTORIAL
+
+Mov dx, [bp+4]
+
+MUL [BP+4]
+
+RETURN:
+
+POP BP
+
+RET 2
+
+FACTORIAL ENDP
+
+end main
+
+
+
+; [SOURCE]: D:\Projects\Assembly Language\emu8086\Practice\recursion.asm

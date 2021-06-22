@@ -1,0 +1,183 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+fibonnaci.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 6/21/2021  --  10:22:55 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]    0100: 45 6E 74 65 72 20 73 65 72 69 65 73   msg1 db "Enter series number: $"
+                20 6E 75 6D 62 65 72 3A 20 24       
+[   5]        :                                       .code
+[   6]    0120:                                       main proc
+[   7]        :                                       
+[   8]    0120: B8 10 00                              mov ax, @data
+[   9]    0123: 8E D8                                 mov ds, ax
+[  10]        :                                       
+[  11]    0125: B4 09                                 mov ah, 9
+[  12]    0127: BA 00 00                              lea dx, msg1
+[  13]    012A: CD 21                                 int 21h
+[  14]        :                                       
+[  15]    012C: B9 05 00                              mov cx, 5
+[  16]        :                                       
+[  17]    012F:                                       for:
+[  18]        :                                       
+[  19]    012F: 8B C1                                 mov ax, cx
+[  20]    0131: 50                                    push ax
+[  21]        :                                       
+[  22]    0132: E8 10 00                              call fibonnaci
+[  23]        :                                       
+[  24]    0135: E8 38 00                              call decimalOutput
+[  25]        :                                       
+[  26]    0138: B4 02                                 mov ah, 2
+[  27]    013A: BA 0A 00                              mov dx, 10
+[  28]    013D: CD 21                                 int 21h
+[  29]        :                                       
+[  30]        :                                       
+[  31]    013F: E2 EE                                 loop for
+[  32]        :                                       
+[  33]        :                                       
+[  34]        :                                       main endp
+[  35]    0141: B4 4C                                 mov ah, 4ch
+[  36]    0143: CD 21                                 int 21h
+[  37]        :                                       
+[  38]    0145:                                       fibonnaci proc
+[  39]        :                                       
+[  40]    0145: 55                                    push bp
+[  41]        :                                       
+[  42]    0146: 8B EC                                 mov bp, sp
+[  43]        :                                       
+[  44]    0148: 80 7E 04 01                           cmp [bp+4], 1
+[  45]        :                                       
+[  46]    014C: 7F 05                                 jg else
+[  47]        :                                       
+[  48]    014E: 8B 46 04                              mov ax, [bp+4]
+[  49]        :                                       
+[  50]    0151: EB 19                                 jmp return
+[  51]        :                                       
+[  52]    0153:                                       else:
+[  53]        :                                       
+[  54]    0153: 8B 5E 04                              mov bx, [bp+4]
+[  55]    0156: 4B                                    dec bx
+[  56]    0157: 53                                    push bx
+[  57]    0158: E8 EA FF                              call fibonnaci
+[  58]    015B: 8B 4E 04                              mov cx, [bp+4]
+[  59]    015E: 8B D0                                 mov dx, ax
+[  60]        :                                       
+[  61]    0160: 8B 5E 04                              mov bx, [bp+4]
+[  62]    0163: 83 EB 02                              sub bx, 2
+[  63]    0166: 53                                    push bx
+[  64]    0167: E8 DB FF                              call fibonnaci
+[  65]        :                                       
+[  66]    016A: 03 C2                                 add ax, dx
+[  67]        :                                       
+[  68]        :                                       
+[  69]        :                                       
+[  70]    016C:                                       return:
+[  71]    016C: 5D                                    pop bp
+[  72]    016D: C2 02 00                              ret 2
+[  73]        :                                       fibonnaci endp
+[  74]        :                                       
+[  75]        :                                       
+[  76]    0170:                                       decimalOutput proc
+[  77]        :                                       
+[  78]    0170: 50                                    push  ax
+[  79]    0171: 53                                    push  bx
+[  80]    0172: 51                                    push  cx
+[  81]    0173: 52                                    push  dx
+[  82]        :                                       
+[  83]    0174: 0B C0                                 or ax, ax
+[  84]    0176: 7D 0A                                 jge IF
+[  85]        :                                       
+[  86]    0178: 50                                    push ax
+[  87]    0179: B2 20                                 mov dl, ' '
+[  88]    017B: B4 02                                 mov ah, 2
+[  89]    017D: CD 21                                 int 21h
+[  90]    017F: 58                                    pop ax
+[  91]    0180: F7 D8                                 neg ax
+[  92]        :                                       
+[  93]    0182:                                       IF:
+[  94]        :                                       
+[  95]    0182: 33 C9                                 xor cx, cx
+[  96]    0184: BB 0A 00                              mov  bx, 10d
+[  97]        :                                       
+[  98]    0187:                                       loopRepeat:
+[  99]        :                                       
+[ 100]    0187: 33 D2                                 xor dx, dx
+[ 101]    0189: F7 F3                                 div bx
+[ 102]    018B: 52                                    push dx
+[ 103]    018C: 41                                    inc cx
+[ 104]        :                                       
+[ 105]        :                                       
+[ 106]    018D: 0B C0                                 or  ax, ax
+[ 107]    018F: 75 F6                                 jne   loopRepeat
+[ 108]        :                                       
+[ 109]    0191: B4 02                                 mov   ah, 2
+[ 110]        :                                       
+[ 111]    0193:                                       printLoop:
+[ 112]        :                                       
+[ 113]    0193: 5A                                    pop  dx
+[ 114]    0194: 80 CA 30                              or dl, 30h
+[ 115]    0197: CD 21                                 int 21h
+[ 116]    0199: E2 F8                                 loop  printLoop
+[ 117]        :                                       
+[ 118]    019B: 5A                                    pop dx
+[ 119]    019C: 59                                    pop cx
+[ 120]    019D: 5B                                    pop bx
+[ 121]    019E: 58                                    pop ax
+[ 122]        :                                       
+[ 123]    019F: C3                                    ret
+[ 124]        :                                       decimalOutput endp
+[ 125]        :                                       
+[ 126]        :                                       end main
+[ 127]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: A0      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 42      -   check sum (l.byte)
+0013: 38      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 12      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 12      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

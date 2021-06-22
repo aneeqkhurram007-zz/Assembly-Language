@@ -135,7 +135,7 @@ exit1:
 
 
 ret
-SumOfPair endp
+sumofpair endp
 end main
 
 

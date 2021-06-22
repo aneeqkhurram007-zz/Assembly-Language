@@ -2,7 +2,7 @@ EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
 s2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 5/17/2021  --  3:42:51 PM ] 
+[ 6/21/2021  --  10:11:46 AM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
@@ -81,26 +81,26 @@ s2.exe_ -- emu8086 assembler version: 4.08
 [  64]    01C9: 52                                    push dx
 [  65]    01CA: 57                                    push di
 [  66]        :                                       
-[  67]    01CB: BE 0E 00                              lea si, ARR
-[  68]    01CE: BF 0E 00                              lea di, ARR
+[  67]    01CB: BE 0E 00                              lea si, ARR ;initialization for outer loop
+[  68]    01CE: BF 0E 00                              lea di, ARR ;initialization for inner loop
 [  69]        :                                       
-[  70]    01D1: 8A 2E 34 00                           mov ch, i
+[  70]    01D1: 8A 2E 34 00                           mov ch, i  ;int i=0
 [  71]        :                                       
 [  72]        :                                       
-[  73]    01D5:                                       while1:
+[  73]    01D5:                                       while1:   ; outer loop
 [  74]        :                                       
-[  75]    01D5: 8A 0E 35 00                           mov cl, j
+[  75]    01D5: 8A 0E 35 00                           mov cl, j  ;int j=0
 [  76]        :                                       
-[  77]    01D9: 80 FD 0A                              cmp ch, 10
+[  77]    01D9: 80 FD 0A                              cmp ch, 10  ;if i<10
 [  78]    01DC: BF 0E 00                              lea di, ARR
 [  79]    01DF: 7D 46                                 jge exit1
 [  80]        :                                       
 [  81]    01E1:                                       while2:
 [  82]        :                                       
-[  83]    01E1: 8B 1C                                 mov bx, [si]
-[  84]    01E3: 03 1D                                 add bx, [di]
+[  83]    01E1: 8B 1C                                 mov bx, [si] ;bx=sum ;bx=[si]
+[  84]    01E3: 03 1D                                 add bx, [di] ;bx=[si]+[di]; sum=arr[i]+arr[j]
 [  85]        :                                       
-[  86]    01E5: 80 F9 0A                              cmp cl, 10
+[  86]    01E5: 80 F9 0A                              cmp cl, 10 ;if j<10
 [  87]    01E8: 7D 36                                 jge exit2
 [  88]        :                                       
 [  89]    01EA:                                       if:
