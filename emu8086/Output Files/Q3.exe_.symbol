@@ -1,0 +1,21 @@
+< THE SYMBOL TABLE >  Q3.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+STR                      	00000     	1         	VAR       	data      
+F                        	0000D     	1         	VAR       	data      
+V                        	00010     	1         	VAR       	data      
+POWER                    	00013     	1         	VAR       	data      
+CODE                     	00012     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+WHILE                    	00011     	-1        	LABEL     	code      
+DECIMALOUTPUT            	0003E     	-1        	NEAR      	code      
+IF                       	00050     	-1        	LABEL     	code      
+LOOPREPEAT               	00055     	-1        	LABEL     	code      
+PRINTLOOP                	00061     	-1        	LABEL     	code      
+===================================================================================================
+[ 7/7/2021  --  12:13:03 PM ] 
+< END >
+ 

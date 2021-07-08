@@ -1,0 +1,164 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Q3.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 7/7/2021  --  12:13:03 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .MODEL SMALL
+[   2]        :                                       
+[   3]        :                                       .STACK 100h
+[   4]        :                                       
+[   5]        :                                       .DATA
+[   6]        :                                       
+[   7]    0100: 0A 0D 50 4F 57 45 52 20 49 53 3A 20   STR DB 0AH,0DH,"POWER IS: $"
+                24                                  
+[   8]        :                                       
+[   9]    010D: 01 02 03                              F DB 1, 2, 3
+[  10]    0110: 04 05 06                              V DB 4, 5, 6
+[  11]    0113: 00                                    POWER DB 0
+[  12]        :                                       
+[  13]        :                                       .CODE
+[  14]    0120:                                       MAIN PROC
+[  15]        :                                       
+[  16]    0120: B8 10 00                              MOV AX, @DATA
+[  17]    0123: 8E D8                                 MOV DS, AX
+[  18]        :                                       
+[  19]    0125: BE 0D 00                              LEA SI, F
+[  20]    0128: BF 10 00                              LEA DI, V
+[  21]        :                                       
+[  22]    012B: BA 00 00                              MOV DX, 0
+[  23]    012E: BB 00 00                              MOV BX, 0
+[  24]        :                                       
+[  25]        :                                       
+[  26]        :                                       
+[  27]    0131:                                       WHILE:
+[  28]        :                                       
+[  29]    0131: 8A 00                                 MOV AL, [SI+BX]
+[  30]    0133: 8A 09                                 MOV CL, [DI+BX]
+[  31]        :                                       
+[  32]    0135: F6 E1                                 MUL CL
+[  33]        :                                       
+[  34]    0137: 00 06 13 00                           ADD POWER, AL
+[  35]        :                                       
+[  36]    013B: E8 20 00                              CALL decimalOutput
+[  37]        :                                       
+[  38]    013E: 43                                    INC BX
+[  39]        :                                       
+[  40]    013F: 83 FB 03                              CMP BX, 3
+[  41]    0142: B4 02                                 MOV AH ,2
+[  42]    0144: B2 2C                                 MOV DL ,','
+[  43]    0146: CD 21                                 INT 21H
+[  44]    0148: 7C E7                                 JL WHILE
+[  45]        :                                       
+[  46]    014A: B4 09                                 MOV AH, 9
+[  47]    014C: BA 00 00                              LEA DX, STR
+[  48]    014F: CD 21                                 INT 21H
+[  49]        :                                       
+[  50]    0151: B8 00 00                              MOV AX, 0
+[  51]    0154: A0 13 00                              MOV AL, POWER
+[  52]    0157: E8 04 00                              CALL decimalOutput
+[  53]        :                                       
+[  54]    015A: B4 4C                                 MOV AH, 4Ch
+[  55]    015C: CD 21                                 INT 21h
+[  56]        :                                       
+[  57]        :                                       MAIN ENDP
+[  58]        :                                       
+[  59]    015E:                                       decimalOutput proc
+[  60]        :                                       
+[  61]    015E: 50                                    push  ax
+[  62]    015F: 53                                    push  bx
+[  63]    0160: 51                                    push  cx
+[  64]    0161: 52                                    push  dx
+[  65]        :                                       
+[  66]    0162: 0B C0                                 or ax, ax
+[  67]    0164: 7D 0A                                 jge IF
+[  68]        :                                       
+[  69]    0166: 50                                    push ax
+[  70]    0167: B2 20                                 mov dl, ' '
+[  71]    0169: B4 02                                 mov ah, 2
+[  72]    016B: CD 21                                 int 21h
+[  73]    016D: 58                                    pop ax
+[  74]    016E: F7 D8                                 neg ax
+[  75]        :                                       
+[  76]    0170:                                       IF:
+[  77]        :                                       
+[  78]    0170: 33 C9                                 xor cx, cx
+[  79]    0172: BB 0A 00                              mov  bx, 10d
+[  80]        :                                       
+[  81]    0175:                                       loopRepeat:
+[  82]        :                                       
+[  83]    0175: 33 D2                                 xor dx, dx
+[  84]    0177: F7 F3                                 div bx
+[  85]    0179: 52                                    push dx
+[  86]    017A: 41                                    inc cx
+[  87]        :                                       
+[  88]        :                                       
+[  89]    017B: 0B C0                                 or  ax, ax
+[  90]    017D: 75 F6                                 jne   loopRepeat
+[  91]        :                                       
+[  92]    017F: B4 02                                 mov   ah, 2
+[  93]        :                                       
+[  94]    0181:                                       printLoop:
+[  95]        :                                       
+[  96]    0181: 5A                                    pop  dx
+[  97]    0182: 80 CA 30                              or dl, 30h
+[  98]    0185: CD 21                                 int 21h
+[  99]    0187: E2 F8                                 loop  printLoop
+[ 100]        :                                       
+[ 101]    0189: 5A                                    pop dx
+[ 102]    018A: 59                                    pop cx
+[ 103]    018B: 5B                                    pop bx
+[ 104]    018C: 58                                    pop ax
+[ 105]        :                                       
+[ 106]    018D: C3                                    ret
+[ 107]        :                                       decimalOutput endp
+[ 108]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 8E      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 67      -   check sum (l.byte)
+0013: A7      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 12      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 12      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

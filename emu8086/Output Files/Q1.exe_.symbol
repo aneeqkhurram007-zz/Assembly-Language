@@ -1,0 +1,27 @@
+< THE SYMBOL TABLE >  Q1.exe_  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+STR1                     	00000     	1         	VAR       	data      
+STR2                     	00019     	1         	VAR       	data      
+STR3                     	00036     	1         	VAR       	data      
+KE                       	00048     	2         	VAR       	data      
+V                        	0004A     	2         	VAR       	data      
+M                        	0004C     	2         	VAR       	data      
+CODE                     	00015     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+INPUTSTART_LOC1TMP       	0000F     	-1        	LABEL     	code      
+REPEAT_LOC2TMP           	0001D     	-1        	LABEL     	code      
+EXIT_LOC3TMP             	00039     	-1        	LABEL     	code      
+INPUTSTART_LOC4TMP       	00049     	-1        	LABEL     	code      
+REPEAT_LOC5TMP           	00057     	-1        	LABEL     	code      
+EXIT_LOC6TMP             	00073     	-1        	LABEL     	code      
+IF_LOC7TMP               	000BE     	-1        	LABEL     	code      
+LOOPREPEAT_LOC8TMP       	000C3     	-1        	LABEL     	code      
+PRINTLOOP_LOC9TMP        	000CF     	-1        	LABEL     	code      
+===================================================================================================
+[ 7/7/2021  --  12:09:26 PM ] 
+< END >
+ 

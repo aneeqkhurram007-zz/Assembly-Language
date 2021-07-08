@@ -1,0 +1,270 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+Q1.exe_ -- emu8086 assembler version: 4.08  
+ 
+[ 7/7/2021  --  12:09:26 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       .stack 100h
+[   3]        :                                       .data
+[   4]        :                                       
+[   5]    0100: 0A 0D 45 6E 74 65 72 20 76 61 6C 75   str1 db 10,13,"Enter value for K.E. : $"
+                65 20 66 6F 72 20 4B 2E 45 2E 3A 20 
+                24                                  
+[   6]    0119: 0A 0D 45 6E 74 65 72 20 76 61 6C 75   str2 db 10,13,"Enter value for velocity : $"
+                65 20 66 6F 72 20 76 65 6C 6F 63 69 
+                74 79 3A 20 24                      
+[   7]    0136: 0A 0D 56 61 6C 75 65 20 6F 66 20 4D   str3 db 10,13,"Value of M is: $"
+                20 69 73 3A 20 24                   
+[   8]    0148: 00 00                                 KE dw ?
+[   9]    014A: 00 00                                 v dw ?
+[  10]    014C: 00 00                                 M dw ?
+[  11]        :                                       
+[  12]        :                                       .code
+[  13]        :                                       
+[  14]        :                                       DEC_IN macro
+[  15]        :                                       
+[  16]        :                                       push bx
+[  17]        :                                       push cx
+[  18]        :                                       push dx
+[  19]        :                                       
+[  20]        :                                       
+[  21]        :                                       local inputStart
+[  22]        :                                       inputStart:
+[  23]        :                                       
+[  24]        :                                       mov ah, 2
+[  25]        :                                       mov dl, ' '
+[  26]        :                                       int 21h
+[  27]        :                                       
+[  28]        :                                       xor bx, bx
+[  29]        :                                       xor cx, cx
+[  30]        :                                       
+[  31]        :                                       mov ah, 1
+[  32]        :                                       int 21h
+[  33]        :                                       
+[  34]        :                                       local repeat
+[  35]        :                                       repeat:
+[  36]        :                                       
+[  37]        :                                       and ax, 000fh
+[  38]        :                                       push ax
+[  39]        :                                       
+[  40]        :                                       mov ax,10
+[  41]        :                                       mul bx
+[  42]        :                                       pop bx
+[  43]        :                                       add bx, ax
+[  44]        :                                       
+[  45]        :                                       mov ah, 1
+[  46]        :                                       int 21h
+[  47]        :                                       cmp al, 0dh
+[  48]        :                                       jne repeat
+[  49]        :                                       
+[  50]        :                                       mov ax, bx
+[  51]        :                                       or cx, cx
+[  52]        :                                       
+[  53]        :                                       je exit
+[  54]        :                                       neg ax
+[  55]        :                                       
+[  56]        :                                       local exit
+[  57]        :                                       exit:
+[  58]        :                                       
+[  59]        :                                       pop dx
+[  60]        :                                       pop cx
+[  61]        :                                       pop bx
+[  62]        :                                       endm
+[  63]        :                                       
+[  64]        :                                       
+[  65]        :                                       
+[  66]        :                                       
+[  67]        :                                       DEC_O macro
+[  68]        :                                       
+[  69]        :                                       push  ax
+[  70]        :                                       push  bx
+[  71]        :                                       push  cx
+[  72]        :                                       push  dx
+[  73]        :                                       
+[  74]        :                                       or ax, ax
+[  75]        :                                       jge IF
+[  76]        :                                       
+[  77]        :                                       push ax
+[  78]        :                                       mov dl, ' '
+[  79]        :                                       mov ah, 2
+[  80]        :                                       int 21h
+[  81]        :                                       pop ax
+[  82]        :                                       neg ax
+[  83]        :                                       
+[  84]        :                                       local IF
+[  85]        :                                       
+[  86]        :                                       IF:
+[  87]        :                                       
+[  88]        :                                       xor cx, cx
+[  89]        :                                       mov  bx, 10d
+[  90]        :                                       
+[  91]        :                                       local loopRepeat
+[  92]        :                                       loopRepeat:
+[  93]        :                                       
+[  94]        :                                       xor dx, dx
+[  95]        :                                       div bx
+[  96]        :                                       push dx
+[  97]        :                                       inc cx
+[  98]        :                                       
+[  99]        :                                       
+[ 100]        :                                       or  ax, ax
+[ 101]        :                                       jne   loopRepeat
+[ 102]        :                                       
+[ 103]        :                                       mov   ah, 2
+[ 104]        :                                       
+[ 105]        :                                       local printLoop
+[ 106]        :                                       printLoop:
+[ 107]        :                                       
+[ 108]        :                                       pop  dx
+[ 109]        :                                       or dl, 30h
+[ 110]        :                                       int 21h
+[ 111]        :                                       loop  printLoop
+[ 112]        :                                       
+[ 113]        :                                       pop dx
+[ 114]        :                                       pop cx
+[ 115]        :                                       pop bx
+[ 116]        :                                       pop ax
+[ 117]        :                                       
+[ 118]        :                                       
+[ 119]        :                                       endm
+[ 120]        :                                       
+[ 121]        :                                       MAIN_MACRO macro
+[ 122]        :                                       
+[ 123]        :                                       mov ah, 9
+[ 124]        :                                       
+[ 125]        :                                       lea dx, str1
+[ 126]        :                                       
+[ 127]        :                                       int 21h
+[ 128]        :                                       
+[ 129]        :                                       DEC_IN
+[ 130]        :                                       
+[ 131]        :                                       mov KE, ax
+[ 132]        :                                       
+[ 133]        :                                       
+[ 134]        :                                       mov ah, 9
+[ 135]        :                                       
+[ 136]        :                                       lea dx, str2
+[ 137]        :                                       
+[ 138]        :                                       int 21h
+[ 139]        :                                       
+[ 140]        :                                       
+[ 141]        :                                       DEC_IN
+[ 142]        :                                       
+[ 143]        :                                       mov v, ax
+[ 144]        :                                       
+[ 145]        :                                       mov ax, 0
+[ 146]        :                                       mov ax, KE
+[ 147]        :                                       
+[ 148]        :                                       mov dx, 2
+[ 149]        :                                       
+[ 150]        :                                       mul dx
+[ 151]        :                                       
+[ 152]        :                                       mov KE, ax
+[ 153]        :                                       
+[ 154]        :                                       mov ax, 0
+[ 155]        :                                       
+[ 156]        :                                       mov ax, v
+[ 157]        :                                       mov dx, v
+[ 158]        :                                       
+[ 159]        :                                       mul dx
+[ 160]        :                                       
+[ 161]        :                                       mov v, ax
+[ 162]        :                                       
+[ 163]        :                                       mov ax, KE
+[ 164]        :                                       
+[ 165]        :                                       mov bx, v
+[ 166]        :                                       
+[ 167]        :                                       div bx
+[ 168]        :                                       
+[ 169]        :                                       mov M, ax
+[ 170]        :                                       
+[ 171]        :                                       mov ah, 9
+[ 172]        :                                       lea dx, str3
+[ 173]        :                                       int 21h
+[ 174]        :                                       
+[ 175]        :                                       mov ax, M
+[ 176]        :                                       
+[ 177]        :                                       DEC_O
+[ 178]        :                                       
+[ 179]        :                                       
+[ 180]        :                                       endm
+[ 181]        :                                       
+[ 182]        :                                       
+[ 183]    0150:                                       main proc
+[ 184]        :                                       
+[ 185]    0150: B8 10 00                              mov ax, @data
+[ 186]    0153: 8E D8                                 mov ds, ax
+[ 187]        :                                       
+[ 188]    0155: B4 09 BA 00 00 CD 21 53 51 52 B4 02   MAIN_MACRO
+                B2 20 CD 21 33 DB 33 C9 B4 01 CD 21 
+                25 0F 00 50 B8 0A 00 F7 E3 5B 03 D8 
+                B4 01 CD 21 3C 0D 75 EC 8B C3 0B C9 
+                74 02 F7 D8 5A 59 5B A3 48 00 B4 09 
+                BA 19 00 CD 21 53 51 52 B4 02 B2 20 
+                CD 21 33 DB 33 C9 B4 01 CD 21 25 0F 
+                00 50 B8 0A 00 F7 E3 5B 03 D8 B4 01 
+                CD 21 3C 0D 75 EC 8B C3 0B C9 74 02 
+                F7 D8 5A 59 5B A3 4A 00 B8 00 00 A1 
+                48 00 BA 02 00 F7 E2 A3 48 00 B8 00 
+                00 A1 4A 00 8B 16 4A 00 F7 E2 A3 4A 
+                00 A1 48 00 8B 1E 4A 00 F7 F3 A3 4C 
+                00 B4 09 BA 36 00 CD 21 A1 4C 00 50 
+                53 51 52 0B C0 7D 0A 50 B2 20 B4 02 
+                CD 21 58 F7 D8 33 C9 BB 0A 00 33 D2 
+                F7 F3 52 41 0B C0 75 F6 B4 02 5A 80 
+                CA 30 CD 21 E2 F8 5A 59 5B 58       
+[ 189]        :                                       
+[ 190]        :                                       
+[ 191]        :                                       main endp
+[ 192]        :                                       end main
+[ 193]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 2B      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 03      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 67      -   check sum (l.byte)
+0013: 4D      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 15      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 15      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

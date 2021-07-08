@@ -1,12 +1,30 @@
-< THE SYMBOL TABLE >  q2.exe_  --  emu8086 assembler version: 4.08 
+< THE SYMBOL TABLE >  Q2.exe_  --  emu8086 assembler version: 4.08 
 ===================================================================================================
 Name                     	Offset    	Size      	Type      	Segment   
 ===================================================================================================
 STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
 DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
-CODE                     	00010     	-5        	SEGMENT   	(ITSELF)  
-MAIN                     	00000     	-1        	NEAR      	code      
+N                        	00000     	2         	VAR       	data      
+VALN                     	00002     	2         	VAR       	data      
+F1                       	00004     	2         	VAR       	data      
+F2                       	00006     	2         	VAR       	data      
+NUMBER                   	00008     	1         	VAR       	data      
+PROMPT_1                 	0000D     	2         	VAR       	data      
+PROMPT_2                 	00011     	2         	VAR       	data      
+CODE                     	00013     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00005     	-1        	NEAR      	code      
+DIVIDE_LOC1TMP           	0002B     	-1        	LABEL     	code      
+STORE_LOC2TMP            	00036     	-1        	LABEL     	code      
+L1                       	0005C     	-1        	LABEL     	code      
+DIVIDE_LOC3TMP           	00072     	-1        	LABEL     	code      
+STORE_LOC4TMP            	0007D     	-1        	LABEL     	code      
+SERIES                   	00095     	-1        	NEAR      	code      
+AGAIN                    	000A4     	-1        	LABEL     	code      
+L2                       	000AB     	-1        	LABEL     	code      
+DIVIDE_LOC5TMP           	000CC     	-1        	LABEL     	code      
+STORE_LOC6TMP            	000D7     	-1        	LABEL     	code      
+EXIT                     	000FA     	-1        	LABEL     	code      
 ===================================================================================================
-[ 5/22/2021  --  4:02:39 PM ] 
+[ 7/7/2021  --  12:12:05 PM ] 
 < END >
  

@@ -1,34 +1,172 @@
 EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
  
-q2.exe_ -- emu8086 assembler version: 4.08  
+Q2.exe_ -- emu8086 assembler version: 4.08  
  
-[ 5/22/2021  --  4:02:39 PM ] 
+[ 7/7/2021  --  12:12:05 PM ] 
  
 ===================================================================================================
 [LINE]     LOC: MACHINE CODE                          SOURCE
 ===================================================================================================
  
-[   1]        :                                       .model small
-[   2]        :                                       .stack 100h
-[   3]        :                                       .data
-[   4]        :                                       .code
-[   5]        :                                       
-[   6]        :                                       C_TO_F macro C
-[   7]        :                                       mov cl, 5
-[   8]        :                                       mov al, 9
-[   9]        :                                       mul c
-[  10]        :                                       div cl
-[  11]        :                                       add al, 32
-[  12]        :                                       endm
-[  13]        :                                       
-[  14]    0100:                                       main proc
-[  15]        :                                       
-[  16]    0100: B2 25                                 mov dl, 37
-[  17]    0102: B1 05 B0 09 F6 E2 F6 F1 04 20         C_TO_F dl
-[  18]        :                                       
-[  19]        :                                       main endp
-[  20]        :                                       end main
-[  21]        :                                       
+[   1]        :                                       .MODEL SMALL
+[   2]        :                                       .STACK 100H
+[   3]        :                                       
+[   4]        :                                       .DATA
+[   5]    0100: 00 00                                 N DW 0
+[   6]    0102: 00 00                                 VALN DW 0
+[   7]    0104: 00 00                                 F1 DW 0
+[   8]    0106: 02 00                                 F2 DW 2
+[   9]    0108: 00 00 00 00 00                        NUMBER DB 5 DUP(?)
+[  10]    010D: 0D 00 00 00                           PROMPT_1 DW 0Dh, 0Ah' THE GIVEN SEQUENCE IS:  $'
+[  11]    0111: 0D 00 0A 00 54 48 45 20 4E 54 48 20   PROMPT_2 DW 0Dh, 0Ah, 'THE NTH TERM IS : $'
+                54 45 52 4D 20 49 53 3A 20 24       
+[  12]        :                                       
+[  13]        :                                       .CODE
+[  14]        :                                       
+[  15]    0130: B8 10 00                              MOV AX, @DATA
+[  16]    0133: 8E D8                                 MOV DS, AX
+[  17]        :                                       
+[  18]        :                                       PRINTCHAR MACRO N1
+[  19]        :                                       
+[  20]        :                                       PUSH AX
+[  21]        :                                       PUSH DX
+[  22]        :                                       
+[  23]        :                                       MOV DH, 0
+[  24]        :                                       MOV DL, N1
+[  25]        :                                       MOV AH, 2
+[  26]        :                                       INT 21H
+[  27]        :                                       
+[  28]        :                                       POP DX
+[  29]        :                                       POP AX
+[  30]        :                                       
+[  31]        :                                       PRINTCHAR ENDM
+[  32]        :                                       
+[  33]        :                                       
+[  34]        :                                       PRINTVALN MACRO N1
+[  35]        :                                       
+[  36]        :                                       PUSH AX
+[  37]        :                                       PUSH BX
+[  38]        :                                       PUSH CX
+[  39]        :                                       PUSH DX
+[  40]        :                                       
+[  41]        :                                       MOV AX, N1
+[  42]        :                                       
+[  43]        :                                       LEA SI, NUMBER
+[  44]        :                                       
+[  45]        :                                       MOV BX, 10
+[  46]        :                                       XOR CX, CX
+[  47]        :                                       LOCAL DIVIDE
+[  48]        :                                       DIVIDE:
+[  49]        :                                       
+[  50]        :                                       XOR DX,DX
+[  51]        :                                       DIV BX
+[  52]        :                                       PUSH DX
+[  53]        :                                       INC CX
+[  54]        :                                       CMP AX, 0
+[  55]        :                                       
+[  56]        :                                       JNE DIVIDE
+[  57]        :                                       LOCAL STORE
+[  58]        :                                       STORE:
+[  59]        :                                       
+[  60]        :                                       POP DX
+[  61]        :                                       ADD DL, 30H
+[  62]        :                                       MOV [SI], DL
+[  63]        :                                       INC SI
+[  64]        :                                       
+[  65]        :                                       LOOP STORE
+[  66]        :                                       
+[  67]        :                                       MOV [SI], '$'
+[  68]        :                                       
+[  69]        :                                       LEA DX, NUMBER
+[  70]        :                                       MOV AH, 9
+[  71]        :                                       INT 21H
+[  72]        :                                       
+[  73]        :                                       POP DX
+[  74]        :                                       POP CX
+[  75]        :                                       POP BX
+[  76]        :                                       POP AX
+[  77]        :                                       
+[  78]        :                                       PRINTVALN ENDM
+[  79]        :                                       
+[  80]        :                                       
+[  81]    0135:                                       MAIN PROC
+[  82]        :                                       
+[  83]    0135: C7 06 02 00 0A 00                     MOV VALN, 10
+[  84]    013B: FF 0E 02 00                           DEC VALN
+[  85]    013F: C7 06 04 00 03 00                     MOV F1, 3
+[  86]        :                                       
+[  87]    0145: BA 0D 00                              MOV DX, OFFSET PROMPT_1
+[  88]    0148: B4 09                                 MOV AH, 9
+[  89]    014A: CD 21                                 INT 21H
+[  90]        :                                       
+[  91]    014C: 50 53 51 52 A1 04 00 BE 08 00 BB 0A   PRINTVALN F1
+                00 33 C9 33 D2 F7 F3 52 41 3D 00 00 
+                75 F5 5A 80 C2 30 88 14 46 E2 F7 C6 
+                04 24 BA 08 00 B4 09 CD 21 5A 59 5B 
+                58                                  
+[  92]        :                                       
+[  93]    017D: 50 52 B6 00 B2 2C B4 02 CD 21 5A 58   PRINTCHAR ','
+                                                    
+[  94]        :                                       
+[  95]    0189: E8 39 00                              CALL SERIES
+[  96]    018C:                                       L1:
+[  97]        :                                       
+[  98]        :                                       
+[  99]    018C: BA 11 00                              MOV DX, OFFSET PROMPT_2
+[ 100]    018F: B4 09                                 MOV AH, 9
+[ 101]    0191: CD 21                                 INT 21H
+[ 102]        :                                       
+[ 103]        :                                       
+[ 104]    0193: 50 53 51 52 A1 04 00 BE 08 00 BB 0A   PRINTVALN F1
+                00 33 C9 33 D2 F7 F3 52 41 3D 00 00 
+                75 F5 5A 80 C2 30 88 14 46 E2 F7 C6 
+                04 24 BA 08 00 B4 09 CD 21 5A 59 5B 
+                58                                  
+[ 105]        :                                       
+[ 106]        :                                       
+[ 107]    01C4: C3                                    RET
+[ 108]        :                                       
+[ 109]        :                                       MAIN ENDP
+[ 110]        :                                       
+[ 111]        :                                       
+[ 112]    01C5:                                       SERIES PROC
+[ 113]        :                                       
+[ 114]    01C5: A1 02 00                              MOV AX, VALN
+[ 115]    01C8: A3 00 00                              MOV N, AX
+[ 116]        :                                       
+[ 117]    01CB: 83 3E 00 00 00                        CMP N, 0
+[ 118]    01D0: 75 02                                 JNE AGAIN
+[ 119]        :                                       
+[ 120]    01D2: EB 56                                 JMP EXIT
+[ 121]        :                                       
+[ 122]    01D4:                                       AGAIN:
+[ 123]        :                                       
+[ 124]    01D4: FF 0E 02 00                           DEC VALN
+[ 125]        :                                       
+[ 126]    01D8: E8 EA FF                              CALL SERIES
+[ 127]        :                                       
+[ 128]    01DB:                                       L2:
+[ 129]    01DB: A1 04 00                              MOV AX, F1
+[ 130]    01DE: 03 06 06 00                           ADD AX, F2
+[ 131]    01E2: A3 04 00                              MOV F1, AX
+[ 132]    01E5: FF 06 06 00                           INC F2
+[ 133]    01E9: FF 06 06 00                           INC F2
+[ 134]        :                                       
+[ 135]    01ED: 50 53 51 52 A1 04 00 BE 08 00 BB 0A   PRINTVALN F1
+                00 33 C9 33 D2 F7 F3 52 41 3D 00 00 
+                75 F5 5A 80 C2 30 88 14 46 E2 F7 C6 
+                04 24 BA 08 00 B4 09 CD 21 5A 59 5B 
+                58                                  
+[ 136]        :                                       
+[ 137]    021E: 50 52 B6 00 B2 2C B4 02 CD 21 5A 58   PRINTCHAR ','
+                                                    
+[ 138]        :                                       
+[ 139]    022A:                                       EXIT:
+[ 140]        :                                       
+[ 141]        :                                       SERIES ENDP
+[ 142]        :                                       
+[ 143]    022A: C3                                    RET
+[ 144]        :                                       
  
 ===================================================================================================
  
@@ -36,11 +174,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 
 0000: 4D      -   exe signature (M)
 0001: 5A      -   exe signature (Z)
-0002: 0C      -   bytes on last page (l.byte)
-0003: 01      -   bytes on last page (h.byte)
-0004: 02      -   512 byte pages in file (l.byte)
+0002: 2B      -   bytes on last page (l.byte)
+0003: 00      -   bytes on last page (h.byte)
+0004: 03      -   512 byte pages in file (l.byte)
 0005: 00      -   512 byte pages in file (h.byte)
-0006: 00      -   relocations (l.byte)
+0006: 01      -   relocations (l.byte)
 0007: 00      -   relocations (h.byte)
 0008: 20      -   paragraphs in header (l.byte)
 0009: 00      -   paragraphs in header (h.byte)
@@ -52,11 +190,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 000F: 00      -   SS - stack segment (h.byte)
 0010: 00      -   SP - stack pointer (l.byte)
 0011: 01      -   SP - stack pointer (h.byte)
-0012: 53      -   check sum (l.byte)
-0013: 4F      -   check sum (h.byte)
+0012: B6      -   check sum (l.byte)
+0013: C6      -   check sum (h.byte)
 0014: 00      -   IP - instruction pointer (l.byte)
 0015: 00      -   IP - instruction pointer (h.byte)
-0016: 10      -   CS - code segment (l.byte)
+0016: 13      -   CS - code segment (l.byte)
 0017: 00      -   CS - code segment (h.byte)
 0018: 1E      -   relocation table adress (l.byte)
 0019: 00      -   relocation table adress (h.byte)
@@ -64,7 +202,11 @@ EXE HEADER - bytes from 0000 to 01FF inclusive.
 001B: 00      -   overlay number (h.byte)
 001C: 01      -   signature (l.byte)
 001D: 00      -   signature (h.byte)
-001E to 01FF  -   reserved relocation area  (00) 
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 13      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
 
 
 
